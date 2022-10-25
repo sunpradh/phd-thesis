@@ -1,5 +1,25 @@
 \documentclass{book}
 
+
+% fonts
+\usepackage[T1]{fontenc}
+\usepackage{mlmodern}
+\usepackage[]{FiraSans}
+% \usepackage[bitstream-charter]{mathdesign}
+\usepackage{sectsty}
+\allsectionsfont{\sc\sffamily}
+
+
+% Page headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L,R]{}
+\fancyhead[C]{\leftmark}
+\newcommand{\Mark}[1]{\markboth{\textsf{\textsc{#1}}}{}}
+\renewcommand{\chaptermark}[1]{\Mark{#1}}
+
+
+
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
@@ -10,8 +30,11 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 
+\usepackage{hyperref}
+
 
 \newcommand{\todo}[1]{\textcolor{red}{[ \textsf{#1} ]}}
+\newcommand{\R}{\mathbb{R}}
 
 
 
@@ -30,7 +53,6 @@
 \label{chap:introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-
 %======================================================================
 % CHAPTER: Review of continuum gauge theory
 %======================================================================
@@ -38,15 +60,130 @@
 \chapter{Review of continuum gauge theory}
 \label{chap:review_of_continuum_gauge_theory}
 
+Ovviamente da scrivere
+
 \section{Yang-Mills theory}
 \label{sec:yang_mills_theory}
+
+\emph{Ovviamente da riscrivere}.
+A Yang-Mills theory is a gauge field theory on Minkowski space $\R^{1,d}$, where the gauge group $U(1)$ or $SU(N)$, with matter fields, which are defined by a representation of the gauge group.
+For example, \emph{Quantum Chromodynamics} (QCD) is an $SU(3)$ gauge theory with Dirac spinors in the fundamental representation.
+Keeping in mind the example of QCD, the Lagrangian of the theory is
+\begin{equation}
+    \mathcal{L} = - \frac{1}{2 g^2} \tr(F_{\mu \nu} F^{\mu \nu}) + \overline{\psi} \qty( i \gamma^{\mu} D_{\mu} - m ) \psi,
+\end{equation}
+where the fermions $\psi$ are taken in the fundamental representation of $SU(N)$ and the covariant derivative is $D_{\mu} = \partial_{\mu} - i A_{\mu}$.
+We choose the convention where the Lie algebra generators $T^a$ are Hermitian and $[T^a, T^b] = i f^{abc} T^c$, with real structure constants $f^{abc}$.
+Furthermore, the generators are such that $\tr(T^a T^b) = \frac{1}{2} \delta^{ab}$.
+The strength-field tensor $F_{\mu \nu}$ is given by
+\begin{equation}
+    F_{\mu \nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu} - i [A_{\mu}, A_{\nu}]
+\end{equation}
+and transforms in the adjoint representation of $SU(N)$.
+Both the gauge field $A_{\mu}$ and the curvature tensor $F_{\mu \nu}$ live in the Lie algebra $\mathfrak{su}(N)$.
+
+Under a gauge transformation given by a group-valued function $g(x) \in SU(N)$, such that $\psi \mapsto g(x) \psi(x)$, then
+\begin{equation}
+    A_{\mu}(x) \mapsto g(x) A_{\mu}(x) g(x)^{-1} + i g(x) \partial_{\mu} g(x)^{-1},
+\end{equation}
+so that $D_{\mu} \psi(x) \mapsto g(x) D_{\mu} \psi(x)$, while
+\begin{equation}
+    F_{\mu \nu} \mapsto g(x) F_{\mu \nu} g(x)^{-1},
+\end{equation}
+leaving the action invariant.
+
+The action of the theory in $d+1$ dimensions is the given by
+\begin{equation}
+    S[A, \psi, \overline{\psi}] = \int \dd^{d+1} \mathcal{L}
+\end{equation}
+and the path integral
+\begin{equation}
+    Z = \int \mathcal{D} A \mathcal{D} \overline{\psi} \mathcal{D} \psi \, e^{i S[A, \psi, \overline{\psi}]}.
+\end{equation}
+
 
 \section{Euclidean field theory}
 \label{sec:euclidean_field_theory}
 
+In order to work in a Euclidean space-time, we need first to perform a \emph{Wick rotation}, where the time coordinate $x_0$ is mapped a forth space coordinate $x_4$, through $x_0 = - i x_4$.
+The has the effect of changing the path-integral integrand from $e^{i S}$, which is oscillatory, to $e^{-S}$, which is positive and can be interpreted as a probability distribution of the configurations of the fields.
+
+The Euclidean path integral is
+\begin{equation}
+    Z_E = \int \mathcal{D} A \mathcal{D} \overline{\psi} \mathcal{D} \psi e^{-S},
+\end{equation}
+so that the Minkowski action and the Euclidean action satisfy $i S_M = - S_E$.
+The respective actions are given by
+\begin{equation}
+    S_M = \int \dd^{d+1} x_M \mathcal{L}_M, \qquad
+    S_E = \int \dd^{d+1} x_E \mathcal{L}_E.
+\end{equation}
+The rotation $x_0 = -i x_4$ leads to $\mathcal{L}_E = - \mathcal{L}_M$.
+
+The Wick rotation does not change the form of the gauge kinetic term, i.e.,
+\begin{equation}
+    - \frac{1}{2 g^2} \tr(F_{\mu \nu} F^{\mu \nu}).
+\end{equation}
+The sum is a simple Euclidean sum, where there are no minus signs when raising or lowering indices and $\mu = 1, \dots, d+1$.
+
+Considering now the fermionic part of the Yang-Mills Lagrangian, we need to perform the Wick rotation on the Dirac operator.
+In Minkowski space-time
+\begin{equation}
+    \overline{\psi} \qty( i \gamma^{\mu}_M D_{\mu} - m ) \psi
+    = \overline{\psi} \qty( i \gamma^{\mu}_M \partial_{\mu} + \gamma^{\mu}_M A_{\mu} - m ) \psi,
+\end{equation}
+where $\gamma^{\mu}_M$ are the gamma matrices of the Clifford algebra, and they satisfy $\{\gamma^{\mu}_M, \gamma^{\nu}_M\} = 2 \eta^{\mu \nu}$.
+In the Euclidean Clifford algebra instead the gamma matrices $\gamma^{\mu}_E$ satisfy $\{\gamma^{\mu}_E, \gamma^{\nu}_E\} = 2 \delta^{\mu \nu}$.
+Given the fact that we have $\partial_0 = i \partial_4$ and $A_0 = i A_4$, in order to obtain the correct form we have to put $\gamma^0_M = \gamma^4_E$.
+This procedure yields
+\begin{equation}
+    \overline{\psi} \qty( i \gamma^{\mu}_M \partial_{\mu} + \gamma^{\mu}_M A_{\mu} - m ) \psi
+    =
+    - \overline{\psi} \qty( \gamma^{\mu}_E \partial_{\mu} + i\gamma^{\mu}_E A_{\mu} + m ) \psi.
+\end{equation}
+
+Since $\mathcal{L}_E = - \mathcal{L}_M$, we finally arrive at
+\begin{equation}
+    \mathcal{L}_E
+    = \frac{1}{2 g^2} \tr (F_{\mu \nu} F^{\mu \nu}) + \overline{\psi} \qty( \gamma^{\mu} D_{\mu} ) \psi,
+\end{equation}
+where the indices are all Euclidean and $D_{\mu} = \partial_{\mu} + i A_{\mu}$.
+
+
 
 \section{Hamiltonian formulation}
 \label{sec:hamiltonian_formulation}
+
+The Hamiltonian formulation of a Yang-Mills theory can be tricky, especially the part about the gauge field.
+Usually, one has to procede by computing the conjugate momenta and performing a Legendre transform.
+The main issue here is that the gauge field component $A_0$, does not have a conjugate momentum:
+\begin{equation}
+    \pdv{\mathcal{L}}{\dot{A}_0} = 0.
+\end{equation}
+Hence, the transformation is not invertible.
+The easiest way to remedy to the situation is to impose the gauge condition $A_0 = 0$,
+which is called \emph{canonical gauge} or \emph{temporal gauge}.
+With this condition, the kinetic term for the gauge fields can be written as
+\begin{equation}
+    \mathcal{L}
+    = - \frac{1}{2 g^2} \tr(F_{\mu \nu} F^{\mu \nu})
+    = \frac{1}{g^2} \qty( \mathbf{E}^2 - \mathbf{B}^2 )
+    = \frac{1}{g^2} \qty(E^a_i E^a_i - B^a_i B^a_i),
+    \label{eq:YM_lagrang_temporal_gauge}
+\end{equation}
+where $\mathbf{E}$ and $\mathbf{B}$ are, respectively, the ``chromoelectric'' and the ``chromomagnetic'' fields.
+In the temporal gauge $\mathbf{E} = \dot{\mathbf{A}}$, the time derivative of the spatial components $\mathbf{A}$ of the gauge field $A_{\mu}$, while $\mathbf{B}$ corresponds to the spatial components of the strength-field tensor $F^{\mu \nu}$ and does not involve any time derivative.
+From the Legendre transformation of \eqref{eq:YM_lagrang_temporal_gauge} we obtain the Hamiltonian density:
+\begin{equation}
+    \mathcal{H}
+    = \frac{1}{g^2} E^a_i \dot{A}^a_i - \frac{1}{2 g^2} \qty( E^a_i E^a_i - B^a_i B^a_i )
+    = \frac{1}{2g^2} \tr ( \mathbf{E}^2 + \mathbf{B}^2 ),
+\end{equation}
+hence the Hamiltonian in $d$ spatial dimensions is
+\begin{equation}
+    H = \int \dd^{d} x \frac{1}{2 g^2} \tr(\mathbf{E}^2 + \mathbf{B}^2)
+\end{equation}
+
 
 
 
