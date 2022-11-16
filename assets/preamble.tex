@@ -1,0 +1,66 @@
+%======================================================================
+% PREAMBLE
+%======================================================================
+
+%----------------------------------------
+% DOCUMENT APPEARANCE
+%----------------------------------------
+% Layout
+\usepackage[textwidth=400pt]{geometry}
+\usepackage{layout} % for printing the page layout inside the document
+
+% Fonts
+\usepackage[T1]{fontenc}
+\usepackage{mlmodern}
+\usepackage{FiraSans}
+
+% Page headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L,R]{}
+\fancyhead[C]{\leftmark}
+\newcommand{\Mark}[1]{\markboth{\textsf{\textsc{#1}}}{}}
+\renewcommand{\chaptermark}[1]{\Mark{#1}}
+
+% Section headers
+\usepackage[immediate]{silence}
+\WarningFilter[temp]{latex}{Command} % silence the warning about \underline and \underbar
+\usepackage{sectsty}
+\DeactivateWarningFilters[temp] % So nothing unrelated gets silenced
+
+\allsectionsfont{\sc\sffamily}
+
+
+%----------------------------------------
+% MATH
+%----------------------------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{physics}
+\usepackage{bm}
+
+% Math macros
+\newcommand{\R}{\mathbb{R}}
+
+
+%----------------------------------------
+% GRAPHICS
+%----------------------------------------
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+
+%----------------------------------------
+% MISC
+%----------------------------------------
+\usepackage{hyperref}
+
+% Title and author
+\title{Topics on Lattice Gauge Theories}
+\author{Sunny Pradhan}
+\date{}
+
+% macro for TODO notes
+\newcommand{\todo}[1]{\textcolor{red}{[ \textsf{#1} ]}}
