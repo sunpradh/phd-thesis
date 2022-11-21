@@ -126,6 +126,56 @@ From the Legendre transformation of \eqref{eq:YM_lagrang_temporal_gauge} we obta
 \end{equation}
 hence the Hamiltonian in $d$ spatial dimensions is
 \begin{equation}
-    H = \int \dd^{d} x \frac{1}{2 g^2} \tr(\mathbf{E}^2 + \mathbf{B}^2)
+    H = \int \dd^{d} x \frac{1}{2 g^2} \tr(\mathbf{E}^2 + \mathbf{B}^2).
 \end{equation}
 
+In the Hamiltonian formulation, the fields $\mathbf{A}$ and $\mathbf{E}$ are now operators, satisfying the commutation relations
+\begin{equation}
+    \begin{split}
+        \comm{A^a_i(x)}{E^b_j(y)} & = i g^2 \delta_{ij} \delta_{ab} \delta(x-y) \\
+        \comm{E^a_i(x)}{E^b_j(y)} & = \comm{A^a_i(x)}{A^b_j(y)} = 0.
+    \end{split}
+    \label{eq:comm_rel_E_A_continuum}
+\end{equation}
+The $\mathbf{B}$ operator is defined from $\mathbf{A}$.
+
+In order to impose the canonical gauge $A_0 = 0$, the equation of motion for $A_0$ has to be satisfied.
+This leads \citneeded to the fact that one must have
+\begin{equation}
+    D_i E_i = 0,
+\end{equation}
+where $D_i$ are the spatial components of the covariant derivative and $E_i$ the spatial components of the chromoelectric field.
+Unfortunately, the equation above is inconsistent with the commutation relation \eqref{eq:comm_rel_E_A_continuum} and so it cannot be implemented as an operator equation.
+The easiest solution is to impose it on states that are considered \emph{physical}:
+\begin{equation}
+    D_i E_i \ket{\psi_{\phys}} = 0,
+\end{equation}
+for each component of $D_i E_i$.
+The constraints select a subspace of the overall Hilbert space, which will be labeled as the \emph{physical Hilbert space}.
+The condition above for a $U(1)$ theory reduces to the well known \emph{Gauss law} $\nabla \cdot \mathbf{E} = 0$.
+
+
+%----------------------------------------
+% SUBSECTION: The Sign Problem
+%----------------------------------------
+\subsection{The Sign Problem}
+\label{sub:the_sign_problem}
+
+Even though interesting phases have been predicted for QCD in the $\mu - T$ plane\citneeded, such as quark-gluon plasma\citneeded o superconductivity\citneeded, detailed quantitative analysis has been limited to the $\mu = 0$ region only.
+This is due mainly to the difficulty of studying QCD in the low energy regime, where the perturbative approach fails\citneeded.
+Moreover, even \emph{lattice gauge theories}, a non-perturbative approach to Yang-Mills theory (and gauge theories in general), is not applicable for $\mu \neq 0$ due to the \emph{sign problem}.
+
+In the Hamiltonian formulation, the chemical potential in the same manner as statistical mechanics.
+If $\hat{H}$ is the Hamiltonian operator and $\hat{N}$ a number operator, then one can simply replace $\hat{H}$ with $\hat{H} - \mu \hat{N}$.
+In the case of a Yang-Mills theory, the number operator corresponds to fermion number, i.e., $\hat{N} = \psi^{\dagger} \psi$.
+
+In the path integral formalism, fermions are Grassmann variables, which we can integrate over:
+\begin{equation}
+    \int \mathcal{D} \psi \mathcal{D} \overline{\psi} \exp(-\int d^{d+1} \overline{\psi} K \psi) = \det K,
+\end{equation}
+where $K$ is the kinetic operator for the fermions.
+If the fermions are coupled to gauge field, as one would expect from a Yang-Mills theory, then $K$ has some complicated dependence on the fields $A_{\mu}$.
+If one includes the chemical potential term $\mu \overline{\psi}^{\dagger} \psi$ in the Lagrangian, then the fermion determinant $\det K$ turns out to be complex\citneeded, with a non-trivial phase factor.
+
+As a result, the integrand of the path-integral is no longer positive, and it canot be interpreted as a probability distribution.
+This is the infamous \emph{sign problem} and poses severe limitation to Monte Carlo simulations in the finite $\mu$ region.

@@ -1,0 +1,40 @@
+%----------------------------------------
+% SECTION: Quantum simulation
+%----------------------------------------
+\section{Lattice Field Theory}
+\label{sec:lattice_field_theory}
+
+Starting from the path integral formulation, the first step in the formulation of a \emph{lattice field theory} (LFT) is the discretization of space-time, where a discrete $d+1$-dimensional lattice substitutes the continuum space-time.
+The simplest choice in this regard is a hypercubic lattice with lattice spacing $a$, but in theory an LFT can be defined on any type of lattice.
+An immediate advantage of using a lattice instead of a continuum is the natural ultraviolet cutoff given by the inverse of the lattice spacing.
+
+Formally a lattice $\Lambda$ is defined as
+\begin{equation}
+    \Gamma = \qty{
+        x \in \R^4 :
+        x = \sum_{\mu = 1}^{d+1} a n_{\mu} \hat{\mu} \quad
+        n_{\mu} \in \Z
+    },
+\end{equation}
+where $\mu = 1, \dots, d+1$ and $\hat{\mu}$ is the unit vector in the direction $\mu$.
+The edges will be labeled by a pair $(x,\hat{\mu})$, meaning that we are referring to the edge in the $\hat{\mu}$ direction from the vertex $x$.
+It is important to fix an orientation for each direction in the lattice.
+The most natural choice is to choose, obviously, $+ \hat{\mu}$ for each $\hat{\mu}$.
+So, even though $(x,\hat{\mu})$ and $(x + \hat{\mu}, - \hat{\mu})$ refers to the same link, the former is traversed in the positive direction while the latter in the negative direction.
+
+In an LFT, both the vertices and edges (also called links) host degrees of freedom (d.o.f).
+In particular, the matter fields lives on the vertices while the gauge fields live on the links between vertices.
+However, the definition of these d.o.f.~will need some care, because we have two main requirements:
+\begin{itemize}
+    \item The lattice action should reduce to the continuum action in the continuum limit, i.e., $a \to 0$;
+    \item The lattice action should respect the gauge symmetry.
+\end{itemize}
+Lorentz invariance is naturally broken on a lattice but we expect to recover it in the continuum limit.
+
+
+\subsection{Gauge fields on a lattice}
+\label{sub:gauge_fields_on_a_lattice}
+
+
+\subsection{Fermions on a lattice}
+\label{sub:fermions_on_a_lattice}
