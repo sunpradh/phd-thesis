@@ -19,12 +19,12 @@ Formally a lattice $\Lambda$ is defined as
 where $\mu = 1, \dots, d+1$ and $\hat{\mu}$ is the unit vector in the direction $\mu$.
 The edges will be labeled by a pair $(x,\hat{\mu})$, meaning that we are referring to the edge in the $\hat{\mu}$ direction from the vertex $x$.
 It is important to fix an orientation for each direction in the lattice.
-The most natural choice is to choose, obviously, $+ \hat{\mu}$ for each $\hat{\mu}$.
+The most natural choice is to choose $+ \hat{\mu}$ for each $\hat{\mu}$.
 So, even though $(x,\hat{\mu})$ and $(x + \hat{\mu}, - \hat{\mu})$ refers to the same link, the former is traversed in the positive direction while the latter in the negative direction.
 
 In an LFT, both the vertices and edges (also called links) host degrees of freedom (d.o.f).
 In particular, the matter fields lives on the vertices while the gauge fields live on the links between vertices.
-However, the definition of these d.o.f.~will need some care, because we have two main requirements:
+However, the definition of these d.o.f.~will need some care, because we have two main requirements, especially if we are interested in Yang-Mills theory:
 \begin{itemize}
     \item The lattice action should reduce to the continuum action in the continuum limit, i.e., $a \to 0$;
     \item The lattice action should respect the gauge symmetry.
@@ -34,6 +34,90 @@ Lorentz invariance is naturally broken on a lattice but we expect to recover it 
 
 \subsection{Gauge fields on a lattice}
 \label{sub:gauge_fields_on_a_lattice}
+
+\todo{spiegazione perché usiamo il gruppo di Lie e non l'algebra di Lie}
+Considering a general group $G$, we associate an element $U_{\mu}(x) \in G$ to each link $(x, \mu)$.
+If one traverse the link in the opposite direction, one should obtain the inverse element $U^{-1}$.
+In the case of $SU(N)$, we take $U_{\mu}(x)$ to be the matrices in the fundamental representation.
+We can obtain a vector potential in the continuum limit by writing
+\begin{equation}
+    U_{\mu}(x) = e^{i a A_{\mu}(x)},
+\end{equation}
+where $a$ is the lattice spacing.
+
+Before moving on the dynamics of these gauge fields we have talk on the meaning of gauge invariance on the lattice.
+A gauge transformation is described by a group-valued function $g(x)$ (in the appropriate representation), which acts on the vertices $x$.
+The variable $U_{\mu}(x)$ sits in the middle of the site $x$ and $x + \hat{\mu}$, then it is reasonable to think its transformation is
+\begin{equation}
+    U_{\mu}(x) \mapsto g(x) U_{\mu}(x) g(x + a \hat{\mu}).
+    \label{eq:gauge_transf_field_lattice}
+\end{equation}
+
+In order to introduce a dynamics for the gauge fields $U_{\mu}(x)$, we need to define their action which need two satisfy two requirements:
+it has to be gauge-invariant and reduce to the pure gauge Yang-Mills action in the continuum limit.
+From \eqref{eq:gauge_transf_field_lattice}, we can immediately deduce that taking the product of $U_{\mu}(x)$ along a closed curve will yield a gauge-invariant quantity.
+The simplest close curve we can consider is a \emph{plaquette}, i.e., the smallest square face.
+Hence, on a plaquette $\square$ we introduce $\W$ to put in the action, defined as
+\begin{equation}
+    \W =
+    U_{\mu}(x) U_{\nu}(x + a \hat{\mu}) U_{\mu}(x + a \hat{\nu})^{\dagger} U_{\nu}(x)^{\dagger}.
+    \label{eq:single_plaquette_Wilson_loop}
+\end{equation}
+Notice that we do not have any sum in the indices $\mu$ and $\nu$ because they are not Lorentz indices.
+The quantity in \eqref{eq:single_plaquette_Wilson_loop} is called a single plaquette \emph{Wilson loop}.
+
+We can only have scalar quantities in the action, so we need to take the trace of $\W$.
+Then, our lattice action will be defined as the sum over the plaquettes of $\tr \W$ (and its Hermitian conjugate):
+\begin{equation}
+    \action = - \frac{1}{g^2} \sum_{\square} \qty( \tr \W + \tr \W^{\dagger} ).
+    \label{eq:wilson_action}
+\end{equation}
+This is known as the \emph{Wilson action} \citneeded.
+The quantity $\tr \W$ behaves as expected in the continuum limit, where we have to work with the strength field $F^{\mu \nu}$:
+\begin{equation}
+    \tr \W \approx N - \frac{a^{4}}{2} \tr F_{\mu \nu} F^{\mu \nu} + \mathcal{O}(a^6),
+\end{equation}
+
+The lattice action is not unique.
+The Wilson action in \eqref{eq:wilson_action} is the simplest choice that one can make that satisfy our requirement.
+Some other modification, for example, can include other types of closed loops and these modification can have their place.
+However, they will not be considered here.
+
+Obviously, in a path-integral formulation of lattice gauge theories we need to define the path integral, which is immediate.
+The partition function is given by
+\begin{equation}
+    Z = \int \prod_{(x, \hat{\mu})}  \dd U_{\mu}(x) e^{- \action},
+\end{equation}
+where the integration measure $\dd U_{\mu}(x)$ is understood to be the Haar measure.
+In case of a compact group, like $SU(N)$, it is well defined and yields a finite value.
+Now that the path integral measure has been defined, the average of an observable $\mathcal{O}$ can be computed as
+\begin{equation}
+    \ev*{\mathcal{O}} = \frac{1}{Z} \int \prod_{(x, \hat{\mu})} \dd U_{\mu}(x) \mathcal{O} e^{- \action}
+\end{equation}
+
+
+\subsection{Wilson confinement test}
+\label{sub:wilson_confinement_test}
+
+One of the most important quantity that can be computed for a pure lattice gauge theory is the Wilson loop for generic closed paths $\mathcal{C}$.
+It serves as \emph{confinement} test.
+It has been shown \citneeded that confinement is equivalent to the \emph{area law} behaviour of Wilson loops, i.e.,
+\begin{equation}
+    \ev*{W(\mathcal{C})} \sim \exp(- \sigma A(\mathcal{C})),
+\end{equation}
+where $A(\mathcal{C})$ is the area inside the closed path $\mathcal{C}$ and $\sigma$ the \emph{string tension} (the coefficient of the linear potential between two quarks).
+
+\todo{motivazione fisica del legame tra confinamento e area law del Wilson loop}
+
+On the other hand, in the absence of confinement one finds instead the \emph{perimeter law}
+\begin{equation}
+    \ev*{W(\mathcal{C})} \sim \exp(- k P(\mathcal{C})),
+\end{equation}
+where $P(\mathcal{C})$ is the perimeter of the curve $\mathcal{C}$ and $k$ just some constant.
+
+In this picture, the string tension $\sigma$ can be interpreted as \emph{order parameter} for confinement:
+it is non-zero and finite in a confined phase, while it is zero in a deconfined phase.
+
 
 
 \subsection{Fermions on a lattice}
