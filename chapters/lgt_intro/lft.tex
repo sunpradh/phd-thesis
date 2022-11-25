@@ -32,6 +32,9 @@ However, the definition of these d.o.f.~will need some care, because we have two
 Lorentz invariance is naturally broken on a lattice but we expect to recover it in the continuum limit.
 
 
+%
+% SUBSECTION: Gauge fields on a lattice
+%
 \subsection{Gauge fields on a lattice}
 \label{sub:gauge_fields_on_a_lattice}
 
@@ -49,7 +52,7 @@ Before moving on the dynamics of these gauge fields we have talk on the meaning 
 A gauge transformation is described by a group-valued function $g(x)$ (in the appropriate representation), which acts on the vertices $x$.
 The variable $U_{\mu}(x)$ sits in the middle of the site $x$ and $x + \hat{\mu}$, then it is reasonable to think its transformation is
 \begin{equation}
-    U_{\mu}(x) \mapsto g(x) U_{\mu}(x) g(x + a \hat{\mu}).
+    U_{\mu}(x) \mapsto g(x) U_{\mu}(x) g(x + a \hat{\mu})^{\dagger}.
     \label{eq:gauge_transf_field_lattice}
 \end{equation}
 
@@ -96,24 +99,61 @@ Now that the path integral measure has been defined, the average of an observabl
 \end{equation}
 
 
-\subsection{Wilson confinement test}
+%
+% SUBSECTION: Order parameters and gauge invariance
+%
+\subsection{Order parameters and gauge invariance}
 \label{sub:wilson_confinement_test}
 
-One of the most important quantity that can be computed for a pure lattice gauge theory is the Wilson loop for generic closed paths $\mathcal{C}$.
-It serves as \emph{confinement} test.
+The Wilson formulation of lattice gauge theories can resembles spin models studied in statistical mechanics.
+The link variables $U_{\mu}(x)$ can be thought as some sort of generalization of the spin degrees of freedom.
+They are distributed in a crystal-like structure and interact with their nearest neighbours, in this case through a four-body interaction (the plaquette action), instead of two-body interaction (like the Ising model).
+If one wants to pursue this analogy, then it is reasonable to look at order parameters that behaves like the spontaneous magnetization, where a non-vanishing expectation value signals a phase transition.
+The analogue of such a order parameter in lattice gauge theory would be something like
+\begin{equation}
+    \ev*{U_{\mu}(x)} \neq 0,
+    \label{eq:non_zero_link_var_expt_value}
+\end{equation}
+rut it has been shown\citneeded \todo{teorema di Elitzur} that this is impossible in Wilson theory.
+
+In standard spin models, a non-zero magnetization represents a spontaneous breaking of the global symmetry of the system.
+Consider the simplest case of the classical Ising model, where the degrees of freedom are binary variables $\sigma = \pm 1$.
+Without an external field, the energy is given by the interaction of nearest neighbouring spins, i.e., $\sigma_i \sigma_j$.
+This system has an obvious global $\Z_2$ symmetry, that corresponds to the inversion $\sigma_i \mapsto -\sigma_i$ off all the spins.
+A ferromagnetic phase is, by definition, signaled by $\ev*{\sigma} \neq 0$, which necessarily breaks the global $\Z_2$ symmetry of the model.
+Once a direction is selected by $\ev*{\sigma} \neq 0$, it remains stable under thermal fluctuations because they cannot coherently shift of the magnetization of an infinite (or rather large) number of spins.
+
+In a lattice gauge theory, an expectation value like \eqref{eq:non_zero_link_var_expt_value} would \emph{breaks} gauge invariance, which is a \emph{local symmetry}, not a global one.
+As explained previously, gauge invariance means that the action is unchanged under local arbitrary ``rotations'' of the link variables $U_{\mu}(x)$, see \eqref{eq:gauge_transf_field_lattice}.
+Hence, thermal fluctuations will induce such rotations and in the long rung it will average on all the possible gauges.
+This leads to
+\begin{equation}
+    \ev*{U_{\mu}} = \int \dd U_{\mu} U_{\mu} = 0
+\end{equation}
+if $U_{\mu}$ contains only non-trivial irreducible representations of the group.
+This means that ``magnetization'' is always vanishing in a lattice gauge theory and gauge invariance cannot be spontaneously broken, which is the contents of the Elitzur theorem\citneeded.
+
+This conclusion may seem rather grim, as magnetization in spin models is a convenient order parameter.
+But this does not means that there are no other order parameters in a lattice gauge theory.
+We have just showed that the problem when considering something like $\ev*{U_{\mu}}$ is gauge invariance.
+So, the most reasonable step forward is to consider \emph{gauge-invariant quantities}.
+We have already seen that tracing over a product of $U_{\mu}$ variables along a closed curve is a gauge-invariant quantity, called \emph{Wilson loop}.
+
+In so far, we have considered only single plaquette loops but nothing restraints us from considering arbitrary large loops, indeed it serves as a \emph{confinement test} for pure gauge theories.
+% One of the most important quantity that can be computed for a pure lattice gauge theory is the Wilson loop for generic closed paths $\mathcal{C}$.
+% It serves as \emph{confinement} test.
 It has been shown \citneeded that confinement is equivalent to the \emph{area law} behaviour of Wilson loops, i.e.,
 \begin{equation}
     \ev*{W(\mathcal{C})} \sim \exp(- \sigma A(\mathcal{C})),
 \end{equation}
 where $A(\mathcal{C})$ is the area inside the closed path $\mathcal{C}$ and $\sigma$ the \emph{string tension} (the coefficient of the linear potential between two quarks).
-
-\todo{motivazione fisica del legame tra confinamento e area law del Wilson loop}
-
 On the other hand, in the absence of confinement one finds instead the \emph{perimeter law}
 \begin{equation}
     \ev*{W(\mathcal{C})} \sim \exp(- k P(\mathcal{C})),
 \end{equation}
 where $P(\mathcal{C})$ is the perimeter of the curve $\mathcal{C}$ and $k$ just some constant.
+
+\todo{motivazione fisica del legame tra confinamento e area law del Wilson loop}
 
 In this picture, the string tension $\sigma$ can be interpreted as \emph{order parameter} for confinement:
 it is non-zero and finite in a confined phase, while it is zero in a deconfined phase.
