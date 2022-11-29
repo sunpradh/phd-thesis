@@ -48,12 +48,13 @@ We can obtain a vector potential in the continuum limit by writing
 \end{equation}
 where $a$ is the lattice spacing.
 
-Before moving on the dynamics of these gauge fields we have talk on the meaning of gauge invariance on the lattice.
+It is necessary to discuss about gauge invariance before moving to the dynamics of these gauge fields.
+% Before moving on the dynamics of these gauge fields we have talk on the meaning of gauge invariance on the lattice.
 A gauge transformation is described by a group-valued function $g(x)$ (in the appropriate representation), which acts on the vertices $x$.
 The variable $U_{\mu}(x)$ sits in the middle of the site $x$ and $x + \hat{\mu}$, then it is reasonable to think its transformation is
 \begin{equation}
-    U_{\mu}(x) \mapsto g(x) U_{\mu}(x) g(x + a \hat{\mu})^{\dagger}.
-    \label{eq:gauge_transf_field_lattice}
+    U_{\mu}(x) \mapsto g(x) U_{\mu}(x) g(x + a \hat{\mu})^{\dagger}
+    \label{eq:gauge_transf_field_lattice}.
 \end{equation}
 
 In order to introduce a dynamics for the gauge fields $U_{\mu}(x)$, we need to define their action which need two satisfy two requirements:
@@ -105,11 +106,11 @@ Now that the path integral measure has been defined, the average of an observabl
 \subsection{Order parameters and gauge invariance}
 \label{sub:wilson_confinement_test}
 
-The Wilson formulation of lattice gauge theories can resembles spin models studied in statistical mechanics.
+The Wilson formulation of lattice gauge theories can resemble spin models studied in statistical mechanics.
 The link variables $U_{\mu}(x)$ can be thought as some sort of generalization of the spin degrees of freedom.
 They are distributed in a crystal-like structure and interact with their nearest neighbours, in this case through a four-body interaction (the plaquette action), instead of two-body interaction (like the Ising model).
 If one wants to pursue this analogy, then it is reasonable to look at order parameters that behaves like the spontaneous magnetization, where a non-vanishing expectation value signals a phase transition.
-The analogue of such a order parameter in lattice gauge theory would be something like
+The analogue of such an order parameter in lattice gauge theory would be something like
 \begin{equation}
     \ev*{U_{\mu}(x)} \neq 0,
     \label{eq:non_zero_link_var_expt_value}
@@ -133,8 +134,8 @@ This leads to
 if $U_{\mu}$ contains only non-trivial irreducible representations of the group.
 This means that ``magnetization'' is always vanishing in a lattice gauge theory and gauge invariance cannot be spontaneously broken, which is the contents of the Elitzur theorem\citneeded.
 
-This conclusion may seem rather grim, as magnetization in spin models is a convenient order parameter.
-But this does not means that there are no other order parameters in a lattice gauge theory.
+The conclusion of this brief discussion may seem rather grim, as magnetization in spin models is the most convenient and used order parameter.
+But this does not mean that there are no other order parameters in a lattice gauge theory.
 We have just showed that the problem when considering something like $\ev*{U_{\mu}}$ is gauge invariance.
 So, the most reasonable step forward is to consider \emph{gauge-invariant quantities}.
 We have already seen that tracing over a product of $U_{\mu}$ variables along a closed curve is a gauge-invariant quantity, called \emph{Wilson loop}.
@@ -145,20 +146,93 @@ In so far, we have considered only single plaquette loops but nothing restraints
 It has been shown \citneeded that confinement is equivalent to the \emph{area law} behaviour of Wilson loops, i.e.,
 \begin{equation}
     \ev*{W(\mathcal{C})} \sim \exp(- \sigma A(\mathcal{C})),
+    \label{eq:wilson_area_law}
 \end{equation}
-where $A(\mathcal{C})$ is the area inside the closed path $\mathcal{C}$ and $\sigma$ the \emph{string tension} (the coefficient of the linear potential between two quarks).
+where $A(\mathcal{C})$ is the minimal area inside the closed path $\mathcal{C}$ and $\sigma$ the \emph{string tension} (the coefficient of the linear potential between two quarks).
 On the other hand, in the absence of confinement one finds instead the \emph{perimeter law}
 \begin{equation}
     \ev*{W(\mathcal{C})} \sim \exp(- k P(\mathcal{C})),
+    \label{eq:wilson_perimeter_law}
 \end{equation}
 where $P(\mathcal{C})$ is the perimeter of the curve $\mathcal{C}$ and $k$ just some constant.
 
-\todo{motivazione fisica del legame tra confinamento e area law del Wilson loop}
+The reason behind this behaviour can be seen with a simple qualitative picture.
+A closed timelike Wilson loop basically represents a process in which a quark-antiquark pair is produced, moved along the sides of the loop and annihilated.
+If we are confining phase we can then expect a liner potential between the quark and antiquark.
+We can imagine a flux tube \emph{binding} the two charges, which swoops the whole inside the loop.
+Then, it is easy to image that the energy of this whole process will necessarily depend on the area of the loop.
+On the other hand, if we are in a deconfined phase then there is no potential binding the two quarks.
+In this case the energy of the whole process depends only on the self-energy of quarks, which move along the sides of the loop.
+Therefore, the leading energy contribution of this process depends on the perimeter, instead of the area.
+Obviously, this picture is no longer valid when dynamical matter is involved.
+In a confining phase, pair production is always preferred when separating two quarks at large distances.
+\todo{inserire immagine}
 
-In this picture, the string tension $\sigma$ can be interpreted as \emph{order parameter} for confinement:
-it is non-zero and finite in a confined phase, while it is zero in a deconfined phase.
+From \eqref{eq:wilson_area_law} and \eqref{eq:wilson_perimeter_law}, we can deduce that the string tension $\sigma$ can be used as an order parameter.
+It is non-zero for a confining phase, while it vanishes for a deconfined phase.
+But it is \emph{non-local} in nature, as it involves the asymptotic behaviour of potential, and therefore of the correlation functions of the theory.
 
 
 
 \subsection{Fermions on a lattice}
 \label{sub:fermions_on_a_lattice}
+
+Defining fermions is not an easy task due to the known \emph{doubling problem}.
+In simple terms, when introducing fermions on a lattice, instead of a continuous space, it leads to a extra spurious fermions, which are just lattice artifacts.
+
+In order to briefly see this, consider the correlation function for a single fermionic species.
+If $K$ is the kinetic matrix for the fermions, then $G = K^{-1}$ gives their correlation matrix.
+One finds \citneeded that the correlation function between two sites $x$ and $y$ has the form
+\begin{equation}
+    (G)_{x,y} = \frac{1}{a^d L^d} \sum_{k} \tilde{G}_{k} e^{2 \pi i k \cdot (x - y) / L},
+    \label{eq:fermionic_corr_func_real_space}
+\end{equation}
+where $a$ is the lattice spacing, $L^d$ the total volume and $\tilde{G}_k$ the correlation function in momentum space:
+\begin{equation}
+    \tilde{G}^{-1}_k = m + \frac{i}{a} \sum_{\mu} \gamma_{\mu} \sin(2 \pi k_{\mu} / L).
+    \label{eq:fermionic_corr_func_latt}
+\end{equation}
+It involves a trigonometric function because the derivative term involves nearest neighbouring sites.
+One can then take the model to a large lattice, which justifies in substituting the discrete sums with integrals:
+\begin{equation}
+    \frac{2 \pi k_{\mu}}{La}  \; \to \; q_{\mu}
+    \qquad \text{and} \qquad
+    \frac{1}{a^d L^d} \sum_{k} \; \to \; \int \frac{\dd q^d}{(2 \pi)^d},
+    \label{eq:limit_large_lattice}
+\end{equation}
+where the $q_{\mu}$'s are continuous momentum variables.
+This substitution maps \eqref{eq:fermionic_corr_func_latt} into
+\begin{equation}
+    \tilde{G}_k^{-1} = m + \frac{i}{a} \sum_{\mu} \gamma_{\mu} \sin(a q_{\mu}).
+    \label{eq:fermionic_corr_func_large_latt}
+\end{equation}
+
+One can naively think of taking the limit $a \to 0$ and expand $\sin(a q_{\mu})$ around the zero and obtain something that look like the correct continuum limit:
+\begin{equation}
+    \tilde{G}_{\mu}^{-1} = m + i \slashed{q} + \mathcal{O}(a^2).
+\end{equation}
+But one should not be fooled by this sloppy procedure just because it appears to give the wanted result.
+Each component $q_{\mu}$ takes values in the region $[-\pi/a, +\pi/a]$, hence we have to integrate on the whole volume $[-\pi/a, +\pi/a]^d$.
+Looking at \eqref{eq:fermionic_corr_func_large_latt}, it is clear that the major contributions to $G$ in \eqref{eq:fermionic_corr_func_real_space} comes from the zeros of $\tilde{G}_k^{-1}$.
+This, not only vanishes in the region $q_{\mu} \sim 0$ but also for large momentum $q_{\mu} \sim \pi/a$.
+The propagator has no suppression of momentum values near $\pi/a$.
+We can isolate the large momenta region by considering
+\begin{equation}
+    \tilde{q}_{\mu} = q_{\mu} - \pi/a
+\end{equation}
+for each direction in space.
+In this way, we de facto half the integration region,
+\begin{equation}
+    \int_{-\pi/a}^{\pi/a} \dd q_{\mu} \;\to\;
+    \int_{-\pi/2a}^{\pi/2a} (\dd q_{\mu} + \dd \tilde{q}_{\mu})
+\end{equation}
+and now the limit $a \to 0$ can be taken safely, but it comes with a price to pay.
+For each direction in space, we have two independent regions that gives a free fermion contribution to the propagator in the continuum limit.
+We have effectively \emph{doubled} the number of fermions for each direction.
+In a $d$-dimensional lattice we end up with $2^d$ independent fermions, even though we initially started with just one.
+\todo{qualcosa a che fare con la chiralità}
+
+There are many solutions to this fermion doubling problem\citneeded, but we will focus only on one in this manuscript: \emph{the staggered fermions}\citneeded.
+We have seen that these fictitious fermions come from the large momenta regions, where $q_{\mu} \sim \pi/a$.
+Brutally cutting out this large momenta regions spoils the completeness of the Fourier transform, so it is not a solution, the same effect can be obtained with a smarter move.
+
