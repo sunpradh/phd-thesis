@@ -1,0 +1,57 @@
+%----------------------------------------
+% SECTION: Quantum simulation
+%----------------------------------------
+\section{Quantum simulation}
+\label{sec:quantum_simulation}
+
+Simulating quantum mechanics is a very challenging task, in particular if one is interested in many-body systems.
+The description of the state requires a large number of parameters, for keeping track of all the quantum amplitudes, that grows exponentially with the system size.
+Hence, one would have an \emph{exponential explosion} in terms of \emph{classical} resources (i.e., computer memory).
+If simulating a quantum system is not a task for classical computers, then it should be a task for \emph{quantum computers}.
+This kind of devices, first envisioned from Feynman\citneeded, promises much more than simulating quantum mechanics.
+Indeed, quantum computation and quantum information theory are, still today, very active research fields.
+
+A quantum computer can encodes the large amount of information of a quantum system in its large number of amplitudes.
+So, the size of a quantum computer would only be proportional to the size of the quantum system it intends to simulate, \emph{without} an exponential explosion in \emph{quantum} resources.
+In fact, a quantum computer can indeed act as a \emph{universal quantum simulator} (Lloyd 1996\citneeded).
+This is basically the idea behind \emph{digital quantum simulations}.
+
+However, another approach is possible.
+One can mimic the evolution of a given quantum system by means of another \emph{analogous} and \emph{controllable} quantum system.
+Hence, we will only need a specific quantum machine for a specific class of problems.
+This is, instead, the idea behind \emph{analog quantum simulations}.
+In this case, for a specific set of problems the full implementation of a quantum computer may not be necessary.
+
+In general, \emph{quantum simulation} can be (loosely) defined as simulating a quantum system by quantum mechanical means.
+In this regard, there are three paths that can be taken:
+\begin{itemize}
+    \item digital quantum simulation
+    \item analog quantum simulation
+    \item quantum-information inspired algorithms for classical simulation
+\end{itemize}
+We will discuss briefly each one of them.
+By \emph{quantum simulator} we mean a \emph{controllable} quantum system used to simulate or emulate other quantum systems.
+We see that only digital and analog quantum simulations employ a quantum simulator.
+The last option employs techniques, inspired by quantum information theory, that make it possible to truncate and approximates quantum states in order to have efficient classical simulations.
+
+
+\todo{Inserire figura schematica di un quantum simulator}
+
+\subsection{Digital quantum simulations}
+\label{sub:digital_quantum_simulations}
+
+This approach employs the circuit model for quantum computation.
+Generally, the quantum simulator is a collection of \emph{qubits} (i.e., two-level quantum systems).
+This constitutes the \emph{quantum registry}.
+A wave function of simulated system using the computation basis, in other words a superposition of binary bit string.
+Each bit of a string refers to the state of a qubit in the registry, which can be either $\ket{0}$ or $\ket{1}$ in the computational basis.
+On this register, any many-qubit unitary transformation $U$ is implemented through the application of a sequence of single- and two-qubit unitary operations, called \emph{quantum gates}.
+An immediate example of relevant unitary transformation is the time-evolution operator, that solves the time-independent Schrodinger equation.
+
+Even though it has been proven (Lloyd 1996\citneeded) that ``anything'' can be simulated on a quantum computer, not all unitary operations can be simulated \emph{efficiently}.
+Therefore, there are \emph{mathematically possible} Hamiltonians that cannot be efficiently simulated with a circuit-based model.
+Luckily, it is believed that \emph{physically relevant} Hamiltonians can indeed be simulated efficiently.
+Furthermore, it should be stressed that the implemented unitary operations are often just approximations of the desired unitary operation.
+A greater precision comes with a greater number of gates.
+
+
