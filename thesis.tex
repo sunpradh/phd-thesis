@@ -1,4 +1,8 @@
-\documentclass{report}
+\documentclass[
+    a4paper,
+    11pt,
+    oneside
+]{memoir}
 
 %----------------------------------------
 % PREAMBLE
@@ -16,8 +20,12 @@
 %----------------------------------------
 \maketitle
 
+\newpage
+
 \pagestyle{empty}
+\hypersetup{linkcolor=black}
 \tableofcontents
+\hypersetup{linkcolor=blue}
 
 \clearpage
 
@@ -32,6 +40,12 @@
 % CHAPTER: Introduction to lattice gauge theories
 %--------------------------------------------------
 \input{chapters/lgt_intro.tex}
+
+
+%--------------------------------------------------
+% CHAPTER: Lattice gauge theories for quantum simulation
+%--------------------------------------------------
+\input{chapters/lgt_qsim.tex}
 
 
 %--------------------------------------------------

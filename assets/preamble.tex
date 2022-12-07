@@ -12,24 +12,39 @@
 % Fonts
 \usepackage[T1]{fontenc}
 \usepackage{mlmodern}
-\usepackage{FiraSans}
+% \usepackage[]{FiraSans}
+\usepackage{helvet}
 
-% Page headers
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhead[L,R]{}
-\fancyhead[C]{\leftmark}
-\newcommand{\Mark}[1]{\markboth{\textsf{\textsc{#1}}}{}}
-\renewcommand{\chaptermark}[1]{\Mark{#1}}
+\makechapterstyle{mychapter}{
+    \chapterstyle{companion}
+    \renewcommand*{\chapnamefont}{\sffamily\LARGE\bfseries\scshape}
+    \renewcommand*{\chapnumfont}{\sffamily\LARGE\bfseries\scshape}
+    \renewcommand*{\printchaptername}{%
+        \raggedleft\chapnamefont chapter%
+    }
+    \renewcommand*{\printchapternum}{%
+        \chapnumfont \ifanappendix \thechapter \else \numtoname{\thechapter}\fi%
+    }
+    \renewcommand*{\chaptitlefont}{\normalfont\sffamily\HUGE\scshape}
+    \renewcommand{\printchaptertitle}[1]{%
+        \begin{adjustwidth}{0.75\chapindent}{-0.75\chapindent}
+            \raggedleft \chaptitlefont ##1\par\nobreak
+        \end{adjustwidth}
+    }
+}
 
-% Section headers
-\usepackage[immediate]{silence}
-\WarningFilter[temp]{latex}{Command} % silence the warning about \underline and \underbar
-\usepackage{sectsty}
-\DeactivateWarningFilters[temp] % So nothing unrelated gets silenced
+% Section style
+\setsecnumdepth{subsection}
+\settocdepth{subsection}
+\hangsecnum
 
-\allsectionsfont{\sc\sffamily}
-
+\makeheadstyles{myheadings}{
+    \renewcommand*{\secheadstyle}{\sffamily\Large\bfseries\scshape}
+    \renewcommand*{\subsecheadstyle}{\sffamily\large\bfseries\scshape}
+    \renewcommand*{\subsubsecheadstyle}{\sffamily\normalsize\scshape}
+}
+\headstyles{myheadings}
+\chapterstyle{mychapter}
 
 %----------------------------------------
 % MATH
@@ -60,10 +75,10 @@
 %----------------------------------------
 % MISC
 %----------------------------------------
-\usepackage{hyperref}
+\usepackage[colorlinks, linkcolor=blue]{hyperref}
 
 % Title and author
-\title{Topics on Lattice Gauge Theories}
+\title{Finite Group Lattice Gauge Theories for Quantum Simulation}
 \author{Sunny Pradhan}
 \date{}
 

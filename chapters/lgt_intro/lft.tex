@@ -234,5 +234,38 @@ In a $d$-dimensional lattice we end up with $2^d$ independent fermions, even tho
 
 There are many solutions to this fermion doubling problem\citneeded, but we will focus only on one in this manuscript: \emph{the staggered fermions}\citneeded.
 We have seen that these fictitious fermions come from the large momenta regions, where $q_{\mu} \sim \pi/a$.
-Brutally cutting out this large momenta regions spoils the completeness of the Fourier transform, so it is not a solution, the same effect can be obtained with a smarter move.
+Brutally cutting out this large momenta regions spoils the completeness of the Fourier transform, so it is not a solution, but a smarter solution can give out the same effect.
+The idea is to spread the fermionic degrees of freedom over multiple lattice sites, reducing effectively the momenta space.
+For example, in two dimensions it would correspond to placing the \emph{particles} on \emph{even} sites and the \emph{antiparticles} on \emph{odd} sites.
+A site is considered even or odd when $(-1)^x = (-1)^{x_1 + \dots + x_d} = +1$ or $-1$.
 
+To obtain a staggered fermion, we define a new fermionic species $\chi(x)$ such that
+\begin{equation}
+    \psi(x) = \prod_{\mu} (\gamma^{\mu})^{n_{\mu}} \chi(x),
+\end{equation}
+where $x_{\mu} = an_{\mu}$.
+Now, if we want to express the discredited covariant derivative, the term $\gamma^{\mu} \psi(x+a n_{\mu})$ have two extra powers of $\gamma^{\mu}$ compared to $\overline{\psi}$.
+Since $(\gamma^{\mu})^2 = \pm 1$, we have therefore
+\begin{equation}
+    \overline{\psi}(x) \gamma^{\mu} \psi(x) = (-1)^{\eta_{\mu}(x)} \chi(x)^{\dagger} \chi(x + a n_{\mu}),
+\end{equation}
+where $\eta_{\mu}(x)$ is some sign function depending on the site $x$.
+This function can be obtained from the commutation relations of the gamma matrices.
+In particular, in two dimensions we have
+\begin{equation}
+    \eta_1(x) = 1
+    \quad \text{and} \quad
+    \eta_2(x) = (-1)^{n_1},
+\end{equation}
+while in four (Euclidean) dimension we have instead \todo{Citare Tong, gauge theories}
+\begin{equation}
+    \eta_1(x) = 1, \quad
+    \eta_2(x) = (-1)^{n_1}, \quad
+    \eta_3(x) = (-1)^{n_1 + n_2}, \quad
+    \eta_4(x) = (-1)^{n_1 + n_2 + n_3}.
+\end{equation}
+A similar reasoning can be applied to the mass term $m \overline{\psi}(x) \psi(c)$, where it becomes
+\begin{equation}
+    m \overline{\psi}(x) \psi(x) = (-1)^{\eta(x)} \chi(x)^{\dagger} \chi(x),
+\end{equation}
+for some sign function $\eta(x)$ that can be obtained from the commutation relations of the gamma functions.
