@@ -22,8 +22,8 @@ Hence, we will only need a specific quantum machine for a specific class of prob
 This is, instead, the idea behind \emph{analog quantum simulations}.
 In this case, for a specific set of problems the full implementation of a quantum computer may not be necessary.
 
-In general, \emph{quantum simulation} can be (loosely) defined as simulating a quantum system by quantum mechanical means.
-In this regard, there are three paths that can be taken:
+In general, \emph{quantum simulation} can be (loosely) defined as simulating a quantum system by quantum mechanical means,
+There are three paths that can be taken in this regard:
 \begin{itemize}
     \item digital quantum simulation
     \item analog quantum simulation
@@ -42,16 +42,55 @@ The last option employs techniques, inspired by quantum information theory, that
 
 This approach employs the circuit model for quantum computation.
 Generally, the quantum simulator is a collection of \emph{qubits} (i.e., two-level quantum systems).
-This constitutes the \emph{quantum registry}.
-A wave function of simulated system using the computation basis, in other words a superposition of binary bit string.
+This constitutes the \emph{quantum register}.
+A wave function of the simulated system using the computation basis, in other words a superposition of binary bit string.
 Each bit of a string refers to the state of a qubit in the registry, which can be either $\ket{0}$ or $\ket{1}$ in the computational basis.
 On this register, any many-qubit unitary transformation $U$ is implemented through the application of a sequence of single- and two-qubit unitary operations, called \emph{quantum gates}.
-An immediate example of relevant unitary transformation is the time-evolution operator, that solves the time-independent Schrodinger equation.
+An immediate example of relevant unitary transformation is the time-evolution operator, that solves the time-independent Schrödinger equation.
 
 Even though it has been proven (Lloyd 1996\citneeded) that ``anything'' can be simulated on a quantum computer, not all unitary operations can be simulated \emph{efficiently}.
 Therefore, there are \emph{mathematically possible} Hamiltonians that cannot be efficiently simulated with a circuit-based model.
 Luckily, it is believed that \emph{physically relevant} Hamiltonians can indeed be simulated efficiently.
 Furthermore, it should be stressed that the implemented unitary operations are often just approximations of the desired unitary operation.
-A greater precision comes with a greater number of gates.
+With greater precision comes a greater number of gates.
+
+The typical setup for a digital simulation is made of three steps:
+\begin{itemize}
+    \item
+        \emph{Initial-state preparation} --- where the quantum register has to prepared in the state $\ket{\psi(0)}$.
+        This step can be by itself difficult, and it is not always guaranteed that an efficient algorithm may exist.
+    \item
+        \emph{Unitary evolution} --- where the circuit has to reproduce or simulate the action of a unitary operator $U$.
+        In case of a unitary time evolution and local Hamiltonian this can be achieved approximately with some ``trotterization'' scheme.
+    \item
+        \emph{Final measurement} --- after obtained the wanted state $\ket{\psi(t)} = U \ket{\psi(0)}$, a \emph{measurement} is needed in order to extract the relevant physical information.
+        Instead of capturing the whole wave function $\ket{\psi(t)}$, with for example quantum tomography, one may proceed with the direct estimation of certain physical quantities, such as correlation functions or spectra of operators.
+\end{itemize}
 
 
+\subsection{Analog quantum simulations}
+\label{sub:analog_quantum_simulations}
+
+Analog quantum simulation (AQS) in another possible approach to quantum simulation, where a one quantum system mimics or emulate another.
+The Hamiltonian of the system to be simulated $H_{\text{sys}}$ is directly mapped onto the Hamiltonian of the simulator $H_{\text{sim}}$.
+Obviously, this can be done if there is a mapping between the system and the simulator.
+Note that the simulator may only partly reproduce the dynamics of the system, or simulate some effective description of the system.
+
+An important advantage of AQS is that it does not require a full quantum computer, even more the simulator does not even need to be a computer at all.
+Finding the mapping in an AQS might look, at first, simpler than finding the most efficient gate decomposition of a Hamiltonian, but it is not always guaranteed and there are no recipes ready for such mappings.
+The obvious drawback of AQS is that the quantum simulators are problem specific.
+
+\todo{Aggiungere altro}
+
+
+\subsection{Quantum-inspired algorithms}
+\label{sub:quantum_inspired_algorithms}
+
+\emph{Classical} numerical algorithms for the simulation of quantum many-body systems came out of research on quantum information theory in these later years.
+The most important examples of quantum-inspired algorithms are \emph{tensor networks} methods.
+Tensor networks make it possible to compress the information about a many-body wave function by expressing it as a contraction of a network of tensors (as suggested by the name).
+For a large class of physically relevant models, the ground state is gapped and has, in a certain sense, a finite amount of entanglement.
+This fact is expressed by the so-called \emph{area law}, where the entanglement between two partitions of the system grows with size of the boundary, the area between the two partitions, and not with the size of the partition itself.
+The main advantage of tensor networks is their ability to capture this area law.
+
+\todo{Aggiungere altro}
