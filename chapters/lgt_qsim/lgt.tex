@@ -1,0 +1,40 @@
+%----------------------------------------
+% SECTION: Finite-group approach
+%----------------------------------------
+\section{Quantum simulation of lattice gauge theories}
+\label{sec:quantum_simulation_of_lattice_gauge_theories}
+
+The problem of lattice gauge theories is arguably one of the most computationally intensive quantum many-body problem of all, due to the large numbers of degrees of freedom per site and the necessity of simulation in three spatial dimensions.
+We have already show a formulation of LGT in the path integral formalism.
+It can be used for simulations with Monte Carlo methods and indeed it already quite some results \todo{inserire quali}\citneeded.
+However, Monte Carlo methods suffers some problem.
+Simulation in Euclidean space time cannot approach several problems.
+For example, we already shown that the presence of fermionic matter leads to the so-called sign problem, which makes it very difficult to simulate situations with finite chemical potential.
+Another desirable feature it the real time evolution in Minkowski space time, which is absent when time is imaginary.
+
+Recently, different approaches have been proposed for the quantum simulation of LGTs, from different communities, one for each possible path in quantum simulation (showed previously).
+For quantum-inspired classical simulation, different methods have been proposed for the simulation of LGTs using \emph{tensor networks states}, to study the ground state, time evolution, and phase structure with both numerical and analytical models.
+The second type of approach relies on \emph{analog simulation} with different kind of controllable experimental devices.
+The options ranges from ultracold atoms in optical lattices\citneeded, trapped ions\citneeded, or superconducting qubits\citneeded.
+The proposals have addressed LGTs of different levels of complexity, Abelian or non-Abelian, with or without dynamical matter, etc\dots.
+The last but not the least type of approach is digital quantum simulation, where the task of simulating the theory is done by a quantum computer.
+We will mainly focus on this last approach.
+
+In order to be able to simulate a LGT on a quantum computer, some kind of \emph{digitization} of the fields is necessary.
+By digitization, we mean the task of formulation, representing, and encoding QFT (choosing the basis) in ways useful for computational calculations.
+The lattice field theory, presented in Sec.~\ref{sec:lattice_field_theory}, is the most conventional digitization scheme of nonperturbative field theory but it is only feasible for classical computers.
+It relies on resources far beyond near-term quantum computers.
+In conventional LGT, fermionic fields are integrated out, leaving a non-local action.
+A direct application of this procedure to quantum computers would require a high connectivity between qubits.
+Furthermore, for bosons, LGT works with bosons (i.e., the gauge fields) which have a infinite-dimensional local Hilbert space.
+This is prohibited on a real quantum computer, where we have only finite quantum registers.
+
+The starting point for a digital simulation of a LGT is its Hamiltonian formulation.
+This has been worked by Kogut and Susskind in their seminal paper\citneeded, the starting point for any endeavour in quantum simulation of LGTs, which we will review in the following section
+
+
+\subsection{Kogut-Susskind Hamiltonian formulation}
+\label{sub:kogut_susskind_hamiltonian_formulation}
+
+
+
