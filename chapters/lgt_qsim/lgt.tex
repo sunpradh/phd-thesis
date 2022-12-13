@@ -1,8 +1,9 @@
 %----------------------------------------
-% SECTION: Finite-group approach
+% SECTION: Quantum simulation of gauge theories
 %----------------------------------------
-\section{Quantum simulation of lattice gauge theories}
-\label{sec:quantum_simulation_of_lattice_gauge_theories}
+\section{Quantum simulation for gauge theories}
+\label{sec:quantum_simulation_for_gauge_theories}
+
 
 The problem of lattice gauge theories is arguably one of the most computationally intensive quantum many-body problem of all, due to the large numbers of degrees of freedom per site and the necessity of simulation in three spatial dimensions.
 We have already show a formulation of LGT in the path integral formalism.
@@ -22,7 +23,7 @@ We will mainly focus on this last approach.
 
 In order to be able to simulate a LGT on a quantum computer, some kind of \emph{digitization} of the fields is necessary.
 By digitization, we mean the task of formulation, representing, and encoding QFT (choosing the basis) in ways useful for computational calculations.
-The lattice field theory, presented in Sec.~\ref{sec:lattice_field_theory}, is the most conventional digitization scheme of non-perturbative field theory but it is only feasible for classical computers.
+The lattice field theory, presented in Sec.~\ref{sec:wilson_approach_to_gauge_theories}, is the most conventional digitization scheme of non-perturbative field theory but it is only feasible for classical computers.
 It relies on resources far beyond near-term quantum computers.
 In conventional LGT, fermionic fields are integrated out, leaving a non-local action.
 A direct application of this procedure to quantum computers would require a high connectivity between qubits.
@@ -34,58 +35,4 @@ The starting point for a digital simulation of a LGT is its Hamiltonian formulat
 This has been worked by Kogut and Susskind in their seminal paper\citneeded, the starting point for any endeavour in quantum simulation of LGTs, which we will review in the following section
 
 
-\subsection{Kogut-Susskind Hamiltonian formulation}
-\label{sub:kogut_susskind_hamiltonian_formulation}
 
-The classical formulation of Hamiltonian LTG is due to Kogut and Susskind, in \citneeded.
-It can be regarded as the Hamiltonian corresponding to the Wilson action \todo{inserire eqref}.
-The former can be obtained from the latter by the transfer matrix technique\citneeded, where two different lattice spacing are assigned to time and spatial dimensions and then the continuum limit for the time direction is taken.
-Another derivation can be done by means of Legendre transform, but in this text we will adopt a more modern approach, based on \todo{citare Milsted, Osborne 2018}.
-
-As one can expect, the Kogut-Susskind Hamiltonian $\HamilKS$ is made of two terms, the electric part and the magnetic part:
-\begin{equation}
-    \HamilKS = H_E + H_B.
-\end{equation}
-These will be constructed separately and for a simple reason.
-The magnetic term involves only the spatial component of the field strength tensor, i.e., $\bm{B}^{2} \sim F^{ij}F_{ij}$, while the electric term involves also the temporal components, i.e., $\bm{E}^2 \sim F^{0i} F_{0i}$.
-Given that in the Hamiltonian formalism time is continuous while space is discrete, the two terms cannot be treated on the same footing.
-
-Starting from the magnetic term, this can be taken to be the same as the single-plaquette term in the Wilson action \eqref{eq:wilson_action}, but we have to limit ourselves to purely spatial plaquettes.
-In fact, the magnetic energy is $\bm{B}^2 = \frac{1}{2} F^{ij} F_{ij}$, which is just the spatial part of $F^{\mu \nu} F_{\mu \nu}$ of the continuum action.
-Given that the spatial directions are kept discrete, we do not need to make any modification.
-The same cannot be said for the electric energy, which is $\bm{E}^2 = F_{0 i} F^{0 i}$.
-With continuous time we cannot construct plaquettes that extends in the time direction.
-
-Another point of divergence with the path-integral approach is that now both the electric field and magnetic term are operators, not simple variables.
-In order to have well-defined, or defined at all, operators we have to define the appropriate Hilbert space on which these operators act.
-
-We start by considering a single link $\link$ and define the gauge degrees of freedom.
-In  the construction in Sec.~\ref{sub:gauge_fields_on_a_lattice}, given a gauge group $G$ we have associated an element $g \in G$ to the link $\link$.
-Hence, the configuration space for each link $\link$ is exactly $G$.
-When quantizing, the configuration space $G$ has to be elevated to a Hilbert space $\HilbertSpace^G$ which is spanned by the elements $g \in G$:
-\begin{equation}
-    \HilbertSpace^G \equiv \text{span}\{\ket{g} : g \in G\},
-    \label{eq:single_link_Hilbert_space}
-\end{equation}
-where the set $\{\ket{g}\}$ is an orthonormal basis.
-Therefore, an element $\ket{\psi}$ of $\HilbertSpace^G$ can be written as
-\begin{equation}
-    \ket{\psi} = \int \dd g \; \psi(g) \ket{g},
-\end{equation}
-where $\int \dd g$ is a proper measure (usually the Haar measure) on the group in the case of continuous groups, like $\SU(N)$, or a simple sum in case of finite groups.
-In the former case $\HilbertSpace^G$ is equivalent to the space $L^2(G)$ of square-integrable functions of $G$, i.e., each element $\ket{\psi}$ can be identified with the functions $\psi(g)$.
-While in the latter case, the space $\HilbertSpace^G$ is equivalent to the so-called group algebra $\C[G]$.
-The total Hilbert space of the model is simply given by the tensor product
-\begin{equation}
-    \HilbertSpace_{\text{tot}} = \bigotimes_{\link} \HilbertSpace^G_{\link}
-\end{equation}
-
-Focusing now on the case of continuous groups, like $\SU(N)$
-Given a single link Hilbert space $\HilbertSpace^G$, the first set of operators we can define on it are the \emph{position observables} $\hat{u}_{mn}$, via
-\begin{equation}
-    \hat{u}_{mn} \ket{g} = U(g)_{mn} \ket{g},
-\end{equation}
-where $U(g)_{mn}$ is the matrix element $(m, n)$ of the matrix $U(g)$, which is the image of $g$ in the fundamental representation $U$ of $G$.
-One can then define a matrix of operators $\hat{u}$, whose elements are precisely the operators $\hat{u}_{mn}$.
-Note that $\hat{u}$ is unitary as long as the chosen representation is unitary, but this not guarantee that each operator $\hat{u}_{mn}$ is unitary.
-Indeed, it can be shown that $(\hat{u}_{mn})^{\dagger} = (\hat{u}^{\dagger})_{mn}$.
