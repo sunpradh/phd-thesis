@@ -1,8 +1,12 @@
-ltex.hiddenFalsePositives.en.txt
+ltex.*txt
 *.aux
+*.bbl
+*.bcf
+*.blg
 *.fdb_latexmk
 *.fls
 *.log
 *.out
+*.run.xml
 *.synctex.gz
 *.toc
