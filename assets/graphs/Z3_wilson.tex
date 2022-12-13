@@ -1,0 +1,75 @@
+\begin{tikzpicture}[
+        notes/.style={gray!20!black, font=\scriptsize},
+        font=\small
+    ]
+    \begin{groupplot}[
+        group style={
+            group name=wilson3,
+            group size=1 by 2,
+            vertical sep=3pt,
+            x descriptions at=edge bottom%,
+            % every plot/.style={thick}
+        },
+        width=7.5cm,
+        height=5cm,
+        no marks,
+        table/col sep=comma,
+        table/x=coupling,
+        xtick pos=left,
+        ytick pos=left,
+        ylabel={$W$},
+        xlabel={$\lambda$},
+        try min ticks=5,
+        cycle list name=exotic,
+        legend style={font=\tiny, draw=gray!40},
+        legend image post style={scale=0.5}
+        ]
+
+        % Sector n=0
+        \ZThreeWilsonGraph{00}
+        \legend{
+            {$L = 7$},
+            {$L = 9$},
+            {$L = 11$},
+            {$L = 13$}
+        }
+        \draw (axis cs:0,1) node (deconf) [circle, fill=gray!40!black, inner sep=0pt, minimum size=4pt] {};
+        \draw[<-, shorten <=2pt, gray!40!black] (deconf) -- +(0.3,-0.07) node [right, notes, align=left, anchor=west] {deconfined\\point};
+        \draw[black] (axis cs:1.2,0) node [above, notes] {confined};
+
+        % Sector n=1
+        \ZThreeWilsonGraph{10}
+        \draw (axis cs:0,1) node (deconf) [circle, fill=gray!40!black, inner sep=0pt, minimum size=4pt] {};
+        \draw[<-, shorten <=2pt, gray!40!black] (deconf) -- +(0.15,-0.4) node [below, notes,align=center] {deconfined\\point};
+        \draw (axis cs:1.65,0) node [above=3pt, notes] {double degeneracy};
+        \draw (axis cs:0.65,0.5) node [above, rotate=-45, notes] {crossover};
+
+    \end{groupplot}
+
+    \begin{axis}[
+            no marks,
+            width=4cm,
+            height=2.75cm,
+            table/col sep=comma,
+            table/x=coupling,
+            xtick={0.5,0.75,1.0,1.25},
+            xtick align=center,
+            ytick align=center,
+            xtick pos=left,
+            ytick pos=left,
+            ymax=3.5,
+            at={(wilson3 c1r2.north east)},
+            anchor={north east},
+            font=\tiny
+        ]
+        \addplot[thick, blue] table [y=DeltaE1] {assets/graphs/data/Z3_gap_sec_1.csv}
+            node [pos=0.8, black, above] {$\Delta E_1$};
+        \addplot[thick, red]  table [y=DeltaE2] {assets/graphs/data/Z3_gap_sec_1.csv}
+            node [pos=0.6, black, left=2pt] {$\Delta E_2$};
+    \end{axis}
+
+    \draw (wilson3 c1r1.east) node[above, rotate=-90] {sector $n=0$};
+    \draw (wilson3 c1r2.east) node[above, rotate=-90] {sector $n=1, 2$};
+    \draw (wilson3 c1r1.north) node[above, font=\normalsize] {$\Z_3$ Wilson loop};
+
+\end{tikzpicture}

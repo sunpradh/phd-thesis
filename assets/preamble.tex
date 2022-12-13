@@ -105,6 +105,7 @@
 \usepackage{amsfonts}
 \usepackage{physics}
 \usepackage{bm}
+\usepackage{bbm}
 \usepackage{slashed}
 
 % Show equation labels
@@ -115,6 +116,7 @@
 \newcommand{\R}{\mathbb{R}} % Real field
 \newcommand{\Z}{\mathbb{Z}} % integers
 \newcommand{\C}{\mathbb{C}} % Complex field
+\newcommand{\onehalf}{$\frac{1}{2}$} % 1/2
 \newcommand{\phys}{\text{phys}} % 'physical' label
 \newcommand{\W}{W_{\square}} % single plaquette Wilson loop
 \newcommand{\action}{\mathcal{S}} % action
@@ -127,6 +129,30 @@
 \newcommand{\g}{\mathfrak{g}} % Lie algebra
 \newcommand{\generator}{\hat{\ell}}
 \newcommand{\transport}{\hat{u}}
+\newcommand{\hc}{\text{h.c.}} % hermitian conjugate text
+\newcommand{\One}{\mathbbm{1}} % identity operator
+\newcommand{\Hphys}{\mathcal{H}_{\text{phys}}} % physical Hilbert space
+\newcommand{\HIsing}{H_{\text{Ising}}} % Ising Hamiltonian
+\newcommand{\Hclock}{H_{\text{clock}}} % Ising Hamiltonian
+\newcommand{\gi}{\text{gi}} % gauge-invariant label
+\newcommand{\lattice}{\mathbb{L}} % lattice
+% shorthand for links on the ladder
+\newcommand{\toplink}{\ell^\uparrow}
+\newcommand{\botlink}{\ell^\downarrow}
+\newcommand{\runglink}{\ell^0}
+% shorthand for electric operators and comparators on the ladder
+\newcommand{\Uup}{U^{\uparrow}}
+\newcommand{\Udown}{U^{\downarrow}}
+\newcommand{\Urung}{U^0}
+\newcommand{\Vup}{V^{\uparrow}}
+\newcommand{\Vdown}{V^{\downarrow}}
+\newcommand{\Vrung}{V^0}
+% Gauss operators
+\newcommand{\GaussUp}{G^{\uparrow}}
+\newcommand{\GaussDown}{G^{\downarrow}}
+% shorthand for the coefficients of the ladder duality map
+\newcommand{\coeffup}{c^{\uparrow}}
+\newcommand{\coeffdown}{c^{\downarrow}}
 
 % redefine some math macro
 \renewcommand{\dd}{\text{d}}
@@ -141,7 +167,18 @@
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usetikzlibrary{arrows.meta, decorations.markings, patterns, fit, positioning}
+\tikzset{font=\small, >={Latex}}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16} % fixes some pgfplots cross-platform issue
+\usepgfplotslibrary{groupplots}
 
+% custom colors
+\usepackage{xcolor}
+\colorlet{Red}{red!70!black}
+\colorlet{Blue}{blue!70!black}
+\colorlet{Gray}{gray!70!black}
+\colorlet{Green}{green!70!black}
 
 %----------------------------------------
 % MISC
@@ -157,3 +194,12 @@
 \newcommand{\todo}[1]{\textcolor{red}{[ \textsf{#1} ]}}
 % macro for missing citations
 \newcommand{\citneeded}{\textcolor{red}{\textsf{\textsuperscript{[citation?]}}}}
+
+
+%----------------------------------------
+% Bibliography
+%----------------------------------------
+\usepackage{biblatex}
+\bibliography{assets/biblio.bib}
+
+

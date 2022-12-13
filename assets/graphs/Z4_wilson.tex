@@ -1,0 +1,80 @@
+\begin{tikzpicture}[
+        font=\small,
+        notes/.style={gray!20!black, font=\scriptsize}
+    ]
+    \begin{groupplot}[
+            group style={
+                group name=wilson4,
+                group size=1 by 3,
+                vertical sep=3pt,
+                horizontal sep=3pt,
+                x descriptions at=edge bottom,
+                y descriptions at=edge left% ,
+                % every plot/.style={thick}
+            },
+            width=7.5cm,
+            height=5cm,
+            no marks,
+            table/col sep=comma,
+            table/x=coupling,
+            xtick pos=left,
+            ytick pos=left,
+            ylabel={$W$},
+            xlabel={$\lambda$},
+            try min ticks=5,
+            cycle list name=exotic,
+            legend style={font=\tiny, draw=gray!40},
+            legend image post style={scale=0.5}
+        ]
+        % Sector n=0
+        \ZFourWilsonGraph{00}
+        \legend{{$L = 6$}, {$L = 8$}, {$L = 10$}}
+        \draw (axis cs:0,1) node (deconf) [circle, fill=gray!40!black, inner sep=0pt, minimum size=4pt] {};
+        \draw[<-, shorten <=2pt, gray!40!black] (deconf) -- +(0.35,-0.075) node [right, notes, align=left] {deconfined\\point};
+        \draw[black] (axis cs:1.4,0) node [above, notes] {confined};
+
+        % Sector n=1
+        \ZFourWilsonGraph{10}
+        \draw (axis cs:0,1) node (deconf) [circle, fill=gray!40!black, inner sep=0pt, minimum size=4pt] {};
+        \draw[<-, shorten <=2pt, gray!40!black] (deconf) -- +(0.35,-0.075) node [right, notes, align=left] {deconfined\\point};
+        \draw (axis cs:1.7,0) node [above=5pt, notes] {double degen.};
+
+        % Sector n=2
+        \ZFourWilsonGraph{20}
+        \draw (axis cs:0.3,1) node [below=12pt, notes] {deconfined};
+        \draw (axis cs:1.7,0) node [above=15pt, notes] {confined};
+        \draw[dashed, gray] (axis cs:1.0,0) -- (axis cs:1.0,1);
+    \end{groupplot}
+
+    %
+    % Energy gap
+    %
+    \begin{axis}[
+            no marks,
+            width=4cm,
+            height=2.75cm,
+            table/col sep=comma,
+            table/x=coupling,
+            xtick={0.5,0.75,1.0,1.25},
+            xtick align=center,
+            ytick align=center,
+            xtick pos=left,
+            ytick pos=left,
+            ymax=2.5,
+            at={(wilson4 c1r2.north east)},
+            anchor={north east},
+            font=\tiny
+        ]
+        \addplot[thick, blue] table [y=DeltaE1] {assets/graphs/data/Z4_gap_sec_1.csv}
+        node [pos=0.8, black, above] {$\Delta E_1$};
+        \addplot[thick, red]  table [y=DeltaE2] {assets/graphs/data/Z4_gap_sec_1.csv}
+        node [pos=0.4, black, above] {$\Delta E_2$};
+    \end{axis}
+
+    \draw (wilson4 c1r1.east) node[above, rotate=-90] {sector $n=0$};
+    \draw (wilson4 c1r2.east) node[above, rotate=-90] {sector $n=1, 3$};
+    \draw (wilson4 c1r3.east) node[above, rotate=-90] {sector $n=2$};
+
+    % title
+    \draw (wilson4 c1r1.north) node[above, font=\normalsize] {$\Z_4$ Wilson loop};
+\end{tikzpicture}

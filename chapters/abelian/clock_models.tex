@@ -1,0 +1,60 @@
+\subsection{Clock models}%
+\label{sub:clock_models}
+
+In this section we will deal with a class of generalizations of the quantum Ising model known as \emph{clock models} \cite{fendley2014parafermions, baxter1989clock}, which shows a resemblance to the $\Z_N$ LGT models we introduced previously.
+This similarity will later be exploited in order to obtain a complete description of the LGT models without any redundant gauge-symmetry.
+
+For a discussion about clock models we start from the Hamiltonian of the quantum Ising model with a transverse field, which can simply be written as
+\begin{equation}
+    H = - \sum_{i} \sigma^z_i \sigma^z_{i+1} - h \sum_{i} \sigma^x_i,
+    \label{eq:ising_hamiltonian_duality}
+\end{equation}
+where $\sigma^{x,z}_i$ are the usual $2 \times 2$ Pauli matrices for each site $i$:
+\begin{equation}
+    \sigma^x_i = \pmqty{ 0 & 1 \\ 1 &  0 }, \quad
+    \sigma^z_i = \pmqty{ 1 & 0 \\ 0 & -1 }.
+\end{equation}
+They are a set of unitary matrices that commute on different sites, while on the same site they anticommute $\sigma^x \sigma^z = - \sigma^z \sigma^x$.
+Another way to put it is to say that the exchange of $\sigma_x$ and $\sigma_z$ on the same site produces a phase $e^{i \pi} = -1$.
+
+Clock models can be thought as generalizations of the quantum Ising model, but not to higher spins.
+A $p$-state clock model (or simply a $p$-clock model) utilizes a set of unitary operators that generalize the algebra of Pauli matrices in the following sense:
+the operators $\sigma_x$ and $\sigma_z$ get promoted to the \emph{clock operators} $X$ and $Z$, respectively, which are $p \times p$ unitary matrices whose exchange produces a phase $\omega = e^{i 2 \pi / p}$, instead of $-1$.
+The algebraic properties of these clock operators $X$ and $Z$ can be summarized as follows:
+\begin{equation}
+    \begin{aligned}
+        X Z & = \omega Z X, &
+        X^p & =  Z^p = \One_p, \\
+        X^\dagger & = X^{-1} = X^{p-1}, &
+        Z^\dagger & = Z^{-1} = Z^{p-1}
+    \end{aligned}
+    \label{eq:clock_operator_algebra}
+\end{equation}
+
+We see that the Schwinger-Weyl algebra in \eqref{eq:schwinger_weyl_algebra} and the clock operator algebra in \eqref{eq:clock_operator_algebra} are basically the same, but there are some key differences to point out betweens a $\Z_N$ LGT and a $p$-clock model.
+
+The degrees of freedom of a $\Z_N$ LGT live on the links of the lattice while in a $p$-clock model they live on the sites.
+But the most important aspect is that we don't have any gauge symmetry in a $p$-clock model, hence we do not have to impose any local constraints or physical conditions.
+These models can be derived as the quantum Hamiltonians of the classical 2D vector Potts model, which is a discretization of the 2D planar XY model \cite{ortiz2012dualities}.
+
+A typical $p$-clock model Hamiltonian with transverse field has the form
+\begin{equation}
+    \Hclock(\lambda) = - \sum_{i} Z_i Z_{i+1} - \lambda \sum_{i} X_i + \hc
+    \label{eq:clock_hamiltonian}
+\end{equation}
+which is, as expected, very similar to the quantum Ising Hamiltonian in \eqref{eq:ising_hamiltonian_duality}.
+Furthermore, just like the latter, $p$-clock models with only transverse field are \emph{self-dual}:
+the clocks can be mapped into the kinks (or domain walls) and one would obtain the same exact Hamiltonian description but with inverted transverse field \cite{ortiz2012dualities}.
+For $p < 5$, the clock models presents a self dual point in $\lambda = 1$, that separates an ordered phase from a disordered one.
+On the other hand, for $p \geq 5$ we have an intermediate continuous critical phase between the ordered and disordered phase with two BKT transition points, which are related to each other through the self-duality \cite{sun2019phase}.
+
+These models have been thoroughly studied, even with the addition of a longitudinal field $\propto Z_i$ \cite{baxter1982exactlysm} or chiral interactions.
+In particular, in the case of chiral interactions, it was shown \cite{fendley2012parafermions} that the Hamiltonian \eqref{eq:clock_hamiltonian} can be mapped to a parafermionic chain through a Fradkin-Kadanoff transformation, and in presence of a $\mathbb{Z}_3$ symmetry, it shows three different phases \cite{zhuang2015clock}, if open boundaries are implemented: a trivial, a topological and an incommensurate (IC) phase.
+The case which presents a real longitudinal field term was considered in \cite{huang2019clock},  where some of the critical exponents have been estimated.
+The general case, where chiral interactions are included in a $\mathbb{Z}_N$ model, has been studied in \cite{fendley2012parafermions}.
+Here, the author considered the model as an extension of the Ising/Majorana chain and found the edge modes of the theory.
+He also calculated the points, in the parameter space, where the model is integrable or `superintegrable'.
+All these studies are motivated by theoretical interest and recent experiments, which can be analysed by the above models \cite{bernien2017probing}.
+
+
+% vim: spelllang=en

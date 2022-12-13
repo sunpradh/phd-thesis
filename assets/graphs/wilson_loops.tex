@@ -1,0 +1,212 @@
+\begin{tikzpicture}[
+        scale=0.8,
+        font=\footnotesize,
+        notes/.style = {gray!20!black, font=\scriptsize, align=left}
+        ]
+    %============================================================
+    % Z2 Wilson loop
+    %============================================================
+    \begin{groupplot}[
+        group style={
+            group name=wilson2,
+            group size=1 by 2,
+            vertical sep=3pt,
+            x descriptions at=edge bottom%,
+            % every plot/.style={thick}
+        },
+        width=6.5cm,
+        height=4.5cm,
+        no marks,
+        table/col sep=comma,
+        table/x=coupling,
+        xtick pos=left,
+        ytick pos=left,
+        ylabel={$W$},
+        xlabel={$\lambda$},
+        try min ticks=5,
+        cycle list name=exotic,
+        legend style={font=\tiny, draw=gray!40},
+        legend image post style={scale=0.5}
+        ]
+        % Sector n=0
+        \ZTwoWilsonGraph{00}
+        \legend{
+            {$L = 10$},
+            {$L = 12$},
+            {$L = 14$},
+            {$L = 16$},
+            {$L = 18$}
+        }
+        % notes on the graphs
+        \draw (axis cs:0,1) node (deconf) [circle, fill=gray!40!black, inner sep=0pt, minimum size=4pt] {};
+        \draw[<-, shorten <=2pt, gray!40!black] (deconf) -- +(0.3,-0.1) node [right, notes, anchor=west] {deconfined\\point};
+        \draw[black] (axis cs:1,0) node [above, notes] {confined};
+
+        % Sector n=1
+        \ZTwoWilsonGraph{10}
+        % notes on the graphs
+        \draw (axis cs:0.3,0) node [above=10pt, notes] {deconfined};
+        \draw (axis cs:1.7,0) node [above=10pt, notes] {confined};
+        \draw[dashed, gray] (axis cs:1,0) -- (axis cs:1,1);
+    \end{groupplot}
+    % Sector labels
+    \draw (wilson2 c1r1.east) node[above, rotate=-90] {$n=0$};
+    \draw (wilson2 c1r2.east) node[above, rotate=-90] {$n=1$};
+    \draw (wilson2 c1r1.north) node[above, font=\normalsize] {\textbf{(a)} $\Z_2$ Wilson loop};
+
+
+    %============================================================
+    % Z3 Wilson loop
+    %============================================================
+    \begin{scope}[xshift=6.5cm]
+        \begin{groupplot}[
+                group style={
+                    group name=wilson3,
+                    group size=1 by 2,
+                    vertical sep=3pt,
+                    x descriptions at=edge bottom%,
+                    % every plot/.style={thick}
+                },
+                width=6.5cm,
+                height=4.5cm,
+                no marks,
+                table/col sep=comma,
+                table/x=coupling,
+                xtick pos=left,
+                ytick pos=left,
+                ylabel={$W$},
+                xlabel={$\lambda$},
+                try min ticks=5,
+                cycle list name=exotic,
+                legend style={font=\tiny, draw=gray!40},
+                legend image post style={scale=0.5}
+            ]
+
+            % Sector n=0
+            \ZThreeWilsonGraph{00}
+            \legend{
+                {$L = 7$},
+                {$L = 9$},
+                {$L = 11$},
+                {$L = 13$}
+            }
+            \draw (axis cs:0,1) node (deconf) [circle, fill=gray!40!black, inner sep=0pt, minimum size=4pt] {};
+            \draw[<-, shorten <=2pt, gray!40!black] (deconf) -- +(0.3,-0.07) node [right, notes, align=left, anchor=west] {deconfined\\point};
+            \draw[black] (axis cs:1.2,0) node [above, notes] {confined};
+
+            % Sector n=1
+            \ZThreeWilsonGraph{10}
+            \draw (axis cs:0,1) node (deconf) [circle, fill=gray!40!black, inner sep=0pt, minimum size=4pt] {};
+            \draw[<-, shorten <=2pt, gray!40!black] (deconf) -- +(0.15,-0.4) node [below, notes,align=center] {deconfined\\point};
+            \draw (axis cs:1.65,0) node [above=3pt, notes] {double degeneracy};
+            \draw (axis cs:0.65,0.5) node [above, rotate=-45, notes] {crossover};
+
+        \end{groupplot}
+
+        \begin{axis}[
+                no marks,
+                width=3.5cm,
+                height=2.75cm,
+                table/col sep=comma,
+                table/x=coupling,
+                xtick={0.5,0.75,1.0,1.25},
+                xtick align=center,
+                ytick align=center,
+                xtick pos=left,
+                ytick pos=left,
+                ymax=3.5,
+                at={(wilson3 c1r2.north east)},
+                anchor={north east},
+                font=\tiny
+            ]
+            \addplot[thick, blue] table [y=DeltaE1] {graphs/data/Z3_gap_sec_1.csv}
+            node [pos=0.8, black, above] {$\Delta E_1$};
+            \addplot[thick, red]  table [y=DeltaE2] {graphs/data/Z3_gap_sec_1.csv}
+            node [pos=0.6, black, left=2pt] {$\Delta E_2$};
+        \end{axis}
+        \draw (wilson3 c1r1.east) node[above, rotate=-90] {$n=0$};
+        \draw (wilson3 c1r2.east) node[above, rotate=-90] {$n=1, 2$};
+        \draw (wilson3 c1r1.north) node[above, font=\normalsize] {\textbf{(b)} $\Z_3$ Wilson loop};
+    \end{scope}
+
+
+
+    %============================================================
+    % Z4 Wilson loop
+    %============================================================
+    \begin{scope}[xshift=13cm, yshift=1cm]
+        \begin{groupplot}[
+                group style={
+                    group name=wilson4,
+                    group size=1 by 3,
+                    vertical sep=3pt,
+                    horizontal sep=3pt,
+                    x descriptions at=edge bottom,
+                    y descriptions at=edge left% ,
+                    % every plot/.style={thick}
+                },
+                width=6.5cm,
+                height=3.5cm,
+                no marks,
+                table/col sep=comma,
+                table/x=coupling,
+                xtick pos=left,
+                ytick pos=left,
+                ylabel={$W$},
+                xlabel={$\lambda$},
+                try min ticks=5,
+                cycle list name=exotic,
+                legend style={font=\tiny, draw=gray!40},
+                legend image post style={scale=0.5}
+            ]
+            % Sector n=0
+            \ZFourWilsonGraph{00}
+            \legend{{$L = 6$}, {$L = 8$}, {$L = 10$}}
+            \draw (axis cs:0,1) node (deconf) [circle, fill=gray!40!black, inner sep=0pt, minimum size=4pt] {};
+            \draw[<-, shorten <=2pt, gray!40!black] (deconf) -- +(0.35,-0.075) node [right, notes, align=left] {deconfined\\point};
+            \draw[black] (axis cs:1.4,0) node [above, notes] {confined};
+
+            % Sector n=1
+            \ZFourWilsonGraph{10}
+            \draw (axis cs:0,1) node (deconf) [circle, fill=gray!40!black, inner sep=0pt, minimum size=4pt] {};
+            \draw[<-, shorten <=2pt, gray!40!black] (deconf) -- +(0.35,-0.075) node [right, notes, align=left] {deconf.\\point};
+            \draw (axis cs:1.7,0) node [above=3pt, notes] {double degen.};
+
+            % Sector n=2
+            \ZFourWilsonGraph{20}
+            \draw (axis cs:0.3,1) node [below=12pt, notes] {deconfined};
+            \draw (axis cs:1.7,0) node [above=15pt, notes] {confined};
+            \draw[dashed, gray] (axis cs:1.0,0) -- (axis cs:1.0,1);
+    \end{groupplot}
+
+
+    \begin{axis}[
+            no marks,
+            width=4cm,
+            height=2.5cm,
+            table/col sep=comma,
+            table/x=coupling,
+            xtick={0.5,0.75,1.0,1.25},
+            xtick align=center,
+            ytick align=center,
+            xtick pos=left,
+            ytick pos=left,
+            ymax=2.5,
+            at={(wilson4 c1r2.north east)},
+            anchor={north east},
+            font=\tiny
+        ]
+        \addplot[thick, blue] table [y=DeltaE1] {graphs/data/Z4_gap_sec_1.csv}
+        node [pos=0.8, black, above] {$\Delta E_1$};
+        \addplot[thick, red]  table [y=DeltaE2] {graphs/data/Z4_gap_sec_1.csv}
+        node [pos=0.4, black, above] {$\Delta E_2$};
+    \end{axis}
+
+    \draw (wilson4 c1r1.east) node[above, rotate=-90] {$n=0$};
+    \draw (wilson4 c1r2.east) node[above, rotate=-90] {$n=1, 3$};
+    \draw (wilson4 c1r3.east) node[above, rotate=-90] {$n=2$};
+
+    % title
+    \draw (wilson4 c1r1.north) node[above, font=\normalsize] {\textbf{(c)} $\Z_4$ Wilson loop};
+    \end{scope}
+\end{tikzpicture}

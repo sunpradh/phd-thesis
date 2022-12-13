@@ -1,0 +1,86 @@
+% \section{Numerical analysis}%
+% \label{sec:numerical_analysis}
+%
+% In this work we studied numerically the different topological sectors (and their phase diagrams) of the $\Z_N$ LGT on ladder for $N=2,3,4$ through \emph{exact diagonalization} (ED).
+% We chose ED instead of other variational methods like DMRG because we were able to construct exactly the Hilbert space of the different topological sectors of the models, exploiting the duality in Sec.~\ref{sec:dualities_of_the_ladder}.
+%
+
+\subsection{Implementing the Gauss law}%
+\label{sub:implementing_the_gauss_law}
+
+\begin{figure}[t]
+    \input{assets/figures/z2_vacua.tex}
+    \caption{The different ``Fock vacua'' $\ket{\Omega_{(0,0)}}$ and $\ket{\Omega_{(1,0)}}$ of the $\Z_2$ ladder LGT.
+        The latter can be obtained from the former by applying the Wilson loop operator $W_1$.
+        The states $\ket{0}$ and $\ket{1}$ refers to the eigenstates of the electric field operator $V$, which is just $\sigma_{z}$ in the $\Z_2$ model.
+    }
+    \label{fig:z2_vacua}
+\end{figure}
+
+\begin{figure*}
+    \centering
+    \input{assets/figures/z2_states.tex}
+    \caption{Duality between the states of a $2$--chain and the states of a $\Z_2$ ladder LGT in the different sectors $(0,0)$ (no non-contractible electric loop) and $(1,0)$ (one non-contractible loop around the ladder).
+        In the sector $(0,0)$ it is evident that all the physical states contains closed electric loops.
+        On the other hand, in the sector $(1,0)$ the physical states are all the possible deformation of the electric string that goes around the ladder.}
+    \label{fig:z2_states}
+\end{figure*}
+
+In order to proceed with ED one has to provide two things: (i) the basic operators of the theory ($U_{\ell}$ and $V$) and (ii) the physical (gauge-invariant) Hilbert space, given a lattice with specified size and boundary conditions.
+The former was fairly standard while the latter was the most challenging and interesting part to implement.
+
+If one has to work with only physical states, then one has to check the Gauss law for every site.
+With the brute-force method one has to generate all the possible states and then filter out all the states that violate Gauss law.
+This method, like any brute-force method, is not very efficient.
+To better exemplify this, consider a $\Z_2$ theory on a $L \times L$ periodic lattice, which have $L^2$ sites and $2L^2$ links.
+There are therefore $2^{2 L^2}$ possible states and for each one up to $L^2$ checks (one per site) has to be performed.
+Moreover, it can be showed that there are only $2^{L^2}$ \emph{physical} states.
+As a result, the construction of the physical Hilbert space involves $O(L^2 2^{2 L ^2})$ operations in a search space of $2^{2 L^2}$ objects for finding only $2^{L^2}$ elements.
+All of this makes the inefficiency of this brute-force method very clear, even for moderately small lattices.
+
+
+The approach adopted in this work exploits the duality in Sec.~\ref{sec:dualities_of_the_ladder} and represents an \emph{exponential speedup} with respect to the brute-force method.
+It is not a search or pattern-matching algorithm, each physical configuration is procedurally generated from the states of the dual clock model.
+
+Given a $\Z_N$ LGT on a lattice of size $L \times L$, we consider the dual $N$-clock model on a similar lattice with $A = L^2$ sites,
+In its Hilbert space $\mathcal{H}_{N\text{-clock}}$ there is no gauge constraint or physical condition to apply,
+hence the basis is the set of states $\ket{ \{s_i\} } \equiv \ket{s_0 s_1 \cdots s_{A-1}}$ with each $s_i = 0, \dots, N-1$.
+From a state $\ket{ \{s_i\} }$ we can obtain the dual state for the LGT model in the $(m,n)$ sector:
+\begin{equation}
+    \ket{\{s_i\} } \; \longmapsto \;
+    \prod_{i=0}^{A-1} U_i^{s_i} \ket{\Omega_{(n,m)}},
+\end{equation}
+where $U_i$ is the plaquette operator on the $i$-th plaquette and $\ket{\Omega_{(m,n)}}$ is the ``Fock vacuum'' of the $(m,n)$ sector.
+As one can deduce, the information about the topological sector of the LGT model is carried in the Hamiltonian $H_{N\text{-clock}}$ of the dual clock model and not in the structure of $\mathcal{H}_{N \text{-clock}}$.
+This means that is possible to build each sector $\Hphys^{(n,m)}$ in \eqref{eq:decomposizione_Hphys} from $\mathcal{H}_{N \text{-clock}}$, with the appropriate $\ket{\Omega_{(n,m)}}$.
+
+
+Moreover, also the ``Fock vacuums'' $\ket{\Omega_{(n,m)}}$ can be obtained easily, thanks to \eqref{eq:azione_wilson_loop}:
+\begin{equation}
+    \ket{\Omega_{(n,m)}} = (W_1)^n (W_2)^m \ket{\Omega_{(0,0)}},
+\end{equation}
+where $\ket{\Omega_{(0,0)}}$ is just the state $\ket{000 \cdots 0}$ (in the electric basis) for all the links.
+
+
+If we want to quantify the obtained speedup with this method, in the case of a $\Z_2$ theory on a square lattice $L \times L$ there are $2^{L^2}$ possible clock configurations.
+For each configuration, there are at most $L^2$ magnetic fluxes to apply.
+This translates into $O(L^2 2^{L^2})$ operations, which is an exponential speedup with respect to the brute-force (notice the lack of a factor 2 in the exponent) and is easily generalizable for any $\Z_N$.
+Although, it remains an open question whether a similar method can be applied for gauge theories with non-Abelian finite groups.
+
+
+
+\subsection{Non-local order parameters}%
+\label{sub:non_local_order_parameters}
+
+In Sec.~\ref{sub:investigating_the_phase_diagram} we talked about how a Wilson loop $W_{\mathcal{R}}$ or an 't Hooft string $S_{\tilde{\mathcal{C}}}$ work as a non-local order parameters and can be used to investigated the phase diagram of a $\Z_N$ LGT model.
+In fact, we analyzed these exact observables on the ladder geometry for $N = 2,3$ and $4$.
+Given a ladder of length $L$, the Wilson loop $W$ have been calculated over a region that covers the first $L/2$ plaquettes, while the 't Hooft string cuts through the first $L/2$ plaquettes (see Fig.~\ref{fig:nlop_ladder}).
+
+\begin{figure}[h]
+    \centering
+    \input{assets/figures/nonlocal_order_parameters.tex}
+    \caption{The non-local order parameters that have been used for investigating the phase diagram of $\Z_N$ ladder LGT.
+    \emph{Top}: half-ladder Wilson loop.
+    \emph{Bottom}: half-ladder 't Hooft string operator.}%
+    \label{fig:nlop_ladder}
+\end{figure}

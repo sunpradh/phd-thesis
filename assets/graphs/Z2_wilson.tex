@@ -1,0 +1,52 @@
+\begin{tikzpicture}[
+        % scale=0.8,
+        font=\small,
+        notes/.style={gray!20!black, font=\scriptsize}
+    ]
+    \begin{groupplot}[
+        group style={
+            group name=wilson2,
+            group size=1 by 2,
+            vertical sep=3pt,
+            x descriptions at=edge bottom%,
+            % every plot/.style={thick}
+        },
+        width=7.5cm,
+        height=5cm,
+        no marks,
+        table/col sep=comma,
+        table/x=coupling,
+        xtick pos=left,
+        ytick pos=left,
+        ylabel={$W$},
+        xlabel={$\lambda$},
+        try min ticks=5,
+        cycle list name=exotic,
+        legend style={font=\tiny, draw=gray!40},
+        legend image post style={scale=0.5}
+        ]
+        % Sector n=0
+        \ZTwoWilsonGraph{00}
+        \legend{
+            {$L = 10$},
+            {$L = 12$},
+            {$L = 14$},
+            {$L = 16$},
+            {$L = 18$}
+        }
+        % notes on the graphs
+        \draw (axis cs:0,1) node (deconf) [circle, fill=gray!40!black, inner sep=0pt, minimum size=4pt] {};
+        \draw[<-, shorten <=2pt, gray!40!black] (deconf) -- +(0.3,0) node [right, notes] {deconfined point};
+        \draw[black] (axis cs:1,0) node [above, notes] {confined};
+
+        % Sector n=1
+        \ZTwoWilsonGraph{10}
+        % notes on the graphs
+        \draw (axis cs:0.3,0) node [above=10pt, notes] {deconfined};
+        \draw (axis cs:1.7,0) node [above=10pt, notes] {confined};
+        \draw[dashed, gray] (axis cs:1,0) -- (axis cs:1,1);
+    \end{groupplot}
+    \draw (wilson2 c1r1.east) node[above, rotate=-90] {sector $n=0$};
+    \draw (wilson2 c1r2.east) node[above, rotate=-90] {sector $n=1$};
+    \draw (wilson2 c1r1.north) node[above, font=\normalsize] {$\Z_2$ Wilson loop};
+\end{tikzpicture}

@@ -1,0 +1,89 @@
+%--------------------------------------------------
+% SECTION: Abelian models on the ladder
+%--------------------------------------------------
+\section{Abelian models on the ladder}
+\label{sec:abelian_models_on_the_ladder}
+
+
+\begin{figure}
+    \centering
+    \input{assets/figures/ladder_geometry.tex}
+    \caption{Ladder geometry and labeling of its links.}%
+    \label{fig:ladder_geometry}
+\end{figure}
+
+
+The main goal of this manuscript is the characterization of the phases of the model described above, but on a ladder geometry.
+The peculiarity of this geometry is given by the fact that we can study a (quasi)one-dimensional non-trivial LGT with magnetic terms, which are not possible in pure one-dimensional systems.
+Moreover, since the Hilbert space is highly constrained, we have the possibility to study systems of moderate size through exact diagonalization.
+The latter will be analyzed in the last section.
+
+% A $\Z_N$ LGT on a ladder geometry of dimensions $L\times 2$, with periodic boundary conditions (PBC) only along the $\hat{1}$ direction, is described as follows (see Fig.~\ref{fig:ladder_geometry}):
+%
+% \begin{itemize}
+%     \item the $2L$ sites are indexed as $(x,y)$, where $x = 0, \dots, L-1$ and $y = 0,1$ with $(L,y) \equiv (0,y)$;
+%     \item the $L$ plaquettes are indexed as $\square_x$, where $x = 0, \dots, L-1$ with $\square_L \equiv \square_0$;
+%     \item the $3L$ links are subdivided in top links $\toplink_x$, bottom links $\botlink_x$ and vertical links $\runglink_x$.
+%         For all of them $x = 0, \dots, L-1$ and $\ell^a_L \equiv \ell^a_0$ ($a = \uparrow, \downarrow, 0$).
+% \end{itemize}
+A \emph{ladder} is a lattice $\mathbb{L}$ made of two parallels chains, the \emph{legs}, coupled to each other by \emph{rungs} to form square plaquettes.
+On the ladder, each rung is identified by a coordinate $i=1,\dots,L$, where $L$ is the length of the ladder, and the two vertices on the rung are denoted with $i^{\uparrow}$ and $i^{\downarrow}$ in the upper and lower leg, respectively.
+Links are denoted by $\ell$.
+On the legs they are labelled as $\toplink_i$ (upper leg) or $\botlink_i$ (lower leg), while on the rungs they are labelled $\runglink_i$.
+
+In order to lighten our notation,
+we use the symbols $V^0_i, \; U^0_i$ for the operators defined on the rung $i$, and  $V^{\rho}_i, \; U^{\rho}_i$ with $\rho = \uparrow, \downarrow$ for the operators on the horizontal links of the upper and lower leg to the right of the rung.
+Also, the plaquette operators on the right of the rung $i$ will be labeled as $U_i$:
+% \begin{equation*}
+%     \begin{split}
+%         U_{\runglink_i} & \equiv \Urung_i, \quad
+%         U_{\botlink_i}   \equiv \Udown_i, \quad
+%         U_{\toplink_i}   \equiv \Uup_i \\
+%         V_{\runglink_i} & \equiv \Vrung_i, \quad
+%         V_{\botlink_i}   \equiv \Vdown_i, \quad
+%         V_{\toplink_i}   \equiv \Vup_i,
+%     \end{split}
+% \end{equation*}
+% while for the plaquette operator
+\begin{equation}
+    U_i = \Udown_i \Urung_{i+1} (\Uup_i)^{\dagger} (\Urung_i)^{\dagger}.
+    \label{eq:plaq_op_ladder}
+\end{equation}
+Moreover, on a ladder only three-legged vertices exist, so the Gauss operators are slightly modified:
+% due to the geometric constraints (only three-legged vertices exist).
+% The Gauss operators on the top and bottom vertices on the ladder become respectively
+\begin{equation}
+    \GaussUp_i
+    = \Vup_i ( \Vup_{i-1} )^\dagger ( \Vrung_i )^\dagger \text{~and~}
+    \GaussDown_i
+    = \Vdown_i \Vrung_i ( \Vdown_{i-1} )^\dagger,
+    \label{eq:gauss_law_ladder}
+\end{equation}
+where $\GaussUp_i$ and $\GaussDown_i$ refers, respectively, to the Gauss operators on the vertices $i^{\uparrow}$ and $i^{\downarrow}$.
+% For later convenience, we write explicitly the plaquette operator $U_{x}$
+% \begin{equation}
+%     U_x = U_{\botlink_x} U_{\runglink_{x+1}} U_{\toplink_x}^\dagger U_{\runglink_x}^\dagger.
+%     \label{eq:plaq_op_ladder}
+% \end{equation}
+Finally, we write explicitly the Hamiltonian for a $\Z_N$ LGT on a ladder:
+\begin{equation}
+    H_{\Z_N}^{\text{lad}}(\lambda) =
+    - \sum_{i} \bqty{ U_i + \lambda \pqty{ \Vup_i + \Vdown_i + V^0_i } + \text{h.c.} }.
+    \label{eq:ladder_hamiltonian}
+\end{equation}
+
+
+For what concerns topological sectors of the theory,
+out of the Wilson loop operators in \eqref{eq:top_wilson_loop} only $\overline{W}_1$ is well defined, because we have periodic boundary conditions only along the $\hat{1}$ direction.
+Hence, only $\overline{S}_2$ in \eqref{eq:top_string_operators} (the 't Hooft operator conjugate to $W_1$) can be used as a mean for distinguishing these different sectors.
+Therefore the decomposition of the Hamiltonian is realized with blocks of the type $(\omega^k,1)$, with $k=0,\dots,N-1$.
+One of the main features of this decomposition is that, once we have fixed the topological sector, it is possible to write the duality transformation of the block Hamiltonian, which leads to a one-dimensional quantum clock model, with a chiral longitudinal field.
+The latter is the object of discussion of the following sections.
+
+
+\begin{figure}
+    \centering
+    \input{assets/figures/ladder_operators.tex}
+    \caption{Representation of the different ladder operators. On the right: plaquette operator $U_x$. On the left: the electric operators $\Vup$, $\Vdown$ and $V^0$.}
+    \label{fig:ladder_operators}
+\end{figure}
