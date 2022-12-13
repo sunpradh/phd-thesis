@@ -1,5 +1,6 @@
 ltex.*txt
 *.aux
+*.auxlock
 *.bbl
 *.bcf
 *.blg
@@ -10,3 +11,4 @@ ltex.*txt
 *.run.xml
 *.synctex.gz
 *.toc
+assets/cache/

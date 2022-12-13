@@ -1,0 +1,51 @@
+%----------------------------------------
+% SECTION: Some proofs
+%----------------------------------------
+\section{Some proofs}
+\label{sec:some_proofs}
+
+\subsection{Degeneracy of electric Hamiltonian}
+\label{sec:laplacian degeneracy}
+
+As discussed in Section \ref{chap:finite_group_gauge_theories}, the degeneracy of the electric Hamiltonian given by the finite group Laplacian $\Delta$ is directly related to the structure of the Cayley graph.
+In particular, it is a standard result that the graph Laplacian always has a zero mode and its degeneracy equals the number of connected components of the graph \cite{spectralgraphtheory}.
+Here we show that the Cayley graph is connected if its generating set $\Gamma$ generates the whole group.
+If instead $\expval{\Gamma} \neq G$, then the Cayley graph splits into connected components identified with the cosets of $\expval{\Gamma}$ in $G$; thus the degeneracy of the finite-group Laplacian $\Delta$ equals $\abs{G}/\abs{\expval{\Gamma}}$.
+
+Any subset $\Gamma \in G$ generates a subgroup $\expval{\Gamma} < G$.
+The right cosets of $\expval{\Gamma}$ are of the form $\expval{\Gamma} h$ for $h$ in $G$.
+Since cosets partition the group, any two group elements $g_1$ and $g_2$ will belong to some coset, say $g_1 \in \expval{\Gamma} h_1$ and $g_2 \in \expval{\Gamma} h_2$.
+We want to show that there is an edge in the Cayley graph between group elements $g_1$ and $g_2$ if and only if $\expval{\Gamma} h_1 = \expval{\Gamma} h_2$.
+The fact that $g_i \in \expval{\Gamma} h_i$ means that $g_i = k_i h_i$ for some $k_i \in \expval{\Gamma}$.
+There is an edge between $g_1$ and $g_2$ if and only if $g_1 g_2^{-1} = k_1 h_1 h_2^{-1} k_2 \in \Gamma$.
+But since $k_i \in \expval{\Gamma}$ this is equivalent to saying that $h_1 h_2^{-1} \in \expval{\Gamma}$, which is equivalent to $\expval{\Gamma} h_1 = \expval{\Gamma} h_2$.
+This concludes the proof.
+
+
+\subsection{Counting of invariant states}\label{sec:counting invariant states}
+
+In Section \ref{eq:physical hilbert space dimension} we used the fact that for a generic representation $\rho$, the dimension of the space of invariant vectors is given by
+\begin{equation}
+    \dim{\mathrm{Inv}(\rho)} = \frac{1}{\abs{G}} \sum_{g \in G} \chi_\rho(g) \ ,
+\end{equation}
+As is well known, if $\rho$ is irreducible then the corresponding character sums to zero and there are no invariant states.
+This is to be expected since irreducible representations by definition have no non-trivial invariant subspaces, but any invariant vector would span an invariant subspace.
+
+Here we provide a proof of the above formula.
+If $v$ is an invariant vector for the representation $\rho$, by definition it satisfies $\rho(g) v = v$ for all $g \in G$.
+Now we construct a projector onto the subspace of invariant vectors.
+We define the averaging map $\mathrm{Av}: V_\rho \to V_\rho$,
+\begin{equation}
+    \mathrm{Av}(v) = \frac{1}{\abs{G}} \sum_{g \in G} \rho(g) v \ .
+\end{equation}
+The averaging map is the projector onto the subspace of invariant vector.
+In fact, given an arbitrary vector $v$, we see that $\mathrm{Av}(v)$ is invariant because
+\begin{equation}
+    \rho(g) \mathrm{Av}(v) = \frac{1}{\abs{G}} \sum_{h \in G} \rho(g h) v = \frac{1}{\abs{G}} \sum_{h \in G} \rho(h) v = \mathrm{Av}(v) \ .
+\end{equation}
+Therefore, $\mathrm{Av}$ maps the representation space to the subspace of invariant vectors $\mathrm{Av}: V_\rho \to \mathrm{Inv}(V_\rho)$.
+Moreover, if $v$ is invariant, then $\mathrm{Av}(v) = v$, and more generally, $\mathrm{Av}^2 = \mathrm{Av}$ by a similar calculation.
+This means that $\mathrm{Av}$ is a projector onto the subspace of invariant vectors.
+Then the size of projected subspace is as usual given by the trace of the projector, $\dim{\mathrm{Inv}(\rho)} = \tr{\mathrm{Av}}$, which reproduces the above formula.
+
+

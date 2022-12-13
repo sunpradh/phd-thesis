@@ -113,33 +113,36 @@
 \renewcommand{\showlabelfont}{\scriptsize\sffamily\color{gray}}
 
 % Math macros
+
 \newcommand{\R}{\mathbb{R}} % Real field
 \newcommand{\Z}{\mathbb{Z}} % integers
 \newcommand{\C}{\mathbb{C}} % Complex field
 \newcommand{\onehalf}{$\frac{1}{2}$} % 1/2
+\newcommand{\identity}{\mathbbm{1}} % identity operator
 \newcommand{\phys}{\text{phys}} % 'physical' label
+\newcommand{\gi}{\text{gi}} % gauge-invariant label
+\newcommand{\hc}{\text{h.c.}} % hermitian conjugate text
 \newcommand{\W}{W_{\square}} % single plaquette Wilson loop
 \newcommand{\action}{\mathcal{S}} % action
-\newcommand{\HamilKS}{H_{\text{KS}}} % action
-\newcommand{\link}{\ell} % action
-\newcommand{\HilbertSpace}{\mathcal{H}}
+\newcommand{\HamilKS}{H_{\text{KS}}} % Kogut-Susskind Hamiltonian
+\newcommand{\HilbertSpace}{\mathcal{H}} % Hilbert space
+% Groups and algebra
 \newcommand{\U}{\mathrm{U}} % unitary group
 \newcommand{\SU}{\text{SU}} % special unitary group
 \newcommand{\su}{\mathfrak{su}} % special unitary algebra
 \newcommand{\g}{\mathfrak{g}} % Lie algebra
+%
 \newcommand{\generator}{\hat{\ell}}
 \newcommand{\transport}{\hat{u}}
-\newcommand{\hc}{\text{h.c.}} % hermitian conjugate text
-\newcommand{\One}{\mathbbm{1}} % identity operator
-\newcommand{\Hphys}{\mathcal{H}_{\text{phys}}} % physical Hilbert space
+\newcommand{\Hphys}{\HilbertSpace_{\phys}} % physical Hilbert space
 \newcommand{\HIsing}{H_{\text{Ising}}} % Ising Hamiltonian
-\newcommand{\Hclock}{H_{\text{clock}}} % Ising Hamiltonian
-\newcommand{\gi}{\text{gi}} % gauge-invariant label
-\newcommand{\lattice}{\mathbb{L}} % lattice
+\newcommand{\Hclock}{H_{\text{clock}}} % Clock Hamiltonian
 % shorthand for links on the ladder
-\newcommand{\toplink}{\ell^\uparrow}
-\newcommand{\botlink}{\ell^\downarrow}
-\newcommand{\runglink}{\ell^0}
+\newcommand{\lattice}{\mathbb{L}} % lattice
+\newcommand{\link}{\ell} % link
+\newcommand{\toplink}{\link^\uparrow}
+\newcommand{\botlink}{\link^\downarrow}
+\newcommand{\runglink}{\link^0}
 % shorthand for electric operators and comparators on the ladder
 \newcommand{\Uup}{U^{\uparrow}}
 \newcommand{\Udown}{U^{\downarrow}}
@@ -154,6 +157,9 @@
 \newcommand{\coeffup}{c^{\uparrow}}
 \newcommand{\coeffdown}{c^{\downarrow}}
 
+\newcommand{\Or}{\mathrm{O}}
+
+
 % redefine some math macro
 \renewcommand{\dd}{\text{d}}
 \renewcommand{\tr}{\text{tr}}
@@ -166,12 +172,27 @@
 %----------------------------------------
 \usepackage{xcolor}
 \usepackage{graphicx}
+
+% TikZ
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta, decorations.markings, patterns, fit, positioning}
 \tikzset{font=\small, >={Latex}}
+\tikzset{->-/.style={decoration={markings,
+  mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+\tikzset{-<-/.style={decoration={markings,
+  mark=at position #1 with {\arrow{<}}},postaction={decorate}}}
+
+% TikZ caching
+\usetikzlibrary{external}
+\tikzset{external/system call={lualatex -shell-escape -halt-on-error -interaction=batchmode -enable-write18 -jobname "\image" "\texsource"}}
+\tikzexternalize[prefix=assets/cache/] % folder for cache
+
+% Plots
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.16} % fixes some pgfplots cross-platform issue
 \usepgfplotslibrary{groupplots}
+
+\usepackage{wrapfig}
 
 % custom colors
 \usepackage{xcolor}
@@ -183,7 +204,9 @@
 %----------------------------------------
 % MISC
 %----------------------------------------
-\usepackage[colorlinks, linkcolor=blue]{hyperref}
+\usepackage[colorlinks, linkcolor=blue, urlcolor=Blue]{hyperref}
+\usepackage{bookmark}
+\usepackage{dirtytalk}
 
 % Title and author
 \title{Finite Group Lattice Gauge Theories for Quantum Simulation}
@@ -199,7 +222,12 @@
 %----------------------------------------
 % Bibliography
 %----------------------------------------
-\usepackage{biblatex}
+\usepackage[style=numeric, bibstyle=nature]{biblatex}
 \bibliography{assets/biblio.bib}
 
-
+\ExecuteBibliographyOptions{doi=false}
+\ExecuteBibliographyOptions{url=false}
+\newbibmacro{string+doi}[1]{%
+  \iffieldundef{doi}{#1}{\href{http://dx.doi.org/\thefield{doi}}{#1}}}
+\DeclareFieldFormat{title}{\usebibmacro{string+doi}{\mkbibemph{#1}}}
+\DeclareFieldFormat[article]{title}{\usebibmacro{string+doi}{\mkbibquote{#1}}}

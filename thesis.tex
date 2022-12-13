@@ -1,4 +1,3 @@
-% !TEX TS-program = lualatex
 \documentclass[
     a4paper,
     11pt,
@@ -30,29 +29,32 @@
 \clearpage
 
 
-%--------------------------------------------------
 % CHAPTER: Introduction
-%--------------------------------------------------
 \input{chapters/intro.tex}
 
-
-%--------------------------------------------------
 % CHAPTER: Introduction to lattice gauge theories
-%--------------------------------------------------
 \input{chapters/lgt_intro.tex}
 
-
-%--------------------------------------------------
 % CHAPTER: Lattice gauge theories for quantum simulation
-%--------------------------------------------------
 \input{chapters/lgt_qsim.tex}
 
-
-%--------------------------------------------------
 % CHAPTER: Dualities in lattice gauge theories
-%--------------------------------------------------
-% TODO: RIELABORATE
+% TODO: REELABORATE
 \input{chapters/abelian.tex}
 
+% CHAPTER: Finite group gauge theories
+% TODO: REELABORATE
+\input{chapters/finite_group.tex}
+
+\appendix
+
+% APPENDIX: Some results in representation theory
+\input{chapters/repr_theory.tex}
+
+% APPENDIX: Some groups of interest
+% TODO: REELABORATE
+\input{chapters/groups.tex}
+
+\printbibliography
 
 \end{document}
