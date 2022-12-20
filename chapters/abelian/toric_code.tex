@@ -4,70 +4,133 @@
 \section{Toric Code and its features}
 \label{sec:toric_code_and_its_features}
 
-The Toric code is two-dimensional model of spin-\onehalf degrees of freedom (d.o.f).
-It can be regarded as an example of a pure $\mathbb{Z}_2$ lattice gauge theory.
-In particular we focus on a $L \times L$ square lattice (with periodic boundary conditions), and the d.o.f.~are defined on the links the lattice.
-The local Hilbert space is $\mathbb{C}^2$ and as a basis we can use the computation basis (or $Z$-basis) $\qty{ \ket{0}, \ket{1} }$ for which the Pauli matrix $\sigma^z$ (shortened as $Z$) is diagonal.
-The main local operators (that enters the Hamiltonian) are defined on the \emph{stars} (the links attached to a given site) and \emph{plaquettes} (links around a face) of the lattice:
+The Toric code is two-dimensional model of spin-\onehalf degrees of freedom (d.o.f), which can be regarded as an example of a pure $\mathbb{Z}_2$ lattice gauge theory.
+In particular, we focus on a $L \times L$ square lattice with periodic boundary conditions.
+The \dof are defined on the links the lattice, where the local Hilbert space is $\C^2$.
+The main operators we are going to use are the Pauli matrices
 \begin{equation}
-    A_v = \prod_{j \in \text{star}(s)} \sigma^z_j, \qquad
-    B_p = \prod_{j \in \partial p} \sigma^x_j.
+    X = \begin{pmatrix}
+        0 & 1 \\ 1 & 0
+    \end{pmatrix}
+    \qand
+    Z = \begin{pmatrix}
+        1 & 0 \\ 0 & -1
+    \end{pmatrix},
+    \label{eq:matrices_X_Z}
 \end{equation}
-One can easily prove the following commutation relations of the $A_s$s and $B_p$s operators
+which we have written in the computational basis $\{\ket{0}, \ket{1}\}$, where the $Z$-matrix is diagonal.
+It is important to remember that the matrices $X$ and $Z$ \emph{anticommutes}.
 \begin{equation}
-    [ A_v, A_{v^{\prime} } ] = 0, \quad
-    [ B_p, B_{p^{\prime} } ] = 0, \quad
-    [ A_v, B_p ] = 0
-    \label{eq:star_plaq_op_comm}
+    [X, Z] = 0.
 \end{equation}
-for all $v$, $v^{\prime} $ and $p$, $p^{\prime} $.
-The eigenvalues of the Pauli matrices are just $pm 1$, so the same holds true for $A_s$ and $B_p$.
+
+The main \emph{local} operators that enters the Hamiltonian are defined on the \emph{stars} and \emph{plaquettes} of the lattice.
+The term \emph{star} refers to the links attached to a common vertex $v$, while by \emph{plaquette} $p$ we mean the links around a face of the lattice.
+A \emph{star operator} and a \emph{plaquette operator} are respectively defined as
+\begin{equation}
+    A_v = \prod_{\link \in s} Z_\link, \qquad
+    B_p = \prod_{\link \in p} X_\link.
+    \label{eq:star_plaq_op_def}
+\end{equation}
+where $v$ is a vertex and $p$ a plaquette (see Fig.~\ref{fig:toric_code_operators}).
+One can easily see that
+\begin{equation}
+    \comm{A_v}{A_{v^{\prime}}} = 0 \qand
+    \comm{B_p}{B_{p^{\prime}}} = 0
+    \label{eq:star_plaq_op_comm_1}
+\end{equation}
+for all vertices $v$ and $v^{\prime} $, and all plaquettes $p$ and $p^{\prime} $.
+But it is also true that
+\begin{equation}
+    \comm{A_v}{B_p} = 0
+    \label{eq:star_plaq_op_comm_2}
+\end{equation}
+for all $v$ and $p$.
+This is because a star and a plaquette share zero or two links, so the signs factors from the anticommutation of $X$ and $Z$ cancel out.
+The eigenvalues of the Pauli matrices are just $\pm 1$, so the same holds true for $A_s$ and $B_p$.
 Moreover, like the Pauli matrices, also $A_s^2 = \identity$ and $B_p^2 = \identity$.
 
 
-Now, we proceed with writing the Toric Code Hamiltonian:
+Now, given the operators in \eqref{eq:star_plaq_op_def}, we can write down the Hamiltonian of the Toric Code:
 \begin{equation}
     H = - \sum_{v} A_v - \sum_{p} B_p
     \label{eq:toric_code_hamiltonian}
 \end{equation}
-which is \emph{exactly solvable}.
-Indeed, given \eqref{eq:star_plaq_op_comm}, one can find a ground state $\ket{\Omega}$  by simply imposing a set of constraints
-\begin{equation}
-    A_v \ket{\Omega} = \ket{\Omega}, \qquad
-    B_p \ket{\Omega} = \ket{\Omega}, \qquad \forall v,
-    \label{eq:ground_state_constraints}
-\end{equation}
-Even more, it is possible to define the set of ground states
-\begin{equation}
-    \mathcal{L} = \qty{ \ket{\Omega} : A_s \ket{\Omega} = \ket{\Omega}, \quad B_p \ket{\Omega} = \ket{\Omega} \quad \forall s, p }
-\end{equation}
-which contents \emph{depends on the topology of the lattice}.
-For example, if the lattice has periodic boundary conditions, then there are $4$ degenerate ground states $\ket{\Omega_{u,v}}$ with $u, v = \pm 1$, which can be distinguished only by non-local operators.
-We will see how later.
-
+which is \emph{exactly solvable}, due to \eqref{eq:star_plaq_op_comm_1} and \eqref{eq:star_plaq_op_comm_2}.
 \begin{figure}[t]
     \centering
     \input{assets/figures/star_plaq_operators_TC.tex}
     \caption{Graphical representation of the Toric Code operators $A_s$ and $B_p$}
+    \label{fig:toric_code_operators}
 \end{figure}
 
-\subsection{Ground states}
-\label{sub:ground_states}
 
 
-Consider a torus geometry for the lattice, i.e.~periodic boundary conditions in both directions, of size $L \times L$.
-From \eqref{eq:ground_state_constraints}, we have $2L^2$ constraints but these are not all independent.
-In fact on a torus, one can see that
+%
+% SUBSECTION: Topological ground states
+%
+\subsection{Topological Ground states}
+\label{sub:topological_ground_states}
+
+Given the commutation relations of the $A_v$ and $B_p$ operators in \eqref{eq:star_plaq_op_comm_1} and \eqref{eq:star_plaq_op_comm_2}, one can find the ground state $\ket{\Omega}$ by simply imposing the constraints
 \begin{equation}
-    \prod_{v} A_{v} = \identity, \qquad
-    \prod_{p} B_p = \identity
+    A_v \ket{\Omega} = \ket{\Omega} \qand
+    B_p \ket{\Omega} = \ket{\Omega}, \qquad \forall v,\, p.
+    \label{eq:ground_state_constraints}
+\end{equation}
+Even more, we can define the space of ground states
+\begin{equation}
+    \mathcal{L} = \qty{ \ket{\Omega} : A_s \ket{\Omega} = \ket{\Omega}, \quad B_p \ket{\Omega} = \ket{\Omega} \quad \forall s, p },
+\end{equation}
+which contents \emph{depends on the topology of the lattice}.
+For example, we will see that with periodic boundary conditions, then there are $4$ degenerate ground states.
+These degenerate ground states can only be distinguished with non-local operators.
+This mechanics will be illustrated in the following.
+
+
+Consider a torus geometry for the lattice of size $L \times L$, i.e.~periodic boundary conditions in both directions.
+From \eqref{eq:ground_state_constraints}, we have $2L^2$ constraints but these are not all independent.
+Indeed, if we multiply all the constraints on a torus we obtain
+\begin{equation}
+    \prod_{v} A_v = \identity \qand
+    \prod_{p} B_p = \identity,
 \end{equation}
 which actually means that there are $2L^2 - 2$ independent conditions.
 The total Hilbert space has dimension $2^{2L^2}$, therefore the space $\mathcal{L}$ has dimension $2^{2L^2 - 2L^2 + 2} = 4$, which means that the Toric Code has $4$ degenerate ground states.
-These states all satisfy the same set \eqref{eq:ground_state_constraints} of equations, which means that they\emph{cannot be distinguished by local operators}.
-This is typical of topological phases in two dimensions \todo{ref}.
+On these states, the operators $A_v$ and $B_p$ have all the same eigenvalues and any other local operator that commutes with the Hamiltonian is given by a product of $A_v$ and $B_p$.
+This in turn means that the degenerate ground states $\ket{\Omega} \in \mathcal{L}$ \emph{cannot be distinguished by local operators}.
+The presence of this kind of degenerate ground states is a common feature of topological phases in two dimensions\citneeded.
 
-These ground states can only be distinguished by non-local operators that have to commute with Hamiltonian in \eqref{eq:toric_code_hamiltonian}, hence with all $A_v$ and $B_p$ but cannot be expressed in terms of $A_v$ and $B_p$.
+In order to distinguish these ground states, it is necessary to find \emph{non-local operators} that commute with the Hamiltonian in \eqref{eq:toric_code_hamiltonian}.
+Non-local in this instance means not expressible as a product or sum of vertex and plaquette operators.
+But first let look more closely to the nature of \emph{local operators}.
+
+Consider any region $\mathcal{R}$ on the lattice $\lattice$.
+On this region $\mathcal{R}$ we can define a local operator $W$ as a product of $B_p$ operators:
+\begin{equation}
+    W = \prod_{p \in \mathcal{R}} B_p.
+\end{equation}
+Due to $X^2 = \identity$, this is equivalent to
+\begin{equation}
+    W = \prod_{\link \in \partial \mathcal{R}} X_{\link}.
+\end{equation}
+In other words, $W$ is equivalent to the product of $X$s along the closed curve (or multiple closed curves if $\mathcal{R}$ is disconnected) given by the boundary $\partial \mathcal{R}$ of $\mathcal{R}$.
+In fact, the $B_p$ themselves are defined as product of $X$s along a closed curve, the plaquette.
+In a sense, they are all \emph{string operators}.
+The same argument can be repeated for $A_v$ on the dual lattice $\tilde{\lattice}$.
+Indeed, a star on the direct lattice becomes a plaquette on the dual lattice.
+So a product of $A_v$ is equivalent to a string of $Z$ operators along closed curves on the dual lattice.
+
+All these curve have a common property, they are \emph{contractible}.
+They can be reduced to a single point.
+We can then conclude that what we have considered as local operators are indeed string operators on contractible curves.
+But if we are on a lattice with non-trivial topology, like a torus, then we can also have \emph{non-contractible} curves.
+
+
+
+
+
+% These ground states can only be distinguished by non-local operators that have to commute with Hamiltonian in \eqref{eq:toric_code_hamiltonian}, hence with all $A_v$ and $B_p$ but cannot be expressed in terms of $A_v$ and $B_p$.
 The only operators that satisfy this requirements are defined on closed paths, on the direct or dual lattice, that cannot be reduced to a single plaquette loop (on the dual lattice the plaquettes are the stars of the direct lattice).
 In other words, they are defined along \emph{non-contractible loops}.
 The reason being that any product of $\sigma^x$ or $\sigma^z$ along a closed curve $\mathcal{C}$ that commutes with the Hamiltonian can be expressed as product of $A_v$ or $B_p$ of the stars or plaquettes enclosed by $\mathcal{C}$.
@@ -116,7 +179,7 @@ Likewise, if $B_p \ket{\Psi} = - \ket{\Psi}$, then the plaquette $p$ contains a 
 
 Now the question: starting from a ground state $\ket{\Omega}$, how can we introduce some particles?
 The answer is \emph{string operators}.
-We are not considering closed strings, like we did in Sec.~\ref{sub:ground_states}, but any open string.
+We are not considering closed strings, like we did in Sec.~\ref{sub:topological_ground_states}, but any open string.
 The shortest open string that we can consider is a single link.
 So a $Z$-string on a single link is just $Z_j$, where $j$ is a label of a generic link.
 Consider now the state
