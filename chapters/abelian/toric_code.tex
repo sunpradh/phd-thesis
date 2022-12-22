@@ -78,118 +78,236 @@ Given the commutation relations of the $A_v$ and $B_p$ operators in \eqref{eq:st
     B_p \ket{\Omega} = \ket{\Omega}, \qquad \forall v,\, p.
     \label{eq:ground_state_constraints}
 \end{equation}
-Even more, we can define the space of ground states
+From these constraints one can explicitly construct a ground state for the Toric Code in the following way.
+Working in the $Z$-basis, we can start from
 \begin{equation}
-    \mathcal{L} = \qty{ \ket{\Omega} : A_s \ket{\Omega} = \ket{\Omega}, \quad B_p \ket{\Omega} = \ket{\Omega} \quad \forall s, p },
+    \ket{0}_{\text{TC}} = \bigotimes_{\link \in \lattice} \ket{0}_{\link},
+\end{equation}
+which is the state where every link is in the $\ket{0}$, where $Z \ket{0} = \ket{0}$.
+This state obviously satisfy the first condition in \eqref{eq:ground_state_constraints}.
+
+Now, regarding the $B_p$'s operators, consider a single plaquette in the state $\ket{0}_p$ where every link is in the $\ket{0}$ state.
+The action of $B_p$ flips the state of every link, from $\ket{0}$ to $\ket{1}$, obtaining $\ket{1}_p$.
+Therefore, a plaquette is in an eigenstate of $B_p$ if is in an equal superposition of $\ket{0}_p$ and $\ket{1}_p$.
+Knowing this, it is straightforward to see that the operator $(\identity + B_p)/\sqrt{2}$ generates an eigenstate of $B_p$ from $\ket{0}_p$.
+In fact, a simple calculation
+\begin{equation}
+    B_p \frac{\identity + B_p}{\sqrt{2}} \ket{0}_p = \frac{B_p + \identity}{\sqrt{2}} \ket{0}_p
+\end{equation}
+shows that we obtain an eigenstate of $B_p$ with eigenvalue $+1$, due to $B_p^2 = \identity$.
+
+Therefore, we can obtain a ground state for the Toric code as
+\begin{equation}
+    \ket{\Omega} = \prod_{p} \frac{\identity + B_p}{\sqrt{2}} \ket{0}_{\text{TC}}.
+\end{equation}
+More generally, we can define the space of ground states
+\begin{equation}
+    \mathcal{G} = \qty{ \ket{\Omega} : A_s \ket{\Omega} = \ket{\Omega}, \quad B_p \ket{\Omega} = \ket{\Omega} \quad \forall s, p },
+    \label{eq:TC_protected_subspace}
 \end{equation}
 which contents \emph{depends on the topology of the lattice}.
-For example, we will see that with periodic boundary conditions, then there are $4$ degenerate ground states.
-These degenerate ground states can only be distinguished with non-local operators.
-This mechanics will be illustrated in the following.
+For example, later we will show that with \emph{periodic boundary conditions} then there are
+\emph{four degenerate ground states}.
 
 
-Consider a torus geometry for the lattice of size $L \times L$, i.e.~periodic boundary conditions in both directions.
-From \eqref{eq:ground_state_constraints}, we have $2L^2$ constraints but these are not all independent.
-Indeed, if we multiply all the constraints on a torus we obtain
+Consider a lattice $\lattice$ of size $L \times L$ with periodic boundary conditions in both directions, i.e.~a torus.
+From \eqref{eq:ground_state_constraints}, we have $2L^2$ constraints.
+These are not all independent because if we multiply them all, we obtain
 \begin{equation}
     \prod_{v} A_v = \identity \qand
     \prod_{p} B_p = \identity,
 \end{equation}
 which actually means that there are $2L^2 - 2$ independent conditions.
-The total Hilbert space has dimension $2^{2L^2}$, therefore the space $\mathcal{L}$ has dimension $2^{2L^2 - 2L^2 + 2} = 4$, which means that the Toric Code has $4$ degenerate ground states.
-On these states, the operators $A_v$ and $B_p$ have all the same eigenvalues and any other local operator that commutes with the Hamiltonian is given by a product of $A_v$ and $B_p$.
-This in turn means that the degenerate ground states $\ket{\Omega} \in \mathcal{L}$ \emph{cannot be distinguished by local operators}.
-The presence of this kind of degenerate ground states is a common feature of topological phases in two dimensions\citneeded.
+The total Hilbert space has dimension $2^{2L^2}$.
+Combined with $2L^2 - 2$ independent conditions we obtain $2^{2L^2 - 2L^2 + 2} = 4$ independent states.
+Therefore, $\dim \mathcal{G} = 4$ because we have four degenerate distinct ground states.
+These are eigenstates of all $A_v$ and $B_p$, with all the same eigenvalues.
+Any other that commutes with the Hamiltonian is given by a product of $A_v$ and $B_p$, so it cannot distinguish the different ground states.
 
-In order to distinguish these ground states, it is necessary to find \emph{non-local operators} that commute with the Hamiltonian in \eqref{eq:toric_code_hamiltonian}.
+
+The only way to distinguish these ground states is through \emph{non-local operators} that commute with the Hamiltonian in \eqref{eq:toric_code_hamiltonian}.
 Non-local in this instance means not expressible as a product or sum of vertex and plaquette operators.
-But first let look more closely to the nature of \emph{local operators}.
+But first let look more closely at \emph{local operators}.
+
 
 Consider any region $\mathcal{R}$ on the lattice $\lattice$.
+Without loss of generality, let $\mathcal{R}$ be a connected region, which means it is just a set of jointed plaquettes.
 On this region $\mathcal{R}$ we can define a local operator $W$ as a product of $B_p$ operators:
 \begin{equation}
     W = \prod_{p \in \mathcal{R}} B_p.
 \end{equation}
-Due to $X^2 = \identity$, this is equivalent to
+This operator commutes will the terms of the Hamiltonian \eqref{eq:toric_code_hamiltonian}.
+Due to $X^2 = \identity$, the previous equation can be rewritten as
 \begin{equation}
     W = \prod_{\link \in \partial \mathcal{R}} X_{\link}.
 \end{equation}
-In other words, $W$ is equivalent to the product of $X$s along the closed curve (or multiple closed curves if $\mathcal{R}$ is disconnected) given by the boundary $\partial \mathcal{R}$ of $\mathcal{R}$.
+In other words, $W$ is equivalent to the product of $X$'s along the closed curve given by the boundary $\partial \mathcal{R}$ of $\mathcal{R}$.
 In fact, the $B_p$ themselves are defined as product of $X$s along a closed curve, the plaquette.
-In a sense, they are all \emph{string operators}.
-The same argument can be repeated for $A_v$ on the dual lattice $\tilde{\lattice}$.
-Indeed, a star on the direct lattice becomes a plaquette on the dual lattice.
-So a product of $A_v$ is equivalent to a string of $Z$ operators along closed curves on the dual lattice.
+In a sense, they are all \emph{string operators} on closed curves.
 
-All these curve have a common property, they are \emph{contractible}.
-They can be reduced to a single point.
-We can then conclude that what we have considered as local operators are indeed string operators on contractible curves.
-But if we are on a lattice with non-trivial topology, like a torus, then we can also have \emph{non-contractible} curves.
-
-
-
-
-
-% These ground states can only be distinguished by non-local operators that have to commute with Hamiltonian in \eqref{eq:toric_code_hamiltonian}, hence with all $A_v$ and $B_p$ but cannot be expressed in terms of $A_v$ and $B_p$.
-The only operators that satisfy this requirements are defined on closed paths, on the direct or dual lattice, that cannot be reduced to a single plaquette loop (on the dual lattice the plaquettes are the stars of the direct lattice).
-In other words, they are defined along \emph{non-contractible loops}.
-The reason being that any product of $\sigma^x$ or $\sigma^z$ along a closed curve $\mathcal{C}$ that commutes with the Hamiltonian can be expressed as product of $A_v$ or $B_p$ of the stars or plaquettes enclosed by $\mathcal{C}$.
-Consider now, two non-contractible curves $\mathcal{C}_{1}$ and $\mathcal{C}_{2}$ along the $\hat{1}$ and $\hat{2}$ direction respectively.
-On these paths we can define the \emph{string operators}
+The same argument can be repeated for $A_v$ with the minor caveat that the dual lattice have to considered.
+In the dual lattice $\duallattice$, to each plaquette $p$ of the lattice $\lattice$ corresponds a vertex $v$ on the dual lattice.
+Then, to each link $\link$ in $\lattice$ corresponds a link $\link^{\ast}$ in $\duallattice$ in the perpendicular direction.
+In this way, a star becomes a plaquette in the dual lattice.
+From here, we can repeat the same argument.
+Consider a region $\mathcal{R}^{\ast}$ a local operator $W^{\ast}$ such that
 \begin{equation}
-    \overline{X}_1 = \prod_{j \in \mathcal{C}_1}  \sigma^x_j, \qquad
-    \overline{X}_2 = \prod_{j \in \mathcal{C}_2}  \sigma^x_j,
-    \label{eq:nonlocal_X_operators}
+    W^{\ast} = \prod_{v \in \mathcal{R}^{\ast}} A_v,
 \end{equation}
-it can be proved that they commute with all the local operators but cannot be expressed as a product of them.
-The same can be repeated on the dual lattice, by considering dual non-contractible paths $\tilde{\mathcal{C}}_1$ and $\tilde{\mathcal{C}}_2$ and defining
+and, due to $Z^2 = \identity$, this is equal to
 \begin{equation}
-    \overline{Z}_1 = \prod_{j \in \mathcal{\tilde{C}}_1}, \qquad
-    \overline{Z}_2 = \prod_{j \in \mathcal{\tilde{C}}_2}
-    \label{eq:nonlocal_Z_operators}
+    W^{\ast} = \prod_{\link \in \partial \mathcal{R}^{\ast}} Z_{\link}.
 \end{equation}
-Likewise, the operators in \eqref{eq:nonlocal_Z_operators} commutes with all the vertex and plaquettes operators but they do not commute with the X-operators in \eqref{eq:nonlocal_X_operators}.
-
-In fact, \eqref{eq:nonlocal_X_operators} and \eqref{eq:nonlocal_Z_operators} have the same (anti)commutation relations of two qubits:
-\begin{equation}
-    \qty{ \overline{X}_1, \overline{Z}_2 } = 0, \qquad
-    \qty{ \overline{X}_2, \overline{Z}_1 } = 0,
-\end{equation}
-Therefore, the Toric Code (on a torus) has a protected subspace $\mathcal{L}$ (the space of the ground states) that behaves like the Hilbert space of two qubits and the operators \eqref{eq:nonlocal_X_operators} and \eqref{eq:nonlocal_Z_operators} acts like unitary gates on this space.
+The local operator $W^{\ast}$ is a string of $Z$'s operators along the closed curve given by the boundary $\partial \mathcal{R}$ in $\duallattice$.
+The same can be said for $A_v$, it is a string operator around the smallest possible curve in $\duallattice$.
+% Indeed, a star on the direct lattice becomes a plaquette on the dual lattice.
+% So a product of $A_v$ is equivalent to a string of $Z$ operators along closed curves on the dual lattice.
+% All these curve have a common property, they are \emph{contractible}, meaning that they can be continuously deformed to a single point.
+% The operators we have called local so far are string operators over contractible curves, but if we are on a lattice with non-trivial topology, like a torus, then we can also have \emph{non-contractible} curves.
+We can conclude that all the local operators that commutes with Hamiltonian are just string operators over closed curve in either $\lattice$ or $\duallattice$.
+But, these operators have alla a common feature, they are defined on \emph{contractible} curves.
+Meaning that they can be ``continuously'' deformed to a single point.
 
 \begin{figure}[t]
     \centering
     \input{assets/figures/nonlocal_operators_TC.tex}
     \caption{Non-contractible paths}
+    \label{fig:nonlocal_operators_TC}
 \end{figure}
 
-\todo{revisionare}
 
 
 
-\subsection{Particle excitations}%
-\label{sub:particle_excitations}
 
-Until now we have only discussed the ground states of the Toric Code, without touching the rest of the low energy sectors.
-In other words, how do we describe the excitations of this model?
-As we said, \eqref{eq:ground_state_constraints} are the set of constraints that defines the ground states.
-Therefore, everytime a given state $\ket{\Psi}$ violates these equations, we will say that it contains \emph{particles}, which can be of different types.
-If $A_v \ket{\Psi} = - \ket{\Psi}$, then we will say that the vertex $v$ contains a $z$-type particle.
-Likewise, if $B_p \ket{\Psi} = - \ket{\Psi}$, then the plaquette $p$ contains a $x$-type particle.
-
-Now the question: starting from a ground state $\ket{\Omega}$, how can we introduce some particles?
-The answer is \emph{string operators}.
-We are not considering closed strings, like we did in Sec.~\ref{sub:topological_ground_states}, but any open string.
-The shortest open string that we can consider is a single link.
-So a $Z$-string on a single link is just $Z_j$, where $j$ is a label of a generic link.
-Consider now the state
+String operators on non-contractible curves, either on the direct or dual lattice, are the non-local operators we have been looking for distinguish the states in $\mathcal{G}$.
+Consider two non-contractible loops $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ on $\lattice$ along the $\hat{1}$ and $\hat{2}$ direction respectively, like in Fig.~\ref{fig:nonlocal_operators_TC}.
+On these paths we can define the string operators $\overline{W}_1$ and $\overline{W}_2$ as
 \begin{equation}
-    \ket*{\Psi^Z} = Z_j \ket{\Omega},
+    \overline{W}_1 = \prod_{j \in \mathcal{C}_1}  \sigma^x_j, \qquad
+    \overline{W}_2 = \prod_{j \in \mathcal{C}_2}  \sigma^x_j.
+    \label{eq:nonlocal_X_operators}
 \end{equation}
-This state hosts particles at the ``boundaries'' of the $j$-th link, i.e.~the vertices touching $j$ which we call $v_0$ and $v_1$.
-This can be proved by simply showing that $[ A_v, Z_j ] = 0$ for $v \neq v_0$ and $v \neq v_1$ and $\{ A_{v_0}, Z_j \} = \{ A_{v_1}, Z_j \} = 0$.
-Which immediately implies that
+It can be proved that they commute with all the terms of the Hamiltonian, even though they cannot be expressed as a product of them.
+The same can be repeated on the dual lattice $\duallattice$, by considering two non-contractible cuts $\mathcal{C}_1$ and $\mathcal{C}_2$ and defining $\overline{S}_1$ and $\overline{S}_2$ as
 \begin{equation}
-    A_{v_0} \ket*{\Psi^Z} = A_{v_1} \ket*{\Psi^Z} = - \ket*{\Psi^Z}
+    \overline{S}_1 = \prod_{j \in \mathcal{C}_1}, \qquad
+    \overline{S}_2 = \prod_{j \in \mathcal{C}_2}.
+    \label{eq:nonlocal_Z_operators}
 \end{equation}
+Likewise, the operators in \eqref{eq:nonlocal_Z_operators} commutes with all the vertex and plaquettes operators but they do not commute with the operators in \eqref{eq:nonlocal_X_operators}.
+
+In fact, \eqref{eq:nonlocal_X_operators} and \eqref{eq:nonlocal_Z_operators} anticommutes,
+\begin{equation}
+    \acomm*{\overline{W}_1}{\overline{S}_2} = 0 \qand
+    \acomm*{\overline{W}_2}{\overline{S}_1} = 0,
+\end{equation}
+while
+\begin{equation}
+    \comm{\overline{W}_1}{\overline{W}_2} = 0 \qand
+    \comm{\overline{S}_1}{\overline{S}_2} = 0.
+\end{equation}
+These relations can be thought as the same commutation relations of the $X$ and $Z$ gates of two qubits.
+
+Therefore, the Toric Code (on a torus) has a protected subspace $\mathcal{G}$, see \eqref{eq:TC_protected_subspace}, that behaves like the Hilbert space of two qubits and the operators \eqref{eq:nonlocal_X_operators} and \eqref{eq:nonlocal_Z_operators} acts like unitary gates on this space.
+Unfortunately, we cannot do quantum computation with these topological qubits because there is no entangling gates.
+Nonetheless they can be used for storing information in a fault-tolerant way, because in order to flip a topological qubit you would need to act with a non-local operator that involves a large amount of links.
+
+
+% \subsection{Particle excitations}%
+% \label{sub:particle_excitations}
+%
+% Until now we have only discussed the ground states of the Toric Code, without touching the rest of the low energy sectors.
+% In other words, how do we describe the excitations of this model?
+% As we said, \eqref{eq:ground_state_constraints} are the set of constraints that defines the ground states.
+% Therefore, every time a given state $\ket{\Psi}$ violates these equations, we will say that it contains \emph{particles}, which can be of different types.
+% If $A_v \ket{\Psi} = - \ket{\Psi}$, then we will say that the vertex $v$ contains a $z$-type particle.
+% Likewise, if $B_p \ket{\Psi} = - \ket{\Psi}$, then the plaquette $p$ contains a $x$-type particle.
+%
+% Now the question: starting from a ground state $\ket{\Omega}$, how can we introduce some particles?
+% The answer is \emph{string operators}.
+% We are not considering closed strings, like we did in Sec.~\ref{sub:topological_ground_states}, but any open string.
+% The shortest open string that we can consider is a single link.
+% So a $Z$-string on a single link is just $Z_j$, where $j$ is a label of a generic link.
+% Consider now the state
+% \begin{equation}
+%     \ket*{\Psi^Z} = Z_j \ket{\Omega},
+% \end{equation}
+% This state hosts particles at the ``boundaries'' of the $j$-th link, i.e.~the vertices touching $j$ which we call $v_0$ and $v_1$.
+% This can be proved by simply showing that $[ A_v, Z_j ] = 0$ for $v \neq v_0$ and $v \neq v_1$ and $\{ A_{v_0}, Z_j \} = \{ A_{v_1}, Z_j \} = 0$.
+% Which immediately implies that
+% \begin{equation}
+%     A_{v_0} \ket*{\Psi^Z} = A_{v_1} \ket*{\Psi^Z} = - \ket*{\Psi^Z}
+% \end{equation}
+%
+
+
+%
+% SUBSECTION: Z2 Lattice gauge theory
+%
+\subsection{Toric Code as a \texorpdfstring{$\Z_2$}{Z2} Lattice Gauge Theory}
+\label{sub:toric_code_as_a_z2_lattice_gauge_theory}
+
+The Toric Code was formulated as a type of error-correcting code for quantum computing, but it can be reinterpreted as a pure $\Z_2$ lattice gauge theory.
+This is a type of lattice gauge theory where we allow only two possible states for the gauge field.
+
+On a single link, we consider the $X_{\link}$ as the gauge field operator, while $Z_{\link}$ the electric field operator.
+In this way, we can automatically see that the term $B_p$ is the magnetic energy because it has the same form of single-plaquette Wilson loop.
+Furthermore, the vertex operator $A_v$ can be read as a gauge transformation on the vertex $v$, because the $Z$'s operators flips the states in the $X$-basis, which would corresponds to gauge field configurations.
+
+Now that we know the form of gauge transformations, we call a state \emph{physical} or \emph{gauge-invariant} if
+\begin{equation}
+    A_v \ket{\phi} = \ket{\phi} \quad \forall v \in \lattice,
+    \label{eq:toric_code_physical_state}
+\end{equation}
+which leads to the definition of the \emph{physical Hilbert space}:
+\begin{equation}
+    \Hphys = \{\ket{\phi} \; \text{s.t.} \; A_v \ket{\phi} = \ket{\phi} \quad \forall v \in \lattice\}.
+\end{equation}
+For greater clarity, lets work in the \emph{electric basis}, which is just the $Z$-basis where the electric field is diagonal.
+The electric field operator $Z$ has eigenvalue $+1$ and $-1$, corresponding respectively to the states $\ket{0}$ and $\ket{1}$.
+In order to meet the condition in \eqref{eq:toric_code_physical_state}, a vertex configuration must have an even number of links in the $\ket{1}$ state (examples can be seen in Fig.~\ref{fig:gauge_inv_vertices_z2}).
+
+\begin{figure}[t]
+    \centering
+    \input{assets/figures/gauge_inv_vertices.tex}
+    \caption{Gauge invariant vertex states for the $\Z_2$ lattice gauge theory.}
+    \label{fig:gauge_inv_vertices_z2}
+\end{figure}
+
+We have already argued that the $B_p$'s give the magnetic energy, and obviously the $Z$'s give the electric energy.
+Hence, the pure gauge theory Hamiltonian is just
+\begin{equation}
+    H_{\Z_2} = - \sum_{p} B_p - \lambda \sum_{\link} Z_{\link},
+    \label{eq:z2_lgt_hamiltonian}
+\end{equation}
+where $\lambda$ is a generic coupling that tunes the strength of the electric field with respect to the magnetic field.
+Notice that we no longer have a dynamical vertex term in \eqref{eq:z2_lgt_hamiltonian} because we have imposed the condition \eqref{eq:toric_code_physical_state} on the physical states.
+
+In order to better explain the different phases we can have by varying the coupling $\lambda$ in \eqref{eq:z2_lgt_hamiltonian}, we want to have a closer look at the physical states.
+We have already seen that the condition \eqref{eq:toric_code_physical_state} constraints the types of vertex configurations.
+From the allowed configuration, we can see that the only possible lattice states (in the electric basis) are states made of \emph{closed electric loops}.
+An example of such state can be seen in Fig.~\ref{fig:physical_state_z2}.
+
+
+\begin{figure}[t]
+    \centering
+    \input{assets/figures/physical_state.tex}
+    \caption{Example of a physical state in the $\Z_2$ lattice gauge theory}
+    \label{fig:physical_state_z2}
+\end{figure}
+
+
+For $\lambda = 0$ we recover the Toric Code and its ground state can be reinterpreted as an equal superposition of all the possible configuration of closed electric loops.
+This kind of phase is also called a \emph{loop condensate}.
+For large $\lambda$ the electric term dominates over the magnetic term, hence all the links will favor the state $\ket{0}$.
+So in the regime of strong coupling we expect to be in a \emph{polarized phase}, where the presence of electric loops is suppressed.
+Therefore, there is a critical coupling $\lambda_c$ for which we have a \emph{phase transition}.
+In the language of gauge theories, the loop condensate corresponds to a \emph{deconfined phase} while the polarized one is a \emph{confined phase}.
+Hence, for $\lambda_c$ we have a deconfined-confined phase transition.
+\todo{inserire diagramma di fase}
+
+
+\subsection{Super-selection sectors}
+\label{sub:super_selection_sectors}
+
 

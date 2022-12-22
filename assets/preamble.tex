@@ -20,18 +20,21 @@
 \makechapterstyle{mychapter}{
     \chapterstyle{companion}
     \setlength{\beforechapskip}{0cm}
+    \setlength{\afterchapskip}{2.5cm}
     \setlength{\topskip}{0cm}
     \setlength{\midchapskip}{5pt}
+    \setlength{\chapindent}{0.75\marginparsep}
+    \addtolength{\chapindent}{0.75\marginparwidth}
     \renewcommand*{\chapnamefont}{}
     \renewcommand*{\printchaptername}{}
     \renewcommand*{\chapnumfont}{\sffamily\LARGE\bfseries}
     \renewcommand*{\printchapternum}{%
+        \begin{adjustwidth}{\chapindent}{-\chapindent}
         \raggedleft\chapnumfont %
         \ifanappendix appendix~ \thechapter %
         \else chapter~ \numtoname{\thechapter}\fi%
+        \end{adjustwidth}
     }
-    \setlength{\chapindent}{0.75\marginparsep}
-    \addtolength{\chapindent}{0.75\marginparwidth}
     \renewcommand*{\chaptitlefont}{\normalfont\sffamily\HUGE}
     \renewcommand{\printchaptertitle}[1]{%
         \begin{adjustwidth}{\chapindent}{-\chapindent}
@@ -139,6 +142,7 @@
 \newcommand{\Hclock}{H_{\text{clock}}} % Clock Hamiltonian
 % shorthand for links on the ladder
 \newcommand{\lattice}{\mathbb{L}} % lattice
+\newcommand{\duallattice}{\mathbb{L}^{\ast}} % lattice
 \newcommand{\link}{\ell} % link
 \newcommand{\toplink}{\link^\uparrow}
 \newcommand{\botlink}{\link^\downarrow}
@@ -176,11 +180,49 @@
 % TikZ
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta, decorations.markings, patterns, fit, positioning}
-\tikzset{font=\small, >={Latex}}
-\tikzset{->-/.style={decoration={markings,
-  mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
-\tikzset{-<-/.style={decoration={markings,
-  mark=at position #1 with {\arrow{<}}},postaction={decorate}}}
+\tikzset{
+    font=\small,
+    >={stealth},
+    ->-/.style={
+        decoration={markings, mark=at position #1 with {\arrow{stealth}}},
+        postaction={decorate}
+    },
+    -<-/.style={
+        decoration={markings, mark=at position #1 with {\arrow{stealth}}},
+        postaction={decorate}
+    },
+    site/.style={circle, inner sep=0pt, minimum size=4pt, draw=Grey60, fill=white},
+    ladder/.style={Grey40, step=2, thin},
+    lattice/.style={Grey40, step=2, thin},
+    freccia/.style={-stealth, very thick, shorten >=5pt, shorten <=5pt},
+    plaq/.style={Blue80, very thick, ->-=0.6},
+    elec/.style={Red, very thick, ->-=0.6},
+    X/.style = {Blue80, ultra thick},
+    Z/.style = {Red, ultra thick},
+    U/.style = {Blue80, ultra thick, ->-=0.6},
+    V/.style = {Red, ultra thick, ->-=0.6},
+    up/.style = {Green, ultra thick},
+    up spin/.style = {-stealth, ultra thick, Green},
+    down spin/.style = {stealth-, ultra thick},
+    flux/.style = {fill=Green, fill opacity=0.1},
+    X site/.style = {circle, inner sep=0 pt, minimum size=5pt, draw=black, fill=Blue80},
+    Z site/.style = {circle, inner sep=0 pt, minimum size=5pt, draw=black, fill=Red},
+    box/.style={dotted, rounded corners, thick}
+}
+
+% Custom colors
+% load IBM Carbon theme
+\usepackage{xcolor}
+\input{assets/theme.tex}
+\colorlet{Blue}{Blue80}
+\colorlet{Gray}{Grey40}
+
+\newcommand{\UpArrow}[2]{\draw[up spin] (#1,#2) ++(0,-0.7) -- ++(0,1.4);}
+\newcommand{\DownArrow}[2]{\draw[down spin] (#1,#2) ++(0,-0.7) -- ++(0,1.4);}
+\newcommand{\DrawSites}[2]{
+    \foreach \y in {#2} \foreach \x in {#1} \draw (\x,\y) node [site] {};
+    }
+
 
 % TikZ caching
 \usetikzlibrary{external}
@@ -194,12 +236,6 @@
 
 \usepackage{wrapfig}
 
-% custom colors
-\usepackage{xcolor}
-\colorlet{Red}{red!70!black}
-\colorlet{Blue}{blue!70!black}
-\colorlet{Gray}{gray!70!black}
-\colorlet{Green}{green!70!black}
 
 %----------------------------------------
 % MISC

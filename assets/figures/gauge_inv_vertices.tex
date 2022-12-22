@@ -1,0 +1,24 @@
+\begin{tikzpicture}[scale=0.5]
+    \draw[lattice] (-1.75, -1.75) grid (1.75, 1.75);
+    \node[site] at (0, 0) {};
+
+    \begin{scope}[xshift=4cm]
+        \draw[lattice] (-1.75, -1.75) grid (1.75, 1.75);
+        \draw[up] (-1.75, 0) -- (1.75, 0);
+        \draw[up] (0, -1.75) -- (0, 1.75);
+        \node[site] at (0, 0) {};
+    \end{scope}
+
+    \begin{scope}[xshift=8cm]
+        \draw[lattice] (-1.75, -1.75) grid (1.75, 1.75);
+        \draw[up] (-1.75, 0) -- (1.75, 0);
+        \node[site] at (0, 0) {};
+    \end{scope}
+
+    \begin{scope}[xshift=12cm]
+        \draw[lattice] (-1.75, -1.75) grid (1.75, 1.75);
+        \draw[up] (-1.75, 0) -- (0, 0) -- (0, 1.75);
+        \node[site] at (0, 0) {};
+    \end{scope}
+    \node[font=\normalsize, right] at (14,0) {$\dots$};
+\end{tikzpicture}

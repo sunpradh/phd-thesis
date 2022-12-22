@@ -1,0 +1,12 @@
+\begin{tikzpicture}[scale=0.5]
+    \draw[lattice] (-1, -1) grid (11, 11);
+
+    \draw[up] (0, 0) rectangle (2, 2);
+    \draw[up] (6, 0) rectangle (10, 2);
+    \draw[xshift=-2cm, up] (4, 4) -- (4, 10) -- (8, 10) -- (8, 6) -- (6, 6) -- (6, 4) -- cycle;
+    \draw[up] (-1, 6) -- (0, 6) -- (0, 11);
+    \draw[up] (11, 4) -- (8, 4) -- (8, 8) -- (11, 8);
+
+    % sites
+    \DrawSites{0,2,...,10}{0,2,...,10}
+\end{tikzpicture}

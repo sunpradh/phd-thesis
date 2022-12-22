@@ -1,13 +1,13 @@
-\newcommand{\UpArrow}[2]{\draw[up] (#1,#2) ++(0,-0.5) -- ++(0,1);}
-\newcommand{\DownArrow}[2]{\draw[down] (#1,#2) ++(0,-0.5) -- ++(0,1);}
+% \newcommand{\UpArrow}[2]{\draw[up] (#1,#2) ++(0,-0.5) -- ++(0,1);}
+% \newcommand{\DownArrow}[2]{\draw[down] (#1,#2) ++(0,-0.5) -- ++(0,1);}
 \begin{tikzpicture}[
     font=\small,
     scale=0.6,
     site/.style = {circle, inner sep=0 pt, minimum size=3pt, draw=black, fill=white},
     on/.style = {ultra thick, Green},
-    flux/.style = {fill=Green, fill opacity=0.1},
-    up/.style = {-{Latex[length=5pt, width=5pt]}, very thick, Green},
-    down/.style = {{Latex[length=5pt, width=5pt]}-, very thick}
+    flux/.style = {fill=Green, fill opacity=0.1}%,
+    % up/.style = {-{Latex[length=5pt, width=5pt]}, very thick, Green},
+    % down/.style = {{Latex[length=5pt, width=5pt]}-, very thick}
     ]
 
     % Clock chain
