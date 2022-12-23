@@ -1,0 +1,17 @@
+\begin{tikzpicture}[scale=1.1]
+    \draw (1,0) arc (0:360:1);
+    \foreach \angle in {72, 144, ..., 360}
+    \node[site, fill=Yellow, minimum size=7pt] (state \angle) at (\angle:1) {};
+    \draw (state 360.east) node[right] {$1$};
+    \draw (state 72.north)  node[above] {$\omega$};
+    \draw (state 144.west) node[above left] {$\omega^2$};
+    \draw (state 216.west) node[left] {$\omega^{3}$};
+    \draw (state 288.south) node[below] {$\omega^{4}$};
+
+    \draw[Z, -stealth, shorten >=5pt] (0,0) -- (72:1) node [pos=0.5, left, black] {$V$};
+
+    \draw[X, -stealth] (1.5, 0) arc (0:40:1.5) node [pos=0.5, right, black] {$U$};
+
+    \draw (0,0) node[site, fill=black, draw=black] {};
+
+\end{tikzpicture}

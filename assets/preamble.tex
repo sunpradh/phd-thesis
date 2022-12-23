@@ -97,6 +97,27 @@
 \chapterstyle{mychapter}
 \pagestyle{mypagestyle}
 
+% Custom caption style
+%----------------------------------------
+\captiondelim{.\hspace{1em}}
+\captionnamefont{\footnotesize\PlexMedium}
+\captiontitlefont{\footnotesize\sffamily}
+\captionstyle{\linespread{1.1}}
+
+% Macro for figure with caption on the side
+\usepackage{xifthen}
+
+\newcommand{\FigureSideCaption}[3][]{
+    \begin{minipage}[b]{0.5\textwidth}
+        \centering
+        #2
+    \end{minipage}\hfill
+    \begin{minipage}[b]{0.45\textwidth}
+        \caption{#3}
+        \ifthenelse{\isempty{#1}}{}{\label{#1}}
+    \end{minipage}
+}
+
 % Line spacing
 \linespread{1.1}
 
@@ -181,7 +202,7 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta, decorations.markings, patterns, fit, positioning}
 \tikzset{
-    font=\small,
+    font=\footnotesize,
     >={stealth},
     ->-/.style={
         decoration={markings, mark=at position #1 with {\arrow{stealth}}},

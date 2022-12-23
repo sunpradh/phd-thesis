@@ -1,0 +1,35 @@
+\begin{tikzpicture}[scale=0.4]
+    \draw[lattice] (-1, -1) grid (9, 9);
+    \draw[up] (2, 6) rectangle +(2,2);
+    \draw[up] (0, 0) rectangle +(2,2);
+    \draw[up] (4,0) -- (8,0) -- (8,6) -- (6,6) -- (6,4) -- (4,4) -- cycle;
+
+    \draw[Z, dashed] (-1.5, 5) -- (9.5, 5)
+        node [pos=0, below left, black] {$\overline{S}_1 = +1$};
+
+
+    % sites
+    \DrawSites{0,2,...,8}{0,2,...,8}
+
+    % starting point for W2 arrow
+    \node (start) at (2, 9) {};
+
+    \begin{scope}[xshift=14cm]
+        \draw[lattice] (-1, -1) grid (9, 9);
+        \draw[up] (2, 9) -- (2, 8) -- (4, 8) -- (4, 6) -- (2, 6) -- (2, 2) -- (0, 2) -- (0, 0) -- (2, 0) -- (2, -1);
+        \draw[up] (4,0) -- (8,0) -- (8,6) -- (6,6) -- (6,4) -- (4,4) -- cycle;
+
+        \draw[Z, dashed] (-1.5, 5) -- (9.5, 5)
+            node [pos=1, below right, black] {$\overline{S}_1 = -1$};
+
+        % sites
+        \DrawSites{0,2,...,8}{0,2,...,8}
+
+        % stopping point for W2 arrow
+        \node (stop) at (2, 9) {};
+    \end{scope}
+
+    \draw[] (start)
+        edge[bend left, X, ->]
+        node [pos=0.5, above, font=\small, black] {$\overline{W}_2$} (stop) ;
+\end{tikzpicture}

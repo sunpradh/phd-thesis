@@ -1,0 +1,23 @@
+\begin{tikzpicture}[scale=1.2]
+    % Lattice
+    \draw[lattice, step=1] (-0.5,-0.5) grid (4.5,2.5);
+
+    % Plaquette operator
+    \draw[X] (3,1) -- (4,1) node [pos=0.5, below] {$X$};
+    \draw[X] (4,1) -- (4,2) node [pos=0.5, right] {$X$};
+    \draw[X] (4,2) -- (3,2) node [pos=0.5, above] {$X$};
+    \draw[X] (3,2) -- (3,1) node [pos=0.5, left]  {$X$};
+    \draw[blue, ultra thick, pattern=north east lines, pattern color=blue] (3,1) rectangle (4,2);
+    \draw (3.5,1.5) node [fill=white, rounded corners] {$B_p$};
+
+    % Gauss operator
+    \draw[Z] (1, 1) -- (2, 1) node [pos=0.5, below right] {$Z$};
+    \draw[Z] (1, 1) -- (1, 2) node [pos=0.5, above left] {$Z$};
+    \draw[Z] (1, 1) -- (0, 1) node [pos=0.5, below left] {$Z$};
+    \draw[Z] (1, 1) -- (1, 0) node [pos=0.5, below right] {$Z$};
+    \draw (1,1) node [above right, outer sep=5pt, inner sep=3pt, draw=red, rounded corners=3pt] {$A_s$};
+
+    % Sites
+    \DrawSites{0,1,...,4}{0,1,2}
+
+\end{tikzpicture}
