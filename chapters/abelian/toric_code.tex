@@ -176,7 +176,7 @@ Meaning that they can be ``continuously'' deformed to a single point.
         \input{assets/figures/nonlocal_operators_toric.tex}
     }{%
         Graphical representation of the different types of non-local operators.
-        On the non-contractible loops $\mathcal{L}_1$ and $\mathcal{L}_2$ (in the direct lattice) we have defined $\overline{W}_1$ and $\overline{W}_2$ (see \eqref{eq:nonlocal_X_operators} ).
+        On the non-contractible loops $\mathcal{L}_1$ and $\mathcal{L}_2$ (in the direct lattice) we have defined $\Wilson_1$ and $\Wilson_2$ (see \eqref{eq:nonlocal_W_toric} ).
         While on the non-contractible cuts $\mathcal{C}_1$ and $\mathcal{C}_2$ (in the dual lattice) we have the operators $\overline{S}_1$ and $\overline{S}_2$.
     }
 \end{figure}
@@ -184,35 +184,35 @@ Meaning that they can be ``continuously'' deformed to a single point.
 
 String operators on non-contractible curves, either on the direct or dual lattice, are the non-local operators we have been looking for distinguish the states in $\mathcal{G}$.
 Consider two non-contractible loops $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ on $\lattice$ along the $\hat{1}$ and $\hat{2}$ direction respectively, like in Fig.~\ref{fig:nonlocal_operators_TC}.
-On these paths we can define the string operators $\overline{W}_1$ and $\overline{W}_2$ as
+On these paths we can define the string operators $\Wilson_1$ and $\Wilson_2$ as
 \begin{equation}
-    \overline{W}_1 = \prod_{\link \in \mathcal{L}_1} X_\link, \qquad
-    \overline{W}_2 = \prod_{\link \in \mathcal{L}_2} X_\link.
-    \label{eq:nonlocal_X_operators}
+    \Wilson_1 = \prod_{\link \in \mathcal{L}_1} X_\link, \qquad
+    \Wilson_2 = \prod_{\link \in \mathcal{L}_2} X_\link.
+    \label{eq:nonlocal_W_toric}
 \end{equation}
 It can be proved that they commute with all the terms of the Hamiltonian, even though they cannot be expressed as a product of them.
 The same can be repeated on the dual lattice $\duallattice$, by considering two non-contractible cuts $\mathcal{C}_1$ and $\mathcal{C}_2$ and defining $\overline{S}_1$ and $\overline{S}_2$ as
 \begin{equation}
     \overline{S}_1 = \prod_{\link \in \mathcal{C}_1} Z_\link, \qquad
     \overline{S}_2 = \prod_{\link \in \mathcal{C}_2} Z_\link.
-    \label{eq:nonlocal_Z_operators}
+    \label{eq:nonlocal_S_toric}
 \end{equation}
-Likewise, the operators in \eqref{eq:nonlocal_Z_operators} commutes with all the vertex and plaquettes operators but they do not commute with the operators in \eqref{eq:nonlocal_X_operators}.
+Likewise, the operators in \eqref{eq:nonlocal_S_toric} commutes with all the vertex and plaquettes operators but they do not commute with the operators in \eqref{eq:nonlocal_W_toric}.
 
-In fact, \eqref{eq:nonlocal_X_operators} and \eqref{eq:nonlocal_Z_operators} anticommutes,
+In fact, \eqref{eq:nonlocal_W_toric} and \eqref{eq:nonlocal_S_toric} anticommutes,
 \begin{equation}
-    \acomm*{\overline{W}_1}{\overline{S}_2} = 0 \qand
-    \acomm*{\overline{W}_2}{\overline{S}_1} = 0,
+    \acomm*{\Wilson_1}{\overline{S}_2} = 0 \qand
+    \acomm*{\Wilson_2}{\overline{S}_1} = 0,
     \label{eq:anticommutation_W_S_toric}
 \end{equation}
 while
 \begin{equation}
-    \comm{\overline{W}_1}{\overline{W}_2} = 0 \qand
+    \comm{\Wilson_1}{\Wilson_2} = 0 \qand
     \comm{\overline{S}_1}{\overline{S}_2} = 0.
 \end{equation}
 These relations can be thought as the same commutation relations of the $X$ and $Z$ gates of two qubits.
 
-Therefore, the Toric Code (on a torus) has a protected subspace $\mathcal{G}$, see \eqref{eq:TC_protected_subspace}, that behaves like the Hilbert space of two qubits and the operators \eqref{eq:nonlocal_X_operators} and \eqref{eq:nonlocal_Z_operators} acts like unitary gates on this space.
+Therefore, the Toric Code (on a torus) has a protected subspace $\mathcal{G}$, see \eqref{eq:TC_protected_subspace}, that behaves like the Hilbert space of two qubits and the operators \eqref{eq:nonlocal_W_toric} and \eqref{eq:nonlocal_S_toric} acts like unitary gates on this space.
 Unfortunately, we cannot do quantum computation with these topological qubits because there is no entangling gates.
 Nonetheless they can be used for storing information in a fault-tolerant way, because in order to flip a topological qubit you would need to act with a non-local operator that involves a large amount of links.
 
@@ -318,12 +318,12 @@ Hence, for $\lambda_c$ we have a deconfined-confined phase transition.
 \subsection{Super-selection sectors}
 \label{sub:super_selection_sectors}
 
-We have already seen in Sec.~\ref{sub:topological_ground_states} the non-local operators $\overline{W}_{1,2}$ and $\overline{S}_{1,2}$ that can classify the topological ground states.
+We have already seen in Sec.~\ref{sub:topological_ground_states} the non-local operators $\Wilson_{1,2}$ and $\overline{S}_{1,2}$ that can classify the topological ground states.
 They can be treated on equal footing in the pure Toric Code, because they both commutes with all the terms of the Hamiltonian \eqref{eq:toric_code_hamiltonian}.
 This is no longer true in \eqref{eq:z2_lgt_hamiltonian}, when the electric term is present.
 Both kind of operators are gauge-invariant, in the sense that they commute with the gauge transformations $A_v$, i.e.
 \begin{equation}
-    \comm{\overline{W}_{1,2}}{A_v} = 0
+    \comm{\Wilson_{1,2}}{A_v} = 0
     \qand
     \comm{\overline{S}_{1,2}}{A_v} = 0,
     \quad \text{for all $v \in \lattice$}
@@ -344,9 +344,9 @@ where for each $\ket{\phi} \in \Hphys^{(n,m)}$ we have
 \end{equation}
 where $n, m = 0, 1$.
 
-The string operators $\overline{W}_{1,2}$ do not commute with the Hamiltonian \eqref{eq:z2_lgt_hamiltonian}, hence they cannot be used to classify the states in $\Hphys$.
+The string operators $\Wilson_{1,2}$ do not commute with the Hamiltonian \eqref{eq:z2_lgt_hamiltonian}, hence they cannot be used to classify the states in $\Hphys$.
 On the other hand, given the algebraic relations \eqref{eq:anticommutation_W_S_toric}, they are able to modify the effect of $\overline{S}_{1,2}$.
-In fact, $\overline{W}_{1,2}$ can change the super-selection sectors:
+In fact, $\Wilson_{1,2}$ can change the super-selection sectors:
 \begin{equation}
     W_1 : \Hphys^{(n,m)} \mapsto \Hphys^{(n+1,m)}
     \qand
@@ -362,14 +362,14 @@ where the $n,m = 0, 1$ and the addition is taken modulus $2$.
     \vspace*{-0.5cm}
     \caption{%
         Pictorial representation of states of different super-selection sector and the action of the string operator $W_2$.
-        Notice that the action $\overline{W}_2$ introduces a non-contractible electric loop in the state, which modifies the value of $\overline{S}_1$, which, in a sense, measure the presence of non-contractible electric loops in the orthogonal direction $\hat{2}$.%
+        Notice that the action $\Wilson_2$ introduces a non-contractible electric loop in the state, which modifies the value of $\overline{S}_1$, which, in a sense, measure the presence of non-contractible electric loops in the orthogonal direction $\hat{2}$.%
         }
     \label{fig:sector_mapping}
 \end{figure}
 
 From a more physical point of view, the operator $\overline{S}_i$ (with $i=1,2$) measures the presence non-contractible electric loops in the state in the direction orthogonal to $\hat{i}$.
 Therefore, the decomposition in \eqref{eq:Hilbert_space_decomposition_Z2} divides the physical Hilbert space by the number of non-contractible electric loops in each direction.
-On the other hand, the operators $\overline{W}_i$ introduces a non-contractible electric loop in the $\hat{i}$ direction, which explains \eqref{eq:action_W_on_sectors} .
+On the other hand, the operators $\Wilson_i$ introduces a non-contractible electric loop in the $\hat{i}$ direction, which explains \eqref{eq:action_W_on_sectors} .
 This can be seen in Fig.~\ref{fig:sector_mapping}.
 Notice that in the case of $\Z_2$ LGT we can have at most one non-trivial electric loops.
-For examples, two parallels electric loops can be obtained by a strip of $B_p$ operators, without requiring the $\overline{W}$ string operators.
+For examples, two parallels electric loops can be obtained by a strip of $B_p$ operators, without requiring the $\Wilson$ string operators.

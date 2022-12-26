@@ -155,6 +155,7 @@
 \newcommand{\SU}{\text{SU}} % special unitary group
 \newcommand{\su}{\mathfrak{su}} % special unitary algebra
 \newcommand{\g}{\mathfrak{g}} % Lie algebra
+\newcommand{\algebra}{\mathcal{A}} % operator algebra
 %
 \newcommand{\generator}{\hat{\ell}}
 \newcommand{\transport}{\hat{u}}
@@ -168,6 +169,11 @@
 \newcommand{\toplink}{\link^\uparrow}
 \newcommand{\botlink}{\link^\downarrow}
 \newcommand{\runglink}{\link^0}
+%
+\newcommand{\plaquette}{\square}
+\newcommand{\PlaqOp}{U_{\plaquette}}
+\newcommand{\Wilson}{\overline{W}}
+\newcommand{\tHooft}{\overline{S}}
 % shorthand for electric operators and comparators on the ladder
 \newcommand{\Uup}{U^{\uparrow}}
 \newcommand{\Udown}{U^{\downarrow}}
@@ -213,7 +219,7 @@
         postaction={decorate}
     },
     site/.style={circle, inner sep=0pt, minimum size=4pt, draw=Grey60, fill=white},
-    ladder/.style={Grey40, step=2, thin},
+    ladder/.style={Grey40, step=1, thin},
     lattice/.style={Grey40, step=2, thin},
     freccia/.style={-stealth, very thick, shorten >=5pt, shorten <=5pt},
     plaq/.style={Blue80, very thick, ->-=0.6},
