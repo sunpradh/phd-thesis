@@ -29,11 +29,9 @@
     \renewcommand*{\printchaptername}{}
     \renewcommand*{\chapnumfont}{\sffamily\LARGE\bfseries}
     \renewcommand*{\printchapternum}{%
-        \begin{adjustwidth}{\chapindent}{-\chapindent}
         \raggedleft\chapnumfont %
         \ifanappendix appendix~ \thechapter %
         \else chapter~ \numtoname{\thechapter}\fi%
-        \end{adjustwidth}
     }
     \renewcommand*{\chaptitlefont}{\normalfont\sffamily\HUGE}
     \renewcommand{\printchaptertitle}[1]{%
@@ -108,14 +106,14 @@
 \usepackage{xifthen}
 
 \newcommand{\FigureSideCaption}[3][]{
-    \begin{minipage}[b]{0.5\textwidth}
+    \begin{minipage}[t]{0.5\textwidth}
         \centering
         #2
     \end{minipage}\hfill
     \begin{minipage}[b]{0.45\textwidth}
-        \caption{#3}
-        \ifthenelse{\isempty{#1}}{}{\label{#1}}
-    \end{minipage}
+        \caption{#3}%
+        \ifthenelse{\isempty{#1}}{}{\label{#1}}%
+    \end{minipage}%
 }
 
 % Line spacing
@@ -148,33 +146,35 @@
 \newcommand{\hc}{\text{h.c.}} % hermitian conjugate text
 \newcommand{\W}{W_{\square}} % single plaquette Wilson loop
 \newcommand{\action}{\mathcal{S}} % action
-\newcommand{\HamilKS}{H_{\text{KS}}} % Kogut-Susskind Hamiltonian
 \newcommand{\HilbertSpace}{\mathcal{H}} % Hilbert space
+\newcommand{\Hphys}{\HilbertSpace_{\phys}} % physical Hilbert space
 % Groups and algebra
 \newcommand{\U}{\mathrm{U}} % unitary group
 \newcommand{\SU}{\text{SU}} % special unitary group
 \newcommand{\su}{\mathfrak{su}} % special unitary algebra
 \newcommand{\g}{\mathfrak{g}} % Lie algebra
 \newcommand{\algebra}{\mathcal{A}} % operator algebra
-%
 \newcommand{\generator}{\hat{\ell}}
 \newcommand{\transport}{\hat{u}}
-\newcommand{\Hphys}{\HilbertSpace_{\phys}} % physical Hilbert space
-\newcommand{\HIsing}{H_{\text{Ising}}} % Ising Hamiltonian
-\newcommand{\Hclock}{H_{\text{clock}}} % Clock Hamiltonian
-% shorthand for links on the ladder
+% Hamiltonians
+\newcommand{\HamilKS}{H_{\text{KS}}} % Kogut-Susskind Hamiltonian
+\newcommand{\HIsing}{H^{\text{Ising}}} % Ising Hamiltonian
+\newcommand{\Hclock}{H^{\text{clock}}} % Clock Hamiltonian
+\newcommand{\Hladder}{H^{\text{lad}}} % Clock Hamiltonian
+% shorthand for the lattice and its objects
 \newcommand{\lattice}{\mathbb{L}} % lattice
 \newcommand{\duallattice}{\mathbb{L}^{\ast}} % lattice
 \newcommand{\link}{\ell} % link
-\newcommand{\toplink}{\link^\uparrow}
-\newcommand{\botlink}{\link^\downarrow}
-\newcommand{\runglink}{\link^0}
-%
 \newcommand{\plaquette}{\square}
+% Some operators on the lattice
 \newcommand{\PlaqOp}{U_{\plaquette}}
 \newcommand{\Wilson}{\overline{W}}
 \newcommand{\tHooft}{\overline{S}}
-% shorthand for electric operators and comparators on the ladder
+% Ladder links
+\newcommand{\toplink}{\link^\uparrow}
+\newcommand{\botlink}{\link^\downarrow}
+\newcommand{\runglink}{\link^0}
+% Operators on the ladder
 \newcommand{\Uup}{U^{\uparrow}}
 \newcommand{\Udown}{U^{\downarrow}}
 \newcommand{\Urung}{U^0}
@@ -190,8 +190,8 @@
 
 \newcommand{\Or}{\mathrm{O}}
 
-
 % redefine some math macro
+% for consistency with the mlmodern font
 \renewcommand{\dd}{\text{d}}
 \renewcommand{\tr}{\text{tr}}
 \renewcommand{\exp}{\text{exp}}
@@ -242,7 +242,7 @@
 \usepackage{xcolor}
 \input{assets/theme.tex}
 \colorlet{Blue}{Blue80}
-\colorlet{Gray}{Grey40}
+\colorlet{Gray}{Grey70}
 
 \newcommand{\UpArrow}[2]{\draw[up spin] (#1,#2) ++(0,-0.7) -- ++(0,1.4);}
 \newcommand{\DownArrow}[2]{\draw[down spin] (#1,#2) ++(0,-0.7) -- ++(0,1.4);}

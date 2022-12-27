@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+        scale=0.5,
+        font=\small
+    ]
+    % ladder
+    \draw[lattice] (1,0) grid (11,2);
+
+    % S string
+    \draw[Z, dashed] (5, -0.8) -- (5, 2.8)
+        node [above, black] {$\tHooft_2 = \Vup_{i_0} \Vdown_{i_0}$};
+    \draw[Z, ->-=0.5] (4, 2) -- (6, 2);
+
+    % W string
+    \draw[X] (1, 0) -- (11, 0);
+    \node [below, black] at (9, 0) {$\Wilson_1 = \prod_{i} U^{\downarrow}_i $};
+    \foreach \x in {2, 4, ..., 8} \draw[U] (\x, 0) -- +(2,0);
+
+    % sites
+    \DrawSites{2,4,...,10}{0,2}
+\end{tikzpicture}

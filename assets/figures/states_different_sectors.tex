@@ -1,0 +1,35 @@
+\begin{tikzpicture}[scale=0.4]
+    %
+    % Sector n=0
+    %
+
+    % ladder
+    \draw[lattice] (-1,0) grid (13,2);
+    \node[font=\small, above] at (2,2.5) {$\Z_2$ sector $n=0$};
+
+    % loops
+    \draw[up] (2, 0) rectangle (4,2);
+    \draw[up] (6, 0) rectangle (10,2);
+    \draw[up] (13, 0) -- (12, 0) -- (12, 2) -- (13, 2);
+
+    % sites
+    \DrawSites{0,2,...,12}{0,2}
+
+    %
+    % Sector n=1
+    %
+    \begin{scope}[yshift=-5cm]
+        % ladder
+        \draw[lattice] (-1,0) grid (13,2);
+        \node[font=\small, above] at (2,2.5) {$\Z_2$ sector $n=1$};
+
+        % big loop
+        \draw[up]
+        (-1, 0) -- (2, 0) -- (2, 2) -- (4, 2) -- (4, 0) --
+        (6, 0) -- (6, 2) -- (10, 2) -- (10, 0) --
+        (12, 0) -- (12, 2) -- (13, 2);
+
+        % sites
+        \DrawSites{0,2,...,12}{0,2}
+    \end{scope}
+\end{tikzpicture}

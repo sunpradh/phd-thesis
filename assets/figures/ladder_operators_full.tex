@@ -1,0 +1,72 @@
+\begin{tikzpicture}[
+    scale=0.5,
+    ]
+
+    %
+    % Link operators
+    %
+
+    % ladder
+    \draw[lattice] (1,0) grid (9,2);
+
+    % label
+    \node [font=\small] at (5, 3.6) {Link operators};
+
+    % Magnetic field operator field operators
+    \node[below] at (2,0) {$i^{\downarrow}$};
+    \node[above] at (2,2) {$i^{\uparrow}$};
+    \draw[U] (2,0) -- (2,2) node [pos=0.5, right] {$\Urung_i$};
+    \draw[U] (2,2) -- (4,2) node [pos=0.5, above] {$\Uup_i$};
+    \draw[U] (2,0) -- (4,0) node [pos=0.5, below] {$\Udown_i$};
+
+    % Electric field operators
+    \node[below] at (6,0) {$j^{\downarrow}$};
+    \node[above] at (6,2) {$j^{\uparrow}$};
+    \draw[V] (6,0) -- (6,2) node [pos=0.5, right] {$\Vrung_j$};
+    \draw[V] (6,2) -- (8,2) node [pos=0.5, above] {$\Vup_j$};
+    \draw[V] (6,0) -- (8,0) node [pos=0.5, below] {$\Vdown_j$};
+
+    % Sites
+    \DrawSites{2,4,...,8}{0,2}
+
+    %
+    % Local operators
+    %
+    \begin{scope}[xshift=12cm]
+        % ladder
+        \draw[lattice] (-1,0) grid (13,2);
+
+        % labels
+        \node[font=\small] at (8.3, 3.6) {Gauss op.};
+        \node[font=\small] at (1, 3.6) {Plaq.~op.};
+
+        % Plaquette operator
+        \draw[Grey80] (0,0) node [below] {$i^{\downarrow}$};
+
+        % \draw[Grey80] (0,2) node [above] {$i^{\uparrow}$};
+        \draw[Blue80, ultra thick, pattern=north east lines, pattern color=Blue80] (0,0) rectangle +(2,2);
+        \draw[U] (0,0) -- (2,0);
+        \draw[U] (2,0) -- (2,2);
+        \draw[U] (2,2) -- (0,2);
+        \draw[U] (0,2) -- (0,0);
+        \node at (1,1) [fill=white, rounded corners, text=Blue80] {$U_i$};
+
+        % Gauss law Up
+        \draw[V] (6,0) -- (6,2);
+        \draw[V] (4,2) -- (6,2);
+        \draw[V] (6,2) -- (8,2);
+        \node[Red, above] at (6,2) {$\GaussUp_j$};
+        \node[below left] at (6, 2) {$j^{\uparrow}$};
+
+        % Gauss law down
+        \draw[V] (8,0) -- (10,0);
+        \draw[V] (10,0) -- (10,2);
+        \draw[V] (10,0) -- (12,0);
+        \node[Red][below] at (10,0) {$\GaussDown_k$};
+        \node[above left] at (10, 0) {$k^{\downarrow}$};
+
+        % Sites
+        \DrawSites{0,2,...,12}{0,2}
+    \end{scope}
+
+\end{tikzpicture}

@@ -208,6 +208,14 @@ where the first sum is over the plaquettes $\plaquette$ of the lattice while the
 As stated before, the operators $\PlaqOp$ plays the role of a \emph{magnetic} term, to be more precise it is the magnetic flux inside the plaquette $\plaquette$, while $V$ is the \emph{electric} term.
 The coupling $\lambda$ tunes the relative strength of the electric and magnetic energy contribution.
 
+\begin{figure}[t]
+    \centering
+    \input{assets/figures/nonlocal_operators.tex}
+    \caption{Graphical representation of the non-local order parameters $\Wilson_{1,2}$ (in blue) and $\tHooft_{1,2}$ (in red) and their respective paths $\mathcal{C}_{1,2}$ and $\tilde{\mathcal{C}}_{1,2}$.}
+    \label{fig:nonlocal_operators}
+\end{figure}
+
+
 % These models are akin to the Toric Code \cite{kitaev2003fault}, which can be thought as a prime example of a $\Z_2$ lattice gauge theory.
 % More precisely, $H_{\Z_2}$ in \eqref{eq:hamiltonian_base} can be thought as a \emph{deformation} of the former, where an external ``transverse'' field is added to it.
 % Indeed, using the notation used so far, the Toric Code can be formulated as:
@@ -233,87 +241,126 @@ The coupling $\lambda$ tunes the relative strength of the electric and magnetic 
 \label{sub:physical_hilbert_space_and_super_selection_sectors}
 
 
-\todo{Sottosezione da riscrivere in luce della sezione sul toric code}
-
-
-\begin{figure}[t]
-    \centering
-    \input{assets/figures/nonlocal_operators.tex}
-    \caption{Graphical representation of the non-local order parameters $\Wilson_{1,2}$ (in blue) and $\tHooft_{1,2}$ (in red) and their respective paths $\mathcal{C}_{1,2}$ and $\tilde{\mathcal{C}}_{1,2}$.}
-    \label{fig:nonlocal_operators}
-\end{figure}
-
-The total Hilbert space $\mathcal{H}^{\text{tot}}$ is given by the $\otimes_{\link} \mathcal{H}_{\link}$.
-A state of the whole lattice $\ket{\Psi_{\text{ph}}} \in \mathcal{H}^{\text{tot}}$ is said to be \emph{physical} if it is a \emph{gauge-invariant state}:
+% \todo{Sottosezione da riscrivere in luce della sezione sul toric code}
+The total Hilbert space $\mathcal{H}_{\text{tot}}$ is given by
 \begin{equation}
-    G_x \ket{\Psi_{\text{ph}}} = \ket{\Psi_{\text{ph}}}, \qquad \forall x \in \lattice
+    \HilbertSpace_{\text{tot}} = \bigotimes_{\link \in \lattice} \HilbertSpace_{\link},
+\end{equation}
+where $\HilbertSpace_\link \simeq \C^N$ in the case of $\Z_N$ theory.
+A state of the whole lattice $\ket{\phi_{\phys}} \in \HilbertSpace_{\text{tot}}$ is said to be \emph{physical} if it is a \emph{gauge-invariant state}:
+\begin{equation}
+    % G_x \ket{\Psi_{\text{ph}}} = \ket{\Psi_{\text{ph}}}, \qquad \forall x \in \lattice
+    G_x \ket{\phi_{\phys}} = \ket{\phi_\phys}, \qquad \forall \, x \in \lattice.
     \label{eq:gauss_law}
 \end{equation}
-This condition can be translated into a constraint on the eigenvalues $v_{(x, \pm \hat{i})}= \omega^{k_{(x, \pm \hat{i})} }$  of the operators $V_\link$ on the links $\link = (x, \pm \hat{i})$ of the vertex $x$:
+This condition can be translated into a constraint on the eigenvalues $v_{\link}$ of the electric operators $V_{\link}$.
+Given that a link $\link$ can be referred to as $(x, \hat{i})$,  then the constraint \eqref{eq:gauss_law} can be translated to
+% $v_{(x, \pm \hat{i})}= \omega^{k_{(x, \pm \hat{i})} }$  of the operators $V_\link$ on the links $\link = (x, \pm \hat{i})$ of the vertex $x$:
 \begin{equation}
     v_{(x, \hat{1})}^{\phantom{\ast}}
     v_{(x, \hat{2})}^{\phantom{\ast}}
     v_{(x, -\hat{1})}^\ast
-    v_{(x, -\hat{2})}^\ast = 1,
+    v_{(x, -\hat{2})}^\ast = 1.
 \end{equation}
-or, because of (\ref{eq:elect_basis_op_action}):
+For a $\Z_N$ theory we have $v_\link = \omega^{k_{\link}}$, where $\omega = e^{i2 \pi / N}$, which leads to
+% or, because of (\ref{eq:elect_basis_op_action}):
 \begin{equation}
     \sum_{i=1,2} \pqty{ k_{(x, \hat{i})} - k_{(x, -\hat{i})} } = 0 \quad \text{mod $N$}.
     \label{eq:gauss_law_elec_eigvals}
 \end{equation}
-Given the fact that the $k$ in \eqref{eq:schwinger_weyl_algebra} represent the values of the electric field, one can see that \eqref{eq:gauss_law_elec_eigvals} can be interpreted as a discretized version of the Gauss law $\nabla \cdot \vec{E} = 0$ in two dimensions,
-for a pure gauge theory where there are no electric charges.
+for \eqref{eq:gauss_law}.
+Given the fact that the $k$ in \eqref{eq:schwinger_weyl_algebra} represent the values of the electric field, one can see that \eqref{eq:gauss_law_elec_eigvals} can be interpreted as a discretized version of the Gauss law $\nabla \cdot \vec{E} = 0$ in two dimensions, for a pure gauge theory.
 
-Let us consider the Toric Code.
-One of its main features is the presence of topologically protected degenerate ground states \cite{kitaev2003fault}.
-In order to illustrate this, besides $\Wilson_1$ and $\Wilson_2$, defined in \eqref{eq:nonlocal_op_ZN}, another type of non-local operators have to be introduced.
-They are defined on \emph{cuts} of the lattice $\lattice$, i.e.~paths on the dual lattice $\tilde{\lattice}$.
-Consider \emph{non-contractible} cuts $\tilde{\mathcal{C}}_1$ and $\tilde{\mathcal{C}}_2$ along the directions $\hat{1}$ and $\hat{2}$, respectively.
-On this cuts, the ('t Hooft string) operators $\tHooft_1$ and $\tHooft_2$ are constructed as
-
-in a similar fashion to \eqref{eq:nonlocal_op_ZN}.
-This is shown in red in Fig.~\ref{fig:nonlocal_operators}.
-The operators $\Wilson_i$ and $\tHooft_i$ ($i=1,2$) commutes with all the operators $\PlaqOp$ and $G_x$ in the Toric Code Hamiltonian $H_{\text{TC}}$ of
-% TODO aggiustare ref
-%\eqref{eq:hamiltoniana_toric_code},
-but do not commute with each other.
-In fact, we have $\Wilson_i \tHooft_j = - \tHooft_j \Wilson_i$ if $i \neq j$.
-This means that $H_{\text{TC}}$ can be block-diagonalized with respect to the eigenvalues of $\tHooft_i$ (or $\Wilson_i$), while $\Wilson_j$ (or $\tHooft_j$) connects one block to the other.
-Furthermore, since in the case of the  $\Z_2$ symmetry,
-$\tHooft_i$ (or $\Wilson_i$) has only two eigenvalues (equal to $\pm 1$), there are a total of $2 \times 2 = 4$ degenerates ground states, which are topologically protected, thanks to the fact
-that $\Wilson_j$ (or $\tHooft_j$) cannot be expressed in terms of the local operators $\PlaqOp$ and $G_x$.
-Notice that, as it can be easily seen, in the Toric Code the role of $\Wilson_i$ and $\tHooft_i$ can be interchanged.
-
-Let us now turn to $\Z_N$ LGT models.
-The operators $\Wilson_i$ no longer commute with the Hamiltonian \eqref{eq:hamiltonian_base} which now contains an electric field term.
-Thus, $\lambda \neq 0$, we have no degenerate ground states.
-But we can still use the $\tHooft_i$ operators to decompose the Hilbert space $\Hphys$, since they still commute with all the \emph{local operators} $\PlaqOp$ and $V_{\link}$ (thus also with $H_{\Z_N}$).
-Now one can see that the operator $\tHooft_i$ ($i=1,2$) of \eqref{eq:nonlocal_op_ZN} has $N$ eigenvalues $\omega^n$, with $n=1, \dots, N-1$.
-Hence, one can decompose $\Hphys$ as sum of superselection sectors
+% Let us consider the Toric Code.
+% One of its main features is the presence of topologically protected degenerate ground states \cite{kitaev2003fault}.
+Consider now the \emph{physical Hilbert space} for a $\Z_N$ theory:
 \begin{equation}
-    \Hphys = \bigoplus_{n, m=0}^{N-1} \Hphys^{(n, m)},
+    \Hphys = \{ \ket{\phi_\phys} : G_x \ket{\phi_\phys} = \ket{\phi_\phys} \quad \forall \, x \in \lattice \}.
     \label{eq:decomposizione_Hphys}
 \end{equation}
-where for each $\ket{\phi} \in \Hphys^{(n, m)}$ we have:
+This space can be decomposed into super-selection sectors, like it has been done for the $\Z_2$ theory in Sec.~\ref{sub:super_selection_sectors}.
+In fact, it can be generalized in a straightforward way, using the string operators in \eqref{eq:nonlocal_op_ZN} (showed in Fig.~\ref{fig:nonlocal_operators}).
+The physical Hilbert space $\Hphys$ decomposes as
 \begin{equation}
-    \tHooft_1 \ket{\phi} = \omega^{m}\ket{\phi}, \quad
-    \tHooft_2 \ket{\phi} = \omega^{n}\ket{\phi}.
+    \Hphys = \bigoplus_{n,m=0}^{N-1} \Hphys^{(n,m)},
 \end{equation}
-Let us consider now the role of the Wilson loops $\Wilson_i$.
-One can easily see that:
+where each sector $(n,m)$ satisfy
 \begin{equation}
-    \Wilson_2 \tHooft_1 = \omega \tHooft_1 \Wilson_2, \qquad
-    \Wilson_1 \tHooft_2 = \omega \tHooft_2 \Wilson_1.
-    \label{eq:algebra_op_nonlocali}
+    S_1 \ket{\phi} = \omega^{m} \ket{\phi}
+    \qand
+    S_2 \ket{\phi} = \omega^{n} \ket{\phi}
 \end{equation}
-It follows that $\Wilson_{1,2}$ acts a shift operators for the eigenspaces of $\tHooft_{2,1}$:
+for $\ket{\phi} \in \Hphys^{(n,m)}$.
+This is possible because the 't Hooft strings $\tHooft$ commutes with all the terms of the Hamiltonian.
+
+On the other hand, the Wilson loops $\Wilson_i$ do not commute with all the Hamiltonian \eqref{eq:hamiltonian_base}, in particular with the electric operators $V_{\link}$, but are still gauge-invariant.
+Nonetheless, we are interested in the commutation relation between the Wilson loops $\Wilson_i$ and 't Hoof string $\tHooft_i$:
 \begin{equation}
-    \Wilson_1 : \Hphys^{(n, m)} \to \Hphys^{(n + 1, m)}, \quad
-    \Wilson_2 : \Hphys^{(n, m)} \to \Hphys^{(n, m + 1)},
+    W_1 S_2 = \omega S_2 W_1
+    \qand
+    W_2 S_1 = \omega S_1 W_2.
+    \label{eq:relation_W_S_ZN}
+\end{equation}
+It is a direct generalization of the relations \eqref{eq:anticommutation_W_S_toric} of the Toric Code, where the phase $-1$ is substituted with a characteristic phase $\omega$.
+Given \eqref{eq:relation_W_S_ZN}, it is easy to see that the Wilson loops have the ability to change the super-selection sectors:
+\begin{equation}
+    W_1 : \Hphys^{(n,m)} \to \Hphys^{(n+1,m)}
+    \qand
+    W_2 : \Hphys^{(n,m)} \to \Hphys^{(n,m+1)},
     \label{eq:azione_wilson_loop}
 \end{equation}
-where the integers $n + 1$ and $m + 1$ have to be taken $\mathrm{mod}\; N$.
+where the addition is taken modulus $N$.
+
+% In order to illustrate this, besides $\Wilson_1$ and $\Wilson_2$, defined in \eqref{eq:nonlocal_op_ZN}, another type of non-local operators have to be introduced.
+% They are defined on \emph{cuts} of the lattice $\lattice$, i.e.~paths on the dual lattice $\tilde{\lattice}$.
+% Consider \emph{non-contractible} cuts $\tilde{\mathcal{C}}_1$ and $\tilde{\mathcal{C}}_2$ along the directions $\hat{1}$ and $\hat{2}$, respectively.
+% On this cuts, the ('t Hooft string) operators $\tHooft_1$ and $\tHooft_2$ are constructed as
+
+% in a similar fashion to \eqref{eq:nonlocal_op_ZN}.
+% This is shown in red in Fig.~\ref{fig:nonlocal_operators}.
+% The operators $\Wilson_i$ and $\tHooft_i$ ($i=1,2$) commutes with all the operators $\PlaqOp$ and $G_x$ in the Toric Code Hamiltonian $H_{\text{TC}}$ of
+% TODO aggiustare ref
+%\eqref{eq:hamiltoniana_toric_code},
+% but do not commute with each other.
+% In fact, we have $\Wilson_i \tHooft_j = - \tHooft_j \Wilson_i$ if $i \neq j$.
+% This means that $H_{\text{TC}}$ can be block-diagonalized with respect to the eigenvalues of $\tHooft_i$ (or $\Wilson_i$), while $\Wilson_j$ (or $\tHooft_j$) connects one block to the other.
+% Furthermore, since in the case of the  $\Z_2$ symmetry,
+% $\tHooft_i$ (or $\Wilson_i$) has only two eigenvalues (equal to $\pm 1$), there are a total of $2 \times 2 = 4$ degenerates ground states, which are topologically protected, thanks to the fact
+% that $\Wilson_j$ (or $\tHooft_j$) cannot be expressed in terms of the local operators $\PlaqOp$ and $G_x$.
+% Notice that, as it can be easily seen, in the Toric Code the role of $\Wilson_i$ and $\tHooft_i$ can be interchanged.
+
+% Let us now turn to $\Z_N$ LGT models.
+% The operators $\Wilson_i$ no longer commute with the Hamiltonian \eqref{eq:hamiltonian_base} which now contains an electric field term.
+% Thus, $\lambda \neq 0$, we have no degenerate ground states.
+% But we can still use the $\tHooft_i$ operators to decompose the Hilbert space $\Hphys$, since they still commute with all the \emph{local operators} $\PlaqOp$ and $V_{\link}$ (thus also with $H_{\Z_N}$).
+% Now one can see that the operator $\tHooft_i$ ($i=1,2$) of \eqref{eq:nonlocal_op_ZN} has $N$ eigenvalues $\omega^n$, with $n=1, \dots, N-1$.
+% Hence, one can decompose $\Hphys$ as sum of super-selection sectors
+% \begin{equation}
+%     \Hphys = \bigoplus_{n, m=0}^{N-1} \Hphys^{(n, m)},
+%     \label{eq:decomposizione_Hphys}
+% \end{equation}
+% where for each $\ket{\phi} \in \Hphys^{(n, m)}$ we have:
+% \begin{equation}
+%     \tHooft_1 \ket{\phi} = \omega^{m}\ket{\phi}, \quad
+%     \tHooft_2 \ket{\phi} = \omega^{n}\ket{\phi}.
+% \end{equation}
+% Let us consider now the role of the Wilson loops $\Wilson_i$.
+% One can easily see that:
+% \begin{equation}
+%     \Wilson_2 \tHooft_1 = \omega \tHooft_1 \Wilson_2, \qquad
+%     \Wilson_1 \tHooft_2 = \omega \tHooft_2 \Wilson_1.
+% \end{equation}
+% It follows that $\Wilson_{1,2}$ acts a shift operators for the eigenspaces of $\tHooft_{2,1}$:
+% \begin{equation}
+%     \Wilson_1 : \Hphys^{(n, m)} \to \Hphys^{(n + 1, m)}, \quad
+%     \Wilson_2 : \Hphys^{(n, m)} \to \Hphys^{(n, m + 1)},
+% \end{equation}
+% where the integers $n + 1$ and $m + 1$ have to be taken $\mathrm{mod}\; N$.
 
 From a physical point of view, the Wilson loops operators $\Wilson_1$ and $\Wilson_2$ create non-contractible electric loops around the lattice, while  the 't Hooft strings $\tHooft_2$ and $\tHooft_1$ detect the presence and the strength of these electric loops.
+Exactly like in the case of the $\Z_2$ LGT, but the the difference that now the non-contractible electric strings can have different ``strengths'', given by the different eigenvalues of $\tHooft_i$.
 Therefore, it is clear that the Hilbert subspace $\Hphys^{(n, m)}$ is the subspace of all the states that contains an electric loop of strength $\omega^n$ and $\omega^{m}$ along the $\hat{1}$ and $\hat{2}$ direction, respectively.
+
 Furthermore, the evolution of a state in $\Hphys^{(n,m)}$ with the Hamiltonian in \eqref{eq:hamiltonian_base} is confined in $\Hphys^{(n,m)}$.
+This is because none of the local terms in the Hamiltonian can change the super-selection sector, only the non-local Wilson loops.
+In this chapter we will see how this fact can have major consequences when considering $\Z_N$ models on particular lattice geometries, in particular on the \emph{ladder}.
