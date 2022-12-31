@@ -271,11 +271,6 @@
 \usepackage{bookmark}
 \usepackage{dirtytalk}
 
-% Title and author
-\title{Finite Group Lattice Gauge Theories for Quantum Simulation}
-\author{Sunny Pradhan}
-\date{}
-
 \usepackage{xspace}
 \newcommand{\dof}{d.o.f.\xspace}
 
@@ -297,3 +292,20 @@
   \iffieldundef{doi}{#1}{\href{http://dx.doi.org/\thefield{doi}}{#1}}}
 \DeclareFieldFormat{title}{\usebibmacro{string+doi}{\mkbibemph{#1}}}
 \DeclareFieldFormat[article]{title}{\usebibmacro{string+doi}{\mkbibquote{#1}}}
+
+
+%----------------------------------------
+% Macros for title page
+%----------------------------------------
+% Variables
+\newcommand{\thephdcoordinator}{}
+\newcommand{\thesupervisor}{}
+\newcommand{\thecosupervisor}{}
+\newcommand{\ilsettoreconcorsuale}{}
+\newcommand{\ilsettoredisciplinare}{}
+
+\newcommand{\phdcoordinator}[1]{\renewcommand{\thephdcoordinator}{#1}}
+\newcommand{\supervisor}[1]{\renewcommand{\thesupervisor}{#1}}
+\newcommand{\cosupervisor}[1]{\renewcommand{\thecosupervisor}{#1}}
+\newcommand{\settoreconcorsuale}[1]{\renewcommand{\ilsettoreconcorsuale}{#1}}
+\newcommand{\settoredisciplinare}[1]{\renewcommand{\ilsettoredisciplinare}{#1}}
