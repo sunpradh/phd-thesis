@@ -129,76 +129,19 @@
 \usepackage{bm}
 \usepackage{bbm}
 \usepackage{slashed}
+\usepackage{amsthm}
+
 
 % Show equation labels
 \usepackage[]{showlabels}
 \renewcommand{\showlabelfont}{\scriptsize\sffamily\color{gray}}
 
 % Math macros
+\input{assets/math_macros.tex}
 
-\newcommand{\R}{\mathbb{R}} % Real field
-\newcommand{\Z}{\mathbb{Z}} % integers
-\newcommand{\C}{\mathbb{C}} % Complex field
-\newcommand{\onehalf}{$\frac{1}{2}$} % 1/2
-\newcommand{\identity}{\mathbbm{1}} % identity operator
-% labels for symbols
-\newcommand{\phys}{\text{phys}} % 'physical' label
-\newcommand{\gi}{\text{gi}} % gauge-invariant label
-\newcommand{\ising}{\text{Ising}}
-%
-\newcommand{\hc}{\text{h.c.}} % hermitian conjugate text
-\newcommand{\W}{W_{\square}} % single plaquette Wilson loop
-\newcommand{\action}{\mathcal{S}} % action
-\newcommand{\HilbertSpace}{\mathcal{H}} % Hilbert space
-\newcommand{\Hphys}{\HilbertSpace_{\phys}} % physical Hilbert space
-% Groups and algebra
-\newcommand{\U}{\mathrm{U}} % unitary group
-\newcommand{\SU}{\text{SU}} % special unitary group
-\newcommand{\su}{\mathfrak{su}} % special unitary algebra
-\newcommand{\g}{\mathfrak{g}} % Lie algebra
-\newcommand{\algebra}{\mathcal{A}} % operator algebra
-\newcommand{\generator}{\hat{\ell}}
-\newcommand{\transport}{\hat{u}}
-% Hamiltonians
-\newcommand{\HamilKS}{H_{\text{KS}}} % Kogut-Susskind Hamiltonian
-\newcommand{\HIsing}{H^{\ising}} % Ising Hamiltonian
-\newcommand{\Hclock}{H^{\text{clock}}} % Clock Hamiltonian
-\newcommand{\Hladder}{H^{\text{lad}}} % Clock Hamiltonian
-% shorthand for the lattice and its objects
-\newcommand{\lattice}{\mathbb{L}} % lattice
-\newcommand{\duallattice}{\mathbb{L}^{\ast}} % lattice
-\newcommand{\link}{\ell} % link
-\newcommand{\plaquette}{\square}
-% Some operators on the lattice
-\newcommand{\PlaqOp}{U_{\plaquette}}
-\newcommand{\Wilson}{\overline{W}}
-\newcommand{\tHooft}{\overline{S}}
-% Ladder links
-\newcommand{\toplink}{\link^\uparrow}
-\newcommand{\botlink}{\link^\downarrow}
-\newcommand{\runglink}{\link^0}
-% Operators on the ladder
-\newcommand{\Uup}{U^{\uparrow}}
-\newcommand{\Udown}{U^{\downarrow}}
-\newcommand{\Urung}{U^0}
-\newcommand{\Vup}{V^{\uparrow}}
-\newcommand{\Vdown}{V^{\downarrow}}
-\newcommand{\Vrung}{V^0}
-% Gauss operators
-\newcommand{\GaussUp}{G^{\uparrow}}
-\newcommand{\GaussDown}{G^{\downarrow}}
-% shorthand for the coefficients of the ladder duality map
-\newcommand{\coeffup}{c^{\uparrow}}
-\newcommand{\coeffdown}{c^{\downarrow}}
-
-\newcommand{\Or}{\mathrm{O}}
-
-% redefine some math macro
-% for consistency with the mlmodern font
-\renewcommand{\dd}{\text{d}}
-\renewcommand{\tr}{\text{tr}}
-\renewcommand{\exp}{\text{exp}}
-\renewcommand{\laplacian}{\Delta}
+% Theorems environment
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
 
 
 %----------------------------------------
@@ -276,6 +219,8 @@
 \usepackage[colorlinks, linkcolor=blue, urlcolor=Blue]{hyperref}
 \usepackage{bookmark}
 \usepackage{dirtytalk}
+\usepackage{enumitem}
+\usepackage{booktabs}
 
 \usepackage{xspace}
 \newcommand{\dof}{d.o.f.\xspace}

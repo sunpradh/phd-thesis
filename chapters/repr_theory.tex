@@ -2,15 +2,248 @@
 % APPENDIX: Some results in representation theory
 %----------------------------------------
 \chapter{Some results in representation theory}
-\label{chap:some_results_in_representation_theory}
+\label{app:some_results_in_representation_theory}
+
+In this appendix we sum up some of the basic results of representation theory of finite and compact Lie groups.
+All the representation theory here presented is taken over the complex field $\C$.
 
 \section{Basic results}
 \label{sec:basic_results}
 
+A finite group only has finitely many representations up to equivalence, and they are all unitary:
+
+\begin{theorem}
+    Let $G$ be a finite group and $\Sigma$ the set of equivalence classes of irreducible representations (irreps) of $G$.
+    Then, $\Sigma$ is finite, and the representative of each class can be chosen to be unitary.
+\end{theorem}
+
+We can then state the following:
+
+\begin{theorem}[Burnside]
+    Let $G$ be a finite group.
+    Then:
+    \begin{enumerate}
+        \item If $\dim(j) $ is the dimension of the $j$-th inequivalent irreps of $G$, and there are $M$ such irreps, then
+            \begin{equation*}
+                \sum_{j = 1}^{M} \dim(j)^2 = \abs{G},
+            \end{equation*}
+        where $\abs{G}$ is the order of the group.
+
+        \item The number of inequivalent irreducible representations of $G$ is equal to the number of conjugacy classes of $G$.
+    \end{enumerate}
+\end{theorem}
+
+An immediate consequence follows:
+
+\begin{corollary}
+    If $G$ is a finite Abelian group, then it has precisely $\abs{G}$  inequivalent irreps.
+\end{corollary}
+
+
+Similar results apply to compact groups.
+First of all,
+
+\begin{theorem}
+    The irreps of a compact Lie group are finite-dimensional.
+\end{theorem}
+
+Moreover,
+
+\begin{theorem}
+    Let $G$ be a compact Lie group and $\Sigma$ the set of equivalence classes of irreducible representations of $G$.
+    Then, $\Sigma$ is countable, and the representative of each class can be chosen to be unitary.
+\end{theorem}
+
+Given the irreps $\{\pi_j\}$ of a group (compact Lie or finite), these satisfy the so-called \emph{orthogonality theorem}.
+The statement for compact Lie groups is the following:
+
+\begin{theorem}[Orthogonality theorem for compact Lie groups]
+    Let $\{\pi_j\}$ be unitary irreps of $G$.
+    Then
+    \begin{equation}
+        \int \dd g [\pi_j(g)]_{nm}^{\ast} [\pi_{j^{\prime}}(g)]_{n^{\prime} m^{\prime}}
+        = \frac{\text{Vol}(G)}{\dim(j)} \delta_{j j^{\prime} } \delta_{n n^{\prime}} \delta_{m m^{\prime}},
+    \end{equation}
+    where the volume of the group is the volume corresponding to the chosen Haar measure.
+\end{theorem}
+
+While the statement for finite groups needs some little adjustments:
+
+\begin{theorem}[Orthogonality theorem for finite groups]
+    Let $\{\pi_j\}$ be unitary irreps of $G$.
+    Then
+    \begin{equation}
+        \sum_{g \in G} [\pi_j(g)]_{nm}^{\ast} [\pi_{j^{\prime}}(g)]_{n^{\prime} m^{\prime}}
+        = \frac{\abs{G}}{\dim(j)} d_{j j^{\prime}} \delta_{n n^{\prime}} \delta_{m m^{\prime}}
+    \end{equation}
+\end{theorem}
+
+A useful corollary is that the sum of all matrices of a non-trivial irrep $j$ is zero:
+\begin{equation}
+    \sum_{g \in G} \pi_j(g) = 0.
+\end{equation}
+This follows by taking $j^{\prime}$ equal to the trivial representation, whose matrice elements are all equal to the identity.
+Then if $j$ is non-trivial, the right-hand side of the orthogonality theorem is always zero.
+Taking $m^{\prime} = n^{\prime}$ on the left-hand side gives the claim
+
+
 \section{Character theory}
 \label{sec:character_theory}
+
+In this section, we will only be concerned with finite groups.
+The irreps of a finite group $G$ are the function $\chi : G \to \C$ defined as the traces of irreps of $G$:
+\begin{equation}
+    \chi_j(g) = \tr \pi_j (g).
+\end{equation}
+There are as many irreducible charactes as there airreducible representations.
+We will use the the following result:
+
+\begin{theorem}
+    The characters $\{\chi_j\} $ of a group $G$ form a basis for the space of class functions on $G$.
+\end{theorem}
+
+A class function $f$ satisfies
+\begin{equation}
+    f(a x a^{-1}) = f(x)
+    \qquad \text{for all $x, a \in G$},
+\end{equation}
+which means that it is constant on conjugacy classes.
+We will also needthe following
+
+\begin{theorem}[Orthogonality theorem for characters]
+    The irreducible characters of a finite group are orthonormal, in the sense that
+    \begin{equation}
+        \frac{1}{\abs{G}} \sum_{g \ in G} \chi_i^{\ast}(g) \chi_j(g) = \delta_{ij}.
+    \end{equation}
+\end{theorem}
+
+The characters also satisfy a different kind of orthogonality relation, where one sums over characters rather than over group elements:
+
+\begin{theorem}
+    The irreducible characters $\{\chi_i\}$ of a finite group satisfy
+    \begin{equation}
+        \sum_{i} \chi^{\ast}(g) \chi_i(h) =
+        \begin{cases}
+            \abs{G} / \abs{C(g)} & \text{$g$ and $h$ are conjugate} \\
+            0 & otherwise
+        \end{cases}
+    \end{equation}
+    where $i$ indices the irreducible characters and $\abs{C(g)}$ is the sice of the conjugacy class of $g$.
+\end{theorem}
+
+Finally, we can define the \emph{convolution} of two class functions $\phi$ and $\psi$:
+\begin{equation}
+    (\phi \ast \psi)(g) = \sum_{h \in G} \phi(g h^{-1}) \psi(h).
+\end{equation}
+The convolution is symmetric, $\phi \ast \psi = \psi \ast \phi$.
+We will use the fact that the convolution of two characters is again a character,
+\begin{equation}
+    \chi_i \ast \chi_j = \frac{\abs{G}}{\dim(j)}  \delta_{ij} \chi_j.
+\end{equation}
+This can be showed with a direct computation.
+
 
 \section{Peter-Weyl theorem}
 \label{sec:peter_weyl_theorem}
 
+The Peter-Weyl theorem is instrumental in the formulation of the Hamiltonian in \todo{inserire sec ref}.
+See \todo{cit. T. Tao e A. W. Knapp}\citneeded for the Lie group case and \todo{cit. J. P. Serre}\citneeded for the finite group case.
+The statement for compact Lie groups is:
 
+\begin{theorem}[Peter-Weyl for compact Lie groups]
+    Let $G$ be a compact Lie group.
+    Then
+    \begin{enumerate}[label=(\roman*)]
+        \item  The space of square-integrable functions on $G$ can be decomposed as a sum of representation spaces.
+            More precisely, $V_{j}$ is the vector space for the irreps $\pi_j$, then
+            \begin{equation}
+                L^2(G) = \bigoplus_{j \in \Sigma} V_j^{\ast} \otimes V_j.
+            \end{equation}
+
+        \item The matrix elements of all the inequivalent irreps of $G$ form an orthogonal basis for $L^2(G)$.
+
+        \item If $\{\ket{g}\}$ is the orthonormal group element basis for $L^2(G) $, then the orthonormal matrix element basis $\ket{jmn}$ satisfies
+            \begin{equation}
+                \braket{g}{jmn} =
+                \sqrt{\frac{\dim(j)}{\mathrm{Vol}(G)}} [\pi_j(g)]_{mn}.
+            \end{equation}
+    \end{enumerate}
+\end{theorem}
+
+Note that there are multiple ways of writing the Peter-Weyl decomposition, as
+\begin{equation}
+    V^{\ast} \otimes V \simeq \mathrm{End}V \simeq V^{\oplus \dim V}
+\end{equation}
+
+As we will see later, these correspond to different ways of seeing $L^2(G)$ as a representation space.
+
+Note that part \emph{(i)} can be understood as a generalisation of the Fourier decomposition.
+In fact, since $\U(1)$ is Abelian, all of its irreps are one-dimensional and are given by matrix elements of the form $\{e^{i n x}\}$ for $x \in S^{1} = [0, 2 \pi)$.
+Then the Peter-Weyl theorem states that any square-integrable function on $U(1) \simeq S^1$ can be written as a Fourier series.
+
+Recall that matrix elements are defined as follows.
+Consider the examples of $\SU(2) $ \todo{citare Milstead Osborne}\citneeded, but the generalisation is easy.
+As we know, the irreps of $\SU(2) $ are labeled by a half integer $j \in \frac{1}{2} \Z^+$.
+Then in this case
+\begin{equation}
+    L^2 (G) = \bigoplus_{j \ in \frac{1}{2} \Z^+} V_j^{\ast} \otimes V_j,
+\end{equation}
+where $V_j = \C^{2j + 1}$
+We have irreps $\pi_j$ for each $j$ and the matrix elements are literally the elements of the matrices representing a certain $U \in \SU(2)$ as a function of $U$.
+More precisely, they are functions
+\begin{equation}
+    [\pi_j( \cdot )]_{mn} = \SU(2) \to \C, \qquad
+    g \mapsto [\pi_j(g)]_{mn},
+\end{equation}
+where $-j \leq m,n \leq j$ in integer steps.
+In the general case, it is more natural to take $1 \leq m,n \leq \dim(j) $.
+
+In part \emph{(iii)} $\mathrm{Vol}(G) $ is the volume of the group given by the chosen Haar measure.
+The resul of part \emph{(iii)} can be readily derived as a consequence of \emph{(ii)} and the orthogonality theorems for representations.
+The non-trivial statement is that the matrix elements of representations space $L^2(G)$, while the orthogonality is an algebraic statement.
+In fact, by \emph{(ii)} the matrix elements $[\pi_j]_{mn}$ for a basis for the space of wave-functions $L^2(G)$.
+The corresponding states are then given by
+\begin{equation}
+    \ket{jmn} = C_{jmn} \int \dd U [\pi_j(U)]_{mn} \ket{U},
+\end{equation}
+where the constant $C_{jmn}$ can be chosen to ensure that the $\ket{jmn}$ are normalized.
+Then we can compute their inner product,
+\begin{equation*}
+    \braket{j^{\prime} m^{\prime} n^{\prime}}{jmn} =
+    C_{j^{\prime} m^{\prime} n^{\prime}}^{\ast} C_{jmn}
+    \frac{\mathrm{Vol}(G)}{\dim(j)}
+    \delta_{j j^{\prime}} \delta_{m m^{\prime}} \delta_{n n^{\prime}}.
+\end{equation*}
+
+It follows that the representation basis $\{\ket{jmn}\}$ is orthonormal with an appropriate choice of constants,
+\begin{equation*}
+    C_{jmn} = \sqrt{\frac{\dim(j)}{\mathrm{Vol}(G)} }
+\end{equation*}
+for compact Lie groups.
+Everything we have said here also holds for finite groups, with the replacement $\mathrm{Vol}(G) \to \abs{G} $.
+
+Crucially, the Peter-Weyl theorem also holds for finite groups (\todo{citare J.P. Serre}\citneeded):
+
+\begin{theorem}[Peter-Weyl for finite groups]
+    Let $G$ be a finite groups.
+    Then
+    \begin{enumerate}[label=(\roman*)]
+        \item The group algebra on $G$ can be decomposed as a sum of representation spaces.
+            More precisely, if $V_j$ is the vector space for the $j$-th irrep $\pi_j$, then
+            \begin{equation}
+                \C[G] = \bigoplus_{j \in \Sigma} V_{j}^{\ast} \otimes V_{j}.
+            \end{equation}
+
+        \item The matrix elements of all the inequivalent irreps of $G$ form an orthogonal basis for $\C[G] $.
+
+        \item If $\{\ket{g}\}$ is the orthonormal group element basis for $\C[G] $, then the orthonormal matrix element basis $\{\ket{jmn}\}$ can be chosen to satisfy
+            \begin{equation}
+                \braket{g}{jmn} =
+                \sqrt{\frac{\dim(j)}{\abs{G}} } [\pi_j(g)]_{mn}.
+            \end{equation}
+    \end{enumerate}
+\end{theorem}
+
+The result is essentially the same as in the compact case.
+Note that in the finite group case there is no issue of convergence, and as such we do not need to specify further information on the group algebra.
+The duality relation can be shown to hold in the same manner as for compact Lie groups.
