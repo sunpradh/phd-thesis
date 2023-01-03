@@ -141,8 +141,11 @@
 \newcommand{\C}{\mathbb{C}} % Complex field
 \newcommand{\onehalf}{$\frac{1}{2}$} % 1/2
 \newcommand{\identity}{\mathbbm{1}} % identity operator
+% labels for symbols
 \newcommand{\phys}{\text{phys}} % 'physical' label
 \newcommand{\gi}{\text{gi}} % gauge-invariant label
+\newcommand{\ising}{\text{Ising}}
+%
 \newcommand{\hc}{\text{h.c.}} % hermitian conjugate text
 \newcommand{\W}{W_{\square}} % single plaquette Wilson loop
 \newcommand{\action}{\mathcal{S}} % action
@@ -158,7 +161,7 @@
 \newcommand{\transport}{\hat{u}}
 % Hamiltonians
 \newcommand{\HamilKS}{H_{\text{KS}}} % Kogut-Susskind Hamiltonian
-\newcommand{\HIsing}{H^{\text{Ising}}} % Ising Hamiltonian
+\newcommand{\HIsing}{H^{\ising}} % Ising Hamiltonian
 \newcommand{\Hclock}{H^{\text{clock}}} % Clock Hamiltonian
 \newcommand{\Hladder}{H^{\text{lad}}} % Clock Hamiltonian
 % shorthand for the lattice and its objects
@@ -246,10 +249,13 @@
 
 \newcommand{\UpArrow}[2]{\draw[up spin] (#1,#2) ++(0,-0.7) -- ++(0,1.4);}
 \newcommand{\DownArrow}[2]{\draw[down spin] (#1,#2) ++(0,-0.7) -- ++(0,1.4);}
+\newcommand{\Spin}[3]{%
+    \ifthenelse{\equal{#1}{up}}{\UpArrow{#2}{#3}}{}%
+    \ifthenelse{\equal{#1}{down}}{\DownArrow{#2}{#3}}{}
+}
 \newcommand{\DrawSites}[2]{
     \foreach \y in {#2} \foreach \x in {#1} \draw (\x,\y) node [site] {};
-    }
-
+}
 
 % TikZ caching
 \usetikzlibrary{external}
@@ -295,7 +301,7 @@
 
 
 %----------------------------------------
-% Macros for title page
+% Macros for front page
 %----------------------------------------
 % Variables
 \newcommand{\thephdcoordinator}{}

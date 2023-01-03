@@ -1,0 +1,17 @@
+\begin{tikzpicture}[scale=0.6]
+    \draw[lattice] (-1,0) grid (9,0);
+    \draw[lattice, xshift=-1cm] (0,-2) grid (10,-2);
+
+    % spin operators
+    \draw[X] (2, 0) -- (4, 0) node [midway, black, above] {$\sigma^z_{i} \sigma^z_{i+1}$};
+    \foreach \x in {0,2,...,8} \draw (\x,0) node [site] {};
+    \draw (6,0) node [Z site] {} node [black, above] {$\sigma^x_j$};
+
+    % disorder operators
+    \draw[X] (5, -2) -- (7, -2) node [midway, black, below] {$\sigma^z_{j} \sigma^z_{j+1}$};
+    \foreach \x in {-1,1,...,9} \draw (\x,-2) node [site] {};
+    \draw (3, -2) node [Z site] {} node [black, below] {$\sigma^x_i$};
+
+    \draw[freccia] (3,0) -- (3,-2) node [pos=0.5, right] {$\Phi^\ising$};
+    \draw[freccia] (6,0) -- (6,-2) node [pos=0.5, right] {$\Phi^\ising$};
+\end{tikzpicture}

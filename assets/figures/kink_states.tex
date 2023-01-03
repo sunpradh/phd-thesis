@@ -1,0 +1,37 @@
+\begin{tikzpicture}[scale=0.5]
+    \draw[ladder] (-0.5, 0) -- (6.5, 0);
+    \DrawSites{0,1,...,6}{0,0}
+    \foreach \x in {0,1,...,6} \Spin{up}{\x}{0};
+    \node[right] at (7, 0) { $\ket{\Omega_{\uparrow}}$};
+    \node[left] at (-1, 0) {(a)};
+
+    \begin{scope}[yshift=-2.5cm]
+        \draw[ladder] (-0.5, 0) -- (6.5, 0);
+        \DrawSites{0,1,...,6}{0,0}
+        \foreach \x in {0,1,...,6} \Spin{down}{\x}{0};
+        \node[right] at (7, 0) { $\ket{\Omega_{\downarrow}}$};
+        \node[left] at (-1, 0) {(b)};
+    \end{scope}
+
+    \begin{scope}[yshift=-5cm]
+        \draw[ladder] (-0.5, 0) -- (6.5, 0);
+        \DrawSites{0,1,...,6}{0,0}
+        \foreach \x in {0,1,2,3} \Spin{down}{\x}{0};
+        \foreach \x in {4,5,6} \Spin{up}{\x}{0};
+        \draw[very thick, dashed] (3.5, -0.9) -- +(0, 1.8);
+        \node[right] at (7, 0) { $\mu^z_i \ket{\Omega_{\uparrow}}$ };
+        \node[left] at (-1, 0) {(c)};
+    \end{scope}
+
+    \begin{scope}[yshift=-7.5cm]
+        \draw[ladder] (-0.5, 0) -- (6.5, 0);
+        \DrawSites{0,1,...,6}{0,0}
+        \foreach \x in {0,1,2} \Spin{up}{\x}{0};
+        \Spin{down}{3}{0}
+        \foreach \x in {4,5,6} \Spin{up}{\x}{0};
+        \draw[very thick, dashed] (3.5, -0.9) -- +(0, 1.8);
+        \draw[very thick, dashed] (2.5, -0.9) -- +(0, 1.8);
+        \node[right] at (7, 0) { $\sigma^x_i \ket{\Omega_{\uparrow}}$ };
+        \node[left] at (-1, 0) {(d)};
+    \end{scope}
+\end{tikzpicture}
