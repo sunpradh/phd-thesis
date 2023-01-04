@@ -19,14 +19,15 @@ A finite group only has finitely many representations up to equivalence, and the
 
 We can then state the following:
 
-\begin{theorem}[Burnside]
+\begin{theorem}[Burnside]\label{th:burnside}
     Let $G$ be a finite group.
     Then:
     \begin{enumerate}
         \item If $\dim(j) $ is the dimension of the $j$-th inequivalent irreps of $G$, and there are $M$ such irreps, then
-            \begin{equation*}
+            \begin{equation}
                 \sum_{j = 1}^{M} \dim(j)^2 = \abs{G},
-            \end{equation*}
+                \label{eq:burnside_th_dim}
+            \end{equation}
         where $\abs{G}$ is the order of the group.
 
         \item The number of inequivalent irreducible representations of $G$ is equal to the number of conjugacy classes of $G$.

@@ -26,7 +26,8 @@ Thus, all the irreps are labeled by an integer $j = 0, \dots, N-1$ and are all o
 So we do not need to specify the matrix elements obviously.
 The characters $\chi_0, \chi_1, \dots, \chi_{N-1}$ are given by
 \begin{equation}
-    \chi_n(r^k) = e^{i 2 \pi k n / N}.
+    \chi_j(r^k) = e^{i 2 \pi k j / N}.
+    \label{eq:character_ZN}
 \end{equation}
 It is immediate to see that $\chi_n \, \chi_{n^{\prime}} = \chi_{n + n^{\prime}}$, where $n + n^{\prime}$ is taken modulo $N$.
 Because $\Z_N$ is Abelian, all its conjugacy classes are singlets, i.e.~contains only one element, hence we have $N$ conjugacy classes.
@@ -58,55 +59,6 @@ Each dihedral group $D_N$ can be regarded as a finite subgroup of the Lie group 
 Each element of $D_N$ can be written uniquely, either in the form $r^k$ (with $k=0, \dots, N-1$) if it is just a rotation or in the form $r^k s$ (with $k = 0, \dots, N-1$).
 Notice that $srs = r^{-1}$ implies $s r^k s = r^{-k}$, hence $(r^k s)^2 = 1$.
 
-
-\paragraph*{Irreps for $N$ even}
-
-First, there are 4 irreps of degree $1$, obtained by letting $\pm 1$ correspond to $r$ and $s$ in all possible ways.
-Their characters $\chi_0, \chi_1, \chi_2$ and $\chi_3$ are given by the following table:
-
-\begin{center}
-    \begin{tabular}{ccc}
-        \toprule
-               & $r$ & $s$ \\
-        \midrule
-        $\chi_0$ & $+1$ & $+1$ \\
-        $\chi_1$ & $+1$ & $-1$ \\
-        $\chi_2$ & $-1$ & $+1$ \\
-        $\chi_3$ & $-1$ & $-1$ \\
-        \bottomrule
-    \end{tabular}
-\end{center}
-
-\todo{finire}
-
-\paragraph*{Irreps for $N$ odd}
-
-\todo{fare}
-
-
-\bigskip
-
-We describe in more detail the dihedral group $D_4$ of order $8$.
-Its elements are $D_N = \{1, r, r^2, r^3, r^4, s, r s, r^2 s, r^3 s \}$ and it has $5$ conjugacy classes, $\{e\},\{r,r^3\},\{r^2\},\{s,r^2\},\{rs,r^3s\}$.
-We also have $5$ irreducible representations, which we number them from $j=0$ (trivial representation) to $j=4$.
-All the irreps are one-dimensional except $j=4$, which is two-dimensional.
-The character table is shown in Table \ref{tab:char}.
-\begin{table}[h]
-    \centering
-    \begin{tabular}{c|c|c|c|c|c}
-     & $\{e\}$&$\{r,r^3\}$&$\{r^2\}$&$\{s,r^2s\}$&$\{rs,r^3s\}$ \\
-     \hline
-        $\chi_0 $ & 1 & 1  & 1  & 1  & 1  \\
-        $\chi_1 $ & 1 & -1 & 1  & 1  & -1 \\
-        $\chi_2 $ & 1 & 1  & 1  & -1 & -1 \\
-        $\chi_3 $ & 1 & -1 & 1  & -1 & 1  \\
-        $\chi_4 $ & 2 & 0  & -2 & 0  & 0
-    \end{tabular}
-    \caption{Character table of $D_4$}
-    \label{tab:char}
-    \vspace{-3mm}
-\end{table}
-As the $j=4$ is the only faithful representation, it is a natural choice for the magnetic Hamiltonian.
 It is useful to note that $D_N$ may be written as the semi-direct product of two cyclic groups,
 \begin{equation}
     \label{eq:semidirect product}
@@ -114,3 +66,171 @@ It is useful to note that $D_N$ may be written as the semi-direct product of two
 \end{equation}
 Here $\Z_N$ is the subgroup of rotations, and the $\Z_2$ factor gives the action of the reflection.
 Setting $\Z_2 = \{e, h\}$, the twist $\varphi$ acts as $\phi_e(g)=g$ and $\phi_h(g)=g^{-1}$.
+
+
+\paragraph*{Irreps for $N$ even}
+
+First, there are 4 irreps of degree $1$, obtained by letting $\pm 1$ correspond to $r$ and $s$ in all possible ways.
+The characters of the one-dimensional irreps will be denoted with $\psi_0, \dots, \psi_3$ and are given by the following table:
+% Their characters $\chi_0, \chi_1, \chi_2$ and $\chi_3$ are given by the following table:
+
+\begin{center}
+    \begin{tabular}{ccccc}
+        \toprule
+               & $r$ & $r^k$ & $s$ & $r^k s$ \\
+        \midrule
+        $\psi_0$ & $+1$ & $+1$     & $+1$ & $+1$         \\
+        $\psi_1$ & $+1$ & $+1$     & $-1$ & $-1$         \\
+        $\psi_2$ & $-1$ & $(-1)^k$ & $+1$ & $(-1)^k$     \\
+        $\psi_3$ & $-1$ & $(-1)^k$ & $-1$ & $(-1)^{k+1}$ \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+
+Next we consider representations of degree $2$.
+Put $\omega = e^{i 2 \pi / N}$ and let $h$ be an arbitrary integer.
+We define a representation $\rho^h$ of $D_N$ by setting:
+\begin{equation}
+    \rho^h(r) =
+    \begin{pmatrix}
+        \omega^{h} & 0 \\
+        0 & \omega^{-h}
+    \end{pmatrix}
+    \qand
+    \rho^h(s) =
+    \begin{pmatrix}
+        0 & 1 \\ 1 & 0
+    \end{pmatrix}.
+    \label{eq:irreps_2d_DN}
+\end{equation}
+A direct calculation shows that this is indeed a representation and for generic elements $r^k$ and $r^k s$ we have:
+\begin{equation}
+    \rho^h(r^k) =
+    \begin{pmatrix}
+        \omega^{hk} & 0 \\
+        0 & \omega^{-hk}
+    \end{pmatrix}
+    \qand
+    \rho^h(r^k s) =
+    \begin{pmatrix}
+        0 & \omega^{hk} \\ \omega^{-hk} & 0
+    \end{pmatrix}.
+\end{equation}
+% This representation is \emph{induced} by the representation of $\Z_N$ with character $\chi_h$.
+Moreover, $\rho^h$ and $\rho^{N-h}$ are isomorphic.
+Hence we may assume $0 \leq h \leq N/2$.
+The extreme cases $h=0$ and $h=N/2$ are uninteresting:
+The former corresponds to the one-dimensional irrep with character $\psi_0 + \psi_1$, while the latter to $\psi_2 + \psi_3$.
+On the other hand, for $0 < h < N/2$, the representation $\rho^h$ are \emph{irreducible}.
+The corresponding characters $\chi_h$ are given by:
+\begin{equation}
+    \chi_h(r^k) = \omega^{hk} + \omega^{-hk} = 2 \cos \frac{2 \pi hk}{N}
+    \qand
+    \chi_h(r^k s) = 0
+    \label{eq:chars_2d_DN}
+\end{equation}
+
+The irreducible representations of degree 1 and 2 constructed above are the \emph{only irreducible representations} of $D_N$, up to isomorphism.
+In fact, thesum of the squares of their degrees
+\begin{equation*}
+    4 \times 1 + \qty( \frac{N}{2} - 1  ) \times 4 = 2N
+\end{equation*}
+equals to the order of $D_N$ (see \eqref{eq:burnside_th_dim}).
+
+
+
+\paragraph*{Irreps for $N$ odd}
+
+In the case of odd $N$ we only have \emph{two one-dimensional irreps}, with character table
+
+\begin{center}
+    \begin{tabular}{ccc}
+        \toprule
+        & $r$ & $s$ \\
+        \midrule
+        $\psi_0$ & $+1$ & $+1$ \\
+        $\psi_1$ & $+1$ & $-1$ \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+
+We are missing the irreps $\psi_2$ and $\psi_3$ of the previous case because $(-1)^N = +1$ is true only for $N$ even.
+
+The representations $\rho^h$ of degree 2 are defined by the same formulas \eqref{eq:irreps_2d_DN} as in the case where $N$ is even.
+Those corresponding to $0 < h < N/2$ are irreducible and pairwise non-isomorphic.
+Observe that, since $N$ is odd, the condition $h < n/2$ can also be written as $h \leq (n-1)/2$.
+The formulas of their characters is the same as \eqref{eq:chars_2d_DN}.
+
+These representations are the \emph{only} ones.
+Indeed, it can be readily verified with formula \eqref{eq:burnside_th_dim} of Th.~\ref{th:burnside}.
+The sum of the squares of their degrees is equal to
+\begin{equation*}
+    2 \times 1 + \frac{N-1}{2} \times 4 = 2N,
+\end{equation*}
+which is in fact the order of $D_N$.
+
+
+\paragraph*{The case $N=4$}
+
+We describe in more detail the dihedral group $D_4$ of order $8$.
+Its elements are
+\begin{equation*}
+    D_4 = \{1,\, r,\, r^2,\, r^3,\, s,\, r s,\, r^2 s,\, r^3 s \}
+\end{equation*}
+and it has $5$ conjugacy classes:
+\begin{equation*}
+    \{e\}, \quad
+    \{r,r^3\}, \quad
+    \{r^2\}, \quad
+    \{s,r^2\}, \quad
+    \{rs,r^3s\}.
+\end{equation*}
+
+We also have $5$ irreps $\{\pi_j\}$, which we number them with $j=0, \dots, 4$.
+For $j=0, \dots,3$ we have the one-dimensional irreps, while for $j=4$ we have the only two-dimensional irrep:
+\begin{equation}
+    \pi_4(r) =
+    \begin{pmatrix}
+        i & 0 \\ 0 & -i
+    \end{pmatrix}
+    \qand
+    \pi_4(s) =
+    \begin{pmatrix}
+        0 & 1 \\ 1 & 0
+    \end{pmatrix}.
+\end{equation}
+Alternatively, we can choose another two-dimensional representation $\overline{\pi}_4$ which uses only real matrices
+\begin{equation}
+    \overline{\pi}_4(r) =
+    \begin{pmatrix}
+        0 & -1 \\ 1 & 0
+    \end{pmatrix}
+    \qand
+    \overline{\pi}_4(s) =
+    \begin{pmatrix}
+        1 & 0 \\ 0 & -1
+    \end{pmatrix}
+\end{equation}
+and isomorphic to $\pi_4$.
+% All the irreps are one-dimensional except $j=4$, which is two-dimensional.
+The character table is shown in Table \ref{tab:chars_D4}.
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{cccccc}
+        \toprule
+         &  $\{e\}$ & $\{r,r^3\}$ & $\{r^2\}$ & $\{s,r^2s\}$ & $\{rs,r^3s\}$ \\
+        \midrule
+        $\chi_0$ & $+1$ & $+1$ & $+1$  & $+1$ & $+1$ \\
+        $\chi_1$ & $+1$ & $-1$ & $+1$  & $+1$ & $-1$ \\
+        $\chi_2$ & $+1$ & $+1$ & $+1$  & $-1$ & $-1$ \\
+        $\chi_3$ & $+1$ & $-1$ & $+1$  & $-1$ & $+1$ \\
+        $\chi_4$ & $+2$ & $0$  & $-2$  & $0$  & $0$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Character table of $D_4$}
+    \label{tab:chars_D4}
+\end{table}
+
+As the $j=4$ is the only faithful representation, it is a natural choice for the magnetic Hamiltonian.
+\todo{forse ci sono un po' di notazione inconsistenti}
