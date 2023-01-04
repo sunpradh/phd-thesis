@@ -30,27 +30,21 @@ We can repeat the same set of operations for the gauge transformation operator e
 \begin{equation}
     \mathcal{G}(\{g_x\}) = \bigoplus_{\{j\} \in \{\Sigma\}} \bigotimes_{x \in \mathrm{sites}} \pqty{\bigotimes_{l_-=x} \rho_{j_l}^*(g_x)} \otimes \pqty{\bigotimes_{l_+=x} \rho_{j_l}(g_x) }\ .
 \end{equation}
-In the above decomposition, the gauge transformations now act independently for each $x$ and the Gauss' law constraint eq.~\eqref{eq:lattice gauss law} gives the physical Hilbert space
+In the above decomposition, the gauge transformations now act independently for each $x$ and the Gauss' law constraint EQ.~\eqref{eq:lattice gauss law} gives the physical Hilbert space
 \begin{equation}
     \label{eq:spin network Hilbert space}
     \mathcal{H}_{\mathrm{phys}} = \bigoplus_{\{j\} \in \{\Sigma\}} \bigotimes_{x \in \mathrm{sites}} \mathrm{Inv}\bqty{\pqty{\bigotimes_{l_-=x} V_{j_l}^*} \otimes \pqty{\bigotimes_{l_+=x} V_{j_l} }} \ .
 \end{equation}
-\begin{wrapfigure}{r}{0.4\textwidth}
-    \centering
-    \begin{tikzpicture}
-        \draw[->-=.5,] (0,0) -- (2,0) node[midway, below] {$l_1$};
-        \draw[->-=.5,] (2,0) -- (2,2) node[midway, right] {$l_2$};
-        \draw[-<-=.5,] (2,2) -- (0,2) node[midway, above] {$l_3$};;
-        \draw[-<-=.5,] (0,2) -- (0,0) node[midway, left ] {$l_4$};;
-        \draw[->-=.5,thick,dashed] (0,2) -- (0,4) node[midway, left ]     {$l_8$};
-        \draw[->-=.5,thick,dashed] (2,2) -- (2,4) node[midway, right]     {$l_7$};
-        \draw[->-=.5,thick,dashed] (2,2) -- (4,2) node[midway, above]     {$l_6$};
-        \draw[->-=.5,thick,dashed] (2,0) -- (4,0) node[midway, below]     {$l_5$};
-    \end{tikzpicture}
-    \caption{A $2\times 2$ square lattice with periodic boundary conditions, showing the labels of the links.}
-    \label{fig:periodic plaquette}
-    \vspace{-2em}
-\end{wrapfigure}
+
+
+\begin{figure}[t]
+    \FigureSideCaption[fig:periodic plaquette]{%
+        \input{assets/figures/lattice_2x2.tex}
+    }{%
+    A $2\times 2$ square lattice with periodic boundary conditions, showing the labels of the links.
+    }
+\end{figure}
+
 Given a representation $\rho$ (not necessarily irreducible) with representation space $V_\rho$, the set of invariant vectors $\mathrm{Inv}(V_\rho)$ is the set of vectors $v \in V_\rho$ such that $\rho(g) v = v$ for all $g\in G$.
 Note that this is a separate notion from that of an \say{invariant subspace}.
 A basis of \textit{spin network states} which arise from the description of eq.~\eqref{eq:spin network Hilbert space} are of the form $\ket{\{j\},A}$ where $\{j\}$ is an assignment of irreps to links and $A=(a_1, \ldots a_V)$ labels the choice of a gauge-invar
@@ -160,27 +154,26 @@ The dimension of the physical Hilbert space for some two-dimensional finite squa
 We see that its size grows quickly with the lattice size.
 We point out that even for a $2 \times 2$ periodic lattice with a small group such as $D_4$ it is not even feasible to write down all possible gauge-invariant states.
 Unless the structure happens to be very sparse, writing down the $8960$ physical basis elements in terms of the $\abs{G}^L = 8^8$ basis elements in the representation basis using $4 \mathrm{B}$ floating point numbers would require roughly $600 \mathrm{GB}$ of memory.
-\begin{table}[h]
+\begin{table}[t]
     \centering
-    \begin{tabular}{c|ccccc}
-         Lattice & BCs & $L$ & $V$ & $L-V$ &$\dim{\mathcal{H}_{\mathrm{phys}}}$\\
-         \hline
-         $2 \times 2$ & open & $4$ & $4$ & $0$ & $5$\\
-         \hline
-         $2 \times 2$ & periodic & $8$ & $4$ & $4$ & $8960$ \\
-         \hline
-         $2 \times 3$ & open & $7$ & $6$ & $1$ & $28$ \\
-         \hline
-         $2 \times 3$ & periodic & $12$ & $6$ & $6$ & $536576$ \\
-         \hline
-         $3 \times 3$ & open & $12$ & $9$ & $3$ & $1216$ \\
-         \hline
-         $3 \times 3$ & periodic & $18$ & $9$ & $9$ & $269221888$
+    \begin{tabular}{clrrcr}
+        \toprule
+        Size~~~ & BCs & $L$ & $V$ & $L-V$ &$\dim{\mathcal{H}_{\mathrm{phys}}}$\\
+        \midrule
+        \multirow{2}{3em}{$2 \times 2$}
+            & open & $4$ & $4$ & $0$ & $5$\\
+            & periodic & $8$ & $4$ & $4$ & $8960$ \\[5pt]
+        \multirow{2}{3em}{$2 \times 3$}
+            & open & $7$ & $6$ & $1$ & $28$ \\
+            & periodic & $12$ & $6$ & $6$ & $536576$ \\[5pt]
+        \multirow{2}{3em}{$3 \times 3$}
+            & open & $12$ & $9$ & $3$ & $1216$ \\
+            & periodic & $18$ & $9$ & $9$ & $269221888$ \\
+        \bottomrule
     \end{tabular}
     \caption{Dimension of the physical subspace of $D_4$ gauge theory on some small lattices in $2+1$ dimensions.
 $L$ is the number of links and $V$ is the number of vertices.}
     \label{tab:numstates}
-    \vspace{-6mm}
 \end{table}
 
 \subsection{Extension to matter fields} \label{sec:spin networks matter}

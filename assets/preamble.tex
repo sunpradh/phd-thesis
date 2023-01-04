@@ -149,69 +149,22 @@
 %----------------------------------------
 \usepackage{xcolor}
 \usepackage{graphicx}
-
-% TikZ
-\usepackage{tikz}
-\usetikzlibrary{arrows.meta, decorations.markings, patterns, fit, positioning}
-\tikzset{
-    font=\footnotesize,
-    >={stealth},
-    ->-/.style={
-        decoration={markings, mark=at position #1 with {\arrow{stealth}}},
-        postaction={decorate}
-    },
-    -<-/.style={
-        decoration={markings, mark=at position #1 with {\arrow{stealth}}},
-        postaction={decorate}
-    },
-    site/.style={circle, inner sep=0pt, minimum size=4pt, draw=Grey60, fill=white},
-    ladder/.style={Grey40, step=1, thin},
-    lattice/.style={Grey40, step=2, thin},
-    freccia/.style={-stealth, very thick, shorten >=5pt, shorten <=5pt},
-    plaq/.style={Blue80, very thick, ->-=0.6},
-    elec/.style={Red, very thick, ->-=0.6},
-    X/.style = {Blue80, ultra thick},
-    Z/.style = {Red, ultra thick},
-    U/.style = {Blue80, ultra thick, ->-=0.6},
-    V/.style = {Red, ultra thick, ->-=0.6},
-    up/.style = {Green, ultra thick},
-    up spin/.style = {-stealth, ultra thick, Green},
-    down spin/.style = {stealth-, ultra thick},
-    flux/.style = {fill=Green, fill opacity=0.1},
-    X site/.style = {circle, inner sep=0 pt, minimum size=5pt, draw=black, fill=Blue80},
-    Z site/.style = {circle, inner sep=0 pt, minimum size=5pt, draw=black, fill=Red},
-    box/.style={dotted, rounded corners, thick}
-}
+\usepackage{subfloat}
 
 % Custom colors
 % load IBM Carbon theme
 \usepackage{xcolor}
-\input{assets/theme.tex}
+\input{assets/carbon_theme.tex}
 \colorlet{Blue}{Blue80}
 \colorlet{Gray}{Grey70}
 
-\newcommand{\UpArrow}[2]{\draw[up spin] (#1,#2) ++(0,-0.7) -- ++(0,1.4);}
-\newcommand{\DownArrow}[2]{\draw[down spin] (#1,#2) ++(0,-0.7) -- ++(0,1.4);}
-\newcommand{\Spin}[3]{%
-    \ifthenelse{\equal{#1}{up}}{\UpArrow{#2}{#3}}{}%
-    \ifthenelse{\equal{#1}{down}}{\DownArrow{#2}{#3}}{}
-}
-\newcommand{\DrawSites}[2]{
-    \foreach \y in {#2} \foreach \x in {#1} \draw (\x,\y) node [site] {};
-}
-
-% TikZ caching
-\usetikzlibrary{external}
-\tikzset{external/system call={lualatex -shell-escape -halt-on-error -interaction=batchmode -enable-write18 -jobname "\image" "\texsource"}}
-\tikzexternalize[prefix=assets/cache/] % folder for cache
+% TikZ
+\input{assets/tikz_settings.tex}
 
 % Plots
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.16} % fixes some pgfplots cross-platform issue
 \usepgfplotslibrary{groupplots}
-
-\usepackage{wrapfig}
-
 
 %----------------------------------------
 % MISC
@@ -219,8 +172,11 @@
 \usepackage[colorlinks, linkcolor=blue, urlcolor=Blue]{hyperref}
 \usepackage{bookmark}
 \usepackage{dirtytalk}
+% Lists
 \usepackage{enumitem}
+% Tables
 \usepackage{booktabs}
+\usepackage{multirow}
 
 \usepackage{xspace}
 \newcommand{\dof}{d.o.f.\xspace}

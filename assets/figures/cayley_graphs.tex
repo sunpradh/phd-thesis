@@ -1,0 +1,79 @@
+\begin{tikzpicture}[
+    cell/.style = {shape=circle, draw=black, minimum width=0.7cm, inner sep=2pt}
+    ]
+
+    \node[cell] (g0) at (0,    0)    {$e$};
+    \node[cell] (g1) at (2,    0)    {$r$};
+    \node[cell] (g2) at (2.5,  1.65) {$r^2$};
+    \node[cell] (g3) at (1,    2.65) {$r^3$};
+    \node[cell] (g4) at (-0.5, 1.65) {$r^4$};
+
+    \path [-] (g0) edge (g1);
+    \path [-] (g1) edge (g2);
+    \path [-] (g2) edge (g3);
+    \path [-] (g3) edge (g4);
+    \path [-] (g4) edge (g0);
+
+    \begin{scope}[yshift=-4cm]
+        \node[cell] (r0) at (0,    0)    {$e$};
+        \node[cell] (r1) at (2,    0)    {$r$};
+        \node[cell] (r2) at (2.5,  1.65) {$r^2$};
+        \node[cell] (r3) at (1,    2.65) {$r^3$};
+        \node[cell] (r4) at (-0.5, 1.65) {$r^4$};
+
+        \path [-] (r0) edge (r1);
+        \path [-] (r0) edge (r2);
+        \path [-] (r1) edge (r2);
+        \path [-] (r1) edge (r3);
+        \path [-] (r2) edge (r3);
+        \path [-] (r2) edge (r4);
+        \path [-] (r3) edge (r4);
+        \path [-] (r3) edge (r0);
+        \path [-] (r4) edge (r0);
+        \path [-] (r4) edge (r1);
+    \end{scope}
+
+    \begin{scope}[yshift=-8cm, xshift=0.25cm]
+        \node[cell] (dih e)   at (0,   0)   {$e$};
+        \node[cell] (dih r)   at (1.5, 0)   {$r$};
+        \node[cell] (dih r2)  at (1.5, 1.5) {$r^2$};
+        \node[cell] (dih r3)  at (0,   1.5) {$r^3$};
+        \node[cell] (dih s)   at (-1,  -1)  {$s$};
+        \node[cell] (dih rs)  at (2.5, -1)  {$rs$};
+        \node[cell] (dih r2s) at (2.5, 2.5) {$r^2s$};
+        \node[cell] (dih r3s) at (-1,  2.5) {$r^3s$};
+
+        \path [-] (dih e) edge (dih r);
+        \path [-] (dih e) edge (dih s);
+
+        \path [-] (dih e) edge (dih r3);
+        \path [-] (dih s) edge (dih r3s);
+
+        \path [-] (dih r) edge (dih r2);
+        \path [-] (dih r) edge (dih rs);
+
+        \path [-] (dih r2) edge (dih r3);
+        \path [-] (dih r2) edge (dih r2s);
+
+        \path [-] (dih r3) edge (dih r3s);
+        \path [-] (dih s) edge (dih rs);
+
+        \path [-] (dih rs) edge (dih r2s);
+        \path [-] (dih r2s) edge (dih r3s);
+    \end{scope}
+
+    % Group labels
+    \node[align=left, anchor=west, font=\large] at (3.5, 1.65) {$\Z_5$};
+    \node[align=left, anchor=west, font=\large] at (3.5, -2.35) {$\Z_5$};
+    \node[align=left, anchor=west, font=\large] at (3.5, -6.5) {$D_4$};
+
+    % Set labels
+    \node[align=left, anchor=west] at (3.5, 0.9) {$\Gamma = \{r, r^{-1}\}$};
+    \node[align=left, anchor=west] at (3.5, -3.1) {$\Gamma = \{r, r^{-1}, r^2, r^{-2}\}$};
+    \node[align=left, anchor=west] at (3.5, -7.25) {$\Gamma = \{r, r^{-1}, s\}$};
+
+    % Figure labels
+    \node[font=\normalsize] at (-2.5, 1.65)  {(a)};
+    \node[font=\normalsize] at (-2.5, -2.35) {(b)};
+    \node[font=\normalsize] at (-2.5, -6.5)    {(c)};
+\end{tikzpicture}

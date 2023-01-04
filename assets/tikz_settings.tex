@@ -1,0 +1,56 @@
+% TikZ
+%----------------------------------------
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, decorations.markings, patterns, fit, positioning}
+\tikzset{
+    font=\footnotesize,
+    >={stealth},
+    ->-/.style={
+        decoration={markings, mark=at position #1 with {\arrow{stealth}}},
+        postaction={decorate}
+    },
+    -<-/.style={
+        decoration={markings, mark=at position #1 with {\arrow{stealth}}},
+        postaction={decorate}
+    },
+    % Lattice
+    site/.style={circle, inner sep=0pt, minimum size=4pt, draw=Grey60, fill=white},
+    dual site/.style = {circle, inner sep=0 pt, minimum size=6pt, draw=black, fill=white},
+    ladder/.style={Grey40, step=1, thin},
+    lattice/.style={Grey40, step=2, thin},
+    % Link operators
+    X/.style = {Blue, ultra thick},
+    Z/.style = {Red,  ultra thick},
+    U/.style = {Blue, ultra thick, ->-=0.6},
+    V/.style = {Red,  ultra thick, ->-=0.6},
+    % Site operators
+    X site/.style = {dual site, draw=Blue, fill=Blue},
+    Z site/.style = {dual site, draw=Red, fill=Red},
+    % electric state
+    up/.style = {Green, ultra thick},
+    % Up and down spins
+    up spin/.style = {-stealth, ultra thick, Green},
+    down spin/.style = {stealth-, ultra thick},
+    % Plaquette flux
+    flux/.style = {fill=Green, fill opacity=0.1},
+    freccia/.style={-stealth, very thick, shorten >=5pt, shorten <=5pt},
+    box/.style={dotted, rounded corners, thick}
+}
+
+% macro for drawing spins
+\newcommand{\UpSpin}[2]{\draw[up spin] (#1,#2) ++(0,-0.7) -- ++(0,1.4);}
+\newcommand{\DownSpin}[2]{\draw[down spin] (#1,#2) ++(0,-0.7) -- ++(0,1.4);}
+\newcommand{\Spin}[3]{%
+    \ifthenelse{\equal{#1}{up}}{\UpSpin{#2}{#3}}{}%
+    \ifthenelse{\equal{#1}{down}}{\DownSpin{#2}{#3}}{}
+}
+
+% macro for drawing a grid of sites
+\newcommand{\DrawSites}[2]{
+    \foreach \y in {#2} \foreach \x in {#1} \draw (\x,\y) node [site] {};
+}
+
+% TikZ caching
+\usetikzlibrary{external}
+\tikzset{external/system call={lualatex -shell-escape -halt-on-error -interaction=batchmode -enable-write18 -jobname "\image" "\texsource"}}
+\tikzexternalize[prefix=assets/cache/] % folder for cache

@@ -105,7 +105,7 @@ In the specific case of the group $\Z_N$, the representations are all one-dimens
 The group elements are $\{1, g, g^2, \ldots, g^{N-1}\}$ and the irreps are simply $\rho_j (g^k) = \omega_N^{kj}$ for $j = 0,1,\ldots, N-1$, with $\omega_N= e^{2\pi i /N}$.
 The bases $\{\ket{g^k}\}$ and $\{\ket{j}\}$ are related by
 \begin{equation}
-    \ket{j} = \sum_{k=0}^{N-1} \braket{g^k|j} \ket{g^k} = \frac{1}{\sqrt{N}}\sum_{k=0}^{N-1} \omega_N^{kj} \ket{g^k} \ ,
+    \ket{j} = \sum_{k=0}^{N-1}  \ket*{g^k} \braket*{g^k}{j} = \frac{1}{\sqrt{N}}\sum_{k=0}^{N-1} \omega_N^{kj} \ket*{g^k} \ ,
 \end{equation}
 which is just the discrete Fourier transform.
 In the case of the dihedral groups $D_4$ with $8$ elements, we have four one-dimensional representations, each of which spans a one-dimensional subspace of $\C[G]$.
@@ -187,85 +187,21 @@ As we will already at the end of Section \ref{sec:finitegrouplaplacian}, this ca
 In general, this can also occur with the choice of $\Gamma$ arising from the transfer-matrix formulation of Wilson action, as described in Section \ref{sec:action formulation}.
 For example, in the permutation group $G=S_5$, starting from the Wilson action in the six-dimensional representation of $S_5$, one finds $\Gamma$ to be the conjugacy class of the $5$-cycles; then $\expval{\Gamma}$ generates the subgroup $A_5$ and since $\abs{S_5}/\abs{A_5}=2$, the electric Hamiltonian ground state is two-fold degenerate, with the ground states spanned by the two representation states corresponding to the one-dimensional representations.
 
-\subsubsection{The finite group Laplacian}\label{sec:finitegrouplaplacian}
 
-\begin{figure}
+\begin{figure}[t]
     \centering
-    \subfloat[]{
-        \centering
-        \begin{tikzpicture}
-            \node[shape=circle,draw=black, minimum width=1cm] (g0) at (0,0) {$e$};
-            \node[shape=circle,draw=black, minimum width=1cm] (g1) at (2,0) {$g$};
-            \node[shape=circle,draw=black, minimum width=1cm] (g2) at (2.5,1.65)     {$g^2$};
-            \node[shape=circle,draw=black, minimum width=1cm] (g3) at (1,2.65)     {$g^3$};
-            \node[shape=circle,draw=black, minimum width=1cm] (g4) at (-0.5,1.65)     {$g^4$};
-
-            \path [-] (g0) edge (g1);
-            \path [-] (g1) edge (g2);
-            \path [-] (g2) edge (g3);
-            \path [-] (g3) edge (g4);
-            \path [-] (g4) edge (g0);
-        \end{tikzpicture}
+    \input{assets/figures/cayley_graphs.tex}
+    \caption{%
+        Examples of Cayley graphs.
+        (a) and (b) show $\Z_5$ with $\Gamma = \{g,g^{-1}\}$ and $\Gamma = \{g,g^2, g^{-1}, g^{-2}\}$ respectively.
+        (c) shows $D_4$ with $\Gamma = \{r,r^{-1}, s\}$
     }
-    \hfill
-    \subfloat[]{
-        \centering
-        \begin{tikzpicture}
-            \node[shape=circle,draw=black, minimum width=1cm] (g0) at (0,0) {$e$};
-            \node[shape=circle,draw=black, minimum width=1cm] (g1) at (2,0) {$g$};
-            \node[shape=circle,draw=black, minimum width=1cm] (g2) at (2.5,1.65)     {$g^2$};
-            \node[shape=circle,draw=black, minimum width=1cm] (g3) at (1,2.65)     {$g^3$};
-            \node[shape=circle,draw=black, minimum width=1cm] (g4) at (-0.5,1.65)     {$g^4$};
-
-            \path [-] (g0) edge (g1);
-            \path [-] (g0) edge (g2);
-            \path [-] (g1) edge (g2);
-            \path [-] (g1) edge (g3);
-            \path [-] (g2) edge (g3);
-            \path [-] (g2) edge (g4);
-            \path [-] (g3) edge (g4);
-            \path [-] (g3) edge (g0);
-            \path [-] (g4) edge (g0);
-            \path [-] (g4) edge (g1);
-        \end{tikzpicture}
-    }
-    \hfill
-    \subfloat[]{
-        \centering
-        \begin{tikzpicture}
-            \node[shape=circle,draw=black, minimum width=1cm] (e) at (0,0) {$e$};
-            \node[shape=circle,draw=black, minimum width=1cm] (r) at (1.5,0)     {$r$};
-            \node[shape=circle,draw=black, minimum width=1cm] (r2) at (3,0) {$r^2$};
-            \node[shape=circle,draw=black, minimum width=1cm] (r3) at (4.5,0)     {$r^3$};
-            \node[shape=circle,draw=black, minimum width=1cm] (s) at (0,1.5) {$s$};
-            \node[shape=circle,draw=black, minimum width=1cm] (rs) at (1.5,1.5)     {$rs$};
-            \node[shape=circle,draw=black, minimum width=1cm] (r2s) at (3,1.5) {$r^2s$};
-            \node[shape=circle,draw=black, minimum width=1cm] (r3s) at (4.5,1.5)     {$r^3s$};
-
-            \path [-] (e) edge (r);
-            \path [-] (e) edge (s);
-
-            \path [-] (e) edge[bend right=45] (r3);
-            \path [-] (s) edge[bend left=45] (r3s);
-
-            \path [-] (r) edge (r2);
-            \path [-] (r) edge (rs);
-
-            \path [-] (r2) edge (r3);
-            \path [-] (r2) edge (r2s);
-
-            \path [-] (r3) edge (r3s);
-            \path [-] (s) edge (rs);
-
-            \path [-] (rs) edge (r2s);
-            \path [-] (r2s) edge (r3s);
-        \end{tikzpicture}
-    }
-    \hfill
-    \caption{Examples of Cayley graphs. (a) and (b) show $\Z_5$ with $\Gamma = \{g,g^{-1}\}$ and $\Gamma = \{g,g^2, g^{-1}, g^{-2}\}$ respectively. (c) shows $D_4$ with $\Gamma = \{r,r^{-1}, s\}$ }
     \label{fig:examples of Cayley graphs}
 \end{figure}
 
+
+
+\subsubsection{The finite group Laplacian}\label{sec:finitegrouplaplacian}
 In this section we explain in detail the construction of the finite group Laplacian, which we take as the electric Hamiltonian, as the graph Laplacian of the Cayley graph of the finite group.
 Given a finite group $G$, we choose a set of generators $\Gamma \subset G$, which we require to be invariant under inversion, that is $\Gamma^{-1}=\Gamma$, and moreover that it is the union of conjugacy classes, so that it is invariant under conjugation, $g \Gamma g^{-1}=\Gamma$ for any $g$ in $G$ \cite{spectralgraphtheory}.
 We choose $\Gamma$ not to include the identity element and we note that the choice of $\Gamma$ is not unique.
@@ -331,19 +267,28 @@ One can however choose a different generating set, such as $\Gamma = \{g, g^{-1}
 \end{equation}
 For the dihedral group $D_4$ we can choose for example $\Gamma = \Gamma_1 = \{r,r^3,s,r^2s\}$, which gives rise to the eigenvalues $f(j)$  shown in table \ref{tab:fval}, where the representations are ordered like in the character table in Table \ref{tab:chars_D4} in Appendix \ref{app:the_dihedral_groups}.
 Note that $\Gamma_1$ generates the whole group.
-\begin{table}[h]
+
+\begin{table}[t]
     \centering
-    \begin{tabular}{c|ccccc}
-         $j$ & $0$ & $1$ & $2$ & $3$ & $4$\\
-         \hline
-         $f_1(j)$ & 0 & 4 & 4 & 8 & 4 \\
-         $f_2(j)$ & 0 & 4 & 0 & 4 & 5 \\
-         $f_3(j)$ & 0 & 8 & 8 & 8 & 6
+    \begin{tabular}{rcccccc}
+        \toprule
+         & & \multicolumn{5}{c}{$f(j)$} \\
+        \cmidrule(l){3-7}
+        $\Gamma$~~~ & $j$ & 0 & 1 & 2 & 3 & 4\\
+        \midrule
+        $\{r, r^3, s, r^2 s \}$
+                 & & 0 & 4 & 4 & 8 & 4 \\[5pt]
+        $\{r, r^2, r^3 \}$
+                 & & 0 & 4 & 0 & 4 & 5 \\[5pt]
+        $\{r, r^3, s, r s, r^2 s, r^3 s \}$
+                       & & 0 & 8 & 8 & 8 & 6 \\
+        \bottomrule
     \end{tabular}
-    \caption{Eigenvalues of the single-link electric Hamiltonian for the finite group $D_4$, with three choice of generating set, $\Gamma_1= \{r,r^3,s,r^2s\}$, $\Gamma_2= \{r,r^2, r^3\}$, $\Gamma_3= \{r, r^3, s, rs, r^2s, r^3s\}$.}
+    \caption{Eigenvalues of the single-link electric Hamiltonian $f(j)$ for the finite group $D_4$, with three choices of generating sets $\Gamma$.}
     \label{tab:fval}
-    \vspace{-3mm}
 \end{table}
+
+
 By looking at its character table, we may in fact classify all possible choices of $\Gamma$ for $D_4$.
 In fact, $D_4$ has five conjugacy classes, $C_0 = \{e\}$, $C_1 = \{r, r^3\}$, $C_2 = \{r^2\}$, $C_3 = \{s, r^2s\}$, $C_4 = \{rs, r^3s\}$.
 One can check that, as is generally true, $\sum_i \abs{C_i}=8=\abs{G}$.

@@ -1,0 +1,11 @@
+\begin{tikzpicture}[testo/.style={midway, black}]
+    \draw[lattice, thick, ->-=.5,] (0,0) -- (2,0) node[testo, below] {$\link_1$};
+    \draw[lattice, thick, ->-=.5,] (2,0) -- (2,2) node[testo, right] {$\link_2$};
+    \draw[lattice, thick, -<-=.5,] (0,2) -- (2,2) node[testo, above] {$\link_3$};
+    \draw[lattice, thick, -<-=.5,] (0,0) -- (0,2) node[testo, left ] {$\link_4$};
+    \draw[lattice, thick, ->-=.5, dashed] (0,2) -- (0,4) node[testo, left ] {$\link_8$};
+    \draw[lattice, thick, ->-=.5, dashed] (2,2) -- (2,4) node[testo, right] {$\link_7$};
+    \draw[lattice, thick, ->-=.5, dashed] (2,2) -- (4,2) node[testo, above] {$\link_6$};
+    \draw[lattice, thick, ->-=.5, dashed] (2,0) -- (4,0) node[testo, below] {$\link_5$};
+    \DrawSites{0,2}{0,2};
+\end{tikzpicture}
