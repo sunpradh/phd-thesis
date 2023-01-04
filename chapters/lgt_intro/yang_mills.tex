@@ -4,37 +4,103 @@
 \section{Review of Yang-Mills theory}
 \label{sec:yang_mills_theory}
 
-A Yang-Mills theory is a gauge field theory on Minkowski space $\R^{1,d}$, where the gauge group $U(1)$ or $SU(N)$, with matter fields, which are defined by a representation of the gauge group.
-For example, \emph{Quantum Chromodynamics} (QCD) is an $SU(3)$ gauge theory with Dirac spinors in the fundamental representation.
-Keeping in mind the example of QCD, the Lagrangian of the theory is
+A Yang-Mills (YM) theory is a gauge field theory on Minkowski space $\R^{1,d}$ coupled to matter.
+The gauge group $G$ is usually chosen to be a compact Lie group like $\U(1)$ or $\SU(N)$ and the matter fields are defined by a representation of $G$.
+For example, QCD is an $SU(3)$ gauge theory with Dirac spinors in the fundamental representation.
+We choose to keep the dimension $d$ of space completely general and to use $D$ to denote the full dimension of space-time, i.e., $D=d+1$.
+% Following the example of QCD, the Lagrangian of the theory is
+
+We start from the Lagrangian.
+Considering that YM theory can be seen as the generalization of QED, a $\U(1)$ gauge theory, to any compact Lie group, the Lagrangian looks exactly like the one from QED:
 \begin{equation}
     \mathcal{L} = - \frac{1}{2 g^2} \tr(F_{\mu \nu} F^{\mu \nu}) + \overline{\psi} \qty( i \gamma^{\mu} D_{\mu} - m ) \psi,
+    \label{eq:yang_mills_lagrangian}
 \end{equation}
-where the fermions $\psi$ are taken in the fundamental representation of $SU(N)$ and the covariant derivative is $D_{\mu} = \partial_{\mu} - i A_{\mu}$.
-We choose the convention where the Lie algebra generators $T^a$ are Hermitian and $[T^a, T^b] = i f^{abc} T^c$, with real structure constants $f^{abc}$.
-Furthermore, the generators are such that $\tr(T^a T^b) = \frac{1}{2} \delta^{ab}$.
-The strength-field tensor $F_{\mu \nu}$ is given by
+with some differences that will be explained later.
+Hereafter, the Einstein summation rule is implied.
+Notice that in \eqref{eq:yang_mills_lagrangian} we have only considered one fermionic species.
+In more realistic cases we would have a some over the different fermion flavors but for simplicity and ease of exposition we will ignore flavors and consider only type of fermion.
+
+% The fermion $\psi$ are taken in the fundamental representation of $G$ and the covariant derivative is $D_{\mu} = \partial_{\mu} - i A_{\mu}$.
+\paragraph*{Gauge fields}
+
+The symbol $D_{\mu}$ in \eqref{eq:yang_mills_lagrangian} denote the \emph{covariant derivative}:
 \begin{equation}
-    F_{\mu \nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu} - i [A_{\mu}, A_{\nu}]
+    D_{\mu} = \partial_{\mu} - i A_{\mu},
+\end{equation}
+where $A_{\mu}$ are the space-time components of the gauge fields.
+Each component is Lie algebra valued function of space-time:
+\begin{equation}
+    A_{\mu}(x) = \sum_{a} A_{\mu}^a(x) T^a,
+\end{equation}
+where the sum is over the generators of the Lie algebra $\g$, corresponding to the group $G$.
+We choose the convention where the generators $T^a$ are Hermitian with
+\begin{equation}
+    [T^a, T^b] = i f^{abc} T^c
+    \qand
+    \tr(T^a T^b) = \frac{1}{2} \delta^{ab},
+\end{equation}
+with real structure constants $f^{abc}$.
+
+The dynamics of the gauge fields is given by $F_{\mu \nu}$, which is the \emph{strength-field tensor} and defined as
+\begin{equation}
+    F_{\mu \nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu} - i [A_{\mu}, A_{\nu}].
+    \label{eq:strength_field_tensor}
 \end{equation}
 and transforms in the adjoint representation of $SU(N)$.
-Both the gauge field $A_{\mu}$ and the curvature tensor $F_{\mu \nu}$ live in the Lie algebra $\mathfrak{su}(N)$.
+Notice that when $G = U(1)$, i.e.~Abelian, the commutator term in \eqref{eq:strength_field_tensor} vanishes and we re-obtain the strength-field tensor of QED.
+Like the gauge field $A_{\mu}$, also the tensor $F_{\mu \nu}$ lives in the Lie algebra $\g$.
+Therefore, the product $F^{\mu \nu} F_{\mu \nu}$ is actually a matrix.
+Only scalar terms are allowed in the Lagrangian \eqref{eq:yang_mills_lagrangian}, hence we have to take the trace:
+\begin{equation*}
+    \tr F^{\mu \nu} F_{\mu \nu} = \sum_{a} F^{\mu \nu a} F_{\mu \nu}^a.
+\end{equation*}
+% Both the gauge field $A_{\mu}$ and the tensor $F_{\mu \nu}$ live in the Lie algebra $\mathfrak{su}(N)$.
 
-Under a gauge transformation given by a group-valued function $g(x) \in SU(N)$, such that $\psi \mapsto g(x) \psi(x)$, then
+\paragraph*{Fermions}
+
+Regarding the fermion field $\psi$, this is taken in the \emph{fundamental representation} of $G$.
+\todo{spiegare qualcosina in più}, while the matrices $\gamma^{\mu}$ form a Clifford algebra that is defined by the relations
+\begin{equation}
+    \acomm{\gamma^{\mu}}{\gamma^{\nu}} = 2 \eta^{\mu \nu},
+\end{equation}
+where $\eta^{\mu \nu}$ the space-time metric.
+For the latter we choose the convention $\eta^{\mu \nu} = \mathrm{diag}(+1, -1, -1, -1)$.
+\todo{dire qualcosina in più}
+
+
+\paragraph*{Gauge transformations}
+
+A gauge transformation is defined by a group valued function of space-time $g: \R^{1,d} \to G$.
+It transforms the fermion field as
+\begin{equation}
+    \psi(x) \mapsto g(x) \psi(x).
+    \label{eq:fermion_gauge_transf}
+\end{equation}
+Here we have been a bit sloppy with notation, by writing $g(x) \psi(x)$ in \eqref{eq:fermion_gauge_transf} we actually mean the action of the element $g(x) \in G$ in the same representation of $\psi(x)$.
+
+% Under a gauge transformation given by a group-valued function $g(x) \in SU(N)$, such that $\psi \mapsto g(x) \psi(x)$, then
+In order to have an invariant Lagrangian, also the gauge fields $A_{\mu}$ undergo a transformation induced by the function $g$:
 \begin{equation}
     A_{\mu}(x) \mapsto g(x) A_{\mu}(x) g(x)^{-1} + i g(x) \partial_{\mu} g(x)^{-1},
 \end{equation}
 so that $D_{\mu} \psi(x) \mapsto g(x) D_{\mu} \psi(x)$, while
 \begin{equation}
-    F_{\mu \nu} \mapsto g(x) F_{\mu \nu} g(x)^{-1},
+    F_{\mu \nu} \mapsto g(x) F_{\mu \nu} g(x)^{-1}.
 \end{equation}
-leaving the action invariant.
 
-The action of the theory in $d+1$ dimensions is the given by
+
+\paragraph*{Path-integral}
+
+For a path integral formulation we need to first define the action.
+This is just the integral of the Lagrangian in \eqref{eq:yang_mills_lagrangian}, over the $D$-dimensional space-time:
+% The action of the theory in $D=d+1$ dimensions is the given by
 \begin{equation}
-    S[A, \psi, \overline{\psi}] = \int \dd^{d+1} \mathcal{L}
+    S[A, \psi, \overline{\psi}] = \int_{\R^{1,d}}  \dd^{D} \mathcal{L}.
+    \label{eq:action_def}
 \end{equation}
-and the path integral
+The action \eqref{eq:action_def} defines the ``weight'' in the path-integral.
+Now we can write down the partition function for a YM theory:
 \begin{equation}
     Z = \int \mathcal{D} A \mathcal{D} \overline{\psi} \mathcal{D} \psi \, e^{i S[A, \psi, \overline{\psi}]}.
 \end{equation}
