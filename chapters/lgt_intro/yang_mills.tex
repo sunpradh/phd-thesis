@@ -4,16 +4,16 @@
 \section{Review of Yang-Mills theory}
 \label{sec:yang_mills_theory}
 
-A Yang-Mills (YM) theory is a gauge field theory on Minkowski space $\R^{1,d}$ coupled to matter.
-The gauge group $G$ is usually chosen to be a compact Lie group like $\U(1)$ or $\SU(N)$ and the matter fields are defined by a representation of $G$.
-For example, QCD is an $SU(3)$ gauge theory with Dirac spinors in the fundamental representation.
+A \ac{ym} theory is a gauge field theory on Minkowski space $\R^{1,d}$ coupled to matter.
+    The gauge group $G$ is usually chosen to be a compact Lie group like $\U(1)$ or $\SU(N)$ and the matter fields are defined by a representation of $G$.
+    For example, \ac{qcd} is an $SU(3)$ gauge theory with Dirac spinors in the fundamental representation.
 We choose to keep the dimension $d$ of space completely general and to use $D$ to denote the full dimension of space-time, i.e., $D=d+1$.
-% Following the example of QCD, the Lagrangian of the theory is
+% Following the example of \ac{qcd}, the Lagrangian of the theory is
 
 We start from the Lagrangian.
-Considering that YM theory can be seen as the generalization of QED, a $\U(1)$ gauge theory, to any compact Lie group, the Lagrangian looks exactly like the one from QED:
+Considering that \ac{ym} theory can be seen as the generalization of \ac{qed}, a $\U(1)$ gauge theory, to any compact Lie group, the Lagrangian looks exactly like the one from \ac{qed}:
 \begin{equation}
-    \mathcal{L} = - \frac{1}{2 g^2} \tr(F_{\mu \nu} F^{\mu \nu}) + \overline{\psi} \qty( i \gamma^{\mu} D_{\mu} - m ) \psi,
+    \LagrangYM = - \frac{1}{2 g^2} \tr(F_{\mu \nu} F^{\mu \nu}) + \overline{\psi} \qty( i \gamma^{\mu} D_{\mu} - m ) \psi,
     \label{eq:yang_mills_lagrangian}
 \end{equation}
 with some differences that will be explained later.
@@ -48,7 +48,7 @@ The dynamics of the gauge fields is given by $F_{\mu \nu}$, which is the \emph{s
     \label{eq:strength_field_tensor}
 \end{equation}
 and transforms in the adjoint representation of $SU(N)$.
-Notice that when $G = U(1)$, i.e.~Abelian, the commutator term in \eqref{eq:strength_field_tensor} vanishes and we re-obtain the strength-field tensor of QED.
+Notice that when $G = U(1)$, i.e.~Abelian, the commutator term in \eqref{eq:strength_field_tensor} vanishes and we re-obtain the strength-field tensor of \ac{qed}.
 Like the gauge field $A_{\mu}$, also the tensor $F_{\mu \nu}$ lives in the Lie algebra $\g$.
 Therefore, the product $F^{\mu \nu} F_{\mu \nu}$ is actually a matrix.
 Only scalar terms are allowed in the Lagrangian \eqref{eq:yang_mills_lagrangian}, hence we have to take the trace:
@@ -60,12 +60,16 @@ Only scalar terms are allowed in the Lagrangian \eqref{eq:yang_mills_lagrangian}
 \paragraph*{Fermions}
 
 Regarding the fermion field $\psi$, this is taken in the \emph{fundamental representation} of $G$.
-\todo{spiegare qualcosina in più}, while the matrices $\gamma^{\mu}$ form a Clifford algebra that is defined by the relations
+The matrices $\gamma^{\mu}$ form a Clifford algebra, which is defined by the relations
 \begin{equation}
     \acomm{\gamma^{\mu}}{\gamma^{\nu}} = 2 \eta^{\mu \nu},
 \end{equation}
 where $\eta^{\mu \nu}$ the space-time metric.
 For the latter we choose the convention $\eta^{\mu \nu} = \mathrm{diag}(+1, -1, -1, -1)$.
+The conjugate $\overline{\psi}$ is defined as
+\begin{equation*}
+    \overline{\psi} = \psi^{\dagger}\gamma^0.
+\end{equation*}
 \todo{dire qualcosina in più}
 
 
@@ -80,7 +84,7 @@ It transforms the fermion field as
 Here we have been a bit sloppy with notation, by writing $g(x) \psi(x)$ in \eqref{eq:fermion_gauge_transf} we actually mean the action of the element $g(x) \in G$ in the same representation of $\psi(x)$.
 
 % Under a gauge transformation given by a group-valued function $g(x) \in SU(N)$, such that $\psi \mapsto g(x) \psi(x)$, then
-In order to have an invariant Lagrangian, also the gauge fields $A_{\mu}$ undergo a transformation induced by the function $g$:
+In order to have an invariant Lagrangian, the gauge fields $A_{\mu}$ have to undergo a transformation induced by the function $g$:
 \begin{equation}
     A_{\mu}(x) \mapsto g(x) A_{\mu}(x) g(x)^{-1} + i g(x) \partial_{\mu} g(x)^{-1},
 \end{equation}
@@ -96,13 +100,14 @@ For a path integral formulation we need to first define the action.
 This is just the integral of the Lagrangian in \eqref{eq:yang_mills_lagrangian}, over the $D$-dimensional space-time:
 % The action of the theory in $D=d+1$ dimensions is the given by
 \begin{equation}
-    S[A, \psi, \overline{\psi}] = \int_{\R^{1,d}}  \dd^{D} \mathcal{L}.
+    \Action[A, \psi, \overline{\psi}] = \int_{\R^{1,d}}  \dd^{D} \mathcal{L}.
     \label{eq:action_def}
 \end{equation}
 The action \eqref{eq:action_def} defines the ``weight'' in the path-integral.
-Now we can write down the partition function for a YM theory:
+Now we can write down the partition function for a \ac{ym} theory:
 \begin{equation}
-    Z = \int \mathcal{D} A \mathcal{D} \overline{\psi} \mathcal{D} \psi \, e^{i S[A, \psi, \overline{\psi}]}.
+    \PartFunc = \int \DD A\, \DD \overline{\psi}\, \DD \psi \, e^{i \Action[A, \psi, \overline{\psi}]}.
+    \label{eq:partition_function_mink}
 \end{equation}
 
 
@@ -112,21 +117,62 @@ Now we can write down the partition function for a YM theory:
 \subsection{Euclidean field theory}
 \label{sub:euclidean_field_theory}
 
-In order to work in a Euclidean space-time, we need first to perform a \emph{Wick rotation}, where the time coordinate $x_0$ is mapped a forth space coordinate $x_4$, through $x_0 = - i x_4$.
-The has the effect of changing the path-integral integrand from $e^{i S}$, which is oscillatory, to $e^{-S}$, which is positive and can be interpreted as a probability distribution of the configurations of the fields.
+In the previous section we introduced \ac{ym} theory in Minkowski space-time.
+We now need to move onto Euclidean space-time, which is the starting point for \ac{lft}.
+This is true for various reasons.
+As stated previously, Euclidean formulation allows to bridge into the territory of \ac{sm}, meaning we can use its full technology.
+Second, there are also some advantages from the operational point of view.
+The weight in \eqref{eq:partition_function_mink} is a complex phase, which can be problematic from the computational point of view because a priori convergence is not guaranteed.
+We will see that in Euclidean space-time the weight will become a positive-defined function, which makes it clear it is a probability distribution.
 
-The Euclidean path integral is
+In order to pass to a Euclidean space-time $\R^{d+1}$, we need to perform a \emph{Wick rotation},
+where the time coordinate $x_0$ is mapped to a forth space coordinate $x_4$:
+\begin{equation*}
+    x_0 \mapsto - i x_4.
+    \label{eq:wick_rotation}
+\end{equation*}
+To distinguish quantities in Euclidean or Minkowski space-time we use the subscripts $E$ and $M$, respectively.
+The rotation \eqref{eq:wick_rotation} affects both space-time measures,
+\begin{equation*}
+    \dd^D x_M = \dd x_0 \dd^d x_i \qand
+    \dd^D x_E = \dd^d x_i \dd x_4,
+\end{equation*}
+and the time-components of the quantities that enters the Lagrangian, which leads to an overall effect
+\begin{equation*}
+    \Lagrangian_E = - \Lagrangian_M.
+\end{equation*}
+The action is defined in the same way in both types of space-time,
+\begin{equation*}
+    \Action_M = \int \dd^D x_M \Lagrangian_M
+    \qand
+    \Action_E = \int \dd^D x_E \Lagrangian_E,
+\end{equation*}
+and due to the Wick rotation \eqref{eq:wick_rotation}, we obtain that they satisfy
 \begin{equation}
-    Z_E = \int \mathcal{D} A \mathcal{D} \overline{\psi} \mathcal{D} \psi e^{-S},
+    i \Action_M = - \Action_E.
 \end{equation}
-so that the Minkowski action and the Euclidean action satisfy $i S_M = - S_E$.
-The respective actions are given by
+This leads to the following definition of the Euclidean path-integral:
 \begin{equation}
-    S_M = \int \dd^{d+1} x_M \mathcal{L}_M, \qquad
-    S_E = \int \dd^{d+1} x_E \mathcal{L}_E.
+    \PartFunc_E = \int \DD A\, \DD \overline{\psi}\, \DD \psi\, e^{-\Action_E[A, \overline{\psi}, \psi]}.
+    \label{eq:euclidean_path_integral}
 \end{equation}
-The rotation $x_0 = -i x_4$ leads to $\mathcal{L}_E = - \mathcal{L}_M$.
+Notice that the weight $e^{-\Action_E}$ in \eqref{eq:euclidean_path_integral} is now a positive-valued function, given that $\Action_E$ is a real function, and has the form of a \emph{Boltzmann weight}.
+In other words, we have now a probability distribution $e^{- \Action_E}$ over the configurations of the fields $A_{\mu}$, $\psi$ and $\overline{\psi}$, following the spirit of \ac{sm}.
 
+% It has the effect of changing the integrand in \eqref{eq:partition_function_mink} from $e^{i S}$, which is oscillatory, to $e^{-S}$, which is positive and can be interpreted as a probability distribution of the configurations of the fields.
+
+% The Euclidean path integral is
+% \begin{equation}
+%     \PartFunc_E = \int \mathcal{D} A \mathcal{D} \overline{\psi} \mathcal{D} \psi e^{-S},
+% \end{equation}
+% so that the Minkowski action and the Euclidean action satisfy $i S_M = - S_E$.
+% The respective actions are given by
+% \begin{equation}
+%     \Action_M = \int \dd^{d+1} x_M \mathcal{L}_M, \qquad
+%     \Action_E = \int \dd^{d+1} x_E \mathcal{L}_E.
+% \end{equation}
+% The rotation $x_0 = -i x_4$ leads to $\mathcal{L}_E = - \mathcal{L}_M$.
+%
 The Wick rotation does not change the form of the gauge kinetic term, i.e.,
 \begin{equation}
     - \frac{1}{2 g^2} \tr(F_{\mu \nu} F^{\mu \nu}).
@@ -226,9 +272,9 @@ The condition above for a $U(1)$ theory reduces to the well known \emph{Gauss la
 \subsection{The Sign Problem}
 \label{sub:the_sign_problem}
 
-Even though interesting phases have been predicted for QCD in the $\mu - T$ plane\citneeded, such as quark-gluon plasma\citneeded o superconductivity\citneeded, detailed quantitative analysis has been limited to the $\mu = 0$ region only.
-This is due mainly to the difficulty of studying QCD in the low energy regime, where the perturbative approach fails\citneeded.
-Moreover, even \emph{lattice gauge theories}, a non-perturbative approach to Yang-Mills theory (and gauge theories in general), is not applicable for $\mu \neq 0$ due to the \emph{sign problem}.
+Even though interesting phases have been predicted for \ac{qcd} in the $\mu - T$ plane\citneeded, such as quark-gluon plasma\citneeded o superconductivity\citneeded, detailed quantitative analysis has been limited to the $\mu = 0$ region only.
+This is due mainly to the difficulty of studying \ac{qcd} in the low energy regime, where the perturbative approach fails\citneeded.
+Moreover, even \emph{\ac{lgt}s}, a non-perturbative approach to Yang-Mills theory (and gauge theories in general), is not applicable for $\mu \neq 0$ due to the \emph{sign problem}.
 
 In the Hamiltonian formulation, the chemical potential in the same manner as statistical mechanics.
 If $\hat{H}$ is the Hamiltonian operator and $\hat{N}$ a number operator, then one can simply replace $\hat{H}$ with $\hat{H} - \mu \hat{N}$.

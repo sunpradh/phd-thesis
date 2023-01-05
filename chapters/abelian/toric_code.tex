@@ -4,7 +4,7 @@
 \section{Toric Code and its features}
 \label{sec:toric_code_and_its_features}
 
-The Toric code is two-dimensional model of spin-\onehalf degrees of freedom (d.o.f), which can be regarded as an example of a pure $\mathbb{Z}_2$ lattice gauge theory.
+The Toric code is two-dimensional model of spin-\onehalf degrees of freedom (d.o.f), which can be regarded as an example of a pure $\mathbb{Z}_2$ \ac{lgt}.
 In particular, we focus on a $L \times L$ square lattice with periodic boundary conditions.
 The \dof are defined on the links the lattice, where the local Hilbert space is $\C^2$.
 The main operators we are going to use are the Pauli matrices
@@ -246,13 +246,13 @@ Nonetheless they can be used for storing information in a fault-tolerant way, be
 
 
 %
-% SUBSECTION: Z2 Lattice gauge theory
+% SUBSECTION: Z2 \ac{lgt}
 %
-\subsection{Toric Code as a \texorpdfstring{$\Z_2$}{Z2} Lattice Gauge Theory}
+\subsection{Toric Code as a \texorpdfstring{$\Z_2$}{Z2} \ac{lgt}}
 \label{sub:toric_code_as_a_z2_lattice_gauge_theory}
 
-The Toric Code was formulated as a type of error-correcting code for quantum computing, but it can be reinterpreted as a pure $\Z_2$ lattice gauge theory.
-This is a type of lattice gauge theory where we allow only two possible states for the gauge field.
+The Toric Code was formulated as a type of error-correcting code for quantum computing, but it can be reinterpreted as a pure $\Z_2$ \ac{lgt}.
+This is a type of \ac{lgt} where we allow only two possible states for the gauge field.
 
 On a single link, we consider the $X_{\link}$ as the gauge field operator, while $Z_{\link}$ the electric field operator.
 In this way, we can automatically see that the term $B_p$ is the magnetic energy because it has the same form of single-plaquette Wilson loop.
@@ -276,7 +276,7 @@ In order to meet the condition in \eqref{eq:toric_code_physical_state}, a vertex
     \FigureSideCaption[fig:gauge_inv_vertices_z2]{%
         \input{assets/figures/gauge_inv_vertices.tex}
     }{%
-        Gauge invariant vertex states for the $\Z_2$ lattice gauge theory.
+        Gauge invariant vertex states for the $\Z_2$ \ac{lgt}.
         Green lines represent the $\ket{1}$ link state.
     }
 \end{figure}
@@ -309,7 +309,7 @@ Hence, for $\lambda_c$ we have a deconfined-confined phase transition.
     \FigureSideCaption[fig:physical_state_z2]{%
         \input{assets/figures/physical_state.tex}
     }{%
-        Physical states in the $\Z_2$ LGT are made of closed electric loops.
+        Physical states in the $\Z_2$ \ac{lgt} are made of closed electric loops.
     }
 \end{figure}
 
@@ -371,5 +371,5 @@ From a more physical point of view, the operator $\overline{S}_i$ (with $i=1,2$)
 Therefore, the decomposition in \eqref{eq:Hilbert_space_decomposition_Z2} divides the physical Hilbert space by the number of non-contractible electric loops in each direction.
 On the other hand, the operators $\Wilson_i$ introduces a non-contractible electric loop in the $\hat{i}$ direction, which explains \eqref{eq:action_W_on_sectors} .
 This can be seen in Fig.~\ref{fig:sector_mapping}.
-Notice that in the case of $\Z_2$ LGT we can have at most one non-trivial electric loops.
+Notice that in the case of $\Z_2$ \ac{lgt} we can have at most one non-trivial electric loops.
 For examples, two parallels electric loops can be obtained by a strip of $B_p$ operators, without requiring the $\Wilson$ string operators.

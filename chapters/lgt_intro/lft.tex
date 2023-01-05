@@ -6,8 +6,8 @@
 
 
 
-Starting from the path integral formulation, the first step in the formulation of a \emph{lattice field theory} (LFT) is the discretization of space-time, where a discrete $d+1$-dimensional lattice substitutes the continuum space-time.
-The simplest choice in this regard is a hypercubic lattice with lattice spacing $a$, but in theory an LFT can be defined on any type of lattice.
+Starting from the path integral formulation, the first step in the formulation of a \ac{lft} is the discretization of space-time, where a discrete $d+1$-dimensional lattice substitutes the continuum space-time.
+The simplest choice in this regard is a hypercubic lattice with lattice spacing $a$, but in theory an \ac{lft} can be defined on any type of lattice.
 An immediate advantage of using a lattice instead of a continuum is the natural ultraviolet cutoff given by the inverse of the lattice spacing.
 
 Formally a lattice $\Lambda$ is defined as
@@ -24,7 +24,7 @@ It is important to fix an orientation for each direction in the lattice.
 The most natural choice is to choose $+ \hat{\mu}$ for each $\hat{\mu}$.
 So, even though $(x,\hat{\mu})$ and $(x + \hat{\mu}, - \hat{\mu})$ refers to the same link, the former is traversed in the positive direction while the latter in the negative direction.
 
-In an LFT, both the vertices and edges (also called links) host degrees of freedom (d.o.f).
+In an \ac{lft}, both the vertices and edges (also called links) host degrees of freedom (d.o.f).
 In particular, the matter fields lives on the vertices while the gauge fields live on the links between vertices.
 However, the definition of these d.o.f.~will need some care, because we have two main requirements, especially if we are interested in Yang-Mills theory:
 \begin{itemize}
@@ -75,7 +75,7 @@ The quantity in \eqref{eq:single_plaquette_Wilson_loop} is called a single plaqu
 We can only have scalar quantities in the action, so we need to take the trace of $\W$.
 Then, our lattice action will be defined as the sum over the plaquettes of $\tr \W$ (and its Hermitian conjugate):
 \begin{equation}
-    \action = - \frac{1}{g^2} \sum_{\square} \qty( \tr \W + \tr \W^{\dagger} ).
+    \Action = - \frac{1}{g^2} \sum_{\square} \qty( \tr \W + \tr \W^{\dagger} ).
     \label{eq:wilson_action}
 \end{equation}
 This is known as the \emph{Wilson action} \citneeded.
@@ -89,16 +89,16 @@ The Wilson action in \eqref{eq:wilson_action} is the simplest choice that one ca
 Some other modification, for example, can include other types of closed loops and these modification can have their place.
 However, they will not be considered here.
 
-Obviously, in a path-integral formulation of lattice gauge theories we need to define the path integral, which is immediate.
+Obviously, in a path-integral formulation of \ac{lgt}s we need to define the path integral, which is immediate.
 The partition function is given by
 \begin{equation}
-    Z = \int \prod_{(x, \hat{\mu})}  \dd U_{\mu}(x) e^{- \action},
+    Z = \int \prod_{(x, \hat{\mu})}  \dd U_{\mu}(x) e^{- \Action},
 \end{equation}
 where the integration measure $\dd U_{\mu}(x)$ is understood to be the Haar measure.
 In case of a compact group, like $SU(N)$, it is well defined and yields a finite value.
 Now that the path integral measure has been defined, the average of an observable $\mathcal{O}$ can be computed as
 \begin{equation}
-    \ev*{\mathcal{O}} = \frac{1}{Z} \int \prod_{(x, \hat{\mu})} \dd U_{\mu}(x) \mathcal{O} e^{- \action}
+    \ev*{\mathcal{O}} = \frac{1}{Z} \int \prod_{(x, \hat{\mu})} \dd U_{\mu}(x) \mathcal{O} e^{- \Action}
 \end{equation}
 
 
@@ -108,11 +108,11 @@ Now that the path integral measure has been defined, the average of an observabl
 \subsection{Order parameters and gauge invariance}
 \label{sub:wilson_confinement_test}
 
-The Wilson formulation of lattice gauge theories can resemble spin models studied in statistical mechanics.
+The Wilson formulation of \ac{lgt}s can resemble spin models studied in statistical mechanics.
 The link variables $U_{\mu}(x)$ can be thought as some sort of generalization of the spin degrees of freedom.
 They are distributed in a crystal-like structure and interact with their nearest neighbours, in this case through a four-body interaction (the plaquette action), instead of two-body interaction (like the Ising model).
 If one wants to pursue this analogy, then it is reasonable to look at order parameters that behaves like the spontaneous magnetization, where a non-vanishing expectation value signals a phase transition.
-The analogue of such an order parameter in lattice gauge theory would be something like
+The analogue of such an order parameter in \ac{lgt} would be something like
 \begin{equation}
     \ev*{U_{\mu}(x)} \neq 0,
     \label{eq:non_zero_link_var_expt_value}
@@ -126,7 +126,7 @@ This system has an obvious global $\Z_2$ symmetry, that corresponds to the inver
 A ferromagnetic phase is, by definition, signaled by $\ev*{\sigma} \neq 0$, which necessarily breaks the global $\Z_2$ symmetry of the model.
 Once a direction is selected by $\ev*{\sigma} \neq 0$, it remains stable under thermal fluctuations because they cannot coherently shift of the magnetization of an infinite (or rather large) number of spins.
 
-In a lattice gauge theory, an expectation value like \eqref{eq:non_zero_link_var_expt_value} would \emph{breaks} gauge invariance, which is a \emph{local symmetry}, not a global one.
+In a \ac{lgt}, an expectation value like \eqref{eq:non_zero_link_var_expt_value} would \emph{breaks} gauge invariance, which is a \emph{local symmetry}, not a global one.
 As explained previously, gauge invariance means that the action is unchanged under local arbitrary ``rotations'' of the link variables $U_{\mu}(x)$, see \eqref{eq:gauge_transf_field_lattice}.
 Hence, thermal fluctuations will induce such rotations and in the long rung it will average on all the possible gauges.
 This leads to
@@ -134,16 +134,16 @@ This leads to
     \ev*{U_{\mu}} = \int \dd U_{\mu} U_{\mu} = 0
 \end{equation}
 if $U_{\mu}$ contains only non-trivial irreducible representations of the group.
-This means that ``magnetization'' is always vanishing in a lattice gauge theory and gauge invariance cannot be spontaneously broken, which is the contents of the Elitzur theorem\citneeded.
+This means that ``magnetization'' is always vanishing in a \ac{lgt} and gauge invariance cannot be spontaneously broken, which is the contents of the Elitzur theorem\citneeded.
 
 The conclusion of this brief discussion may seem rather grim, as magnetization in spin models is the most convenient and used order parameter.
-But this does not mean that there are no other order parameters in a lattice gauge theory.
+But this does not mean that there are no other order parameters in a \ac{lgt}.
 We have just showed that the problem when considering something like $\ev*{U_{\mu}}$ is gauge invariance.
 So, the most reasonable step forward is to consider \emph{gauge-invariant quantities}.
 We have already seen that tracing over a product of $U_{\mu}$ variables along a closed curve is a gauge-invariant quantity, called \emph{Wilson loop}.
 
 In so far, we have considered only single plaquette loops but nothing restraints us from considering arbitrary large loops, indeed it serves as a \emph{confinement test} for pure gauge theories.
-% One of the most important quantity that can be computed for a pure lattice gauge theory is the Wilson loop for generic closed paths $\mathcal{C}$.
+% One of the most important quantity that can be computed for a pure \ac{lgt} is the Wilson loop for generic closed paths $\mathcal{C}$.
 % It serves as \emph{confinement} test.
 It has been shown \citneeded that confinement is equivalent to the \emph{area law} behaviour of Wilson loops, i.e.,
 \begin{equation}
