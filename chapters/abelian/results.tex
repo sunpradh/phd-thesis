@@ -33,21 +33,21 @@
 
 We wish to investigate the presence of a \emph{deconfined-confined phase transition} (DCPT) for a given $\Z_N$ ladder \ac{lgt}.
 In a pure gauge theory, these phases can be detected
-with the perimeter/area law for Wilson loops \cite{wilson1974confinement},
+with the perimeter/area law for \ac{wl}s \cite{wilson1974confinement},
 which can be expressed as the products of magnetic operators over a given region.
 Unfortunately, in a  ladder geometry there is not much difference between the area and the perimeter of a loop, since they both grow linearly in the size system $L$.
 
 Nonetheless, we expect a phase transition by varying $\lambda$ \cite{trebst2007topological, hamma2008adiabatic, tagliacozzo2011entanglement} that can still be captured by an operator like $W_{\mathcal{R}}= \prod_{i \in \mathcal{R}} U_{i}$, the product of magnetic operators $U$'s over a (connected) region $\mathcal{R}$.
-Indeed, when $\lambda=0$, the Hamiltonian \eqref{eq:ladder_hamiltonian} is analogous to a Toric Code \cite{kitaev2003fault} which is known to be in a deconfined phase, where the (topologically distinct) ground states are obtained as uniform superpositions of the gauge-invariant states, i.e.~closed electric loops.
+Indeed, when $\lambda=0$, the Hamiltonian \eqref{eq:ladder_hamiltonian} is analogous to a \ac{tc} \cite{kitaev2003fault} which is known to be in a deconfined phase, where the (topologically distinct) ground states are obtained as uniform superpositions of the gauge-invariant states, i.e.~closed electric loops.
 On these ground states $\ev{W_{\mathcal{R}}} = 1$, hence
  a value $\ev{W_{\mathcal{R}}} \approx 1$ signals a deconfined phase.
 On the other hand, when $\lambda \rightarrow \infty$, the electric loops are suppressed, hence
 $\ev{W_{\mathcal{R}}} \approx 0$, signalling a confined phase.
 
-In the dual clock model picture, the Wilson loop translates to a disorder operator \cite{fradkin1978order}, which means that a deconfined phase can be thought of as a paramagnetic (or disordered) phase, while the confined phase is like a ferromagnetic (or ordered) phase.
+In the dual clock model picture, the \ac{wl} translates to a disorder operator \cite{fradkin1978order}, which means that a deconfined phase can be thought of as a paramagnetic (or disordered) phase, while the confined phase is like a ferromagnetic (or ordered) phase.
 Moreover, the longitudinal field breaks the $N$-fold symmetry of the ferromagnetic phase into a one-fold or two-fold degeneracy, depending on the parity ($n$ even/odd) of the super-selection sector.
 
-We study the $\Z_N$ \ac{lgt} on a ladder numerically through \emph{exact diagonalization}, by evaluating the half-ladder Wilson loop, i.e.~
+We study the $\Z_N$ \ac{lgt} on a ladder numerically through \emph{exact diagonalization}, by evaluating the half-ladder \ac{wl}, i.e.~
 \begin{equation}
     W = U_1 U_2 \cdots U_{L/2},
 \end{equation}
@@ -70,7 +70,7 @@ In the following, we present the results with $N=2,3$ and $4$, for different len
     \centering
     \input{assets/graphs/Z2_wilson.tex}
     \vspace*{-10pt}
-    \caption[Wilson loops for the $\Z_2$ ladder \ac{lgt}]{$\Z_2$ Wilson loop in the sectors $n=0$ (\emph{top}) and $n=1$ (\emph{bottom}), for sizes $L=10,12, \dots,18$.
+    \caption[\ac{wl}s for the $\Z_2$ ladder \ac{lgt}]{$\Z_2$ \ac{wl} in the sectors $n=0$ (\emph{top}) and $n=1$ (\emph{bottom}), for sizes $L=10,12, \dots,18$.
     The sector $n=0$ presents only a deconfined point at $\lambda=0$ and then decays rapidly into a confined phase, while the sector $n=1$ has a phase transition for $\lambda \simeq 1$.
     }
     \label{fig:z2_wilson}
@@ -83,11 +83,11 @@ In the following, we present the results with $N=2,3$ and $4$, for different len
 %     \input{assets/graphs/wilson_loops.tex}
 %     \vspace*{-10pt}
 %     \caption{
-%         \textbf{(a)} $\Z_2$ Wilson loop in the sectors $n=0$ (\emph{top}) and $n=1$ (\emph{bottom}), for sizes $L=10,12, \dots,18$.
+%         \textbf{(a)} $\Z_2$ \ac{wl} in the sectors $n=0$ (\emph{top}) and $n=1$ (\emph{bottom}), for sizes $L=10,12, \dots,18$.
 %         The sector $n=0$ presents only a deconfined point at $\lambda=0$ and then decays rapidly into a confined phase, while the sector $n=1$ has a phase transition for $\lambda \simeq 1$.
-%         \textbf{(b)} $\Z_3$ Wilson loop for the sectors $n=0$ (\emph{top}) and $n=1,2$ (\emph{bottom}, which are equivalent), for sizes $L = 7,9,11$ and $13$.
+%         \textbf{(b)} $\Z_3$ \ac{wl} for the sectors $n=0$ (\emph{top}) and $n=1,2$ (\emph{bottom}, which are equivalent), for sizes $L = 7,9,11$ and $13$.
 %         Inset: energy differences $\Delta E_i = E_i - E_0$ for $i=1,2$, as a function of the coupling $\lambda$, in the sectors $n=1,2$, showing the emergence of a double-degenerate ground state for $\lambda > 1$.
-%         \textbf{(c)} $\Z_4$ Wilson loop for sectors $n=0, \dots, 3$ and sizes $L=6, \dots, 10$.
+%         \textbf{(c)} $\Z_4$ \ac{wl} for sectors $n=0, \dots, 3$ and sizes $L=6, \dots, 10$.
 %         Only the sector $n = 2$ has a clear deconfined-confined phase transition, as expected from the duality with the $4$-clock model.
 %     }
 %     \label{fig:wilson_loops}
@@ -100,9 +100,9 @@ As a warm up, we consider the $\Z_2$ ladder \ac{lgt}, with lengths $L=10,12,\dot
 This model is equivalent to a $p=2$ clock model, which is just the quantum Ising chain, with only two super-selection sectors for $n=0$ and $n=1$.
 When $n=1$, the Hamiltonian  contains only the transverse filed and is integrable \cite{baxter1982exactlysm}.
 Thus, we expect a critical point for $\lambda \simeq 1$, which will be a DCPT in the gauge model language.
-This is clearly seen in the behaviour of the half-ladder Wilson loop, as shown in the lower panel of Fig.~\ref{fig:z2_wilson}.
+This is clearly seen in the behaviour of the half-ladder \ac{wl}, as shown in the lower panel of Fig.~\ref{fig:z2_wilson}.
 For $n=0$, both the transverse and longitudinal fields  are present, the model is no longer integrable  \cite{banuls2011thermalization, kormos2017confinement, pomponio2022bloch} and we expect to always see a confined phase, except for $\lambda = 0$.
-This is indeed confirmed by the behaviour of the half-ladder Wilson loop shown in the upper panel of Fig.~\ref{fig:z2_wilson}.
+This is indeed confirmed by the behaviour of the half-ladder \ac{wl} shown in the upper panel of Fig.~\ref{fig:z2_wilson}.
 
 We can further characterize the phases of the two sectors by looking at the structure of the ground state, for $\lambda<1$ and $\lambda>1$, which is possible thanks to the exact diagonalization.
 In particular, in the deconfined phase of the sector $n=1$, the ground state is a superposition of the deformations of the non-contractible electric string that makes the $n=1$ vacuum $\ket{\Omega_1}$.
@@ -114,7 +114,7 @@ Instead, for $\lambda > 1$, where we have confinement (as in the $n=0$ sector), 
     \centering
     \input{assets/graphs/Z3_wilson.tex}
     \vspace*{-10pt}
-    \caption[Wilson loops for the $\Z_3$ ladder \ac{lgt}]{$\Z_3$ Wilson loop for the sectors $n=0$ (\emph{top}) and $n=1,2$ (\emph{bottom}, which are equivalent), for sizes $L = 7,9,11$ and $13$.
+    \caption[\ac{wl}s for the $\Z_3$ ladder \ac{lgt}]{$\Z_3$ \ac{wl} for the sectors $n=0$ (\emph{top}) and $n=1,2$ (\emph{bottom}, which are equivalent), for sizes $L = 7,9,11$ and $13$.
        Inset: energy differences $\Delta E_i = E_i - E_0$ for $i=1,2$, as a function of the coupling $\lambda$, in the sectors $n=1,2$, showing the emergence of a double-degenerate ground state for $\lambda > 1$.
 }
     \label{fig:z3_wilson}
@@ -126,7 +126,7 @@ Instead, for $\lambda > 1$, where we have confinement (as in the $n=0$ sector), 
 \paragraph{Results for \texorpdfstring{$N=3$}{N=3}}%
 The $\Z_3$ \ac{lgt} is studied for lengths $L=7,9,11$ and $13$.
 This model can be mapped to a $3$-clock model, which is equivalent to a $3$-state quantum Potts model with a longitudinal field, which is present in all sectors, as one can see from \eqref{eq:dual_ladder_hamiltonian_real}.
-This field is expected to disrupt any ordered state and thus it is not possible to observe a phase transition, as it is confirmed  by the behaviour of the half-ladder Wilson loops  shown in Fig.~\ref{fig:z3_wilson}.
+This field is expected to disrupt any ordered state and thus it is not possible to observe a phase transition, as it is confirmed  by the behaviour of the half-ladder \ac{wl}s  shown in Fig.~\ref{fig:z3_wilson}.
 In addition, all the sectors present a deconfined point at $\lambda = 0$.
 In the case $n=0$, for $\lambda > 0$ we recognize a quick transition to a confined phase, similar to what happens in \cite{burrello2021ladder}.
 While for $n=1$ and $2$ (which are equivalent), the model exhibits a smoother \emph{crossover} to an ordered phase characterized by a doubly-degenerate ground state, for $\lambda > 1$.
@@ -136,10 +136,10 @@ Notice that, as discussed above,  the presence of the ``skew'' longitudinal fiel
 
 \paragraph{Results for \texorpdfstring{$N=4$}{N=4}}%
 The $\Z_4$ ladder \ac{lgt} have four super-selection sectors.
-The behaviour of half-ladder Wilson loops as function of $\lambda$ is shown in Fig.~\ref{fig:z4_wilson}.
+The behaviour of half-ladder \ac{wl}s as function of $\lambda$ is shown in Fig.~\ref{fig:z4_wilson}.
 As in the previous models, for $n=0$ we see a deconfined point at $\lambda = 0$, followed by a sharp transition to a confined phase.
 The sector $n=2$, which has no longitudinal field, is the only one to present a clear DCPT for $\lambda \approx 1$, as it is expected from the fact that the $4$-clock model is equivalent to two decoupled Ising chains \cite{ortiz2012dualities}.
-In the two equivalent sectors $n=1$ and $3$, where the longitudinal field is complex, the Wilson loop shows a peculiar behaviour, at least for the largest size ($L=10$) of the chain: it decreases fast as soon $\lambda > 0$, to stabilize to a finite value in the region $0.5 \lesssim \lambda \lesssim 1$, before tending to zero.
+In the two equivalent sectors $n=1$ and $3$, where the longitudinal field is complex, the \ac{wl} shows a peculiar behaviour, at least for the largest size ($L=10$) of the chain: it decreases fast as soon $\lambda > 0$, to stabilize to a finite value in the region $0.5 \lesssim \lambda \lesssim 1$, before tending to zero.
 The characteristics of this phase would deserve a deeper analysis, that we plan to do in a future work.
 For $\lambda \gtrsim 1$, the system enters a deconfined phase with a double degenerate ground state, as for the $\Z_3$ model.
 
@@ -148,7 +148,7 @@ For $\lambda \gtrsim 1$, the system enters a deconfined phase with a double dege
     \centering
     \input{assets/graphs/Z4_wilson.tex}
     \vspace*{-10pt}
-    \caption[Wilson loops for the $\Z_4$ ladder \ac{lgt}]{$\Z_4$ Wilson loop for sectors $n=0, \dots, 3$ and sizes $L=6, \dots, 10$.
+    \caption[\ac{wl}s for the $\Z_4$ ladder \ac{lgt}]{$\Z_4$ \ac{wl} for sectors $n=0, \dots, 3$ and sizes $L=6, \dots, 10$.
         Only the sector $n = 2$ has a clear deconfined-confined phase transition, as expected from the duality with the $4$-clock model.
     }
     \label{fig:z4_wilson}
@@ -160,7 +160,7 @@ For $\lambda \gtrsim 1$, the system enters a deconfined phase with a double dege
 % In this work, we proposed an exact gauge preserving duality transformation that maps the  $\mathbb{Z}_N$ \ac{lgt} on a ladder onto a 1D $N-$clock model in a transversal field, coupled to a possibly complex longitudinal field which depends on the super-selection sector.
 %
 % This map allowed us to perform numerical simulations with an exact diagonalization algorithm with sizes up to $L=18, 13, 10$ for $N=2,3,4$ respectively.
-% To study the phases of the model and a possible DCPT transition, we calculated the Wilson loops in the different topological sectors, finding an unusual behaviour in the sectors with $n$ odd (mod $N$), possibly suggesting the emergence of a new phase, such as for example the incommensurate phase appearing in chiral clock models \cite{huse1983chiral, whitsitt2018clock, zhuang2015clock}, whose characterization requires however to consider longer sizes of the chain in order to evaluate the asymptotic behaviour of correlators.
+% To study the phases of the model and a possible DCPT transition, we calculated the \ac{wl}s in the different topological sectors, finding an unusual behaviour in the sectors with $n$ odd (mod $N$), possibly suggesting the emergence of a new phase, such as for example the incommensurate phase appearing in chiral clock models \cite{huse1983chiral, whitsitt2018clock, zhuang2015clock}, whose characterization requires however to consider longer sizes of the chain in order to evaluate the asymptotic behaviour of correlators.
 % This will be the subject of future work, in which we can also consider the possibility to include static and dynamical matter in the lattice gauge model.
 
 % \medskip

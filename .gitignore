@@ -1,3 +1,4 @@
+assets/cache/
 ltex.*txt
 *.aux
 *.auxlock
@@ -11,4 +12,4 @@ ltex.*txt
 *.run.xml
 *.synctex.gz
 *.toc
-assets/cache/
+*.lof

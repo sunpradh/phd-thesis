@@ -12,18 +12,6 @@
 \usepackage{xkeyval}
 \usepackage{xifthen}
 
-\newcommand{\FigureSideCaption}[3][]{
-    \begin{minipage}[t]{0.5\textwidth}
-        \centering
-        #2
-    \end{minipage}\hfill
-    \begin{minipage}[b]{0.45\textwidth}
-        \caption{#3}%
-        \ifthenelse{\isempty{#1}}{}{\label{#1}}%
-    \end{minipage}%
-}
-
-
 \makeatletter
 
 \def\my@figlabel{}
@@ -163,12 +151,9 @@
 \DeclareAcronym{qed}{short={QED}, long={Quantum Electrodynamics}}
 \DeclareAcronym{lft}{short={LFT}, long={Lattice Field Theory}}
 \DeclareAcronym{lgt}{short={LGT}, long={Lattice Gauge Theory}}
-% TODO da implementare
 \DeclareAcronym{tc}{short={TC}, long={Toric Code}}
 \DeclareAcronym{wl}{short={WL}, long={Wilson loop}}
-\DeclareAcronym{ths}{short={tHS}, long={'t Hooft string}}
+\DeclareAcronym{ths}{short={tHS}, long={`t Hooft string}}
 \DeclareAcronym{qs}{short={QS}, long={Quantum Simulation}}
-\DeclareAcronym{dqs}{short={DQS}, long={Digital Quantum Simulation}}
-\DeclareAcronym{aqs}{short={AQS}, long={Analog Quantum Simulation}}
-\DeclareAcronym{dof}{short={d.o.f.}, long={degrees of freedom}}
+\DeclareAcronym{dof}{short={d.o.f}, long={degrees of freedom}}
 \DeclareAcronym{DCPT}{short={DCPT}, long={deconfined-confined phase transition}}

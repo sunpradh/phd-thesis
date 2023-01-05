@@ -14,24 +14,24 @@ Indeed, quantum computation and quantum information theory are, still today, ver
 A quantum computer can encodes the large amount of information of a quantum system in its large number of amplitudes.
 So, the size of a quantum computer would only be proportional to the size of the quantum system it intends to simulate, \emph{without} an exponential explosion in \emph{quantum} resources.
 In fact, a quantum computer can indeed act as a \emph{universal quantum simulator} (Lloyd 1996\citneeded).
-This is basically the idea behind \emph{digital quantum simulations}.
+This is basically the idea behind \emph{digital \ac{qs}s}.
 
 However, another approach is possible.
 One can mimic the evolution of a given quantum system by means of another \emph{analogous} and \emph{controllable} quantum system.
 Hence, we will only need a specific quantum machine for a specific class of problems.
-This is, instead, the idea behind \emph{analog quantum simulations}.
+This is, instead, the idea behind \emph{analog \ac{qs}s}.
 In this case, for a specific set of problems the full implementation of a quantum computer may not be necessary.
 
-In general, \emph{quantum simulation} can be (loosely) defined as simulating a quantum system by quantum mechanical means,
+In general, \emph{\ac{qs}} can be (loosely) defined as simulating a quantum system by quantum mechanical means,
 There are three paths that can be taken in this regard:
 \begin{itemize}
-    \item digital quantum simulation
-    \item analog quantum simulation
+    \item digital \ac{qs}
+    \item analog \ac{qs}
     \item quantum-information inspired algorithms for classical simulation
 \end{itemize}
 We will discuss briefly each one of them.
 By \emph{quantum simulator} we mean a \emph{controllable} quantum system used to simulate or emulate other quantum systems.
-We see that only digital and analog quantum simulations employ a quantum simulator.
+We see that only digital and analog \ac{qs}s employ a quantum simulator.
 The last option employs techniques, inspired by quantum information theory, that make it possible to truncate and approximates quantum states in order to have efficient classical simulations.
 
 
@@ -71,7 +71,7 @@ The typical setup for a digital simulation is made of three steps:
 \subsection{Analog quantum simulations}
 \label{sub:analog_quantum_simulations}
 
-Analog quantum simulation (AQS) in another possible approach to quantum simulation, where a one quantum system mimics or emulate another.
+Analog \ac{qs} (AQS) in another possible approach to \ac{qs}, where a one quantum system mimics or emulate another.
 The Hamiltonian of the system to be simulated $H_{\text{sys}}$ is directly mapped onto the Hamiltonian of the simulator $H_{\text{sim}}$.
 Obviously, this can be done if there is a mapping between the system and the simulator.
 Note that the simulator may only partly reproduce the dynamics of the system, or simulate some effective description of the system.

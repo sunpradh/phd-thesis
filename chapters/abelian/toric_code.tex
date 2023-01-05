@@ -1,12 +1,12 @@
 %----------------------------------------
-% SECTION: Toric Code and its features
+% SECTION: \ac{tc} and its features
 %----------------------------------------
-\section{Toric Code and its features}
+\section{\ac{tc} and its features}
 \label{sec:toric_code_and_its_features}
 
-The Toric code is two-dimensional model of spin-\onehalf degrees of freedom (d.o.f), which can be regarded as an example of a pure $\mathbb{Z}_2$ \ac{lgt}.
+The \ac{tc} is two-dimensional model of spin-\onehalf \ac{dof}, which can be regarded as an example of a pure $\mathbb{Z}_2$ \ac{lgt}.
 In particular, we focus on a $L \times L$ square lattice with periodic boundary conditions.
-The \dof are defined on the links the lattice, where the local Hilbert space is $\C^2$.
+The \ac{dof} are defined on the links the lattice, where the local Hilbert space is $\C^2$.
 The main operators we are going to use are the Pauli matrices
 \begin{equation}
     X = \begin{pmatrix}
@@ -51,7 +51,7 @@ The eigenvalues of the Pauli matrices are just $\pm 1$, so the same holds true f
 Moreover, like the Pauli matrices, also $A_s^2 = \identity$ and $B_p^2 = \identity$.
 
 
-Now, given the operators in \eqref{eq:star_plaq_op_def}, we can write down the Hamiltonian of the Toric Code:
+Now, given the operators in \eqref{eq:star_plaq_op_def}, we can write down the Hamiltonian of the \ac{tc}:
 \begin{equation}
     H = - \sum_{v} A_v - \sum_{p} B_p
     \label{eq:toric_code_hamiltonian}
@@ -60,7 +60,7 @@ which is \emph{exactly solvable}, due to \eqref{eq:star_plaq_op_comm_1} and \eqr
 
 
 \begin{figure}[t]
-    \SideFigure[label={fig:toric_code_operators}, desc={Vertex and plaquette operators of the Toric Code}]{ %
+    \SideFigure[label={fig:toric_code_operators}, desc={Vertex and plaquette operators of the \ac{tc}}]{ %
         \input{assets/figures/star_plaq_operators_toric.tex}
     }{%
         Graphical representation of the vertex operator $A_v$ and plaquette operator $B_p$, defined in \eqref{eq:star_plaq_op_def}.
@@ -81,7 +81,7 @@ Given the commutation relations of the $A_v$ and $B_p$ operators in \eqref{eq:st
     B_p \ket{\Omega} = \ket{\Omega}, \qquad \forall v,\, p.
     \label{eq:ground_state_constraints}
 \end{equation}
-From these constraints one can explicitly construct a ground state for the Toric Code in the following way.
+From these constraints one can explicitly construct a ground state for the \ac{tc} in the following way.
 Working in the $Z$-basis, we can start from
 \begin{equation}
     \ket{0}_{\text{TC}} = \bigotimes_{\link \in \lattice} \ket{0}_{\link},
@@ -99,7 +99,7 @@ In fact, a simple calculation
 \end{equation}
 shows that we obtain an eigenstate of $B_p$ with eigenvalue $+1$, due to $B_p^2 = \identity$.
 
-Therefore, we can obtain a ground state for the Toric code as
+Therefore, we can obtain a ground state for the \ac{tc} as
 \begin{equation}
     \ket{\Omega} = \prod_{p} \frac{\identity + B_p}{\sqrt{2}} \ket{0}_{\text{TC}}.
 \end{equation}
@@ -172,7 +172,7 @@ But, these operators have alla a common feature, they are defined on \emph{contr
 Meaning that they can be ``continuously'' deformed to a single point.
 
 \begin{figure}[t]
-    \SideFigure[label=fig:nonlocal_operators_TC, desc={Non-local operators in the Toric Code}]{%
+    \SideFigure[label=fig:nonlocal_operators_TC, desc={Non-local operators in the \ac{tc}}]{%
         \input{assets/figures/nonlocal_operators_toric.tex}
     }{%
         Graphical representation of the different types of non-local operators.
@@ -212,7 +212,7 @@ while
 \end{equation}
 These relations can be thought as the same commutation relations of the $X$ and $Z$ gates of two qubits.
 
-Therefore, the Toric Code (on a torus) has a protected subspace $\mathcal{G}$, see \eqref{eq:TC_protected_subspace}, that behaves like the Hilbert space of two qubits and the operators \eqref{eq:nonlocal_W_toric} and \eqref{eq:nonlocal_S_toric} acts like unitary gates on this space.
+Therefore, the \ac{tc} (on a torus) has a protected subspace $\mathcal{G}$, see \eqref{eq:TC_protected_subspace}, that behaves like the Hilbert space of two qubits and the operators \eqref{eq:nonlocal_W_toric} and \eqref{eq:nonlocal_S_toric} acts like unitary gates on this space.
 Unfortunately, we cannot do quantum computation with these topological qubits because there is no entangling gates.
 Nonetheless they can be used for storing information in a fault-tolerant way, because in order to flip a topological qubit you would need to act with a non-local operator that involves a large amount of links.
 
@@ -220,7 +220,7 @@ Nonetheless they can be used for storing information in a fault-tolerant way, be
 % \subsection{Particle excitations}%
 % \label{sub:particle_excitations}
 %
-% Until now we have only discussed the ground states of the Toric Code, without touching the rest of the low energy sectors.
+% Until now we have only discussed the ground states of the \ac{tc}, without touching the rest of the low energy sectors.
 % In other words, how do we describe the excitations of this model?
 % As we said, \eqref{eq:ground_state_constraints} are the set of constraints that defines the ground states.
 % Therefore, every time a given state $\ket{\Psi}$ violates these equations, we will say that it contains \emph{particles}, which can be of different types.
@@ -248,14 +248,14 @@ Nonetheless they can be used for storing information in a fault-tolerant way, be
 %
 % SUBSECTION: Z2 \ac{lgt}
 %
-\subsection{Toric Code as a \texorpdfstring{$\Z_2$}{Z2} \ac{lgt}}
+\subsection{\ac{tc} as a \texorpdfstring{$\Z_2$}{Z2} \ac{lgt}}
 \label{sub:toric_code_as_a_z2_lattice_gauge_theory}
 
-The Toric Code was formulated as a type of error-correcting code for quantum computing, but it can be reinterpreted as a pure $\Z_2$ \ac{lgt}.
+The \ac{tc} was formulated as a type of error-correcting code for quantum computing, but it can be reinterpreted as a pure $\Z_2$ \ac{lgt}.
 This is a type of \ac{lgt} where we allow only two possible states for the gauge field.
 
 On a single link, we consider the $X_{\link}$ as the gauge field operator, while $Z_{\link}$ the electric field operator.
-In this way, we can automatically see that the term $B_p$ is the magnetic energy because it has the same form of single-plaquette Wilson loop.
+In this way, we can automatically see that the term $B_p$ is the magnetic energy because it has the same form of single-plaquette \ac{wl}.
 Furthermore, the vertex operator $A_v$ can be read as a gauge transformation on the vertex $v$, because the $Z$'s operators flips the states in the $X$-basis, which would corresponds to gauge field configurations.
 
 Now that we know the form of gauge transformations, we call a state \emph{physical} or \emph{gauge-invariant} if
@@ -296,7 +296,7 @@ From the allowed configuration, we can see that the only possible lattice states
 An example of such state can be seen in Fig.~\ref{fig:physical_state_z2}.
 
 
-For $\lambda = 0$ we recover the Toric Code and its ground state can be reinterpreted as an equal superposition of all the possible configuration of closed electric loops.
+For $\lambda = 0$ we recover the \ac{tc} and its ground state can be reinterpreted as an equal superposition of all the possible configuration of closed electric loops.
 This kind of phase is also called a \emph{loop condensate}.
 For large $\lambda$ the electric term dominates over the magnetic term, hence all the links will favor the state $\ket{0}$.
 So in the regime of strong coupling we expect to be in a \emph{polarized phase}, where the presence of electric loops is suppressed.
@@ -319,7 +319,7 @@ Hence, for $\lambda_c$ we have a deconfined-confined phase transition.
 \label{sub:super_selection_sectors}
 
 We have already seen in Sec.~\ref{sub:topological_ground_states} the non-local operators $\Wilson_{1,2}$ and $\overline{S}_{1,2}$ that can classify the topological ground states.
-They can be treated on equal footing in the pure Toric Code, because they both commutes with all the terms of the Hamiltonian \eqref{eq:toric_code_hamiltonian}.
+They can be treated on equal footing in the pure \ac{tc}, because they both commutes with all the terms of the Hamiltonian \eqref{eq:toric_code_hamiltonian}.
 This is no longer true in \eqref{eq:z2_lgt_hamiltonian}, when the electric term is present.
 Both kind of operators are gauge-invariant, in the sense that they commute with the gauge transformations $A_v$, i.e.
 \begin{equation}
