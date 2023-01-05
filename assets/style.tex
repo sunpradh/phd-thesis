@@ -1,0 +1,101 @@
+%----------------------------------------
+% DOCUMENT APPEARANCE
+%----------------------------------------
+
+% Fonts
+%----------------------------------------
+\usepackage[no-math]{fontspec}
+\usepackage[T1]{fontenc}
+\usepackage{mlmodern}
+\setsansfont{IBM Plex Sans}
+\newfontfamily{\PlexMedium}{IBM Plex Sans Medm} % for headings
+
+
+% Custom chapter heading style
+%----------------------------------------
+\makechapterstyle{mychapter}{
+    \chapterstyle{companion}
+    \setlength{\beforechapskip}{0cm}
+    \setlength{\afterchapskip}{2.5cm}
+    \setlength{\topskip}{0cm}
+    \setlength{\midchapskip}{5pt}
+    \setlength{\chapindent}{0.75\marginparsep}
+    \addtolength{\chapindent}{0.75\marginparwidth}
+    \renewcommand*{\chapnamefont}{}
+    \renewcommand*{\printchaptername}{}
+    \renewcommand*{\chapnumfont}{\sffamily\LARGE\bfseries}
+    \renewcommand*{\printchapternum}{%
+        \raggedleft\chapnumfont %
+        \ifanappendix appendix~ \thechapter %
+        \else chapter~ \numtoname{\thechapter}\fi%
+    }
+    \renewcommand*{\chaptitlefont}{\normalfont\sffamily\HUGE}
+    \renewcommand{\printchaptertitle}[1]{%
+        \begin{adjustwidth}{\chapindent}{-\chapindent}
+            \raggedleft \chaptitlefont ##1\par\nobreak
+        \end{adjustwidth}
+    }
+}
+
+
+% Custom section style
+%----------------------------------------
+\setsecnumdepth{subsection}
+\settocdepth{subsection}
+\hangsecnum
+\makeheadstyles{myheadings}{
+    \renewcommand*{\secheadstyle}{\sffamily\Large\PlexMedium}
+    \renewcommand*{\subsecheadstyle}{\sffamily\large\PlexMedium}
+    \renewcommand*{\subsubsecheadstyle}{\sffamily\normalsize\PlexMedium}
+}
+
+
+% Custom page style
+%----------------------------------------
+\setlength{\headwidth}{\textwidth}
+\addtolength{\headwidth}{0.75\marginparsep}
+\addtolength{\headwidth}{0.75\marginparwidth}
+\makepagestyle{mypagestyle}
+\makerunningheadwidth{mypagestyle}{\headwidth}
+\makeheadrule{mypagestyle}{\headwidth}{\normalrulethickness}
+\makeheadposition{mypagestyle}{flushright}{flushleft}{}{}
+\makepsmarks{mypagestyle}{%
+    \nouppercaseheads
+    \createmark{chapter}{both}{nonumber}{}{}
+    \createmark{section}{right}{nonumber}{}{}
+    \createplainmark{toc}{both}{\contentsname}
+    \createplainmark{lof}{both}{\listfigurename}
+    \createplainmark{lot}{both}{\listtablename}
+    \createplainmark{bib}{both}{\bibname}
+    \createplainmark{index}{both}{\indexname}
+    \createplainmark{glossary}{both}{\glossaryname}
+}
+
+% Headers
+\makeevenhead{mypagestyle}{\normalfont\sffamily\PlexMedium\rightmark}{}{}
+\makeoddhead{mypagestyle}{}{}{\normalfont\PlexMedium\leftmark}
+
+% Footers
+\makeevenfoot{mypagestyle}{}{\normalfont\PlexMedium\thepage}{}
+\makeoddfoot{mypagestyle}{}{\normalfont\PlexMedium\thepage}{}
+\addtolength{\footskip}{20pt}
+
+% Fix chapter page style
+\copypagestyle{chapter}{plain}
+\makeevenfoot{chapter}{}{\normalfont\PlexMedium\thepage}{}
+\makeoddfoot{chapter}{}{\normalfont\PlexMedium\thepage}{}
+
+% Set all the custom styles
+\headstyles{myheadings}
+\chapterstyle{mychapter}
+\pagestyle{mypagestyle}
+
+% Custom caption style
+%----------------------------------------
+\captiondelim{.\hspace{1em}}
+\captionnamefont{\footnotesize\PlexMedium}
+\captiontitlefont{\footnotesize\sffamily}
+\captionstyle{\linespread{1.1}}
+
+% Line spacing
+\linespread{1.1}

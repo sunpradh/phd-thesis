@@ -60,7 +60,7 @@ which is \emph{exactly solvable}, due to \eqref{eq:star_plaq_op_comm_1} and \eqr
 
 
 \begin{figure}[t]
-    \FigureSideCaption[fig:toric_code_operators]{%
+    \SideFigure[label={fig:toric_code_operators}, desc={Vertex and plaquette operators of the Toric Code}]{ %
         \input{assets/figures/star_plaq_operators_toric.tex}
     }{%
         Graphical representation of the vertex operator $A_v$ and plaquette operator $B_p$, defined in \eqref{eq:star_plaq_op_def}.
@@ -172,7 +172,7 @@ But, these operators have alla a common feature, they are defined on \emph{contr
 Meaning that they can be ``continuously'' deformed to a single point.
 
 \begin{figure}[t]
-    \FigureSideCaption[fig:nonlocal_operators_TC]{%
+    \SideFigure[label=fig:nonlocal_operators_TC, desc={Non-local operators in the Toric Code}]{%
         \input{assets/figures/nonlocal_operators_toric.tex}
     }{%
         Graphical representation of the different types of non-local operators.
@@ -273,10 +273,10 @@ The electric field operator $Z$ has eigenvalue $+1$ and $-1$, corresponding resp
 In order to meet the condition in \eqref{eq:toric_code_physical_state}, a vertex configuration must have an even number of links in the $\ket{1}$ state (examples can be seen in Fig.~\ref{fig:gauge_inv_vertices_z2}).
 
 \begin{figure}[t]
-    \FigureSideCaption[fig:gauge_inv_vertices_z2]{%
+    \SideFigure[label=fig:gauge_inv_vertices_z2, desc={Gauge-invariant vertex states for the $\Z_2$ \ac{lgt}}]{%
         \input{assets/figures/gauge_inv_vertices.tex}
     }{%
-        Gauge invariant vertex states for the $\Z_2$ \ac{lgt}.
+        Gauge-invariant vertex states for the $\Z_2$ \ac{lgt}.
         Green lines represent the $\ket{1}$ link state.
     }
 \end{figure}
@@ -306,7 +306,7 @@ Hence, for $\lambda_c$ we have a deconfined-confined phase transition.
 \todo{inserire diagramma di fase}
 
 \begin{figure}[t]
-    \FigureSideCaption[fig:physical_state_z2]{%
+    \SideFigure[label=fig:physical_state_z2, desc={Physical states in the $\Z_2$ \ac{lgt}}]{%
         \input{assets/figures/physical_state.tex}
     }{%
         Physical states in the $\Z_2$ \ac{lgt} are made of closed electric loops.
@@ -360,7 +360,7 @@ where the $n,m = 0, 1$ and the addition is taken modulus $2$.
     \centering
     \input{assets/figures/sector_mapping.tex}
     \vspace*{-0.5cm}
-    \caption{%
+    \caption[States in different super-selection sectors]{%
         Pictorial representation of states of different super-selection sector and the action of the string operator $W_2$.
         Notice that the action $\Wilson_2$ introduces a non-contractible electric loop in the state, which modifies the value of $\overline{S}_1$, which, in a sense, measure the presence of non-contractible electric loops in the orthogonal direction $\hat{2}$.%
         }

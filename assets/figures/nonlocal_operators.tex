@@ -1,33 +1,35 @@
-\begin{tikzpicture}[
-        site/.style = {circle, inner sep=0 pt, minimum size=3pt, draw=black, fill=white},
-    ]
+\begin{tikzpicture}
     % lattice grid
-    \draw[Gray,thin] (-0.5,-0.5) grid (4.5,4.5);
+    \draw[lattice, step=1] (-0.5,-0.5) grid (4.5,4.5);
 
     % Wilson loops
-    \draw[Blue, ultra thick]
-        (-0.5, 1) -- (4.5, 1)
-        node [pos=1, right] {$\mathcal{C}_1$}
-        node [pos=0.85, above, black] {$\overline{W}_1$}
-        ;
-    \draw[Blue, ultra thick]
-        (3, -0.5) -- (3, 4.5)
-        node [pos=0, below] {$\mathcal{C}_2$}
-        node [pos=0.15, left, black] {$\overline{W}_2$}
-        ;
+    \draw[X] (-0.5, 1) -- (0, 1);
+    \draw[X] (4, 1) -- (4.5, 1)
+        node [pos=1, right] {$\mathcal{L}_1$}
+        node [pos=0, above left, black] {$\Wilson_1$};
+    \foreach \x in {0,...,3} \draw[U] (\x, 1) -- ++(1, 0);
+
+    \draw[X] (3, -0.5) -- (3, 0)
+        node [pos=0, below] {$\mathcal{L}_2$}
+        node [pos=0.15, left, black] {$\Wilson_2$};
+    \draw[X] (3, 4) -- (3, 4.5);
+    \foreach \y in {0,...,3} \draw[U] (3, \y) -- ++(0, 1);
 
     % 't Hooft strings
-    \draw[Red, very thick, dashed]
+    \draw[Z, dashed, ->-=0.4]
         (-0.5,3.5) -- (4.5,3.5)
-        node[pos=0, left] {$\tilde{\mathcal{C}}_1$}
+        node[pos=0, left] {$\mathcal{C}_1$}
         ;
-    \foreach \x in {0,...,4} { \draw[Red, ultra thick] (\x, 3) -- +(0, 1); }
-    \draw (2,3) node [below right] {$\overline{S}_1$};
-    \draw[Red, very thick, dashed]
+    \foreach \x in {0,...,4} { \draw[Z, ->-=0.40] (\x, 3) -- +(0, 1); }
+    \draw (2,3) node [below right] {$\tHooft_1$};
+
+    \draw[Z, dashed, ->-=0.2]
         (0.5,-0.5) -- (0.5,4.5)
-        node[pos=1, above] {$\tilde{\mathcal{C}}_2$}
+        node[pos=1, above] {$\mathcal{C}_2$}
         ;
-    \foreach \y in {0,...,4} { \draw[Red, ultra thick] (0, \y) -- +(1, 0); }
-    \draw (1,2) node [below right] {$\overline{S}_2$};
-    \foreach \y in {0,...,4} \foreach \x in {0,...,4} \draw (\x,\y) node [site] {};
+    \foreach \y in {0,...,4} { \draw[Z, ->-=0.40] (0, \y) -- +(1, 0); }
+    \draw (1, 2) node [below right] {$\tHooft_2$};
+
+    % Sites
+    \DrawSites{0,...,4}{0,...,4};
 \end{tikzpicture}
