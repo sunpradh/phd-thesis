@@ -1,7 +1,7 @@
 %----------------------------------------
-% SECTION: \ac{tc} and its features
+% SECTION: Toric Code and its features
 %----------------------------------------
-\section{\ac{tc} and its features}
+\section{Toric Code and its features}
 \label{sec:toric_code_and_its_features}
 
 The \ac{tc} is two-dimensional model of spin-\onehalf \ac{dof}, which can be regarded as an example of a pure $\mathbb{Z}_2$ \ac{lgt}.
@@ -84,7 +84,7 @@ Given the commutation relations of the $A_v$ and $B_p$ operators in \eqref{eq:st
 From these constraints one can explicitly construct a ground state for the \ac{tc} in the following way.
 Working in the $Z$-basis, we can start from
 \begin{equation}
-    \ket{0}_{\text{TC}} = \bigotimes_{\link \in \lattice} \ket{0}_{\link},
+    \ket{0}_{\text{TC}} = \bigotimes_{\link \in \Lattice} \ket{0}_{\link},
 \end{equation}
 which is the state where every link is in the $\ket{0}$, where $Z \ket{0} = \ket{0}$.
 This state obviously satisfy the first condition in \eqref{eq:ground_state_constraints}.
@@ -113,7 +113,7 @@ For example, later we will show that with \emph{periodic boundary conditions} th
 \emph{four degenerate ground states}.
 
 
-Consider a lattice $\lattice$ of size $L \times L$ with periodic boundary conditions in both directions, i.e.~a torus.
+Consider a lattice $\Lattice$ of size $L \times L$ with periodic boundary conditions in both directions, i.e.~a torus.
 From \eqref{eq:ground_state_constraints}, we have $2L^2$ constraints.
 These are not all independent because if we multiply them all, we obtain
 \begin{equation}
@@ -133,7 +133,7 @@ Non-local in this instance means not expressible as a product or sum of vertex a
 But first let look more closely at \emph{local operators}.
 
 
-Consider any region $\mathcal{R}$ on the lattice $\lattice$.
+Consider any region $\mathcal{R}$ on the lattice $\Lattice$.
 Without loss of generality, let $\mathcal{R}$ be a connected region, which means it is just a set of jointed plaquettes.
 On this region $\mathcal{R}$ we can define a local operator $W$ as a product of $B_p$ operators:
 \begin{equation}
@@ -149,8 +149,8 @@ In fact, the $B_p$ themselves are defined as product of $X$s along a closed curv
 In a sense, they are all \emph{string operators} on closed curves.
 
 The same argument can be repeated for $A_v$ with the minor caveat that the dual lattice have to considered.
-In the dual lattice $\duallattice$, to each plaquette $p$ of the lattice $\lattice$ corresponds a vertex $v$ on the dual lattice.
-Then, to each link $\link$ in $\lattice$ corresponds a link $\link^{\ast}$ in $\duallattice$ in the perpendicular direction.
+In the dual lattice $\DualLattice$, to each plaquette $p$ of the lattice $\Lattice$ corresponds a vertex $v$ on the dual lattice.
+Then, to each link $\link$ in $\Lattice$ corresponds a link $\link^{\ast}$ in $\DualLattice$ in the perpendicular direction.
 In this way, a star becomes a plaquette in the dual lattice.
 From here, we can repeat the same argument.
 Consider a region $\mathcal{R}^{\ast}$ a local operator $W^{\ast}$ such that
@@ -161,13 +161,13 @@ and, due to $Z^2 = \identity$, this is equal to
 \begin{equation}
     W^{\ast} = \prod_{\link \in \partial \mathcal{R}^{\ast}} Z_{\link}.
 \end{equation}
-The local operator $W^{\ast}$ is a string of $Z$'s operators along the closed curve given by the boundary $\partial \mathcal{R}$ in $\duallattice$.
-The same can be said for $A_v$, it is a string operator around the smallest possible curve in $\duallattice$.
+The local operator $W^{\ast}$ is a string of $Z$'s operators along the closed curve given by the boundary $\partial \mathcal{R}$ in $\DualLattice$.
+The same can be said for $A_v$, it is a string operator around the smallest possible curve in $\DualLattice$.
 % Indeed, a star on the direct lattice becomes a plaquette on the dual lattice.
 % So a product of $A_v$ is equivalent to a string of $Z$ operators along closed curves on the dual lattice.
 % All these curve have a common property, they are \emph{contractible}, meaning that they can be continuously deformed to a single point.
 % The operators we have called local so far are string operators over contractible curves, but if we are on a lattice with non-trivial topology, like a torus, then we can also have \emph{non-contractible} curves.
-We can conclude that all the local operators that commutes with Hamiltonian are just string operators over closed curve in either $\lattice$ or $\duallattice$.
+We can conclude that all the local operators that commutes with Hamiltonian are just string operators over closed curve in either $\Lattice$ or $\DualLattice$.
 But, these operators have alla a common feature, they are defined on \emph{contractible} curves.
 Meaning that they can be ``continuously'' deformed to a single point.
 
@@ -183,7 +183,7 @@ Meaning that they can be ``continuously'' deformed to a single point.
 
 
 String operators on non-contractible curves, either on the direct or dual lattice, are the non-local operators we have been looking for distinguish the states in $\mathcal{G}$.
-Consider two non-contractible loops $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ on $\lattice$ along the $\hat{1}$ and $\hat{2}$ direction respectively, like in Fig.~\ref{fig:nonlocal_operators_TC}.
+Consider two non-contractible loops $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$ on $\Lattice$ along the $\hat{1}$ and $\hat{2}$ direction respectively, like in Fig.~\ref{fig:nonlocal_operators_TC}.
 On these paths we can define the string operators $\Wilson_1$ and $\Wilson_2$ as
 \begin{equation}
     \Wilson_1 = \prod_{\link \in \mathcal{L}_1} X_\link, \qquad
@@ -191,7 +191,7 @@ On these paths we can define the string operators $\Wilson_1$ and $\Wilson_2$ as
     \label{eq:nonlocal_W_toric}
 \end{equation}
 It can be proved that they commute with all the terms of the Hamiltonian, even though they cannot be expressed as a product of them.
-The same can be repeated on the dual lattice $\duallattice$, by considering two non-contractible cuts $\mathcal{C}_1$ and $\mathcal{C}_2$ and defining $\overline{S}_1$ and $\overline{S}_2$ as
+The same can be repeated on the dual lattice $\DualLattice$, by considering two non-contractible cuts $\mathcal{C}_1$ and $\mathcal{C}_2$ and defining $\overline{S}_1$ and $\overline{S}_2$ as
 \begin{equation}
     \overline{S}_1 = \prod_{\link \in \mathcal{C}_1} Z_\link, \qquad
     \overline{S}_2 = \prod_{\link \in \mathcal{C}_2} Z_\link.
@@ -248,7 +248,7 @@ Nonetheless they can be used for storing information in a fault-tolerant way, be
 %
 % SUBSECTION: Z2 \ac{lgt}
 %
-\subsection{\ac{tc} as a \texorpdfstring{$\Z_2$}{Z2} \ac{lgt}}
+\subsection{\acl{tc} as a \texorpdfstring{$\Z_2$}{Z2} \acs{lgt}}
 \label{sub:toric_code_as_a_z2_lattice_gauge_theory}
 
 The \ac{tc} was formulated as a type of error-correcting code for quantum computing, but it can be reinterpreted as a pure $\Z_2$ \ac{lgt}.
@@ -260,12 +260,12 @@ Furthermore, the vertex operator $A_v$ can be read as a gauge transformation on 
 
 Now that we know the form of gauge transformations, we call a state \emph{physical} or \emph{gauge-invariant} if
 \begin{equation}
-    A_v \ket{\phi} = \ket{\phi} \quad \forall v \in \lattice,
+    A_v \ket{\phi} = \ket{\phi} \quad \forall v \in \Lattice,
     \label{eq:toric_code_physical_state}
 \end{equation}
 which leads to the definition of the \emph{physical Hilbert space}:
 \begin{equation}
-    \Hphys = \{\ket{\phi} \; \text{s.t.} \; A_v \ket{\phi} = \ket{\phi} \quad \forall v \in \lattice\}.
+    \Hphys = \{\ket{\phi} \; \text{s.t.} \; A_v \ket{\phi} = \ket{\phi} \quad \forall v \in \Lattice\}.
     \label{eq:phys_Hilbert_space_toric}
 \end{equation}
 For greater clarity, lets work in the \emph{electric basis}, which is just the $Z$-basis where the electric field is diagonal.
@@ -326,7 +326,7 @@ Both kind of operators are gauge-invariant, in the sense that they commute with 
     \comm{\Wilson_{1,2}}{A_v} = 0
     \qand
     \comm{\overline{S}_{1,2}}{A_v} = 0,
-    \quad \text{for all $v \in \lattice$}
+    \quad \text{for all $v \in \Lattice$}
 \end{equation}
 but only the $\overline{S}_{1,2}$ string operator commute with the electric field $Z_{\link}$.
 

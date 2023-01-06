@@ -100,7 +100,7 @@ For a path integral formulation we need to first define the action.
 This is just the integral of the Lagrangian in \eqref{eq:yang_mills_lagrangian}, over the $D$-dimensional space-time:
 % The action of the theory in $D=d+1$ dimensions is the given by
 \begin{equation}
-    \Action[A, \psi, \overline{\psi}] = \int_{\R^{1,d}}  \dd^{D} \mathcal{L}.
+    \Action[A, \psi, \overline{\psi}] = \int_{\R^{1,d}}  \dd^{D} \Lagrangian.
     \label{eq:action_def}
 \end{equation}
 The action \eqref{eq:action_def} defines the ``weight'' in the path-integral.
@@ -157,7 +157,7 @@ This leads to the following definition of the Euclidean path-integral:
     \label{eq:euclidean_path_integral}
 \end{equation}
 Notice that the weight $e^{-\Action_E}$ in \eqref{eq:euclidean_path_integral} is now a positive-valued function, given that $\Action_E$ is a real function, and has the form of a \emph{Boltzmann weight}.
-In other words, we have now a probability distribution $e^{- \Action_E}$ over the configurations of the fields $A_{\mu}$, $\psi$ and $\overline{\psi}$, following the spirit of \ac{sm}.
+In other words, following the spirit of \ac{sm}, we have now a probability distribution $e^{- \Action_E}$ over the configurations of the fields $A_{\mu}$, $\psi$ and $\overline{\psi}$.
 
 % It has the effect of changing the integrand in \eqref{eq:partition_function_mink} from $e^{i S}$, which is oscillatory, to $e^{-S}$, which is positive and can be interpreted as a probability distribution of the configurations of the fields.
 
@@ -168,37 +168,42 @@ In other words, we have now a probability distribution $e^{- \Action_E}$ over th
 % so that the Minkowski action and the Euclidean action satisfy $i S_M = - S_E$.
 % The respective actions are given by
 % \begin{equation}
-%     \Action_M = \int \dd^{d+1} x_M \mathcal{L}_M, \qquad
-%     \Action_E = \int \dd^{d+1} x_E \mathcal{L}_E.
+%     \Action_M = \int \dd^{d+1} x_M \Lagrangian_M, \qquad
+%     \Action_E = \int \dd^{d+1} x_E \Lagrangian_E.
 % \end{equation}
-% The rotation $x_0 = -i x_4$ leads to $\mathcal{L}_E = - \mathcal{L}_M$.
+% The rotation $x_0 = -i x_4$ leads to $\Lagrangian_E = - \Lagrangian_M$.
 %
-The Wick rotation does not change the form of the gauge kinetic term, i.e.,
+The Wick rotation does not change the aspect of the gauge kinetic term,
 \begin{equation}
-    - \frac{1}{2 g^2} \tr(F_{\mu \nu} F^{\mu \nu}).
+    - \frac{1}{2 g^2} \tr(F_{\mu \nu} F^{\mu \nu}),
 \end{equation}
-The sum is a simple Euclidean sum, where there are no minus signs when raising or lowering indices and $\mu = 1, \dots, d+1$.
+but the sum is now a simple Euclidean sum, where there are minus signs appear when raising or lowering indices, and $\mu = 1, \dots, d+1$.
 
-Considering now the fermionic part of the Yang-Mills Lagrangian, we need to perform the Wick rotation on the Dirac operator.
+Considering now the fermionic part of the \ac{ym} Lagrangian, we need to perform the Wick rotation on the Dirac fields $\psi$ and $\overline{\psi}$.
 In Minkowski space-time
 \begin{equation}
     \overline{\psi} \qty( i \gamma^{\mu}_M D_{\mu} - m ) \psi
     = \overline{\psi} \qty( i \gamma^{\mu}_M \partial_{\mu} + \gamma^{\mu}_M A_{\mu} - m ) \psi,
 \end{equation}
-where $\gamma^{\mu}_M$ are the gamma matrices of the Clifford algebra, and they satisfy $\{\gamma^{\mu}_M, \gamma^{\nu}_M\} = 2 \eta^{\mu \nu}$.
-In the Euclidean Clifford algebra instead the gamma matrices $\gamma^{\mu}_E$ satisfy $\{\gamma^{\mu}_E, \gamma^{\nu}_E\} = 2 \delta^{\mu \nu}$.
-Given the fact that we have $\partial_0 = i \partial_4$ and $A_0 = i A_4$, in order to obtain the correct form we have to put $\gamma^0_M = \gamma^4_E$.
+where $\gamma^{\mu}_M$ denotes the gamma matrices in Minkowski space-time:
+\begin{equation*}
+    \{\gamma^{\mu}_M, \gamma^{\nu}_M\} = 2 \eta^{\mu \nu}.
+\end{equation*}
+The Euclidean Clifford algebra instead uses gamma matrices $\gamma^{\mu}_E$ that instead satisfy
+\begin{equation*}
+    \{\gamma^{\mu}_E, \gamma^{\nu}_E\} = 2 \delta^{\mu \nu}.
+\end{equation*}
+Given that we have $\partial_0 = i \partial_4$ and $A_0 = i A_4$, the correct form can only be achieved by putting $\gamma^0_M = \gamma^4_E$.
 This procedure yields
 \begin{equation}
     \overline{\psi} \qty( i \gamma^{\mu}_M \partial_{\mu} + \gamma^{\mu}_M A_{\mu} - m ) \psi
     =
     - \overline{\psi} \qty( \gamma^{\mu}_E \partial_{\mu} + i\gamma^{\mu}_E A_{\mu} + m ) \psi.
 \end{equation}
-
-Since $\mathcal{L}_E = - \mathcal{L}_M$, we finally arrive at
+Since $\Lagrangian_E = - \Lagrangian_M$, we can conclude
 \begin{equation}
-    \mathcal{L}_E
-    = \frac{1}{2 g^2} \tr (F_{\mu \nu} F^{\mu \nu}) + \overline{\psi} \qty( \gamma^{\mu} D_{\mu} ) \psi,
+    \Lagrangian_E
+    = \frac{1}{2 g^2} \tr (F_{\mu \nu} F^{\mu \nu}) + \overline{\psi} \qty( \gamma^{\mu} D_{\mu} + m) \psi,
 \end{equation}
 where the indices are all Euclidean and $D_{\mu} = \partial_{\mu} + i A_{\mu}$.
 
@@ -210,37 +215,39 @@ where the indices are all Euclidean and $D_{\mu} = \partial_{\mu} + i A_{\mu}$.
 \subsection{Hamiltonian formulation}
 \label{sub:hamiltonian_formulation}
 
-The Hamiltonian formulation of a Yang-Mills theory can be tricky, especially the part about the gauge field.
-Usually, one has to procede by computing the conjugate momenta and performing a Legendre transform.
-The main issue here is that the gauge field component $A_0$, does not have a conjugate momentum:
+Even tough Wilson formulation \cite{wilson1974confinement} was in the path-integral and Lagrangian language, we will also review the Hamiltonian formulation of non-Abelian \ac{qft} because its connection to \acl{qs}.
+Expressing a \ac{ym} theory in the Hamiltonian language can be tricky, especially in the presence of gauge symmetries.
+Usually, one has to procede by computing the conjugate momenta and perform a Legendre transform in order to obtain the Hamiltonian.
+In the presence of gauge symmetries, the time-component $A_0$ of the gauge fields does \emph{not} have a conjugate momentum.
+Instead it leads to a \emph{constraint}:
+% The main issue here is that the gauge field component $A_0$, does not have a conjugate momentum:
 \begin{equation}
-    \pdv{\mathcal{L}}{\dot{A}_0} = 0.
+    \pdv{\Lagrangian}{\dot{A}_0} = 0,
 \end{equation}
-Hence, the transformation is not invertible.
-The easiest way to remedy to the situation is to impose the gauge condition $A_0 = 0$,
-which is called \emph{canonical gauge} or \emph{temporal gauge}.
-With this condition, the kinetic term for the gauge fields can be written as
+which means that the Legendre transform is not invertible.
+
+The easiest remedy is to \emph{fix the gauge} beforehand, by imposing $A_0 = 0$, which is called \emph{canonical} or \emph{temporal gauge}.
+With this condition, the gauge fields Lagrangian can be written as
 \begin{equation}
-    \mathcal{L}
-    = - \frac{1}{2 g^2} \tr(F_{\mu \nu} F^{\mu \nu})
+    - \frac{1}{2 g^2} \tr(F_{\mu \nu} F^{\mu \nu})
     = \frac{1}{g^2} \qty( \mathbf{E}^2 - \mathbf{B}^2 )
     = \frac{1}{g^2} \qty(E^a_i E^a_i - B^a_i B^a_i),
     \label{eq:YM_lagrang_temporal_gauge}
 \end{equation}
-where $\mathbf{E}$ and $\mathbf{B}$ are, respectively, the ``chromoelectric'' and the ``chromomagnetic'' fields.
-In the temporal gauge $\mathbf{E} = \dot{\mathbf{A}}$, the time derivative of the spatial components $\mathbf{A}$ of the gauge field $A_{\mu}$, while $\mathbf{B}$ corresponds to the spatial components of the strength-field tensor $F^{\mu \nu}$ and does not involve any time derivative.
-From the Legendre transformation of \eqref{eq:YM_lagrang_temporal_gauge} we obtain the Hamiltonian density:
+where $\mathbf{E}$ and $\mathbf{B}$ are, respectively, the corresponding electric and magnetic fields for a non-Abelian theory.
+In the temporal gauge we only have the spatial components $\mathbf{A}$ of the gauge field $A_{\mu}$.
+The electric field $\mathbf{E}$ is the time derivative of $\mathbf{A}$, i.e.~$\mathbf{E} = \dv{\mathbf{A}}{t}$,
+which means that $\mathbf{E}$ is the conjugate momentum to $\mathbf{A}$.
+Meanwhile, the magnetic field $\mathbf{B}$ can be obtained from the spatial components of the strength-field tensor $F^{\mu \nu}$, with $B_i = - \frac{1}{2} \varepsilon_{ijk} F^{jk}$, where $\varepsilon_{ijk}$ is Levi-Civita symbol.
+Once the gauge is fixed, the Hamiltonian can be finally be obtained with a Legendre transform:
+% From the Legendre transformation of \eqref{eq:YM_lagrang_temporal_gauge} we obtain the Hamiltonian density:
 \begin{equation}
     \mathcal{H}
     = \frac{1}{g^2} E^a_i \dot{A}^a_i - \frac{1}{2 g^2} \qty( E^a_i E^a_i - B^a_i B^a_i )
-    = \frac{1}{2g^2} \tr ( \mathbf{E}^2 + \mathbf{B}^2 ),
-\end{equation}
-hence the Hamiltonian in $d$ spatial dimensions is
-\begin{equation}
-    H = \int \dd^{d} x \frac{1}{2 g^2} \tr(\mathbf{E}^2 + \mathbf{B}^2).
+    = \frac{1}{2g^2} \tr ( \mathbf{E}^2 + \mathbf{B}^2 ).
 \end{equation}
 
-In the Hamiltonian formulation, the fields $\mathbf{A}$ and $\mathbf{E}$ are now operators, satisfying the commutation relations
+In the Hamiltonian formulation, the fields $\mathbf{A}$ and $\mathbf{E}$ have to be elevated to operators, by imposing the following commutation relations:
 \begin{equation}
     \begin{split}
         \comm{A^a_i(x)}{E^b_j(y)} & = i g^2 \delta_{ij} \delta_{ab} \delta(x-y) \\
@@ -248,22 +255,31 @@ In the Hamiltonian formulation, the fields $\mathbf{A}$ and $\mathbf{E}$ are now
     \end{split}
     \label{eq:comm_rel_E_A_continuum}
 \end{equation}
-The $\mathbf{B}$ operator is defined from $\mathbf{A}$.
+An astute observer will notice that \eqref{eq:comm_rel_E_A_continuum} are completely analogous to a position-momentum commutation relation, similar to $\comm{x_i}{p_j} = i \delta_{ij}$.
+In fact, like in the latter case, where the momentum $p_i$ is the generator of translations of $x_i$, the electric field $\mathbf{E}$ is the generator of translation of $\mathbf{A}$.
+To be more precise, it is the canonical momentum $\mathbf{E}/g^2$ that generates translations of $\mathbf{A}$.
+In other words, $\mathbf{E}/g^2$ \emph{generates infinitesimal gauge transformations}.
+This point of view will be rather useful when treating the gauge fields on a lattice.
 
-In order to impose the canonical gauge $A_0 = 0$, the equation of motion for $A_0$ has to be satisfied.
-This leads \citneeded to the fact that one must have
+
+In order to impose the canonical gauge $A_0 = 0$, the equation of motion for $A_0$ has to be satisfied:
+\begin{equation}
+    \partial_{\mu} \qty( \pdv{\Lagrangian}{(\partial_{\mu} A_0)} ) - \pdv{\Lagrangian}{A_0} = 0.
+\end{equation}
+In the absence of sources, this leads to
 \begin{equation}
     D_i E_i = 0,
+    \label{eq:non_abelian_gauss_law}
 \end{equation}
-where $D_i$ are the spatial components of the covariant derivative and $E_i$ the spatial components of the chromoelectric field.
-Unfortunately, the equation above is inconsistent with the commutation relation \eqref{eq:comm_rel_E_A_continuum} and so it cannot be implemented as an operator equation.
-The easiest solution is to impose it on states that are considered \emph{physical}:
+where $D_i$ and $E_i$ are the spatial components of the covariant derivative and electric field, respectively.
+What we obtained is basically the generalization of \emph{Gauss law} to non-Abelian theories.
+In fact, the condition \eqref{eq:non_abelian_gauss_law} for a $U(1)$ theory reduces to the well known $\nabla \cdot \mathbf{E} = 0$.
+Unfortunately, the equation \eqref{eq:non_abelian_gauss_law} is inconsistent with the commutation relations \eqref{eq:comm_rel_E_A_continuum}, so it cannot be implemented as an operator equation.
+The easiest solution, or loophole, to this empasse is to impose to consider \emph{physical} or \emph{gauge-invariant} only states that satisfy
 \begin{equation}
-    D_i E_i \ket{\psi_{\phys}} = 0,
+    D_i E_i \ket{\psi_{\phys}} = 0.
 \end{equation}
-for each component of $D_i E_i$.
-The constraints select a subspace of the overall Hilbert space, which will be labeled as the \emph{physical Hilbert space}.
-The condition above for a $U(1)$ theory reduces to the well known \emph{Gauss law} $\nabla \cdot \mathbf{E} = 0$.
+This constraint select a subspace of the overall Hilbert space $\HilbertSpace$, which will be labeled as the \emph{physical Hilbert space} $\Hphys$.
 
 
 %----------------------------------------
@@ -272,21 +288,33 @@ The condition above for a $U(1)$ theory reduces to the well known \emph{Gauss la
 \subsection{The Sign Problem}
 \label{sub:the_sign_problem}
 
-Even though interesting phases have been predicted for \ac{qcd} in the $\mu - T$ plane\citneeded, such as quark-gluon plasma\citneeded o superconductivity\citneeded, detailed quantitative analysis has been limited to the $\mu = 0$ region only.
-This is due mainly to the difficulty of studying \ac{qcd} in the low energy regime, where the perturbative approach fails\citneeded.
-Moreover, even \emph{\ac{lgt}s}, a non-perturbative approach to Yang-Mills theory (and gauge theories in general), is not applicable for $\mu \neq 0$ due to the \emph{sign problem}.
+A number of interesting phases have been predicted for \ac{qcd} in the $\mu - T$ plane \cite{aarts2016qcd}, where $\mu$ is the chemical potential and $T$ the temperature, such as \emph{quark-gluon plasma} \cite{detar2009qcdthermo} or \emph{color superconductivity} \cite{alford2001coloursc} (see Fig.~\ref{fig:qcd_phase_diagram}).
+Unfortunately, detailed quantitative analysis of \ac{qcd} has been limited to the $\mu = 0$ region only \cite{aarts2016qcd}.
+This is mainly due to the difficulty of studying \ac{qcd} in the low energy regime, where the perturbative approach fails \cite{peskin1995qft, creutz1985book}.
+Moreover, even \emph{\ac{lgt}s}, at least in the path-integral formulation, is not applicable for $\mu \neq 0$ due to the infamous \emph{sign problem}.
 
-In the Hamiltonian formulation, the chemical potential in the same manner as statistical mechanics.
-If $\hat{H}$ is the Hamiltonian operator and $\hat{N}$ a number operator, then one can simply replace $\hat{H}$ with $\hat{H} - \mu \hat{N}$.
-In the case of a Yang-Mills theory, the number operator corresponds to fermion number, i.e., $\hat{N} = \psi^{\dagger} \psi$.
 
-In the path integral formalism, fermions are Grassmann variables, which we can integrate over:
+\begin{figure}[t]
+    \centering
+    \input{assets/figures/qcd_phase_diagram.tex}
+    \caption{A (very) rough sketch of the phase diagram of \ac{qcd}.}
+    \label{fig:qcd_phase_diagram}
+\end{figure}
+
+
+In the Hamiltonian formulation, the chemical potential in introduced in the same manner as standard \ac{sm}.
+If $H$ is the Hamiltonian operator and $N$ a number operator, then one can simply replace $H$ with $H - \mu N$.
+In the case of a \ac{ym} theory, the number operator would correspond to the fermion number operator $N = \psi^{\dagger} \psi$.
+
+In the path integral formalism, fermions are introduced as Grassmann variables.
+This means that they easily be integrated out \cite{peskin1995qft, aarts2016qcd}:
 \begin{equation}
-    \int \mathcal{D} \psi \mathcal{D} \overline{\psi} \exp(-\int d^{d+1} \overline{\psi} K \psi) = \det K,
+    \int \DD \overline{\psi}\, \DD \psi \exp(-\int d^{d+1} \overline{\psi} K \psi) = \det K,
 \end{equation}
 where $K$ is the kinetic operator for the fermions.
-If the fermions are coupled to gauge field, as one would expect from a Yang-Mills theory, then $K$ has some complicated dependence on the fields $A_{\mu}$.
-If one includes the chemical potential term $\mu \overline{\psi}^{\dagger} \psi$ in the Lagrangian, then the fermion determinant $\det K$ turns out to be complex\citneeded, with a non-trivial phase factor.
+If the fermions are coupled to $A_{\mu}$, as it happens in \ac{ym} theory, then $K$ has some complicated dependence on the fields $A_{\mu}$.
+If one includes the chemical potential term $\mu \psi^{\dagger} \psi$ in the Lagrangian, then the fermion determinant $\det K$ turns out to be complex \cite{aarts2016qcd}, with a non-trivial phase factor.
 
-As a result, the integrand of the path-integral is no longer positive, and it canot be interpreted as a probability distribution.
-This is the infamous \emph{sign problem} and poses severe limitation to Monte Carlo simulations in the finite $\mu$ region.
+As a result, the integrand of the path-integral is no longer positive-defined, and it cannot be interpreted as a probability distribution.
+Furthermore, a complex weight in the path-integral makes the integrand oscillatory, which does not help with convergence.
+This is summarizes the infamous \emph{sign problem}, which poses severe limitation to, for example, Monte Carlo simulations in the finite $\mu$ region.

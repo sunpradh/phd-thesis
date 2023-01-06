@@ -1,8 +1,8 @@
 %----------------------------------------
 % SECTION: Wilson approach to gauge theories
 %----------------------------------------
-\section{Wilson approach to gauge theories}
-\label{sec:wilson_approach_to_gauge_theories}
+\section{Wilson approach to \acl{lft}}
+\label{sec:wilson_approach_to_lft}
 
 
 
@@ -10,9 +10,9 @@ Starting from the path integral formulation, the first step in the formulation o
 The simplest choice in this regard is a hypercubic lattice with lattice spacing $a$, but in theory an \ac{lft} can be defined on any type of lattice.
 An immediate advantage of using a lattice instead of a continuum is the natural ultraviolet cutoff given by the inverse of the lattice spacing.
 
-Formally a lattice $\Lambda$ is defined as
+Formally a lattice $\Lattice$ is defined as
 \begin{equation}
-    \Gamma = \qty{
+    \Lattice = \qty{
         x \in \R^4 :
         x = \sum_{\mu = 1}^{d+1} a n_{\mu} \hat{\mu} \quad
         n_{\mu} \in \Z
@@ -24,7 +24,7 @@ It is important to fix an orientation for each direction in the lattice.
 The most natural choice is to choose $+ \hat{\mu}$ for each $\hat{\mu}$.
 So, even though $(x,\hat{\mu})$ and $(x + \hat{\mu}, - \hat{\mu})$ refers to the same link, the former is traversed in the positive direction while the latter in the negative direction.
 
-In an \ac{lft}, both the vertices and edges (also called links) host \ac{dof} (d.o.f).
+In an \ac{lft}, both the vertices and edges (also called links) host \ac{dof}.
 In particular, the matter fields lives on the vertices while the gauge fields live on the links between vertices.
 However, the definition of these d.o.f.~will need some care, because we have two main requirements, especially if we are interested in Yang-Mills theory:
 \begin{itemize}

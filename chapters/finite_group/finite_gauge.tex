@@ -9,20 +9,20 @@
 
 \subsubsection{Basic construction}\label{sec:basic hilbert space}
 
-In the Hamiltonian formulation of \ac{lgt}s \cite{KogSuss, Osborne, ZoharBurrello}, time is continuous while the $d$ spatial dimensions are discretized into a hypercubic lattice.
+In the Hamiltonian formulation of \ac{lgt}s \cite{kogut2975hamiltonian, milstead2018qyangmills, ZoharBurrello}, time is continuous while the $d$ spatial dimensions are discretized into a hypercubic lattice.
 Classically, we assign a group element $g \in G$ to each spatial lattice link, where $G$ is the gauge group.
 In the Lie group case, one would typically write $U_\mu(x) = \exp{(iA_\mu(x))} \in G$ for the gauge field variable assigned to the lattice link between points $x$ and $x + \hat{\mu}$, where $A_\mu(x)$ is the vector potential.
 Links are oriented, and if a link is traversed in the opposite orientation, then $g$ is replace with $g^{-1}$.
 Note that finite groups have no Lie algebras, so we work with group-valued quantities as far as possible.
 In what follows, we write $g \in G$ for a group element indifferently for both finite and Lie groups $G$.
-Since classically we have a group element $g$ on each lattice link, in the quantum theory the states in the Hilbert space of each link are given by \cite{Osborne}
+Since classically we have a group element $g$ on each lattice link, in the quantum theory the states in the Hilbert space of each link are given by \cite{milstead2018qyangmills}
 \begin{equation}
     \ket{\psi}=\int dg \, \psi(g)\ket{g} \ ,
 \end{equation}
 where $\{\ket{g}\}$ is the group element orthonormal basis, consisting of one state $\ket{g}$ per group element $g$; it can be though of as a \say{position basis} on the group.
 The wavefunction $\psi(g)$ is square-integrable with respect to the Haar measure.
 For a finite group, the Haar measure is simply a sum over group elements, $\int dg = \sum_g$.
-The Hilbert space on each link can then be identified with $L^2(G)$, i.e. the space of square-integrable functions on $G$ \cite{Osborne}, while for a finite group it is simply the \textit{group algebra} $\C[G]$, which is the complex vector space spanned by the group element basis.
+The Hilbert space on each link can then be identified with $L^2(G)$, i.e. the space of square-integrable functions on $G$ \cite{milstead2018qyangmills}, while for a finite group it is simply the \textit{group algebra} $\C[G]$, which is the complex vector space spanned by the group element basis.
 The overall Hilbert space is then given by the tensor product $\mathcal{H} = \bigotimes_{\mathrm{links}} L^2(G)$, or $\mathcal{H} = \bigotimes_{\mathrm{links}} \C[G]$.
 Note that for a finite group, $\C[G]$ has finite dimension, because it is spanned by the finitely-many group element states $\{\ket{g}\}$.
 Therefore the Hilbert space on each link is finite-dimensional and $\mathcal{H}$ is finite-dimensional on a finite lattice; its dimension is in fact given by $\abs{G}^L$ where $L$ is the number of lattice links.
@@ -34,7 +34,7 @@ In particular, on the single-link Hilbert space one can define left and right \s
     \label{eq:regular representations}
     L_g \ket{h} = \ket{gh} \ , \quad \quad R_g \ket{h} = \ket{gh^{-1}} \ .
 \end{equation}
-A local gauge transformation is given by a choice of group element $g_x \in G$ at every site $x$ of the lattice \cite{Osborne}.
+A local gauge transformation is given by a choice of group element $g_x \in G$ at every site $x$ of the lattice \cite{milstead2018qyangmills}.
 This acts on the overall Hilbert space $\mathcal{H} = \bigotimes_{\mathrm{links}} L^2(G)$ or $\mathcal{H} = \bigotimes_{\mathrm{links}} \C[G]$ via the operator
 \begin{equation}
     \label{eq:gauss law operator}
@@ -42,7 +42,7 @@ This acts on the overall Hilbert space $\mathcal{H} = \bigotimes_{\mathrm{links}
 \end{equation}
 where $\{g_x\}$ is an arbitrary choice of group elements $g_x$ at each lattice site $x$ and the link $l$ connects the points $x$ and $y$.
 In other words, on each link the gauge transformation is given on basis elements by the familiar $\ket{g_l} \to \ket{g_x g_l g_y^{-1}}$.
-The only physical states are those which satisfy the so-called \say{Gauss' law} constraint \cite{KogSuss, Osborne, Tong}
+The only physical states are those which satisfy the so-called \say{Gauss' law} constraint \cite{kogut2975hamiltonian, milstead2018qyangmills, tong2018gauge}
 \begin{equation}
     \label{eq:lattice gauss law}
     \mathcal{G}(\{g_x\}) \ket{\psi}=\ket{\psi} \ ,
@@ -61,7 +61,7 @@ Since these always have a finite Hilbert space, they do not additional issues fo
 It turns out to be fruitful to introduce a different basis of the overall Hilbert space $\mathcal{H}$, \say{dual} to the group element basis.
 The operators $L_g$ and $R_g$ introduced in eq.~\eqref{eq:regular representations} are unitary representations of $G$, known as the \textit{left} and \textit{right regular} representations \cite{Serre, KnappLieGroups}.
 This is because $L_g L_h = L_{gh}$ and $(L_g)^{-1}=L_{g^{-1}}=(L_g)^\dagger$, as can be explicitly checked by acting on the group element basis, and the same holds for $R$.
-Their representation theory leads to the Peter-Weyl theorem \cite{KnappLieGroups, Osborne, marianithesis}, which states that for a finite or compact Lie group $G$,
+Their representation theory leads to the Peter-Weyl theorem \cite{KnappLieGroups, milstead2018qyangmills, marianithesis}, which states that for a finite or compact Lie group $G$,
 \begin{equation}
     \label{eq:peterweyl}
     L^2(G) = \bigoplus_{j \in \Sigma} V_j^* \otimes V_j \ ,
@@ -91,7 +91,7 @@ In terms of the group element basis, one has \cite{ZoharBurrello}
     \expval{g|jmn}= \sqrt{\frac{\mathrm{dim}(j)}{\abs{G}}} \left[\rho_j(g)\right]_{mn} \ ,
 \end{equation}
 where the bases $\{\ket{jm}\}$, $\{\ket{jn}\}$ are chosen so that $\rho_j$ is unitary.
-It should be emphasized that eq.\eqref{eq:change of basis} is valid for both finite and compact Lie groups; $\abs{G}$ is either the order of the finite group or the volume $\abs{G}\equiv\int dU\, 1$ given by the possibly unnormalized Haar measure \cite{Osborne, marianithesis}.
+It should be emphasized that eq.\eqref{eq:change of basis} is valid for both finite and compact Lie groups; $\abs{G}$ is either the order of the finite group or the volume $\abs{G}\equiv\int dU\, 1$ given by the possibly unnormalized Haar measure \cite{milstead2018qyangmills, marianithesis}.
 It is a basic result of the representation theory of finite groups that $\sum_j \pqty{\dim{j}}^2 = \abs{G}$, which ensures that the group element basis and the representation basis have the same number of states \cite{Serre}.
 
 Since every group admits a trivial, one-dimensional irrep with $\rho(g)\equiv 1$, we always have a singlet representation state $\ket{0}$, which may be extended to the whole lattice to form the \say{electric ground state} $\ket{0_E}$,
@@ -115,7 +115,7 @@ We then have a two-dimensional representation which spans a $2^2=4$ dimensional 
 
 \subsubsection{Basic construction}\label{eq:hamiltonian basic construction}
 
-The Hamiltonian for a Yang-Mills gauge theory on the lattice takes the form \cite{KogSuss, ZoharBurrello}
+The Hamiltonian for a Yang-Mills gauge theory on the lattice takes the form \cite{kogut2975hamiltonian, ZoharBurrello}
 \begin{equation}
     \label{eq:generic hamiltonian}
     H = \lambda_E \sum_{l \in \mathrm{links}} h_E(g_l) + \lambda_B \sum_{\square} h_B(g_\square) \ ,
@@ -123,16 +123,16 @@ The Hamiltonian for a Yang-Mills gauge theory on the lattice takes the form \cit
 where $h_E$ depends only on each lattice link, while $h_B$ depends on the lattice plaquettes $\square$ and $g_\square = g_1 g_2 g_3^{-1} g_4^{-1}$ is the product of the four link variables in a lattice plaquette with the appropriate orientation.
 It is also possible to add matter fields such as fermions, but since this does not pose any further difficulty than in the usual Lie group case, we focus here on the pure gauge theory.
 
-In the Lie group case, the electric and magnetic Hamiltonians form the so-called Kogut-Susskind Hamiltonian where \cite{KogSuss, Osborne}
+In the Lie group case, the electric and magnetic Hamiltonians form the so-called Kogut-Susskind Hamiltonian where \cite{kogut2975hamiltonian, milstead2018qyangmills}
 \begin{equation}
     \label{eq:kog suss hE hB}
     h_E = \sum_{a} \pqty{\hat{\ell}^a_L}^2 \ , \quad \quad \quad \quad h_B = \dim{\rho} - \Re \tr{\rho(g_\square)} \ ,
 \end{equation}
 where $\rho$ is the fundamental representation of $\SU(N)$, $a$ is a color index and $\hat{\ell}^a_L$ is the infinitesimal generator of left-translations, i.e. the Lie algebra representation corresponding to $L_g$.
-As such, it satisfies $L_{e^{iX}} = \exp{\pqty{i \hat{\ell}_L(X)}}$ \cite{Osborne}.
+As such, it satisfies $L_{e^{iX}} = \exp{\pqty{i \hat{\ell}_L(X)}}$ \cite{milstead2018qyangmills}.
 As the group element basis may be thought of as a \say{position basis} in group space, the infinitesimal generator of translations $\hat{\ell}_L^a$ may be thought of as a \say{momentum} operator in group space.
 Then the electric Hamiltonian $h_E$, which is the sum of the squares of the \say{momenta} in all directions, is a Laplacian in group space.
-Applying the Peter-Weyl decomposition eq.~\eqref{eq:translations peter weyl} to $\hat{\ell}_L^a$, one finds that \cite{Osborne,marianithesis}
+Applying the Peter-Weyl decomposition eq.~\eqref{eq:translations peter weyl} to $\hat{\ell}_L^a$, one finds that \cite{milstead2018qyangmills,marianithesis}
 \begin{equation}
     \label{eq:laplacian decomposition}
     h_E = \sum_{a} \pqty{\hat{\ell}^a_L}^2 = \sum_{jmn} C(j) \ket{jmn}\bra{jmn} \ ,
@@ -147,7 +147,7 @@ If one thinks of a finite group as a natural discretization of some parent Lie g
 The geometric structure of a finite group is that of a graph, with group elements as vertices and the group operation defining the edges.
 This is called a \textit{Cayley graph}.
 The discrete Laplacian on the finite group is then naturally given by the graph Laplacian of the Cayley graph.
-This choice also preserves the interpretation of the electric Hamiltonian as a quantum-mechanical rotor in group space \cite{KogSuss}.
+This choice also preserves the interpretation of the electric Hamiltonian as a quantum-mechanical rotor in group space \cite{kogut2975hamiltonian}.
 We explain the construction of the finite group Laplacian in detail in Section \ref{sec:finitegrouplaplacian}, and the resulting Hamiltonian takes the form of eq.~\eqref{eq:generic hamiltonian} with
 \begin{equation}
     \label{eq:generalized ym hamiltonian}

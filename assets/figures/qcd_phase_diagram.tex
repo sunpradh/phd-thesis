@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+    asse/.style = {-stealth, very thick},
+    transizio/.style = {-Circle, very thick},
+    align=center
+    ]
+    % Axis
+    \draw[asse] (0, 0) -- (7, 0) node [below left, font=\small] {chemical potential};
+    \draw[asse] (0, 0) -- (0, 5) node [above left, rotate=90, font=\small] {temperature};
+    % transition lines
+    \draw[transizio] (1.5, 0) arc (0:40:1.5);
+    \draw[transizio] (3.5, 0) arc (0:60:3)
+        node[above] {critical point};
+    % etichette
+    \node[above] at (0.75, 0) {vacuum};
+    \node[above] at (2.25, 0) {nuclear\\ matter};
+    \node[above right] at (3.5, 0) {neutron\\ stars};
+    \node at (6.5, 1) {color\\ superconductor?};
+    \node at (4, 4) {quark-gluon\\ plasma};
+    \node[rotate=90] at (0.5, 3.5) {early universe};
+\end{tikzpicture}
