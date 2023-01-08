@@ -64,30 +64,6 @@ Therefore, $\algebra \{h_{\Gamma}\}$ is simply spanned by
 \end{equation*}
 Notice that the bonds $h_{\Gamma}$ that generate $\algebra\{ h_{\Gamma} \}$ do not need to be independent.
 
-To make an example, consider the quantum Ising model with a transverse field, which is a chain of spin-\onehalf with the Hamiltonian
-\begin{equation}
-    \HIsing(h) = \sum_{i} \qty( \sigma^z_i \sigma^z_{i+1} + h \sigma^x_i ),
-    \label{eq:hamiltonian_ising}
-\end{equation}
-where the sums runs over the sites of the chain and $h$ is the transverse field strength.
-Notice that the Hamiltonian is indeed a sum of quasi-local terms.
-In particular we have two types of terms: the interaction term $\sigma^z_i \sigma^z_{i+1}$ and the transverse field $\sigma^x_i$.
-They are local or quasi-local because they involve at most two neighbouring sites.
-These two set of terms are the bonds of the Hamiltonian $\HIsing$ and our bond-algebra $\algebra \{\sigma^z_i \sigma^z_{i+1}, \sigma^x_i\}$ is spanned by
-\begin{equation*}
-    \{
-        \identity, \,
-        \sigma^z_i \sigma^z_{i+1}, \,
-        \sigma^z_i \sigma^z_{i+1} \sigma^z_j \sigma^z_{j+1}, \,
-        \dots, \,
-        \sigma^x_i, \,
-        \sigma^x_i \sigma^x_j, \,
-        \dots, \,
-        \sigma^z_i \sigma^z_{i+1} \sigma^x_i, \,
-        \dots
-    \}.
-\end{equation*}
-
 
 It is important to point out that a single Hamiltonian $H$ can have different bond algebras associated to it.
 In fact, a bond algebra is determined by the partitioning of the bonds in $H$.
@@ -144,18 +120,51 @@ where $\algebra$ is the operator algebra of the model under investigation.
 \todo{elaborate}
 
 
-To make the bond-algebraic approach more clear we will consider two examples:
-the \emph{quantum Ising model} and the \emph{XY model}.
-In the first model we will see an examples of self-duality through the use of disorder variables, while in the latter an example of duality that relates two very different models using the Jordan-Wigner transformation.
-Our intent is not to shine new physics but to show how the use of bond-algebras offers a clear \emph{formalism} for treating dualities of different kinds.
+To make the bond-algebraic approach more clear we will consider one example: the \emph{\acf{ising}}.
+In this model we will see an example of self-duality through the use of disorder variables.
+Our intent is not to shine new physics but to show how the use of bond-algebras offers a clear \emph{formalism} for treating dualities.
+
+\todo{parlare anche della Jordan-Wigner?}
 % approach clearer we now apply it to the 1D quantum Ising model with transverse field.
 
 
-\paragraph{Quantum Ising model}
-The Hamiltonian of the quantum Ising model with transverse field is already written in \eqref{eq:hamiltonian_ising}.
+% To make the bond-algebraic approach more clear we will consider two examples:
+% the \emph{quantum Ising model} and the \emph{XY model}.
+% In the first model we will see an examples of self-duality through the use of disorder variables, while in the latter an example of duality that relates two very different models using the Jordan-Wigner transformation.
+% Our intent is not to shine new physics but to show how the use of bond-algebras offers a clear \emph{formalism} for treating dualities of different kinds.
+% % approach clearer we now apply it to the 1D quantum Ising model with transverse field.
+
+
+\subsection{The quantum Ising model}
+\label{sub:the_quantum_ising_model}
+
+The \acl{ising} with a transverse field is a chain of spin-\onehalf described by the Hamiltonian
+\begin{equation}
+    \HamilIsing(h) = \sum_{i} \qty( \sigma^z_i \sigma^z_{i+1} + h \sigma^x_i ),
+    \label{eq:hamiltonian_ising}
+\end{equation}
+where the sums runs over the sites of the chain and $h$ is the transverse field strength.
+Notice that the Hamiltonian $\HamilIsing$ is indeed a sum of quasi-local terms.
+In particular we have two types of terms: the interaction term $\sigma^z_i \sigma^z_{i+1}$ and the transverse field $\sigma^x_i$.
+They are local or quasi-local because they involve at most two neighbouring sites.
+These two sets of terms are the bonds of the Hamiltonian $\HamilIsing$, therefore bond-algebra $\algebra \{\sigma^z_i \sigma^z_{i+1}, \sigma^x_i\}$ is spanned by:
+\begin{equation*}
+    \{
+        \identity, \,
+        \sigma^z_i \sigma^z_{i+1}, \,
+        \sigma^z_i \sigma^z_{i+1} \sigma^z_j \sigma^z_{j+1}, \,
+        \dots, \,
+        \sigma^x_i, \,
+        \sigma^x_i \sigma^x_j, \,
+        \dots, \,
+        \sigma^z_i \sigma^z_{i+1} \sigma^x_i, \,
+        \dots
+    \}.
+\end{equation*}
 We consider an infinite chain in order to avoid subtleties with the boundaries conditions, which can have major effects on a duality transformation.
-We recognize as bonds the operators $\{\sigma^x_i\}$ and $\{\sigma^z_i \sigma^z_{i+1}\}$, which generates $\algebra \{\sigma^z_i \sigma^z_{i+1}, \sigma^x_i\} \equiv \algebra^{\ising}$.
-The relations that defines the generators of $\algebra^{\ising}$ can be summarized as follows:
+
+% We recognize as bonds the operators $\{\sigma^x_i\}$ and $\{\sigma^z_i \sigma^z_{i+1}\}$, which generates $\algebra \{\sigma^z_i \sigma^z_{i+1}, \sigma^x_i\} \equiv \algebra^{\ising}$.
+The algebraic relations that defines the generators of $\algebra^{\ising}$ can be summarized as follows:
 \begin{enumerate}
     \item each bonds square to the identity operator
         \begin{equation*}
@@ -183,44 +192,43 @@ Given the symmetric roles that the basic bonds $\sigma^x_i$ and $\sigma^z_i \sig
 \end{equation}
 This transformation can be extended to the whole $\algebra^{\ising}$ through the homomorphic property of $\Phi^{\ising}$.
 It preserves all the important algebraic relationship and is one-to-one, hence it is an \emph{isomorphism} of $\algebra^{\ising}$ onto itself.
-The Hamiltonian $\HIsing$ is just an element of $\algebra^{\ising}$.
-We can apply $\Phi^{\ising}$ to $\HIsing$ and use its homomorphic property, which yields
+The Hamiltonian $\HamilIsing$ is just an element of $\algebra^{\ising}$.
+We can apply $\Phi^{\ising}$ to $\HamilIsing$ and use its homomorphic property, which yields
 \begin{equation}
     \begin{split}
-        \Phi^{\ising}( \HIsing(h) )
+        \Phi^{\ising}( \HamilIsing(h) )
         & = \sum_{i} \pqty{ \Phi^{\ising} (\sigma^z_i \sigma^z_{i+1}) + h \Phi^{\ising}(\sigma^x_i)} \\
         & = \sum_{i} \pqty{ \sigma^x_i + h \sigma^z_{i-1} \sigma^z_{i}} \\
         & = h \sum_{i} \pqty{ \sigma^z_i \sigma^z_{i+1} + h^{-1} \sigma^x_i}.
     \end{split}
 \end{equation}
 Notice that the indices in the sum can be freely shifted because we are working with an infinite number of sites.
-We have obtained
+We have thus obtained
 \begin{equation}
-    \Phi^{\ising} (\HIsing(h)) = h \HIsing(h^{-1}),
+    \Phi^{\ising} (\HamilIsing(h)) = h \HamilIsing(h^{-1}),
 \end{equation}
 henceforth $\Phi^{\ising}$ is a \emph{self-duality} of \eqref{eq:hamiltonian_ising}.
-Notice that $\HIsing(h)$ is mapped onto itself but with the inverted coupling, $h \mapsto h^{-1}$.
-This means we can map the strongly coupled phase $h \gg 1$ into the weakly coupled phase $h \ll 1$ one and vice versa.
-What we have obtained is the quantum version Kramers-Wannier duality \cite{kramers1941statistics, fradkin1978order}.
+Notice that $\HamilIsing(h)$ is mapped onto itself but with the inverted coupling, $h \mapsto h^{-1}$, meaning that we can map the strongly coupled phase $h \gg 1$ into the weakly coupled phase $h \ll 1$, and vice versa.
+This is basically the quantum version the \emph{Kramers-Wannier duality} \cite{kramers1941statistics, fradkin1978order}.
 % but, unlike the usual formulation of this duality, we did not need to introduce \emph{disorder variables} to write down the transformation.
 
-If we think the term $\sigma^x_i$ as living on the site $i$ and of $\sigma^z_i \sigma^z_{i+1}$ as of living on the \emph{link} between the site $i$ and $i+1$, then the map $\Phi^{\ising}$ maps \eqref{eq:hamiltonian_ising} onto the same model but on the \emph{dual lattice}.
-In fact, the dual lattice of a chain is still a chain and the site term $\sigma^x_i$ is mapped onto a link term $\sigma^z_i \sigma^z_{i+1}$ and vice versa.
+If we think of the term $\sigma^x_i$ as living on the site $i$ and of $\sigma^z_i \sigma^z_{i+1}$ as of living on the \emph{link} between the site $i$ and $i+1$, then we can think of $\Phi^{\ising}$ as mapping \eqref{eq:hamiltonian_ising} onto the \emph{dual lattice}.
+In fact, the dual lattice of a chain is still a chain and the site term $\sigma^x_i$ is mapped onto a link term $\sigma^z_i \sigma^z_{i+1}$, and vice versa.
 
 
 \begin{figure}[t]
-    \SideFigure[label=fig:kramers_wannier, desc={Self-duality map of the quantum Ising model}]{
+    \SideFigure[label=fig:kramers_wannier, desc={Self-duality map of the \ac{ising}}]{
         \input{assets/figures/kramers_wannier.tex}
     }{
-        Pictorial representation of the duality map $\Phi^{\ising}$, that maps the quantum Ising model on the same model on the dual lattice
+        Pictorial representation of the duality map $\Phi^{\ising}$, that maps the \ac{ising} on the same model on the dual lattice
     }
 \end{figure}
 
 
-We want to have a clearer physical picture of the duality map $\Phi^{\ising}$ and build a bridge with the traditional approach to dualities for the quantum Ising model.
-For this reason we want to find the elementary \ac{dof} of the dual model.
+We want to have a clearer physical picture of the duality map $\Phi^{\ising}$ and build a bridge with the traditional approach to dualities for the \ac{ising}.
+For this reason we want to find the \emph{elementary \ac{dof} of the dual model}.
 The \ac{dof} of the dual model lives on the sites of the dual lattice, which corresponds to the links of the original lattice.
-On these new sites we again have spin-\onehalf \ac{dof} and, for more clarity, we use $\mu^x$ and $\mu^z$ for referring to the Pauli matrices acting on these new spins.
+On these dual sites we again have spin-\onehalf \ac{dof} and, for more clarity, we use $\mu^x$ and $\mu^z$ for referring to the Pauli matrices acting on these new spins.
 The dual site $i$ corresponds to the link $(i, i+1)$, while the dual link $(i-1, i)$  corresponds to the site $i$.
 
 From \eqref{eq:duality_ising}, we already know that
@@ -232,7 +240,7 @@ From \eqref{eq:duality_ising}, we already know that
 The role of $\mu^x_i$ is evident, it measure the alignment of two neighbouring spins on the sites $i$ and $i+1$, while the meaning of $\mu^z_i$ is still opaque.
 We can arrive at the definition of $\mu^z_i$ by exploiting the map $\Phi^{\ising}$.
 The bond $\mu^z_{i-1} \mu^z_i$ corresponds to the image of $\sigma^x_i$ through $\Phi^{\ising}$, so we know how they are mapped.
-Then, if we isolate $\mu^z_i$ with an infinite product, we then obtain
+If we isolate $\mu^z_i$ with an \emph{infinite product}, we then obtain
 \begin{equation}
     \mu^z_i
     = \prod_{j = -\infty}^{i} \mu^z_{j-1} \mu^z_j
@@ -240,17 +248,16 @@ Then, if we isolate $\mu^z_i$ with an infinite product, we then obtain
     \label{eq:def_mu_z}
 \end{equation}
 We see that $\mu^z_i$ flips all the spins before the $i$-th site.
-From \eqref{eq:def_mu_z}, we can see the non-local origin of the dual \ac{dof} in traditional dualities.
-When working with two, or more, body terms, in order to isolate a single body term the use of large, or infinite, product is necessary.
+From \eqref{eq:def_mu_z}, we can see the \emph{non-local} origin of the dual \ac{dof} in traditional dualities.
+When working with two, or more, body terms, in order to isolate a single body term the use of large (or even infinite) product is necessary.
 
-To understand the role of $\mu^x_i$ and $\mu^z_i$ consider now the ferromagnetic ground states $\ket{\Omega_{\rho}}$ of \eqref{eq:hamiltonian_ising}, where $\rho=\uparrow, \downarrow$.
-Say we start from $\ket{\Omega_{\uparrow}}$.
-The action of $\mu^z_i$ on $\ket{\Omega_{\rho}}$ is creates a \emph{kink}, which is a domain wall between two ordered regions.
+To understand the role of $\mu^x_i$ and $\mu^z_i$, consider now the ferromagnetic ground states $\ket{\Omega_{\rho}}$ of \eqref{eq:hamiltonian_ising}, where $\rho=\uparrow, \downarrow$.
+Say we start from $\ket{\Omega_{\uparrow}}$, without loss of generality.
+The action of $\mu^z_i$ on $\ket{\Omega_{\rho}}$ is to create a \emph{kink}, which is a domain wall between two ordered regions.
 From this point of view, a single spin-flip $\sigma^x_i \ket{\Omega_{\uparrow}}$ creates a \emph{kink-antikink pair}.
 
-
 \begin{figure}[t]
-    \SideFigure[label=fig:kink_states, desc={ferromagnetic ground states and kink states in the quantum Ising model}]{%
+    \SideFigure[label=fig:kink_states, desc={ferromagnetic ground states and kink states in the \ac{ising}}]{%
         \input{assets/figures/kink_states.tex}
     }{%
         \emph{(a)} and \emph{(b)} ferromagnetic ground states $\ket{\Omega_{\uparrow}}$ and $\ket{\ket{\Omega_{\downarrow}}}$.
@@ -259,7 +266,7 @@ From this point of view, a single spin-flip $\sigma^x_i \ket{\Omega_{\uparrow}}$
     }
 \end{figure}
 
-
+\todo{serve aggiungere altro o è già abbastanza lungo il discorso?}
 
 % The disorder variables are defined as
 % \begin{equation}
@@ -295,34 +302,62 @@ From this point of view, a single spin-flip $\sigma^x_i \ket{\Omega_{\uparrow}}$
 % \end{equation}
 
 
-
-
-
 %
 % SUBSECTION: Gauge-reducing dualities
 %
 \subsection{Gauge-reducing dualities}%
 \label{sub:gauge_reducing_dualities}
 
-In this section we will review the notion of \emph{gauge-reducing dualities}.
-Gauge symmetries are \emph{local symmetries} of the model that signal the presence of \emph{redundant \ac{dof}}, in fact gauge invariance can be thought as a set of \emph{local constraints} on the elementary \ac{dof} of the model.
-This means that the state space of the model is larger than set of physical states and these are exactly the states that are invariant under the action of the gauge symmetries, which would mean that they satisfies the local constraints of the model.
-The same can be applied to the Hermitian operators and the observables of the model.
-An Hermitian operator represent a physical observable only if it commutes with the gauge symmetries, which makes them gauge invariant.
+In this section we will review the notion of \emph{gauge-reducing dualities},
+In order to do so we start by highlighting the difference between ordinary symmetries and quantum symmetries.
+% but it is best first to start with the difference between between ordinary symmetries and quantum symmetries.
 
-When dealing with a gauge model, it would be natural to assume that, in order to establish a duality with any gauge symmetries, these have to be eliminated from the former model.
-In other terms, that it would be necessary to project out the operator content on the subspace of physical states first or proceed with gauge-fixing.
-Although this is a common and traditional approach to dualities, with bond algebras this is not strictly necessary.
-As stated in \cite{cobanera2011bond}, with the bond-algebraic approach one can find mappings to models without any gauge symmetry that preserve all the important algebraic properties.
+Following the statement of Wigner's theorem\citneeded, a quantum symmetry is a unitary or anti-unitary mapping that commute with the Hamiltonian.
+This does not mean that all symmetries have the same physical meaning or mathematical consequences.
+By the term ``\emph{ordinary symmetries}'' we refer to the most common types of symmetry that we encounter in physical systems that usually correspond to \emph{global transformation} of the physical apparatus or system, like for example rotational invariance.
+These symmetries have a direct physical impact, since they can influence the level degeneracy of an Hamiltonian and force strict selection rules.
 
-The procedure goes as follows: consider a gauge model and let $H_{\text{G}}$ be its Hamiltonian and $G_{\Gamma}$ its gauge symmetries.
-Naturally, an operator is said to be gauge-invariant only if it commutes with all the $G_{\Gamma}$ and
-clearly the Hamiltonian has to be gauge-invariant, hence $[H, G_{\Gamma}] = 0$.
-Now let $H_{\text{GR}}$ be the dual Hamiltonian of a non-gauge model.
-A \emph{gauge-reducing duality} $\Phi_{\text{GR}}$ maps $H_{\text{G}}$ onto $H_{\text{GR}}$ while making all the gauge symmetries of the former model trivial, which means:
+On the other hand, gauge symmetries are \emph{local symmetries} of the model that signal the presence of \emph{redundant \ac{dof}}.
+In fact, it is better to think of gauge symmetries as \emph{local constraints} on the elementary \ac{dof} of the gauge model.
+As a result, the state space of a gauge model is larger than set of physical states, which are exactly the states that are invariant under the action of the gauge symmetries.
+%, which mean that they satisfies the local constraints of the model.
+% in fact gauge invariance can be thought as a set of \emph{local constraints} on the elementary \ac{dof} of the model.
+% This means that the state space of the model is larger than set of physical states and these are exactly the states that are invariant under the action of the gauge symmetries, which mean that they satisfies the local constraints of the model.
+The same reasoning applies to the observables of the gauge model.
+An observables is represented by an Hermitian operator and a \emph{physical observable} is represented by an Hermitian operator that commutes with gauge symmetries.
+
+So, if physical states and physical observables already satisfies the local constraints of the gauge symmetries, this means that the physical impact of the latter is already encoded in the former.
+% For example, ordinary symmetries add new information on the structure of the state space, i.e.~selection rules.
+% While on the other hand, gauge symmetries \emph{do not add} new information on the structure of the \emph{physical state space}, because the latter is obtained by resolving the local constraints.
+It is clear that the ordinary symmetries and gauge symmetries are very different and is better them conceptually far apart as possible \cite{cobanera2011bond}.
+
+
+% represent a physical observable only if it commutes with the gauge symmetries, which makes them gauge-invariant.
+% If
+
+When dealing with a gauge model, it would be natural to assume that, in order to establish a duality with any gauge symmetries, these have to be eliminated from the former model first.
+In other terms, that it would be necessary to project the operator content on the subspace of physical states first or, alternatively, proceed with gauge-fixing.
+Although this is common in traditional approach to dualities, with bond algebras this is not strictly necessary.
+As stated in \cite{cobanera2011bond}, with the bond-algebraic approach one can find mappings to models without any gauge symmetry that preserve all the important algebraic properties, without the need to projection or gauge-fixing.
+
+The procedure goes as follows: consider a gauge model and let $H^{\text{G}}$ be its Hamiltonian and $G_{\Gamma}$ its gauge symmetries.
+An operator $\mathcal{O}$ is gauge-invariant if and only if it commutes with all the $G_{\Gamma}$:\begin{equation*}
+    \mathcal{O} \text{~physical}
+    \quad \Longleftrightarrow \quad
+    \comm{\mathcal{O}}{G_{\Gamma}} = 0 \quad \forall \Gamma.
+\end{equation*}
+Clearly, the Hamiltonian has to be gauge-invariant, hence $[H^{\text{GR}}, G_{\Gamma}] = 0$.
+Now let $H^{\text{GR}}$ be the dual Hamiltonian of a non-gauge, or gauge-reduced, model.
+Furthermore, let $\algebra^{\text{G}}$ and $\algebra^{\text{GR}}$ be the bond-algebra of the gauge and gauge-reduced models, respectively.
+A \emph{gauge-reducing duality} is a map
+\begin{equation*}
+    \Phi^{\text{GR}} : \algebra^{\text{G}} \to \algebra^{\text{GR}}
+\end{equation*}
+such that $H^{\text{G}}$ is mapped onto $H^{\text{GR}}$ while making all the gauge symmetries of the gauge model trivial:
 \begin{equation}
-    \Phi_{GR}(H_{\text{G}}) = H_{\text{GR}}, \qquad
-    \Phi_{GR}(G_{\Gamma}) = \identity, \quad \forall \Gamma.
+    \Phi^{\text{GR}}(H^{\text{G}}) = H^{\text{GR}}
+    \qand
+    \Phi^{\text{GR}}(G_{\Gamma}) = \identity \quad \forall \Gamma.
 \end{equation}
 
 Unlike the dualities in Sec.~\ref{sub:the_bond_algebraic_approach}, a gauge-reducing duality like $\Phi_{\text{GR}}$ has to be implementable as a \emph{projective unitary operator} $\mathcal{U}$.
@@ -334,6 +369,14 @@ Formally, this can be written as
 \end{equation}
 where $P_{\text{GI}}$ is the projector of the subspace of gauge-invariant states, i.e.~$G_{\Gamma} \ket{\psi} = \ket{\psi}$ for all $\Gamma$.
 Roughly speaking, this projective unitary operator can be represented as rectangular matrix that preserves the norm of gauge-invariant states while projecting out all the other states.
+
+In the next section we will use an example of gauge-reducing duality, which will be instrumental for the rest of the chapter.
+
+
+\subsection{Dualities in two dimensions}
+\label{sub:dualities_in_two_dimensions}
+
+\todo{arricchire}
 
 A clear example of a gauge-reducing duality is provided by the $\Z_N$, $d=2$ gauge model
 
@@ -352,8 +395,7 @@ Its group of gauge symmetries is generated by \eqref{eq:gauss_operator}. In the 
 \end{equation}
 and commutes with $H_{\text{G}}$ and with the bonds $\left\{\sigma^z_{(r,\hat{1})},\ \sigma^z_{(r,\hat{2})},\ U_r\right\} $.
 In other words, the bond algebra they generate is gauge-invariant, and satisfy three simple relations: (i) all the bonds square to the identity, (ii) each spin $\sigma^z$ anti-commutes with two adjacent plaquettes operators $U$, and (iii) each plaquette operator $U$ anti-commutes with four spins $\sigma^z$.
-This set of relations are identical to those satisfied by the bonds of the $d=2$ quantum Ising model, and the mapping is the following:
-
+This set of relations are identical to those satisfied by the bonds of the $d=2$ \ac{ising}, and the mapping is the following:
 \begin{equation}
     \begin{split}
         \Phi\left( \sigma^z_{(r,\hat{1})} \right) & = \sigma^x_{(r-\hat{2})} \sigma^x_r, \\

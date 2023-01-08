@@ -47,8 +47,8 @@
 }
 
 % macro for drawing a grid of sites
-\newcommand{\DrawSites}[2]{
-    \foreach \y in {#2} \foreach \x in {#1} \draw (\x,\y) node [site] {};
+\newcommand{\DrawSites}[3][site]{
+    \foreach \y in {#3} \foreach \x in {#2} \draw (\x,\y) node [#1] {};
 }
 
 % TikZ caching

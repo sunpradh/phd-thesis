@@ -58,7 +58,7 @@ Moreover,
 Given the irreps $\{\pi_j\}$ of a group (compact Lie or finite), these satisfy the so-called \emph{orthogonality theorem}.
 The statement for compact Lie groups is the following:
 
-\begin{theorem}[Orthogonality theorem for compact Lie groups]
+\begin{theorem}[Orthogonality theorem for compact Lie groups]\label{th:orthogonality_compact_groups}
     Let $\{\pi_j\}$ be unitary irreps of $G$.
     Then
     \begin{equation}
@@ -81,8 +81,12 @@ While the statement for finite groups needs some little adjustments:
 
 A useful corollary is that the sum of all matrices of a non-trivial irrep $j$ is zero:
 \begin{equation}
-    \sum_{g \in G} \pi_j(g) = 0.
+    \int \dd g \pi_j (g) = 0
+    \qor
+    \sum_{g \in G} \pi_j(g) = 0,
+    \label{eq:corollary_orthogonality_th}
 \end{equation}
+where the former equation correspond to compact groups while the latter to finite groups.
 This follows by taking $j^{\prime}$ equal to the trivial representation, whose matrice elements are all equal to the identity.
 Then if $j$ is non-trivial, the right-hand side of the orthogonality theorem is always zero.
 Taking $m^{\prime} = n^{\prime}$ on the left-hand side gives the claim

@@ -1,32 +1,30 @@
 %----------------------------------------
 % SECTION: Wilson approach to gauge theories
 %----------------------------------------
-\section{Wilson approach to \acl{lft}}
+\section{Wilson approach to \acl{lgt}}
 \label{sec:wilson_approach_to_lft}
 
-
-
-Starting from the path integral formulation, the first step in the formulation of a \ac{lft} is the discretization of space-time, where a discrete $d+1$-dimensional lattice substitutes the continuum space-time.
+Starting from the path integral formulation, the first step in the formulation of a \ac{lgt} is the discretization of space-time, where a discrete $d+1$-dimensional lattice substitutes the continuum space-time.
 The simplest choice in this regard is a hypercubic lattice with lattice spacing $a$, but in theory an \ac{lft} can be defined on any type of lattice.
 An immediate advantage of using a lattice instead of a continuum is the natural ultraviolet cutoff given by the inverse of the lattice spacing.
 
-Formally a lattice $\Lattice$ is defined as
+Formally, a lattice $\Lattice$ is defined as
 \begin{equation}
     \Lattice = \qty{
-        x \in \R^4 :
-        x = \sum_{\mu = 1}^{d+1} a n_{\mu} \hat{\mu} \quad
+        x \in \R^{D} :
+        x = \sum_{\mu = 1}^{D} a n_{\mu} \hat{\mu} \quad
         n_{\mu} \in \Z
     },
 \end{equation}
-where $\mu = 1, \dots, d+1$ and $\hat{\mu}$ is the unit vector in the direction $\mu$.
-The edges will be labeled by a pair $(x,\hat{\mu})$, meaning that we are referring to the edge in the $\hat{\mu}$ direction from the vertex $x$.
+where $\mu = 1, \dots, D$, and $\hat{\mu}$ is the unit vector in the $\hat{\mu}$-th direction.
+The edges, or \emph{links}, will be labeled by a pair $(x,\hat{\mu})$, meaning that we are referring to the link in the $\hat{\mu}$ direction from the vertex, or \emph{site}, $x$.
 It is important to fix an orientation for each direction in the lattice.
 The most natural choice is to choose $+ \hat{\mu}$ for each $\hat{\mu}$.
 So, even though $(x,\hat{\mu})$ and $(x + \hat{\mu}, - \hat{\mu})$ refers to the same link, the former is traversed in the positive direction while the latter in the negative direction.
 
-In an \ac{lft}, both the vertices and edges (also called links) host \ac{dof}.
-In particular, the matter fields lives on the vertices while the gauge fields live on the links between vertices.
-However, the definition of these d.o.f.~will need some care, because we have two main requirements, especially if we are interested in Yang-Mills theory:
+In an \ac{lgt}, both the sites and links host \ac{dof}.
+In particular, the matter fields lives on the sites while the gauge fields live on the links.
+The definition of these \ac{dof} will need some care, because we have two main requirements, especially if we are interested in \ac{ym} theory:
 \begin{itemize}
     \item The lattice action should reduce to the continuum action in the continuum limit, i.e., $a \to 0$;
     \item The lattice action should respect the gauge symmetry.
@@ -40,48 +38,54 @@ Lorentz invariance is naturally broken on a lattice but we expect to recover it 
 \subsection{Gauge fields on a lattice}
 \label{sub:gauge_fields_on_a_lattice}
 
-\todo{spiegazione perché usiamo il gruppo di Lie e non l'algebra di Lie}
-Considering a general group $G$, we associate an element $U_{\mu}(x) \in G$ to each link $(x, \mu)$.
-If one traverse the link in the opposite direction, one should obtain the inverse element $U^{-1}$.
-In the case of $SU(N)$, we take $U_{\mu}(x)$ to be the matrices in the fundamental representation.
-We can obtain a vector potential in the continuum limit by writing
+The simplest way to define a \ac{ym} action on a lattice would be to consider a continuum action, substitute finite-difference approximations for derivatives, and replace the space-time integral by a sum over the lattice sites.
+However, the result of this is an action which is not-gauge invariant for non-zero lattice spacing \cite{wilson1974confinement}.
+This is likely to mean that the theory would still lack gauge-invariance in the $a \to 0$ limit.
+The alternative, outlined in \cite{wilson1974confinement, creutz1985book}, would be to formulate gauge invariance for a lattice theory then modify its action until it is gauge invariant for any $a$.
+
+We start by considering a general group $G$.
+We associate an element $U_{\mu}(x) \in G$ to each link $(x, \mu)$.
+If one traverse the link in the opposite direction, one should consider the inverse element $U^{-1}$.
+In the case of $\SU(N)$, we take $U_{\mu}(x)$ to be the matrices in the fundamental representation and a vector potential can be obtained in the continuum limit by writing
 \begin{equation}
-    U_{\mu}(x) = e^{i a A_{\mu}(x)},
+    U_{\mu}(x) = e^{i a g A_{\mu}(x)}.
 \end{equation}
-where $a$ is the lattice spacing.
+
 
 It is necessary to discuss about gauge invariance before moving to the dynamics of these gauge fields.
 % Before moving on the dynamics of these gauge fields we have talk on the meaning of gauge invariance on the lattice.
 A gauge transformation is described by a group-valued function $g(x)$ (in the appropriate representation), which acts on the vertices $x$.
-The variable $U_{\mu}(x)$ sits in the middle of the site $x$ and $x + \hat{\mu}$, then it is reasonable to think its transformation is
+The variable $U_{\mu}(x)$ sits in the middle of the site $x$ and $x + \hat{\mu}$, therefore it transforms as
 \begin{equation}
     U_{\mu}(x) \mapsto g(x) U_{\mu}(x) g(x + a \hat{\mu})^{\dagger}
     \label{eq:gauge_transf_field_lattice}.
 \end{equation}
 
-In order to introduce a dynamics for the gauge fields $U_{\mu}(x)$, we need to define their action which need two satisfy two requirements:
-it has to be gauge-invariant and reduce to the pure gauge Yang-Mills action in the continuum limit.
+The action of the gauge fields $U_{\mu}(x)$ has to satisfy two requirements:
+% In order to introduce a dynamics for the gauge fields $U_{\mu}(x)$, we need to define their action which need two satisfy two requirements:
+it has to be \emph{gauge-invariant} and reduce to the pure gauge \ac{ym} action in the continuum limit.
 From \eqref{eq:gauge_transf_field_lattice}, we can immediately deduce that taking the product of $U_{\mu}(x)$ along a closed curve will yield a gauge-invariant quantity.
 The simplest close curve we can consider is a \emph{plaquette}, i.e., the smallest square face.
-Hence, on a plaquette $\square$ we introduce $\W$ to put in the action, defined as
+
+Consider a plaquette $\plaquette$ sitting in the $(\mu, \nu)$-plane at site $x$.
+We define the \emph{single plaquette \acl{wl}} $\WilsonPlaq$ as
 \begin{equation}
-    \W =
+    \WilsonPlaq =
     U_{\mu}(x) U_{\nu}(x + a \hat{\mu}) U_{\mu}(x + a \hat{\nu})^{\dagger} U_{\nu}(x)^{\dagger}.
     \label{eq:single_plaquette_Wilson_loop}
 \end{equation}
 Notice that we do not have any sum in the indices $\mu$ and $\nu$ because they are not Lorentz indices.
-The quantity in \eqref{eq:single_plaquette_Wilson_loop} is called a single plaquette \emph{\ac{wl}}.
-
-We can only have scalar quantities in the action, so we need to take the trace of $\W$.
-Then, our lattice action will be defined as the sum over the plaquettes of $\tr \W$ (and its Hermitian conjugate):
+% The quantity in \eqref{eq:single_plaquette_Wilson_loop} is called a single plaquette \emph{\ac{wl}}.
+Only scalar quantities are allowed in the action, so we need to take the trace of $\WilsonPlaq$.
+Then, our lattice action will be defined as the sum over the plaquettes of $\tr \WilsonPlaq$ (and its Hermitian conjugate):
 \begin{equation}
-    \Action = - \frac{1}{g^2} \sum_{\square} \qty( \tr \W + \tr \W^{\dagger} ).
+    \Action_{\text{W}} = - \frac{1}{g^2} \sum_{\square} \qty( \tr \WilsonPlaq + \tr \WilsonPlaq^{\dagger} ).
     \label{eq:wilson_action}
 \end{equation}
 This is known as the \emph{Wilson action} \citneeded.
-The quantity $\tr \W$ behaves as expected in the continuum limit, where we have to work with the strength field $F^{\mu \nu}$:
+The quantity $\tr \WilsonPlaq$ behaves as expected in the continuum limit, where we have to work with the strength field $F^{\mu \nu}$:
 \begin{equation}
-    \tr \W \approx N - \frac{a^{4}}{2} \tr F_{\mu \nu} F^{\mu \nu} + \mathcal{O}(a^6),
+    \tr \WilsonPlaq \approx N - \frac{a^{4}}{2} \tr F_{\mu \nu} F^{\mu \nu} + \mathcal{O}(a^6),
 \end{equation}
 
 The lattice action is not unique.
@@ -89,16 +93,19 @@ The Wilson action in \eqref{eq:wilson_action} is the simplest choice that one ca
 Some other modification, for example, can include other types of closed loops and these modification can have their place.
 However, they will not be considered here.
 
-Obviously, in a path-integral formulation of \ac{lgt}s we need to define the path integral, which is immediate.
-The partition function is given by
+Obviously, in a path-integral formulation of \ac{lgt}s we need to define the path-integral in order to have a quantum theory:
 \begin{equation}
-    Z = \int \prod_{(x, \hat{\mu})}  \dd U_{\mu}(x) e^{- \Action},
+    Z = \int \prod_{(x, \hat{\mu})}  \dd U_{\mu}(x) e^{- \Action_{\text{W}}}.
+    \label{eq:path_intelgral_Wilson_lgt}
 \end{equation}
-where the integration measure $\dd U_{\mu}(x)$ is understood to be the Haar measure.
-In case of a compact group, like $SU(N)$, it is well defined and yields a finite value.
-Now that the path integral measure has been defined, the average of an observable $\mathcal{O}$ can be computed as
+Here we integrate over all possible values for the gauge variables.
+Due to the fact that $U_{\mu}$ are elements of a group $G$ that for most physical applications is compact, the most natural choice is to the invariant group measure also known as \emph{Haar measure}.
+% where the integration measure $\dd U_{\mu}(x)$ is understood to be the Haar measure.
+% In case of a compact group, like $\SU(N)$, it is well defined and yields a finite value.
+Notice that \eqref{eq:path_intelgral_Wilson_lgt} is now a well defined mathematical quantity, unlike the path-integral in continuum theory where a clear mathematical definition is still lacking.
+Now that the path-integral measure has been defined, we can compute the average of an observable $\mathcal{O}$ with
 \begin{equation}
-    \ev*{\mathcal{O}} = \frac{1}{Z} \int \prod_{(x, \hat{\mu})} \dd U_{\mu}(x) \mathcal{O} e^{- \Action}
+    \ev*{\mathcal{O}} = \frac{1}{Z} \int \prod_{(x, \hat{\mu})} \dd U_{\mu}(x) \mathcal{O} e^{- \Action_{\text{W}}}
 \end{equation}
 
 
@@ -117,51 +124,50 @@ The analogue of such an order parameter in \ac{lgt} would be something like
     \ev*{U_{\mu}(x)} \neq 0,
     \label{eq:non_zero_link_var_expt_value}
 \end{equation}
-rut it has been shown\citneeded \todo{teorema di Elitzur} that this is impossible in Wilson theory.
+but it has been shown that this is impossible in Wilson theory \cite{elitzur1975theorem}.
 
 In standard spin models, a non-zero magnetization represents a spontaneous breaking of the global symmetry of the system.
 Consider the simplest case of the classical Ising model, where the \ac{dof} are binary variables $\sigma = \pm 1$.
 Without an external field, the energy is given by the interaction of nearest neighbouring spins, i.e., $\sigma_i \sigma_j$.
 This system has an obvious global $\Z_2$ symmetry, that corresponds to the inversion $\sigma_i \mapsto -\sigma_i$ off all the spins.
 A ferromagnetic phase is, by definition, signaled by $\ev*{\sigma} \neq 0$, which necessarily breaks the global $\Z_2$ symmetry of the model.
-Once a direction is selected by $\ev*{\sigma} \neq 0$, it remains stable under thermal fluctuations because they cannot coherently shift of the magnetization of an infinite (or rather large) number of spins.
+Once a direction is selected by $\ev*{\sigma} \neq 0$, it remains stable under thermal fluctuations because they cannot coherently shift the magnetization of a large (or infinite) number of spins.
 
-In a \ac{lgt}, an expectation value like \eqref{eq:non_zero_link_var_expt_value} would \emph{breaks} gauge invariance, which is a \emph{local symmetry}, not a global one.
-As explained previously, gauge invariance means that the action is unchanged under local arbitrary ``rotations'' of the link variables $U_{\mu}(x)$, see \eqref{eq:gauge_transf_field_lattice}.
-Hence, thermal fluctuations will induce such rotations and in the long rung it will average on all the possible gauges.
-This leads to
+In a \ac{lgt}, an expectation value like \eqref{eq:non_zero_link_var_expt_value} would \emph{break gauge invariance}, which is a \emph{local symmetry}, not a global one.
+As explained previously, gauge invariance means that the action is unchanged under local arbitrary ``rotations'' of the link variables $U_{\mu}(x)$ (see \eqref{eq:gauge_transf_field_lattice}).
+Hence, thermal fluctuations will induce such rotations and in the long rung it will average on all the possible gauges, which leads to
 \begin{equation}
-    \ev*{U_{\mu}} = \int \dd U_{\mu} U_{\mu} = 0
+    \ev*{U_{\mu}(x)} = \int \dd U_{\mu}(x) U_{\mu}(x) = 0
 \end{equation}
-if $U_{\mu}$ contains only non-trivial irreducible representations of the group.
-This means that ``magnetization'' is always vanishing in a \ac{lgt} and gauge invariance cannot be spontaneously broken, which is the contents of the Elitzur theorem\citneeded.
+if $U_{\mu}$ contains only non-trivial irreducible representations of the group (see Th.~\ref{th:orthogonality_compact_groups} and \eqref{eq:corollary_orthogonality_th}).
+This means that ``magnetization'' is always vanishing in a \ac{lgt} and gauge invariance cannot be spontaneously broken, which is the contents of the Elitzur theorem \cite{elitzur1975theorem}.
 
 The conclusion of this brief discussion may seem rather grim, as magnetization in spin models is the most convenient and used order parameter.
 But this does not mean that there are no other order parameters in a \ac{lgt}.
 We have just showed that the problem when considering something like $\ev*{U_{\mu}}$ is gauge invariance.
-So, the most reasonable step forward is to consider \emph{gauge-invariant quantities}.
+So, the most reasonable step forward is to consider \emph{gauge-invariant quantities} as order parameters.
 We have already seen that tracing over a product of $U_{\mu}$ variables along a closed curve is a gauge-invariant quantity, called \emph{\ac{wl}}.
 
 In so far, we have considered only single plaquette loops but nothing restraints us from considering arbitrary large loops, indeed it serves as a \emph{confinement test} for pure gauge theories.
 % One of the most important quantity that can be computed for a pure \ac{lgt} is the \ac{wl} for generic closed paths $\mathcal{C}$.
 % It serves as \emph{confinement} test.
-It has been shown \citneeded that confinement is equivalent to the \emph{area law} behaviour of \ac{wl}s, i.e.,
+It has been shown \cite{wilson1974confinement} that confinement is equivalent to the \emph{area law} behaviour of \ac{wl}s, i.e.,
 \begin{equation}
     \ev*{W(\mathcal{C})} \sim \exp(- \sigma A(\mathcal{C})),
     \label{eq:wilson_area_law}
 \end{equation}
 where $A(\mathcal{C})$ is the minimal area inside the closed path $\mathcal{C}$ and $\sigma$ the \emph{string tension} (the coefficient of the linear potential between two quarks).
-On the other hand, in the absence of confinement one finds instead the \emph{perimeter law}
+On the other hand, in the absence of confinement one finds instead the \emph{perimeter law}:
 \begin{equation}
     \ev*{W(\mathcal{C})} \sim \exp(- k P(\mathcal{C})),
     \label{eq:wilson_perimeter_law}
 \end{equation}
 where $P(\mathcal{C})$ is the perimeter of the curve $\mathcal{C}$ and $k$ just some constant.
 
-The reason behind this behaviour can be seen with a simple qualitative picture.
+The reason behind this behaviour can be seen with a simple qualitative picture \cite{creutz1985book, wilson1974confinement}.
 A closed timelike \ac{wl} basically represents a process in which a quark-antiquark pair is produced, moved along the sides of the loop and annihilated.
-If we are confining phase we can then expect a liner potential between the quark and antiquark.
-We can imagine a flux tube \emph{binding} the two charges, which swoops the whole inside the loop.
+If we are in a confining phase we can then expect a liner potential between the quark and antiquark.
+We can imagine a flux tube \emph{binding} the two charges, which swoops the whole inside area of the loop.
 Then, it is easy to image that the energy of this whole process will necessarily depend on the area of the loop.
 On the other hand, if we are in a deconfined phase then there is no potential binding the two quarks.
 In this case the energy of the whole process depends only on the self-energy of quarks, which move along the sides of the loop.
@@ -181,6 +187,8 @@ But it is \emph{non-local} in nature, as it involves the asymptotic behaviour of
 
 Defining fermions is not an easy task due to the known \emph{doubling problem}.
 In simple terms, when introducing fermions on a lattice, instead of a continuous space, it leads to a extra spurious fermions, which are just lattice artifacts.
+
+\todo{parlare della discretizzazione del fermione prima}
 
 In order to briefly see this, consider the correlation function for a single fermionic species.
 If $K$ is the kinetic matrix for the fermions, then $G = K^{-1}$ gives their correlation matrix.
@@ -232,7 +240,8 @@ and now the limit $a \to 0$ can be taken safely, but it comes with a price to pa
 For each direction in space, we have two independent regions that gives a free fermion contribution to the propagator in the continuum limit.
 We have effectively \emph{doubled} the number of fermions for each direction.
 In a $d$-dimensional lattice we end up with $2^d$ independent fermions, even though we initially started with just one.
-\todo{qualcosa a che fare con la chiralità}
+
+\todo{parlare del ruolo della chiralità}
 
 There are many solutions to this fermion doubling problem\citneeded, but we will focus only on one in this manuscript: \emph{the staggered fermions}\citneeded.
 We have seen that these fictitious fermions come from the large momenta regions, where $q_{\mu} \sim \pi/a$.

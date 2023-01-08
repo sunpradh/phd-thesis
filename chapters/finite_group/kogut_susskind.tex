@@ -127,14 +127,14 @@ When considering closed path, we can take the trace of $W_{\gamma}$ in order to 
 
 Since $\bm{B}^2 = \frac{1}{2} F_{ij} F^{ij}$, we can copy the spatial part of the Wilson formulation and consider single plaquette \ac{wl}s:
 \begin{equation}
-    \tr \hat{\W} = \tr \qty(
+    \tr \hat{\WilsonPlaq} = \tr \qty(
         \transport(\link_1) \transport(\link_2) \transport(\link_3)^{\dagger}  \transport(\link_4)^{\dagger}
     ),
 \end{equation}
 where $\link_1, \dots, \link_4$ are the links around a purely spatial plaquette.
 Thus, the magnetic Hamiltonian is
 \begin{equation}
-    H_B = - \frac{1}{g^2 a^{4-d}} \sum_{\square} \qty( \tr \W + \tr \W^{\dagger} ),
+    H_B = - \frac{1}{g^2 a^{4-d}} \sum_{\square} \qty( \tr \WilsonPlaq + \tr \WilsonPlaq^{\dagger} ),
 \end{equation}
 where the sum is over the plaquettes of lattice and the coupling is chosen in order to have the correct limit.
 
@@ -209,7 +209,7 @@ Therefore, the overall Kogut-Susskind Hamiltonian is given by
     H =
     \frac{g^2}{2 a^{d-2}} \sum_{\link} \laplacian_{\link}
     - \frac{1}{g^2 a^{4-d}} \sum_{\square} \qty(
-        \tr\W + \tr \W^{\dagger}
+        \tr\WilsonPlaq + \tr \WilsonPlaq^{\dagger}
     )
 \end{equation}
 
