@@ -4,31 +4,32 @@
 \section{Toric Code and its features}
 \label{sec:toric_code_and_its_features}
 
-The \ac{tc} is two-dimensional model of spin-\onehalf \ac{dof}, which can be regarded as an example of a pure $\mathbb{Z}_2$ \ac{lgt}.
-In particular, we focus on a $L \times L$ square lattice with periodic boundary conditions.
-The \ac{dof} are defined on the links the lattice, where the local Hilbert space is $\C^2$.
-The main operators we are going to use are the Pauli matrices
+The \ac{tc} is two-dimensional model of spin-\onehalf{} \ac{dof}, which can be regarded as an example of a pure $\Z_2$ \ac{lgt}.
+We consider the model on a $L \times L$ square lattice $\Lattice$ with periodic boundary conditions.
+The \ac{dof} are defined on the links $\link$ of the lattice and the link Hilbert space is $\C^2$.
+The main operators used for this model are the Pauli matrices
 \begin{equation}
-    X = \begin{pmatrix}
+    X_{\link} = \begin{pmatrix}
         0 & 1 \\ 1 & 0
     \end{pmatrix}
     \qand
-    Z = \begin{pmatrix}
+    Z_{\link} = \begin{pmatrix}
         1 & 0 \\ 0 & -1
     \end{pmatrix},
     \label{eq:matrices_X_Z}
 \end{equation}
-which we have written in the computational basis $\{\ket{0}, \ket{1}\}$, where the $Z$-matrix is diagonal.
-It is important to remember that the matrices $X$ and $Z$ \emph{anticommutes}.
+which here have been written in the computational basis $\{\ket{0}, \ket{1}\}$, where the $Z$-matrix is diagonal.
+It is important to note that these matrices $X$ and $Z$ \emph{anticommutes} on the same link.
 \begin{equation}
-    [X, Z] = 0.
+    \acomm{X_{\link}}{Z_{\link}} = 0,
 \end{equation}
+while the commuting with operators of other links.
 
-The main \emph{local} operators that enters the Hamiltonian are defined on the \emph{stars} and \emph{plaquettes} of the lattice.
+The main \emph{local} operators that enters the Hamiltonian are the \emph{star operator} and \emph{plaquette operator} of the lattice.
 The term \emph{star} refers to the links attached to a common vertex $v$, while by \emph{plaquette} $p$ we mean the links around a face of the lattice.
 A \emph{star operator} and a \emph{plaquette operator} are respectively defined as
 \begin{equation}
-    A_v = \prod_{\link \in s} Z_\link, \qquad
+    A_v = \prod_{\link \in v} Z_\link, \qquad
     B_p = \prod_{\link \in p} X_\link.
     \label{eq:star_plaq_op_def}
 \end{equation}
@@ -53,7 +54,7 @@ Moreover, like the Pauli matrices, also $A_s^2 = \identity$ and $B_p^2 = \identi
 
 Now, given the operators in \eqref{eq:star_plaq_op_def}, we can write down the Hamiltonian of the \ac{tc}:
 \begin{equation}
-    H = - \sum_{v} A_v - \sum_{p} B_p
+    \HamilTC = - \sum_{v} A_v - \sum_{p} B_p
     \label{eq:toric_code_hamiltonian}
 \end{equation}
 which is \emph{exactly solvable}, due to \eqref{eq:star_plaq_op_comm_1} and \eqref{eq:star_plaq_op_comm_2}.
@@ -140,35 +141,35 @@ On this region $\mathcal{R}$ we can define a local operator $W$ as a product of 
     W = \prod_{p \in \mathcal{R}} B_p.
 \end{equation}
 This operator commutes will the terms of the Hamiltonian \eqref{eq:toric_code_hamiltonian}.
-Due to $X^2 = \identity$, the previous equation can be rewritten as
+Due to $X^2_{\link} = \identity$, the previous equation can be rewritten as
 \begin{equation}
     W = \prod_{\link \in \partial \mathcal{R}} X_{\link}.
 \end{equation}
 In other words, $W$ is equivalent to the product of $X$'s along the closed curve given by the boundary $\partial \mathcal{R}$ of $\mathcal{R}$.
-In fact, the $B_p$ themselves are defined as product of $X$s along a closed curve, the plaquette.
+In fact, the $B_p$ themselves are defined as product of $X$'s along a closed curve, the plaquette.
 In a sense, they are all \emph{string operators} on closed curves.
 
 The same argument can be repeated for $A_v$ with the minor caveat that the dual lattice have to considered.
-In the dual lattice $\DualLattice$, to each plaquette $p$ of the lattice $\Lattice$ corresponds a vertex $v$ on the dual lattice.
+In the dual lattice $\DualLattice$, to each plaquette $p$ of $\Lattice$ corresponds a vertex $v^{\ast}$ on the dual lattice.
 Then, to each link $\link$ in $\Lattice$ corresponds a link $\link^{\ast}$ in $\DualLattice$ in the perpendicular direction.
-In this way, a star becomes a plaquette in the dual lattice.
-From here, we can repeat the same argument.
-Consider a region $\mathcal{R}^{\ast}$ a local operator $W^{\ast}$ such that
+In this way, a star becomes a plaquette in the dual lattice and we can repeat the same argument.
+% From here, we can repeat the same argument.
+Consider a region $\mathcal{R}^{\ast}$ a local operator $S$ such that
 \begin{equation}
-    W^{\ast} = \prod_{v \in \mathcal{R}^{\ast}} A_v,
+    S = \prod_{v \in \mathcal{R}^{\ast}} A_v,
 \end{equation}
-and, due to $Z^2 = \identity$, this is equal to
+and, due to $Z^2_{\link} = \identity$, this is equal to
 \begin{equation}
-    W^{\ast} = \prod_{\link \in \partial \mathcal{R}^{\ast}} Z_{\link}.
+    S = \prod_{\link \in \partial \mathcal{R}^{\ast}} Z_{\link}.
 \end{equation}
-The local operator $W^{\ast}$ is a string of $Z$'s operators along the closed curve given by the boundary $\partial \mathcal{R}$ in $\DualLattice$.
+The local operator $S$ is a string of $Z$'s operators along the closed curve given by the boundary $\partial \mathcal{R}$ in $\DualLattice$.
 The same can be said for $A_v$, it is a string operator around the smallest possible curve in $\DualLattice$.
 % Indeed, a star on the direct lattice becomes a plaquette on the dual lattice.
 % So a product of $A_v$ is equivalent to a string of $Z$ operators along closed curves on the dual lattice.
 % All these curve have a common property, they are \emph{contractible}, meaning that they can be continuously deformed to a single point.
 % The operators we have called local so far are string operators over contractible curves, but if we are on a lattice with non-trivial topology, like a torus, then we can also have \emph{non-contractible} curves.
 We can conclude that all the local operators that commutes with Hamiltonian are just string operators over closed curve in either $\Lattice$ or $\DualLattice$.
-But, these operators have alla a common feature, they are defined on \emph{contractible} curves.
+But, these operators have all a common feature, they are defined on \emph{contractible} curves.
 Meaning that they can be ``continuously'' deformed to a single point.
 
 \begin{figure}[t]
@@ -191,24 +192,25 @@ On these paths we can define the string operators $\Wilson_1$ and $\Wilson_2$ as
     \label{eq:nonlocal_W_toric}
 \end{equation}
 It can be proved that they commute with all the terms of the Hamiltonian, even though they cannot be expressed as a product of them.
-The same can be repeated on the dual lattice $\DualLattice$, by considering two non-contractible cuts $\mathcal{C}_1$ and $\mathcal{C}_2$ and defining $\overline{S}_1$ and $\overline{S}_2$ as
+The same can be repeated on the dual lattice $\DualLattice$, by considering two non-contractible cuts $\mathcal{C}_1$ and $\mathcal{C}_2$ and defining $\tHooft_1$ and $\tHooft_2$ as
 \begin{equation}
-    \overline{S}_1 = \prod_{\link \in \mathcal{C}_1} Z_\link, \qquad
-    \overline{S}_2 = \prod_{\link \in \mathcal{C}_2} Z_\link.
+    \tHooft_1 = \prod_{\link \in \mathcal{C}_1} Z_\link, \qquad
+    \tHooft_2 = \prod_{\link \in \mathcal{C}_2} Z_\link.
     \label{eq:nonlocal_S_toric}
 \end{equation}
 Likewise, the operators in \eqref{eq:nonlocal_S_toric} commutes with all the vertex and plaquettes operators but they do not commute with the operators in \eqref{eq:nonlocal_W_toric}.
 
+
 In fact, \eqref{eq:nonlocal_W_toric} and \eqref{eq:nonlocal_S_toric} anticommutes,
 \begin{equation}
-    \acomm*{\Wilson_1}{\overline{S}_2} = 0 \qand
-    \acomm*{\Wilson_2}{\overline{S}_1} = 0,
+    \acomm*{\Wilson_1}{\tHooft_2} = 0 \qand
+    \acomm*{\Wilson_2}{\tHooft_1} = 0,
     \label{eq:anticommutation_W_S_toric}
 \end{equation}
 while
 \begin{equation}
     \comm{\Wilson_1}{\Wilson_2} = 0 \qand
-    \comm{\overline{S}_1}{\overline{S}_2} = 0.
+    \comm{\tHooft_1}{\tHooft_2} = 0.
 \end{equation}
 These relations can be thought as the same commutation relations of the $X$ and $Z$ gates of two qubits.
 
@@ -254,7 +256,7 @@ Nonetheless they can be used for storing information in a fault-tolerant way, be
 The \ac{tc} was formulated as a type of error-correcting code for quantum computing, but it can be reinterpreted as a pure $\Z_2$ \ac{lgt}.
 This is a type of \ac{lgt} where we allow only two possible states for the gauge field.
 
-On a single link, we consider the $X_{\link}$ as the gauge field operator, while $Z_{\link}$ the electric field operator.
+On a single link $\link$, we consider the $X_{\link}$ as the gauge field operator, while $Z_{\link}$ the electric field operator.
 In this way, we can automatically see that the term $B_p$ is the magnetic energy because it has the same form of single-plaquette \ac{wl}.
 Furthermore, the vertex operator $A_v$ can be read as a gauge transformation on the vertex $v$, because the $Z$'s operators flips the states in the $X$-basis, which would corresponds to gauge field configurations.
 
@@ -284,7 +286,7 @@ In order to meet the condition in \eqref{eq:toric_code_physical_state}, a vertex
 We have already argued that the $B_p$'s give the magnetic energy, and obviously the $Z$'s give the electric energy.
 Hence, the pure gauge theory Hamiltonian is just
 \begin{equation}
-    H_{\Z_2} = - \sum_{p} B_p - \lambda \sum_{\link} Z_{\link},
+    H^{\Z_2} = - \sum_{p} B_p - \lambda \sum_{\link} Z_{\link},
     \label{eq:z2_lgt_hamiltonian}
 \end{equation}
 where $\lambda$ is a generic coupling that tunes the strength of the electric field with respect to the magnetic field.

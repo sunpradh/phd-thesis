@@ -18,18 +18,18 @@
     \draw (4,1.5) node {Wilson loop};
     \foreach \y in {0,1} \foreach \x in {0,...,8} \draw (\x,\y) node [site] {};
 
-    %%% 't Hooft string
-    \begin{scope}[yshift=-3cm]
-        % Lattice
-        \draw[Gray, thin] (-0.5,0) grid (8.5,1);
-        % String
-        \draw [string] (0.5,0.5) -- (3.5,0.5) node [black, above, pos=0.65] {$S$};
-        \foreach \x in {1,2,3} \draw [Red, ultra thick] (\x,0) -- (\x,1);
-        % Labels
-        \draw (0,0) node [below] {$0$};
-        \draw (4,0) node [below] {$L/2$};
-        \draw (8,0) node [below] {$L$};
-        \draw (4,1.5) node {'t Hooft string};
-        \foreach \y in {0,1} \foreach \x in {0,...,8} \draw (\x,\y) node [site] {};
-    \end{scope}
+    % %%% 't Hooft string
+    % \begin{scope}[yshift=-3cm]
+    %     % Lattice
+    %     \draw[Gray, thin] (-0.5,0) grid (8.5,1);
+    %     % String
+    %     \draw [string] (0.5,0.5) -- (3.5,0.5) node [black, above, pos=0.65] {$S$};
+    %     \foreach \x in {1,2,3} \draw [Red, ultra thick] (\x,0) -- (\x,1);
+    %     % Labels
+    %     \draw (0,0) node [below] {$0$};
+    %     \draw (4,0) node [below] {$L/2$};
+    %     \draw (8,0) node [below] {$L$};
+    %     \draw (4,1.5) node {'t Hooft string};
+    %     \foreach \y in {0,1} \foreach \x in {0,...,8} \draw (\x,\y) node [site] {};
+    % \end{scope}
 \end{tikzpicture}

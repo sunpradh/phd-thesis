@@ -1,0 +1,58 @@
+\begin{tikzpicture}[
+    lattice/.style = {Gray, thin, solid},
+    on/.style = {Green, very thick, solid},
+    lab/.style = {scale=0.35},
+    box/.style = {draw=black, dotted, inner sep=4pt},
+    arr/.style = {<-, black},
+    flux/.style = {fill=Green, fill opacity=0.1}
+    ]
+
+\begin{axis}[
+        height=5cm,
+        width=8cm,
+        tick align=outside,
+        tick pos=left,
+        % title={sector $(0, 0)$},
+        xlabel={$n$},
+        ylabel={$|c_n/c_1|$},
+        ymin=0, ymax=1.1,
+        ytick style={color=black},
+        ytick={0,0.2,0.4,0.6,0.8,1,1.2},
+        yticklabels={$0.0$, $0.2$, $0.4$, $0.6$, $0.8$, $1.0$, $1.2$}
+]
+\addplot [very thick, blue!70]
+table {%
+0 1
+1 1
+2 0.172052025794983
+25 0.172052025794983
+26 0.0594711303710938
+49 0.0594711303710938
+50 0.0305156707763672
+73 0.0305156707763672
+74 0.0297093391418457
+157 0.0296221971511841
+158 0.0258673429489136
+181 0.0258673429489136
+182 0.0130573511123657
+199 0.0130573511123657
+};
+
+% Title
+\node [anchor=north east, draw=gray] at (axis description cs: 0.99, 0.99) (title) {sector $(1,0)$};
+
+\node at (0, 1) (vacuum) {};
+
+\end{axis}
+
+% Vacuum
+\draw[arr] (vacuum) node  [circle, fill=black, inner sep=0pt, minimum size=3pt] {}
+    -- +(1,0) node (vacuum-label) {};
+\draw (vacuum-label) node [right, box] {
+    \begin{tikzpicture}[lab]
+        \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+        \draw[on] (-0.5,0) -- (5.5, 0);
+    \end{tikzpicture}
+};
+
+\end{tikzpicture}

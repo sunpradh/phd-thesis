@@ -1,0 +1,102 @@
+\begin{tikzpicture}[
+    lattice/.style = {Gray, thin, solid},
+    on/.style = {Green, very thick, solid},
+    lab/.style = {scale=0.35},
+    box/.style = {draw=black, dotted, inner sep=4pt},
+    arr/.style = {<-, black},
+    flux/.style = {fill=Green, fill opacity=0.1}
+    ]
+
+\begin{axis}[
+        height=7cm,
+        width=8cm,
+        tick align=outside,
+        tick pos=left,
+        % title={sector $(0, 0)$},
+        xlabel={$n$},
+        ylabel={$|c_n/c_1|$},
+        ymin=0, ymax=1.1,
+        ytick style={color=black},
+        ytick={0,0.2,0.4,0.6,0.8,1,1.2},
+        yticklabels={$0.0$, $0.2$, $0.4$, $0.6$, $0.8$, $1.0$, $1.2$}
+]
+\addplot [very thick, blue!70]
+table {%
+0 1
+1 1
+2 0.902501583099365
+25 0.902501583099365
+26 0.90012514591217
+133 0.900000095367432
+134 0.816542267799377
+157 0.816542267799377
+158 0.814608097076416
+199 0.814515113830566
+};
+
+% Title
+\node [anchor=north east, draw=gray] at (axis description cs: 0.99, 0.99) (title) {sector $(1,0)$};
+
+\node at (0.5, 1) (vacuum) {};
+\node at (10, 0.902501583099365) (1-1-loop) {};
+\node at (70, 0.900000095367432) (1-big-loop) {};
+\node at (160, 0.816542267799377) (2-1-loop) {};
+\end{axis}
+
+% Vacuum
+\draw[arr] (vacuum) node  [circle, fill=black, inner sep=0pt, minimum size=3pt] {}
+    -- +(1,0) node (vacuum-label) {};
+\draw (vacuum-label) node [right, box] {
+    \begin{tikzpicture}[lab]
+        \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+        \draw[on] (-0.5,0) -- (5.5, 0);
+    \end{tikzpicture}
+};
+
+% 1 single plaquette loop
+\draw[arr] (1-1-loop) -- +(0.5,-0.5) node (1-1-loop-label) {};
+\draw (1-1-loop-label) node [below, box] {
+    \begin{tikzpicture}[lab]
+        \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+        \fill[flux] (2,0) rectangle (3,1);
+        \draw[on] (-0.5, 0) -- (2, 0) -- (2, 1) -- (3, 1) -- (3, 0) -- (5.5, 0);
+    \end{tikzpicture}
+};
+
+
+
+% 1 big loop
+\draw[arr] (1-big-loop) -- +(0.0,-1.5) node (1-big-loop-label) {};
+\draw (1-big-loop-label) node [below, box] {
+    \begin{tikzpicture}[lab]
+        \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+        \draw[on] (-0.5, 0) -- (2, 0) -- (2, 1) -- (4, 1) -- (4, 0) -- (5.5, 0);
+        \fill[flux] (2,0) rectangle (4,1);
+        \begin{scope}[yshift=-1.5cm]
+            \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+            \draw[on] (-0.5, 0) -- (1, 0) -- (1, 1) -- (4, 1) -- (4, 0) -- (5.5, 0);
+            \fill[flux] (1,0) rectangle (4,1);
+        \end{scope}
+        \begin{scope}[yshift=-3.0cm]
+            \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+            \draw[on] (-0.5, 0) -- (1, 0) -- (1, 1) -- (5, 1) -- (5, 0) -- (5.5, 0);
+            \fill[flux] (1,0) rectangle (5,1);
+        \end{scope}
+        \node at (2.5, -3) [font=\footnotesize, inner sep=0pt] {$\vdots$};
+    \end{tikzpicture}
+};
+
+
+% 2 single plaquette loops
+\draw[arr] (2-1-loop) -- +(-0.2,-1.0) node (2-1-loop-label) {};
+\draw (2-1-loop-label) node [below, box] {
+    \begin{tikzpicture}[lab]
+        \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+        \fill[flux] (1,0) rectangle (2,1);
+        \fill[flux] (3,0) rectangle (4,1);
+        \draw[on] (-0.5, 0) -- (1, 0) -- (1, 1) -- (2, 1) -- (2, 0) -- (3,0) -- (3,1) -- (4,1) -- (4,0) -- (5.5, 0);
+    \end{tikzpicture}
+};
+
+
+\end{tikzpicture}

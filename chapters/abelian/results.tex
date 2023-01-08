@@ -1,6 +1,9 @@
 \section{A case study: \texorpdfstring{$N=2, 3$}{N=2, 3} and \texorpdfstring{$4$}{4}}
 \label{sec:a_case_study_N_2_3_4}
 
+\todo{sistemare layout e testo di questa sezione}
+
+
 \newcommand{\ZTwoWilsonGraph}[1]{
         \nextgroupplot
         \addplot+[thick] table [y=10x2] {assets/graphs/data/Z2_wilson_#1.csv};
@@ -27,43 +30,45 @@
 
 \input{chapters/abelian/phase_diagram.tex}
 
-\input{chapters/abelian/numerical.tex}
+\input{chapters/abelian/gauss_law.tex}
 
 
 
-We wish to investigate the presence of a \emph{deconfined-confined phase transition} (DCPT) for a given $\Z_N$ ladder \ac{lgt}.
-In a pure gauge theory, these phases can be detected
-with the perimeter/area law for \ac{wl}s \cite{wilson1974confinement},
-which can be expressed as the products of magnetic operators over a given region.
-Unfortunately, in a  ladder geometry there is not much difference between the area and the perimeter of a loop, since they both grow linearly in the size system $L$.
+\subsection{Numerical results}
+\label{sub:numerical_results}
 
-Nonetheless, we expect a phase transition by varying $\lambda$ \cite{trebst2007topological, hamma2008adiabatic, tagliacozzo2011entanglement} that can still be captured by an operator like $W_{\mathcal{R}}= \prod_{i \in \mathcal{R}} U_{i}$, the product of magnetic operators $U$'s over a (connected) region $\mathcal{R}$.
-Indeed, when $\lambda=0$, the Hamiltonian \eqref{eq:ladder_hamiltonian} is analogous to a \ac{tc} \cite{kitaev2003fault} which is known to be in a deconfined phase, where the (topologically distinct) ground states are obtained as uniform superpositions of the gauge-invariant states, i.e.~closed electric loops.
-On these ground states $\ev{W_{\mathcal{R}}} = 1$, hence
- a value $\ev{W_{\mathcal{R}}} \approx 1$ signals a deconfined phase.
-On the other hand, when $\lambda \rightarrow \infty$, the electric loops are suppressed, hence
-$\ev{W_{\mathcal{R}}} \approx 0$, signalling a confined phase.
 
-In the dual clock model picture, the \ac{wl} translates to a disorder operator \cite{fradkin1978order}, which means that a deconfined phase can be thought of as a paramagnetic (or disordered) phase, while the confined phase is like a ferromagnetic (or ordered) phase.
-Moreover, the longitudinal field breaks the $N$-fold symmetry of the ferromagnetic phase into a one-fold or two-fold degeneracy, depending on the parity ($n$ even/odd) of the super-selection sector.
+% We wish to investigate the presence of a \emph{deconfined-confined phase transition} (DCPT) for a given $\Z_N$ ladder \ac{lgt}.
+% In a pure gauge theory, these phases can be detected with the perimeter/area law for \ac{wl}s \cite{wilson1974confinement}, but this is not possible on a ladder geometry, as discussed before.
+% which can be expressed as the products of magnetic operators over a given region.
+% Unfortunately, in a  ladder geometry there is not much difference between the area and the perimeter of a loop, since they both grow linearly in the size system $L$.
+% Nonetheless, we expect a phase transition by varying $\lambda$ \cite{trebst2007topological, hamma2008adiabatic, tagliacozzo2011entanglement} that can still be captured by an operator like $W_{\mathcal{R}}= \prod_{i \in \mathcal{R}} U_{i}$.
+%the product of magnetic operators $U$'s over a (connected) region $\mathcal{R}$.
+%Indeed, when $\lambda=0$, the Hamiltonian \eqref{eq:ladder_hamiltonian} is analogous to a \ac{tc} \cite{kitaev2003fault} which is known to be in a deconfined phase, where the (topologically distinct) ground states are obtained as uniform superpositions of the gauge-invariant states, i.e.~closed electric loops.
+%On these ground states $\ev{W_{\mathcal{R}}} = 1$, hence
+ %a value $\ev{W_{\mathcal{R}}} \approx 1$ signals a deconfined phase.
+%On the other hand, when $\lambda \rightarrow \infty$, the electric loops are suppressed, hence
+%$\ev{W_{\mathcal{R}}} \approx 0$, signalling a confined phase.
 
-We study the $\Z_N$ \ac{lgt} on a ladder numerically through \emph{exact diagonalization}, by evaluating the half-ladder \ac{wl}, i.e.~
-\begin{equation}
-    W = U_1 U_2 \cdots U_{L/2},
-\end{equation}
-and working in the restricted physical Hilbert space $\Hphys^{(n)}$ ($n=0,\dots,N-1$), which has dimension $N^L$, much smaller than $N^{3L}$ (the dimension of the total Hilbert space).
+% In the dual clock model picture, the \ac{wl} translates to a disorder operator \cite{fradkin1978order}, which means that a deconfined phase can be thought of as a paramagnetic (or disordered) phase, while the confined phase is like a ferromagnetic (or ordered) phase.
+% Moreover, the longitudinal field breaks the $N$-fold symmetry of the ferromagnetic phase into a one-fold or two-fold degeneracy, depending on the parity ($n$ even/odd) of the super-selection sector.
 
-The naive and brute-force method for building $\Hphys$ would require checking the Gauss law at every site (which are $O(3L)$ operations) for all the possible $N^{3L}$ candidate states.
-On the other hand, the gauge-reducing duality to clock models provides a faithful and efficient method for building the $N^{L+1}$ basis states of $\Hphys$, yielding a major speedup with respect to the naive method.
-%(see \cite{Note1}).
-The procedure is quite simple and it consists in treating a clock state as a plaquette flux state in the following way.
-Let $\ket{\Omega_0}$ be the vacuum state where all the links are in the $\ket{0}$ state.
-For each sector $n$ we can build a ``vacuum'' state $\ket{\Omega_n}$ by applying $\overline{W}$ in \eqref{eq:nonlocal_op_ZN} $n$ times on the true vacuum, i.e.~$\ket{\Omega_n} = \overline{W}^{n} \ket{\Omega_0}$.
-Then, let $\ket{s_1 s_2 \cdots}$ be a configuration of the dual $N$-clock model, where $s_i = 0, \dots, N-1$.
-Now, the equivalent ladder state in the $n$-th sector can be obtained with $\prod_{i} U_i^{s_i} \ket{\Omega_n}$.
+% We study the $\Z_N$ \ac{lgt} on a ladder numerically through \emph{\ac{ed}}, by evaluating the half-ladder \ac{wl}, i.e.~
+% \begin{equation}
+%     W = U_1 U_2 \cdots U_{L/2},
+% \end{equation}
+% and working in the restricted physical Hilbert space $\Hphys^{(n)}$ ($n=0,\dots,N-1$), which has dimension $N^L$, much smaller than $N^{3L}$ (the dimension of the total Hilbert space).
+
+% The naive and brute-force method for building $\Hphys$ would require checking the Gauss law at every site (which are $O(3L)$ operations) for all the possible $N^{3L}$ candidate states.
+% On the other hand, the gauge-reducing duality to clock models provides a faithful and efficient method for building the $N^{L+1}$ basis states of $\Hphys$, yielding a major speedup with respect to the naive method.
+% %(see \cite{Note1}).
+% The procedure is quite simple and it consists in treating a clock state as a plaquette flux state in the following way.
+% Let $\ket{\Omega_0}$ be the vacuum state where all the links are in the $\ket{0}$ state.
+% For each sector $n$ we can build a ``vacuum'' state $\ket{\Omega_n}$ by applying $\overline{W}$ in \eqref{eq:nonlocal_op_ZN} $n$ times on the true vacuum, i.e.~$\ket{\Omega_n} = \overline{W}^{n} \ket{\Omega_0}$.
+% Then, let $\ket{s_1 s_2 \cdots}$ be a configuration of the dual $N$-clock model, where $s_i = 0, \dots, N-1$.
+% Now, the equivalent ladder state in the $n$-th sector can be obtained with $\prod_{i} U_i^{s_i} \ket{\Omega_n}$.
 
 In the following, we present the results with $N=2,3$ and $4$, for different lengths.
-
 
 
 \begin{figure}[t]
@@ -154,7 +159,7 @@ For $\lambda \gtrsim 1$, the system enters a deconfined phase with a double dege
     \label{fig:z4_wilson}
 \end{figure}
 
-\smallskip
+\input{chapters/abelian/amplitudes.tex}
 
 % \paragraph{Conclusions and outlooks}
 % In this work, we proposed an exact gauge preserving duality transformation that maps the  $\mathbb{Z}_N$ \ac{lgt} on a ladder onto a 1D $N-$clock model in a transversal field, coupled to a possibly complex longitudinal field which depends on the super-selection sector.
@@ -162,11 +167,3 @@ For $\lambda \gtrsim 1$, the system enters a deconfined phase with a double dege
 % This map allowed us to perform numerical simulations with an exact diagonalization algorithm with sizes up to $L=18, 13, 10$ for $N=2,3,4$ respectively.
 % To study the phases of the model and a possible DCPT transition, we calculated the \ac{wl}s in the different topological sectors, finding an unusual behaviour in the sectors with $n$ odd (mod $N$), possibly suggesting the emergence of a new phase, such as for example the incommensurate phase appearing in chiral clock models \cite{huse1983chiral, whitsitt2018clock, zhuang2015clock}, whose characterization requires however to consider longer sizes of the chain in order to evaluate the asymptotic behaviour of correlators.
 % This will be the subject of future work, in which we can also consider the possibility to include static and dynamical matter in the lattice gauge model.
-
-% \medskip
-
-% \begin{acknowledgments}
-%     Numerical simulations have been performed with the QuSpin library for exact diagonalization \cite{weinberg2017quspin, weinberg2019quspin}.
-%     We thank M.~Burrello and O.~Pomponio for useful discussions.
-%     This research is partially supported by INFN through the project “QUANTUM”, the project “SFT" and the project “QuantHEP" of the QuantERA ERA-NET Co-fund in Quantum Technologies (GA No. 731473).
-% \end{acknowledgments}

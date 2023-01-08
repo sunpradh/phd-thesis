@@ -1,11 +1,12 @@
 \section{Dualities of the ladder LGT}%
 \label{sec:dualities_of_the_ladder}
 
+In this section we discuss the main result in \cite{pradhan2022ladder}, which is a construction of a duality map between a \acfp{lgt} on a \emph{ladder geometry} and \emph{\acp{clock}}.
+Before proceeding with construction of the duality map, we briefly describe what are \acp{clock}.
 
-\todo{aggiungere paragrafo introduttivo}
-%--------------------------------------------------
+%
 % SECTION: Clock models
-%--------------------------------------------------
+%
 \input{chapters/abelian/clock_models.tex}
 
 
@@ -13,7 +14,7 @@
     \centering
     \input{assets/figures/ladder_duality.tex}
     \caption[Duality map of $\Z_N$ ladder \ac{lgt}]{Visual representation of the duality transformation from the $\Z_N$ ladder \ac{lgt} to the $N$-clock model.
-    The plaquette operator $U_x$ and the electric operators $\Vup$ and $\Vdown$ map to one-site operators in the clock model, while
+    The plaquette operator $U_i$ and the electric operators $\Vup$ and $\Vdown$ map to one-site operators in the clock model, while
     the remaining electric operator $V^0$ maps to a hopping term between nearest neighbouring sites.}
     \label{fig:ladder_duality}
 \end{figure}
@@ -24,7 +25,9 @@
 \subsection{Duality onto clock models}
 \label{sub:duality_onto_clock_models}
 
-In this section we will show how to construct a mapping of the $\Z_N$ ladder \ac{lgt} onto a $N$-clock model on a chain with a transversal field and a longitudinal field, the latter depending on the topological sector of the ladder \ac{lgt}.
+\todo{controllare notazione}
+
+In this section we will show how to construct a mapping of the $\Z_N$ ladder \ac{lgt} onto a $N$-clock model on a chain with a transversal field and a longitudinal field, the latter depending on the super-selection sector of the ladder \ac{lgt}.
 
 The first step is the decomposition of the set of bonds in \eqref{eq:hamiltonian_base}.
 Obviously, the magnetic terms $U_{\square}$ have to be separated from the electric terms $V_\ell$, but the latter cannot be all treated the same.
@@ -33,57 +36,57 @@ Therefore, the duality transformation has to distinguish between the vertical li
 Furthermore, also the top links $\toplink$ and bottom links $\botlink$ have to be treated separately because the electric operator on them have different commutation relations with the plaquette operators.
 In fact, using the notation introduced in Sec.~\ref{sec:abelian_models_on_the_ladder}, we have
 \begin{equation}
-    U_x \Vdown_x = \omega \Vdown_x U_x, \qquad
-    U_x \Vup_x = \omega^{-1} \Vup_x U_x.
+    U_i \Vdown_i = \omega \Vdown_i U_i, \qquad
+    U_i \Vup_i = \omega^{-1} \Vup_i U_i.
     \label{eq:comm_rel_ladder}
 \end{equation}
 and indeed they acquire different phases.
 
-The plan is to associate to each plaquette a clock degree of freedom, hence we identify a plaquette $\square_x$ with a site $i$ of a clock chain and the magnetic flux of a plaquette becomes the ``fundamental gauge invariant degree of freedom'' of the \ac{lgt} ladder model.
-Given the fact that we are working in the electric basis, we chose for convenience to map the $\Z_N$ magnetic operator $U_x$ to the ``momentum'' operator $X_i$ of the $N$-clock chain.
+The plan is to associate to each plaquette a clock degree of freedom, hence we identify a plaquette $\square_i$ with a site $i$ of a clock chain and the magnetic flux of a plaquette becomes the ``fundamental gauge invariant degree of freedom'' of the \ac{lgt} ladder model.
+Given the fact that we are working in the electric basis, we chose for convenience to map the $\Z_N$ magnetic operator $U_i$ to the ``momentum'' operator $X_i$ of the $N$-clock chain.
 The electric field on a vertical link $\runglink$ is the result of the flux difference between the two plaquettes that it separates, which suggests that the operator $V_{\runglink}$ have to be mapped to a kinetic-type term like $Z_i^\dagger Z_{i-1}$.
 This can be readily verified.
 From \eqref{eq:plaq_op_ladder} we get
 \begin{equation*}
-    V^0_x U_x = \omega^{-1} U_x V_x^0, \qquad
-    V^0_x U_{x-1} = \omega U_{x-1} V_x^0,
+    V^0_i U_i = \omega^{-1} U_i V_i^0, \qquad
+    V^0_i U_{x-1} = \omega U_{x-1} V_i^0,
 \end{equation*}
 therefore the maps
 \begin{equation*}
-    U_x \mapsto X_i, \qquad
-    V^0_x \mapsto Z_i^\dagger Z_{i-1},
+    U_i \mapsto X_i, \qquad
+    V^0_i \mapsto Z_i^\dagger Z_{i-1},
     \label{eq:elec_h_and_plaq_op_map}
 \end{equation*}
-clearly conserves the commutation relations of $U_x$ and $V^0_x$.
+clearly conserves the commutation relations of $U_i$ and $V^0_i$.
 
 For now we are left with task of finding a suitable mapping of $\Vup$ and $\Vdown$.
-With respect to the other bonds of the theory, both of them commute with $V^0$ while for \eqref{eq:comm_rel_ladder} holds for $U_x$.
+With respect to the other bonds of the theory, both of them commute with $V^0$ while for \eqref{eq:comm_rel_ladder} holds for $U_i$.
 Hence, a suitable and general mapping of $\Vup$ and $\Vdown$ can be:
 \begin{equation}
-    \Vdown_x \mapsto \coeffdown_i Z_i, \qquad
-    \Vup_x \mapsto \coeffup_i Z_i^\dagger,
+    \Vdown_i \mapsto \coeffdown_i Z_i, \qquad
+    \Vup_i \mapsto \coeffup_i Z_i^\dagger,
     \label{eq:elec_op_horiz_ladder_map}
 \end{equation}
 where $\coeffdown_i$ and $\coeffup_i$ are complex numbers.
 Although, they cannot be any complex number.
-Both $\Vdown_x$ and $\Vup_x$ have to be mapped onto unitary operators, which limits the numbers $\coeffdown_i$ and $\coeffup_i$ to be \emph{complex phases}.
+Both $\Vdown_i$ and $\Vup_i$ have to be mapped onto unitary operators, which limits the numbers $\coeffdown_i$ and $\coeffup_i$ to be \emph{complex phases}.
 
 To further constraint the value of these coefficients, we can use the Gauss law.
 In particular, given the fact that we are looking for a gauge-reducing duality, the aim is to make the Gauss law trivial.
 Using the mappings \eqref{eq:elec_h_and_plaq_op_map} and \eqref{eq:elec_op_horiz_ladder_map} in \eqref{eq:gauss_law_ladder} yields
 \begin{equation}
     \begin{split}
-        G^\uparrow_x & \mapsto
+        G^\uparrow_i & \mapsto
         (\coeffup_i Z_i^\dagger) (\coeffup_{i-1} Z_{i-1}^\dagger) (Z_i^\dagger Z_{i-1})^\dagger
         = \coeffup_i (\coeffup_{i-1})^*, \\
-        G^\downarrow_x & \mapsto
+        G^\downarrow_i & \mapsto
         (\coeffdown_i Z_i^\dagger) (Z_i^\dagger Z_{i-1}) (\coeffdown_{i-1} Z_{i-1}^\dagger)
         = \coeffdown_i (\coeffdown_{i-1})^*
     \end{split}
     \label{eq:gauss_law_map_ladder}
 \end{equation}
 
-Gauss law have to be satisfied in a pure gauge theory, which mean that we have to impose $G^\uparrow_x = \identity$ and $G^\downarrow_x = \identity$ for all $x$.
+Gauss law have to be satisfied in a pure gauge theory, which mean that we have to impose $G^\uparrow_i = \identity$ and $G^\downarrow_i = \identity$ for all $x$.
 This is only possible if
 \begin{equation}
     \coeffdown_i = \coeffdown, \qquad
@@ -95,16 +98,16 @@ Furthermore, thanks to \eqref{eq:gauss_law_map_ladder}  we also know how to intr
 We just have to change the phases $\coeffup_i$ and $\coeffdown_i$.
 
 The last factor to consider is how the $\coeffup$ and $\coeffdown$ are related on the same site $i$.
-In this regard, the topological sectors of the theory come to the rescue.
-As established in Sec.~\ref{sec:abelian_models_on_the_ladder}, the topological sectors are identified by the eigenvalue of $S_2$ in \eqref{eq:nonlocal_op_ZN}, which in the ladder geometry becomes
+In this regard, the super-selection sectors of the theory come to the rescue.
+As established in Sec.~\ref{sec:abelian_models_on_the_ladder}, the super-selection sectors are identified by the eigenvalue of $S_2$ in \eqref{eq:nonlocal_op_ZN}, which in the ladder geometry becomes
 \begin{equation}
-    S_2 = \Vup_x \Vdown_x
+    S_2 = \Vup_i \Vdown_i
     \label{eq:top_string_op_ladder}
 \end{equation}
 for any fixed $x$.
 Its eigenvalue are simply $\omega^k$, for $k = 0, \dots, N-1$.
 
-Given a topological sector $\omega^k$, using the mapping \eqref{eq:elec_op_horiz_ladder_map} on \eqref{eq:top_string_op_ladder} yields
+Given a super-selection sector $\omega^k$, using the mapping \eqref{eq:elec_op_horiz_ladder_map} on \eqref{eq:top_string_op_ladder} yields
 \begin{equation}
     S_2 \; \longmapsto \; ( \coeffup Z^\dagger_i ) ( \coeffdown Z_i ) = \coeffup \coeffdown = \omega^k.
 \end{equation}
@@ -115,13 +118,13 @@ We choose to fix these coefficients as follows:
     \coeffdown = \omega^k.
 \end{equation}
 
-In conclusion, we summarize the duality mapping for the topological sector $\omega^k$ of the $\Z_N$ \ac{lgt} on a ladder:
+In conclusion, we summarize the duality mapping for the super-selection sector $\omega^k$ of the $\Z_N$ \ac{lgt} on a ladder:
 \begin{equation}
     \begin{aligned}
-        U_x      & \; \longmapsto \; X_i, \quad &
-        V^0_x    & \; \longmapsto \; Z^\dagger_i Z_{i-1}, \\
-        \Vup_x   & \; \longmapsto \; Z_i^\dagger, \quad &
-        \Vdown_x & \; \longmapsto \; \omega^k Z_i.
+       U_i      & \; \longmapsto \; X_i, \quad &
+        V^0_i    & \; \longmapsto \; Z^\dagger_i Z_{i-1}, \\
+        \Vup_i   & \; \longmapsto \; Z_i^\dagger, \quad &
+        \Vdown_i & \; \longmapsto \; \omega^k Z_i.
     \end{aligned}
     \label{eq:ladder_duality}
 \end{equation}
@@ -141,7 +144,7 @@ where
 \end{equation}
 
 We see that \eqref{eq:dual_ladder_hamiltonian} is a clock model with both \emph{transversal} and \emph{longitudinal} fields.
-In particular, the longitudinal field carries the information of the topological sector of the ladder model.
+In particular, the longitudinal field carries the information of the super-selection sector of the ladder model.
 
 Interestingly, for $N$ even the sector $k = N/2$ has a special role.
 Within this sector $\omega^k = -1$, for which the \emph{longitudinal field disappears} and $H_{\text{clock}}$ reduces to self-dual quantum clock models with a known quantum phase transition.

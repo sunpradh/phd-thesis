@@ -1,8 +1,8 @@
 \subsection{Investigating the phase diagram}%
 \label{sub:investigating_the_phase_diagram}
 
-We wish to study the phase diagram of the $\Z_N$ \ac{lgt} phase diagram, in particular we are interested in any \emph{confined} or \emph{deconfined} phase.
-In a pure gauge theory, these phases are investigated non-local order parameters like the \emph{\ac{wl}} (not be confused with the non-contractible \ac{wl}s in \eqref{eq:nonlocal_op_ZN}) or \emph{string tension}.
+We wish to study the phase diagram of the $\Z_N$ \ac{lgt} phase diagram, in particular we are interested in any \ac{dcpt}.
+In a pure gauge theory, these phases are investigated with non-local order parameters like the \emph{\ac{wl}} (not be confused with the non-contractible \ac{wl}s in \eqref{eq:nonlocal_op_ZN}).
 This is because we expect the deconfined phase to be a topological phase, which can be investigated only with non-local order parameters.
 
 Given a closed region $\mathcal{R}$, a \ac{wl} operator $W_{\mathcal{R}}$ is defined as
@@ -14,7 +14,7 @@ Alternatively, considering the oriented boundary $\partial \mathcal{R}$ one can 
 \begin{equation}
     W_{\mathcal{R}} = \prod_{\ell \in \partial \mathcal{R}} U_{\ell},
 \end{equation}
-where the Hermitian conjugate is implied everytime we move in the negative directions.
+where the Hermitian conjugate is implied every time we move in the negative directions.
 It is also implied that the curve $\partial \mathcal{R}$ is a contractible loop.
 Wilson showed in \cite{wilson1974confinement} that quark confinement is related to the expectation value $\ev{W_{\mathcal{R}}}$ of a \ac{wl}, which can be thought as a gauge field average on a region.
 In particular, in the presence of quark confinement the gauge field average follows an \emph{area law}, where it decays exponentially with the area enclosed by $\mathcal{R}$.
@@ -35,15 +35,38 @@ it can easily be proved that $W_{\mathcal{R}}$ leaves the \ac{tc} ground states 
 
 Therefore, $\ev{W_{\mathcal{R}}} \approx 1$ signals a deconfined phase and on the other hand a vanishing $\ev{W_{\mathcal{R}}} \approx 0$ corresponds to confined phase.
 For this reason, even tough we lack an area/perimeter law on the ladder geometry it is still sensible to look at the behaviour of the \ac{wl}.
+Analogous models in two-dimensions show a transition for non-zero $\lambda$ \cite{trebst2007topological, hamma2008adiabatic, tagliacozzo2011entanglement}.
 
 
-Another possible approach for investigating the phase diagram is to use the \emph{string tension}.
-In two dimensions, given an \emph{open} curve $\tilde{\mathcal{C}}$ on the dual lattice $\tilde{\mathbb{L}}$ we can construct an open \ac{ths} operator $S_{\tilde{\mathcal{C}}}$ as
+In the dual clock model picture, the \ac{wl} translates to a disorder operator \cite{fradkin1978order}, which means that a deconfined phase can be thought of as a paramagnetic (or disordered) phase, while the confined phase is like a ferromagnetic (or ordered) phase.
+Moreover, the longitudinal field breaks the $N$-fold symmetry of the ferromagnetic phase into a one-fold or two-fold degeneracy, depending on the parity ($n$ even/odd) of the super-selection sector.
+
+
+% Another possible approach for investigating the phase diagram is to use the \emph{string tension}.
+% In two dimensions, given an \emph{open} curve $\tilde{\mathcal{C}}$ on the dual lattice $\tilde{\mathbb{L}}$ we can construct an open \ac{ths} operator $S_{\tilde{\mathcal{C}}}$ as
+% \begin{equation}
+%     S_{\tilde{\mathcal{C}}} = \prod_{\ell \in \tilde{\mathcal{C}}} V_{\ell}
+% \end{equation}
+% with the usual caveat: we have to take the Hermitian conjugate everytime the path goes in the negative direction.
+% Then the string tension is just the expectation value $\ev{S_{\tilde{\mathcal{C}}}}$ it is called in this way because it related to the potential energy (tension) between two magnetic fluxes created at the ends of the curve $\tilde{\mathcal{C}}$.
+% Henceforth, in a deconfined phase $\ev{S_{\tilde{\mathcal{C}}}} \approx 0$, which means that the magnetic fluxes can be moved freely with no cost in energy, like in the \ac{tc}.
+
+We study the $\Z_N$ \ac{lgt} on a ladder numerically through \emph{\ac{ed}}, by evaluating the half-ladder \ac{wl}, i.e.~
 \begin{equation}
-    S_{\tilde{\mathcal{C}}} = \prod_{\ell \in \tilde{\mathcal{C}}} V_{\ell}
+    W = U_1 U_2 \cdots U_{L/2},
 \end{equation}
-with the usual caveat: we have to take the Hermitian conjugate everytime the path goes in the negative direction.
-Then the string tension is just the expectation value $\ev{S_{\tilde{\mathcal{C}}}}$ it is called in this way because it related to the potential energy (tension) between two magnetic fluxes created at the ends of the curve $\tilde{\mathcal{C}}$.
-Henceforth, in a deconfined phase $\ev{S_{\tilde{\mathcal{C}}}} \approx 0$, which means that the magnetic fluxes can be moved freely with no cost in energy, like in the \ac{tc}.
+and working in the restricted physical Hilbert space $\Hphys^{(n)}$ ($n=0,\dots,N-1$), which has dimension $N^L$, much smaller than $N^{3L}$ (the dimension of the total Hilbert space).
 
 
+\begin{figure}[t]
+    \centering
+    \input{assets/figures/nonlocal_order_parameters.tex}
+    \caption[Non-local order parameters on the ladder]{The non-local order parameters that have been used for investigating the phase diagram of $\Z_N$ ladder \ac{lgt}.
+    \emph{Top}: half-ladder \ac{wl}.
+    % \emph{Bottom}: half-ladder \ac{ths} operator.}%
+    }%
+    \label{fig:nlop_ladder}
+\end{figure}
+
+
+In the next section we show how to exploit the duality in Sec.~\ref{sub:duality_onto_clock_models} in the contest of \ac{ed}.
