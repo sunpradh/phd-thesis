@@ -8,7 +8,7 @@
     font=\small,
     ]
 
-\begin{axis}[
+    \begin{axis}[
         height=5cm,
         width=8cm,
         tick align=outside,
@@ -19,35 +19,35 @@
         ytick style={color=black},
         ytick={0,0.2,0.4,0.6,0.8,1,1.2},
         yticklabels={$0.0$, $0.2$, $0.4$, $0.6$, $0.8$, $1.0$, $1.2$}
-]
-\addplot [very thick, blue!70]
-    table {%
-    0 1
-    1 0.0831366777420044
-    12 0.0831366777420044
-    13 0.00918400287628174
-    24 0.00918400287628174
-    25 0.00691556930541992
-    78 0.0069117546081543
-    79 0.0010453462600708
-    186 0.000763535499572754
-    189 0.00057530403137207
-    199 0.000574946403503418
-    };
+        ]
+        \addplot [very thick, blue!70]
+        table {%
+            0 1
+            1 0.0831366777420044
+            12 0.0831366777420044
+            13 0.00918400287628174
+            24 0.00918400287628174
+            25 0.00691556930541992
+            78 0.0069117546081543
+            79 0.0010453462600708
+            186 0.000763535499572754
+            189 0.00057530403137207
+            199 0.000574946403503418
+        };
 
-% Title
-\node [anchor=north east, draw=gray] at (axis description cs: 0.99, 0.99) (title) {sector $(0,0)$};
+        % Title
+        \node [anchor=north east, draw=gray] at (axis description cs: 0.99, 0.99) (title) {sector $(0,0)$};
 
-\node at (0, 1) (vacuum) {};
-\end{axis}
+        \node at (0, 1) (vacuum) {};
+    \end{axis}
 
-% Vacuum
-\draw[arr] (vacuum) node  [circle, fill=black, inner sep=0pt, minimum size=3pt] {}
+    % Vacuum
+    \draw[arr] (vacuum) node  [circle, fill=black, inner sep=0pt, minimum size=3pt] {}
     -- +(1,0) node (vacuum-label) {};
-\draw (vacuum-label) node [right, box] {
-    \begin{tikzpicture}[lab]
-        \draw[lattice]  (-0.5, 0) grid (5.5, 1);
-    \end{tikzpicture}
-};
+    \draw (vacuum-label) node [right, box] {
+        \begin{tikzpicture}[lab]
+            \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+        \end{tikzpicture}
+    };
 
 \end{tikzpicture}

@@ -4,38 +4,37 @@
 \section{Kogut-Susskind Hamiltonian formulation}
 \label{sec:kogut_susskind_hamiltonian_formulation}
 
-The classical formulation of Hamiltonian LTG is due to Kogut and Susskind, in \citneeded.
-It can be regarded as the Hamiltonian corresponding to the Wilson action \todo{inserire eqref}.
-The former can be obtained from the latter by the transfer matrix technique\citneeded, where two different lattice spacing are assigned to time and spatial dimensions and then the continuum limit for the time direction is taken.
-Another derivation can be done by means of Legendre transform, but in this text we will adopt a more modern approach, based on \todo{citare Milsted, Osborne 2018}.
+The Hamiltonian approach to Wilson's \ac{lgt} was first formulated by Kogut and Susskind, in \cite{kogut1975hamiltonian}.
+In this formulation, space is discretized while time is kept continuous.
+It can be obtained either via transfer matrix\citneeded, where two different lattice spacing are assigned to time and spatial dimensions and then the continuum limit for the time direction is taken, or via Legendre transform\citneeded.
+We decide to adopt a more modern approach, based on \cite{milstead2018qyangmills,zohar2015latticegauge}.
 
 As one can expect, the Kogut-Susskind Hamiltonian $\HamilKS$ is made of two terms, the electric part and the magnetic part:
 \begin{equation}
-    \HamilKS = H_E + H_B.
+    \HamilKS = H_{\text{E}} + H_{\text{B}}.
 \end{equation}
 These will be constructed separately and for a simple reason.
-The magnetic term involves only the spatial component of the field strength tensor, i.e., $\bm{B}^{2} \sim F^{ij}F_{ij}$, while the electric term involves also the temporal components, i.e., $\bm{E}^2 \sim F^{0i} F_{0i}$.
+The magnetic term involves only the spatial component of the field strength tensor, i.e., $\mathbf{B}^{2} \sim F^{ij}F_{ij}$, while the electric term involves also the temporal components, i.e., $\mathbf{E}^2 \sim F^{0i} F_{0i}$.
 Given that in the Hamiltonian formalism time is continuous while space is discrete, the two terms cannot be treated on the same footing.
 This differs from the Wilson action approach, where the magnetic and electric are treated equally because it has to be Lorentz-invariant.
 
-% Starting from the magnetic term, this can be taken to be the same as the single-plaquette term in the Wilson action \eqref{eq:wilson_action}, but we have to limit ourselves to purely spatial plaquettes.
-% In fact, the magnetic energy is $\bm{B}^2 = \frac{1}{2} F^{ij} F_{ij}$, which is just the spatial part of $F^{\mu \nu} F_{\mu \nu}$ of the continuum action.
-% Given that the spatial directions are kept discrete, we do not need to make any modification.
-% The same cannot be said for the electric energy, which is $\bm{E}^2 = F_{0 i} F^{0 i}$.
-% With continuous time we cannot construct plaquettes that extends in the time direction.
-
-Another point of divergence with the path-integral approach is that now both the electric field and magnetic term are operators, not simple variables.
-In order to have well-defined, or defined at all, operators we have to define the appropriate Hilbert space on which these operators act.
+Another point of divergence with the path-integral approach is that now both the electric field and magnetic term are \emph{operators}, not simple variables.
+In order to have a well-defined operators we also have to define the appropriate Hilbert space on which these operators act.
+In the following, we will focus on the case of Lie groups like $\SU(N)$, before moving onto finite groups.
 
 
+%
 % SUBSECTION: Single link Hilbert space and operators
+%
 \subsection{Single link Hilbert space and operators}
 \label{sub:single_link_hilbert_space_and_operators}
 
-We start by considering a single link $\link$ and define the gauge \ac{dof}.
-In  the construction in Sec.~\ref{sub:gauge_fields_on_a_lattice}, given a gauge group $G$ we have associated an element $g \in G$ to the link $\link$.
+We start by defining the gauge \ac{dof} on a single link $\link$.
+In the construction in Sec.~\ref{sub:gauge_fields_on_a_lattice}, given a gauge group $G$ we have associated an element $g \in G$ to the link $\link$.
 Hence, the configuration space for each link $\link$ is exactly $G$.
-When quantizing, the configuration space $G$ is elevated to a Hilbert space $\HilbertSpace^G$ which is spanned by the elements $g \in G$:
+When quantizing a theory, the configuration space has to be upgraded to a Hilbert space.
+In this case, for a single link $\link$, the configuration space $G$ is upgraded to the Hilbert space $\HilbertG$ spanned by the elements of $G$:
+% When quantizing a theory, the configuration space $G$ is elevated to a Hilbert space $\HilbertSpace^G$ which is spanned by the elements $g \in G$:
 \begin{equation}
     \HilbertSpace^G \equiv \text{span}\{\ket{g} : g \in G\},
     \label{eq:single_link_Hilbert_space}
@@ -45,16 +44,17 @@ Therefore, an element $\ket{\psi}$ of $\HilbertSpace^G$ can be written as
 \begin{equation}
     \ket{\psi} = \int \dd g \; \psi(g) \ket{g},
 \end{equation}
-where $\int \dd g$ is a proper measure in the case of continuous groups (usually the Haar measure) or a simple sum in case of finite groups.
-In the former case $\HilbertSpace^G$ is equivalent to the space $L^2(G)$ of square-integrable functions of $G$, i.e., each element $\ket{\psi}$ can be identified with the functions $\psi(g)$.
-While in the latter case, the space $\HilbertSpace^G$ is equivalent to the so-called group algebra $\C[G]$.
+where $\int \dd g$ is the Haar measure of $G$, if $G$ is a compact Lie group.
+In this case $\HilbertG$ is equivalent to the space $L^2(G)$ of square-integrable functions of $G$, i.e., each element $\ket{\psi}$ can be identified with the functions $\psi(g)$.
+% In the former case $\HilbertSpace^G$ is equivalent to the space $L^2(G)$ of square-integrable functions of $G$, i.e., each element $\ket{\psi}$ can be identified with the functions $\psi(g)$.
+% While in the latter case, the space $\HilbertSpace^G$ is equivalent to the so-called group algebra $\C[G]$.
 The total Hilbert space of the model is simply given by the tensor product
 \begin{equation}
     \HilbertSpace_{\text{tot}} = \bigotimes_{\link} \HilbertSpace^G_{\link}
+    \label{eq:total_Hilbert_space}
 \end{equation}
 
 
-Focusing now on the case of continuous groups like $\SU(N)$,
 given a single link Hilbert space $\HilbertSpace^G_{\link}$, the first set of operators we can define on it are the \emph{position observables} $\transport_{mn}$, via
 \begin{equation}
     \transport_{mn} \ket{g} = U(g)_{mn} \ket{g},
@@ -64,7 +64,7 @@ One can then define a matrix of operators $\transport$, whose elements are preci
 Note that $\transport$ is unitary as long as the chosen representation is unitary, but this not guarantee that each operator $\transport_{mn}$ is unitary.
 Indeed, it can be shown that $(\transport_{mn})^{\dagger} = (\transport^{\dagger})_{mn}$.
 
-A second set of operators can be defined on $\HilbertSpace^G$, which makes use of the group structure of $G$.
+A second set of operators is defined on $\HilbertG$, which makes use of the group structure of $G$.
 For each element $h \in G$, we define $L_h$ and $R_h$ such that for any $\ket{g} \in G$
 \begin{equation}
     L_h \ket{g} = \ket{hg}
@@ -86,6 +86,9 @@ It can also be shown that $L_h$ and $R_h$ are unitary operators and satisfy
     \qand
     (R_h)^{\dagger} = (R_h)^{-1} = R_{h^{-1}}.
 \end{equation}
+
+
+\todo{definire trasformazione di gauge}
 
 
 \subsection{Magnetic Hamiltonian}
@@ -125,7 +128,7 @@ When considering closed path, we can take the trace of $W_{\gamma}$ in order to 
     \tr W_{\gamma} = \sum_{m} (W_{\gamma})_{mm}
 \end{equation}
 
-Since $\bm{B}^2 = \frac{1}{2} F_{ij} F^{ij}$, we can copy the spatial part of the Wilson formulation and consider single plaquette \ac{wl}s:
+Since $\mathbf{B}^2 = \frac{1}{2} F_{ij} F^{ij}$, we can copy the spatial part of the Wilson formulation and consider single plaquette \ac{wl}s:
 \begin{equation}
     \tr \hat{\WilsonPlaq} = \tr \qty(
         \transport(\link_1) \transport(\link_2) \transport(\link_3)^{\dagger}  \transport(\link_4)^{\dagger}
@@ -136,7 +139,7 @@ Thus, the magnetic Hamiltonian is
 \begin{equation}
     H_B = - \frac{1}{g^2 a^{4-d}} \sum_{\square} \qty( \tr \WilsonPlaq + \tr \WilsonPlaq^{\dagger} ),
 \end{equation}
-where the sum is over the plaquettes of lattice and the coupling is chosen in order to have the correct limit.
+where the sum is over the plaquettes of the lattice and the coupling is chosen in order to have the correct limit.
 
 
 \subsection{Electric Hamiltonian}
@@ -192,7 +195,7 @@ The operators $\generator^a_L$ will act as ``conjugate variables'' to the operat
     \comm*{\generator_L^a}{\transport} = -T^a \transport.
 \end{equation}
 
-Bearing in mind that the continuum Hamiltonian contains the square of the electric field, we may then form the group Laplacian on a link $\link$ as the square of the generators $\generator^a_L$:
+Bearing in mind that the continuum Hamiltonian contains the square of the electric field, we may then form the group Laplacian $\laplacian_{\link}$ on a link $\link$ as the square of the generators $\generator^a_L$:
 \begin{equation}
     \laplacian_{\link} = \sum_{a} \qty( \generator^a_L )^2.
 \end{equation}
@@ -214,7 +217,7 @@ Therefore, the overall Kogut-Susskind Hamiltonian is given by
 \end{equation}
 
 
-\subsection{Gauge transformations}
-\label{sub:gauge_transformations}
+% \subsection{Gauge transformations}
+% \label{sub:gauge_transformations}
 
 

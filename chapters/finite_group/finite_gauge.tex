@@ -4,26 +4,33 @@
 \section{From Lie groups to finite groups}
 \label{sec:from_lie_groups_to_finite_groups}
 
+\todo{Preso dalla bozza di articolo, da rivedere tutto}
+
+\todo{Scrivere paragrafo introduttivo}
 
 \subsection{The Hilbert space}
 
-\subsubsection{Basic construction}\label{sec:basic hilbert space}
+% \subsubsection{Basic construction}\label{sec:basic hilbert space}
 
-In the Hamiltonian formulation of \ac{lgt}s \cite{kogut2975hamiltonian, milstead2018qyangmills, ZoharBurrello}, time is continuous while the $d$ spatial dimensions are discretized into a hypercubic lattice.
-Classically, we assign a group element $g \in G$ to each spatial lattice link, where $G$ is the gauge group.
-In the Lie group case, one would typically write $U_\mu(x) = \exp{(iA_\mu(x))} \in G$ for the gauge field variable assigned to the lattice link between points $x$ and $x + \hat{\mu}$, where $A_\mu(x)$ is the vector potential.
-Links are oriented, and if a link is traversed in the opposite orientation, then $g$ is replace with $g^{-1}$.
-Note that finite groups have no Lie algebras, so we work with group-valued quantities as far as possible.
-In what follows, we write $g \in G$ for a group element indifferently for both finite and Lie groups $G$.
-Since classically we have a group element $g$ on each lattice link, in the quantum theory the states in the Hilbert space of each link are given by \cite{milstead2018qyangmills}
+% In the Hamiltonian formulation of \ac{lgt}s \cite{kogut2975hamiltonian, milstead2018qyangmills, ZoharBurrello}, time is continuous while the $d$ spatial dimensions are discretized into a hypercubic lattice.
+% Classically, we assign a group element $g \in G$ to each spatial lattice link, where $G$ is the gauge group.
+% In the Lie group case, one would typically write $U_\mu(x) = \exp{(iA_\mu(x))} \in G$ for the gauge field variable assigned to the lattice link between points $x$ and $x + \hat{\mu}$, where $A_\mu(x)$ is the vector potential.
+% Links are oriented, and if a link is traversed in the opposite orientation, then $g$ is replace with $g^{-1}$.
+% Note that finite groups have no Lie algebras, so we have to work with group-valued quantities.
+% In what follows, we write $g \in G$ for a group element indifferently for both finite and Lie groups $G$.
+% Since classically we have a group element $g$ on each lattice link, in the quantum theory the states in the Hilbert space of each link are given by \cite{milstead2018qyangmills}
+
+The Hilbert space $\HilbertG$ for a finite-group \ac{lgt} is defined in the same manner as \eqref{eq:single_link_Hilbert_space}, but each state $\ket{\psi} \in \HilbertG$ is given by a finite sum
 \begin{equation}
-    \ket{\psi}=\int dg \, \psi(g)\ket{g} \ ,
+    \ket{\psi} \sum_{g \in G} \psi(g) \ket{g},
 \end{equation}
-where $\{\ket{g}\}$ is the group element orthonormal basis, consisting of one state $\ket{g}$ per group element $g$; it can be though of as a \say{position basis} on the group.
-The wavefunction $\psi(g)$ is square-integrable with respect to the Haar measure.
-For a finite group, the Haar measure is simply a sum over group elements, $\int dg = \sum_g$.
-The Hilbert space on each link can then be identified with $L^2(G)$, i.e. the space of square-integrable functions on $G$ \cite{milstead2018qyangmills}, while for a finite group it is simply the \textit{group algebra} $\C[G]$, which is the complex vector space spanned by the group element basis.
-The overall Hilbert space is then given by the tensor product $\mathcal{H} = \bigotimes_{\mathrm{links}} L^2(G)$, or $\mathcal{H} = \bigotimes_{\mathrm{links}} \C[G]$.
+instead of an integration over group space.
+In the case of a finite group, the space $\HilbertG$ is known also as the \emph{group algebra} $\C[G]$.
+% where $\{\ket{g}\}$ is the group element orthonormal basis, consisting of one state $\ket{g}$ per group element $g$; it can be though of as a \say{position basis} on the group.
+% The wavefunction $\psi(g)$ is square-integrable with respect to the Haar measure.
+% For a finite group, the Haar measure is simply a sum over group elements, $\int dg = \sum_g$.
+% The Hilbert space on each link can then be identified with $L^2(G)$, i.e. the space of square-integrable functions on $G$ \cite{milstead2018qyangmills}, while for a finite group it is simply the \textit{group algebra} $\C[G]$, which is the complex vector space spanned by the group element basis.
+The overall Hilbert space is given by the same formula \eqref{eq:total_Hilbert_space}.
 Note that for a finite group, $\C[G]$ has finite dimension, because it is spanned by the finitely-many group element states $\{\ket{g}\}$.
 Therefore the Hilbert space on each link is finite-dimensional and $\mathcal{H}$ is finite-dimensional on a finite lattice; its dimension is in fact given by $\abs{G}^L$ where $L$ is the number of lattice links.
 For a Lie group, on the other hand, we have infinitely many basis states $\{\ket{g}\}$ and therefore the Hilbert space is infinite-dimensional \textit{on each link}.
@@ -56,7 +63,11 @@ One can also straightforwardly include matter fields such as fermion fields whic
 Under a gauge transformation, they transform as $\Psi(x) \to g_x \Psi(x)$.
 Since these always have a finite Hilbert space, they do not additional issues for \ac{qs} and we focus instead on the pure gauge theory.
 
-\subsubsection{The representation basis and the Peter-Weyl theorem}\label{sec:representation basis}
+%
+% SUBSECTION: The representation basis and the Peter-Weyl theorem
+%
+\subsection{The representation basis and the Peter-Weyl theorem}
+\label{sec:representation basis}
 
 It turns out to be fruitful to introduce a different basis of the overall Hilbert space $\mathcal{H}$, \say{dual} to the group element basis.
 The operators $L_g$ and $R_g$ introduced in eq.~\eqref{eq:regular representations} are unitary representations of $G$, known as the \textit{left} and \textit{right regular} representations \cite{Serre, KnappLieGroups}.
@@ -111,9 +122,12 @@ which is just the discrete Fourier transform.
 In the case of the dihedral groups $D_4$ with $8$ elements, we have four one-dimensional representations, each of which spans a one-dimensional subspace of $\C[G]$.
 We then have a two-dimensional representation which spans a $2^2=4$ dimensional subspace of $\C[G]$ through the four basis elements $\ket{jmn}$ for $1 \leq m, n \leq 2$.
 
-\subsection{The Hamiltonian}
 
-\subsubsection{Basic construction}\label{eq:hamiltonian basic construction}
+
+
+\subsection{Hamiltonian construction}
+
+% \subsubsection{Basic construction}\label{eq:hamiltonian basic construction}
 
 The Hamiltonian for a Yang-Mills gauge theory on the lattice takes the form \cite{kogut2975hamiltonian, ZoharBurrello}
 \begin{equation}
@@ -148,7 +162,7 @@ The geometric structure of a finite group is that of a graph, with group element
 This is called a \textit{Cayley graph}.
 The discrete Laplacian on the finite group is then naturally given by the graph Laplacian of the Cayley graph.
 This choice also preserves the interpretation of the electric Hamiltonian as a quantum-mechanical rotor in group space \cite{kogut2975hamiltonian}.
-We explain the construction of the finite group Laplacian in detail in Section \ref{sec:finitegrouplaplacian}, and the resulting Hamiltonian takes the form of eq.~\eqref{eq:generic hamiltonian} with
+We explain the construction of the finite group Laplacian in detail in Section \ref{sub:finite_group_laplacian}, and the resulting Hamiltonian takes the form of eq.~\eqref{eq:generic hamiltonian} with
 \begin{equation}
     \label{eq:generalized ym hamiltonian}
     h_E = \sum_{g \in \Gamma} (1-L_g)  \ , \quad \quad \quad \quad h_B= h_B (g_\square) \ ,
@@ -183,7 +197,7 @@ The number of such components, and therefore the degeneracy of the electric grou
 If, instead, $\Gamma$ generates the whole group, then the electric Hamiltonian is not degenerate.
 For more details, see Appendix \ref{sec:laplacian degeneracy}.
 The degeneracy of the electric ground state is not only an important feature of the theory, but also technically important for ground state preparation and adiabatic \ac{qs}.
-As we will already at the end of Section \ref{sec:finitegrouplaplacian}, this can happen already for the dihedral group $D_4$.
+As we will already at the end of Section \ref{sub:finite_group_laplacian}, this can happen already for the dihedral group $D_4$.
 In general, this can also occur with the choice of $\Gamma$ arising from the transfer-matrix formulation of Wilson action, as described in Section \ref{sec:action formulation}.
 For example, in the permutation group $G=S_5$, starting from the Wilson action in the six-dimensional representation of $S_5$, one finds $\Gamma$ to be the conjugacy class of the $5$-cycles; then $\expval{\Gamma}$ generates the subgroup $A_5$ and since $\abs{S_5}/\abs{A_5}=2$, the electric Hamiltonian ground state is two-fold degenerate, with the ground states spanned by the two representation states corresponding to the one-dimensional representations.
 
@@ -201,7 +215,8 @@ For example, in the permutation group $G=S_5$, starting from the Wilson action i
 
 
 
-\subsubsection{The finite group Laplacian}\label{sec:finitegrouplaplacian}
+\subsection{The finite group Laplacian}
+\label{sub:finite_group_laplacian}
 In this section we explain in detail the construction of the finite group Laplacian, which we take as the electric Hamiltonian, as the graph Laplacian of the Cayley graph of the finite group.
 Given a finite group $G$, we choose a set of generators $\Gamma \subset G$, which we require to be invariant under inversion, that is $\Gamma^{-1}=\Gamma$, and moreover that it is the union of conjugacy classes, so that it is invariant under conjugation, $g \Gamma g^{-1}=\Gamma$ for any $g$ in $G$ \cite{spectralgraphtheory}.
 We choose $\Gamma$ not to include the identity element and we note that the choice of $\Gamma$ is not unique.
@@ -302,7 +317,13 @@ Unlike $\Gamma_1$, $\Gamma_2$ does not generate the whole group $D_4$; this is r
 Finally, we consider the choice $\Gamma_3=C_1 \cup C_3 \cup C_4=\{r, r^3, s, rs, r^2s, r^3s\}$.
 As explained in Section \ref{sec:action formulation} if we pick $h_B$ as the real part of the trace of the two-dimensional representation of $D_4$, the choice of $\Gamma_3$ corresponds to the Lorentz-invariant Hamiltonian.
 
-\subsubsection{Action formulation and Lorentz invariance}\label{sec:action formulation}
+
+
+%
+% SUBSECTION: Action formulation and Lorentz invariance
+%
+\subsection{Action formulation and Lorentz invariance}
+\label{sec:action formulation}
 
 The Kogut-Susskind Hamiltonian eq.~\eqref{eq:kog suss hE hB} may be obtained via the transfer-matrix formulation from the Euclidean Wilson action \cite{CreutzTransferMatrix,KogRev}
 \begin{equation}

@@ -7,7 +7,7 @@
     flux/.style = {fill=Green, fill opacity=0.1}
     ]
 
-\begin{axis}[
+    \begin{axis}[
         height=7cm,
         width=8cm,
         tick align=outside,
@@ -18,119 +18,119 @@
         ytick style={color=black},
         ytick={0,0.2,0.4,0.6,0.8,1,1.2},
         yticklabels={$0.0$, $0.2$, $0.4$, $0.6$, $0.8$, $1.0$, $1.2$}
-]
-\addplot [very thick, blue!70]
-table {%
-0 1
-1 0.72670304775238
-12 0.72670304775238
-13 0.581751346588135
-24 0.581751346588135
-25 0.529128313064575
-36 0.529128313064575
-37 0.52813982963562
-78 0.52809739112854
-79 0.466958403587341
-90 0.466958403587341
-91 0.423632383346558
-114 0.423632383346558
-115 0.422796964645386
-186 0.422760725021362
-187 0.385271906852722
-198 0.385271906852722
-199 0.384550213813782
-};
+        ]
+        \addplot [very thick, blue!70]
+        table {%
+            0 1
+            1 0.72670304775238
+            12 0.72670304775238
+            13 0.581751346588135
+            24 0.581751346588135
+            25 0.529128313064575
+            36 0.529128313064575
+            37 0.52813982963562
+            78 0.52809739112854
+            79 0.466958403587341
+            90 0.466958403587341
+            91 0.423632383346558
+            114 0.423632383346558
+            115 0.422796964645386
+            186 0.422760725021362
+            187 0.385271906852722
+            198 0.385271906852722
+            199 0.384550213813782
+        };
 
-% Title
-\node [anchor=north east, draw=gray] at (axis description cs: 0.99, 0.99) (title) {sector $(0,0)$};
+        % Title
+        \node [anchor=north east, draw=gray] at (axis description cs: 0.99, 0.99) (title) {sector $(0,0)$};
 
-\node at (0, 1) (vacuum) {};
-\node at (6, 0.72670304775238)  (1-1-loop) {};
-\node at (16, 0.581751346588135) (1-2-loop) {};
-\node at (50, 0.529128313064575) (2-1-loop) {};
-\node at (83, 0.466958403587341) (1-3-loop) {};
-\node at (130, 0.423632383346558) (1-2-1-1-loop) {};
-\node at (192, 0.385271906852722) (3-1-loop) {};
+        \node at (0, 1) (vacuum) {};
+        \node at (6, 0.72670304775238)  (1-1-loop) {};
+        \node at (16, 0.581751346588135) (1-2-loop) {};
+        \node at (50, 0.529128313064575) (2-1-loop) {};
+        \node at (83, 0.466958403587341) (1-3-loop) {};
+        \node at (130, 0.423632383346558) (1-2-1-1-loop) {};
+        \node at (192, 0.385271906852722) (3-1-loop) {};
 
-\end{axis}
+    \end{axis}
 
-% Vacuum
-\draw[arr] (vacuum) node  [circle, fill=black, inner sep=0pt, minimum size=3pt] {}
+    % Vacuum
+    \draw[arr] (vacuum) node  [circle, fill=black, inner sep=0pt, minimum size=3pt] {}
     -- +(1,0) node (vacuum-label) {};
-\draw (vacuum-label) node [right, box] {
-    \begin{tikzpicture}[lab]
-        \draw[lattice]  (-0.5, 0) grid (5.5, 1);
-    \end{tikzpicture}
-};
+    \draw (vacuum-label) node [right, box] {
+        \begin{tikzpicture}[lab]
+            \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+        \end{tikzpicture}
+    };
 
-% 1 single plaquette loop
-\draw[arr] (1-1-loop) -- +(1,0.7) node (1-1-loop-label) {};
-\draw (1-1-loop-label) node [right, box] {
-    \begin{tikzpicture}[lab]
-        \draw[lattice]  (-0.5, 0) grid (5.5, 1);
-        \fill[flux] (2,0) rectangle (3,1);
-        \draw[on] (2,0) rectangle (3,1);
-    \end{tikzpicture}
-};
+    % 1 single plaquette loop
+    \draw[arr] (1-1-loop) -- +(1,0.7) node (1-1-loop-label) {};
+    \draw (1-1-loop-label) node [right, box] {
+        \begin{tikzpicture}[lab]
+            \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+            \fill[flux] (2,0) rectangle (3,1);
+            \draw[on] (2,0) rectangle (3,1);
+        \end{tikzpicture}
+    };
 
-% 1 double plaquette loop
-\draw[arr] (1-2-loop) -- +(0.6,0.6) node (1-2-loop-label) {};
-\draw (1-2-loop-label) node [right, box] {
-    \begin{tikzpicture}[lab]
-        \draw[lattice]  (-0.5, 0) grid (5.5, 1);
-        \fill[flux] (1,0) rectangle (3,1);
-        \draw[on] (1,0) rectangle (3,1);
-    \end{tikzpicture}
-};
+    % 1 double plaquette loop
+    \draw[arr] (1-2-loop) -- +(0.6,0.6) node (1-2-loop-label) {};
+    \draw (1-2-loop-label) node [right, box] {
+        \begin{tikzpicture}[lab]
+            \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+            \fill[flux] (1,0) rectangle (3,1);
+            \draw[on] (1,0) rectangle (3,1);
+        \end{tikzpicture}
+    };
 
 
-% 2 single plaquette loops
-\draw[arr] (2-1-loop) -- +(-0.2, -0.8) node (2-1-loop-label) {};
-\draw (2-1-loop-label) node [below, box] {
-    \begin{tikzpicture}[lab]
-        \draw[lattice]  (-0.5, 0) grid (5.5, 1);
-        \fill[flux] (0,0) rectangle (1,1);
-        \fill[flux] (3,0) rectangle (4,1);
-        \draw[on] (0,0) rectangle (1,1);
-        \draw[on] (3,0) rectangle (4,1);
-    \end{tikzpicture}
-};
+    % 2 single plaquette loops
+    \draw[arr] (2-1-loop) -- +(-0.2, -0.8) node (2-1-loop-label) {};
+    \draw (2-1-loop-label) node [below, box] {
+        \begin{tikzpicture}[lab]
+            \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+            \fill[flux] (0,0) rectangle (1,1);
+            \fill[flux] (3,0) rectangle (4,1);
+            \draw[on] (0,0) rectangle (1,1);
+            \draw[on] (3,0) rectangle (4,1);
+        \end{tikzpicture}
+    };
 
-% 1 triple plaquette loops
-\draw[arr] (1-3-loop) -- +(1,0.6) node (1-3-loop-label) {};
-\draw (1-3-loop-label) node [right, box] {
-    \begin{tikzpicture}[lab]
-        \draw[lattice]  (-0.5, 0) grid (5.5, 1);
-        \fill[flux] (1,0) rectangle (4,1);
-        \draw[on] (1,0) rectangle (4,1);
-    \end{tikzpicture}
-};
+    % 1 triple plaquette loops
+    \draw[arr] (1-3-loop) -- +(1,0.6) node (1-3-loop-label) {};
+    \draw (1-3-loop-label) node [right, box] {
+        \begin{tikzpicture}[lab]
+            \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+            \fill[flux] (1,0) rectangle (4,1);
+            \draw[on] (1,0) rectangle (4,1);
+        \end{tikzpicture}
+    };
 
-% 1 double 1 single plaquette loops
-\draw[arr] (1-2-1-1-loop) -- +(-0.1,-0.6) node (1-2-1-1-loop-label) {};
-\draw (1-2-1-1-loop-label) node [below, box] {
-    \begin{tikzpicture}[lab]
-        \draw[lattice]  (-0.5, 0) grid (5.5, 1);
-        \fill[flux] (1,0) rectangle (2,1);
-        \fill[flux] (3,0) rectangle (5,1);
-        \draw[on] (1,0) rectangle (2,1);
-        \draw[on] (3,0) rectangle (5,1);
-    \end{tikzpicture}
-};
+    % 1 double 1 single plaquette loops
+    \draw[arr] (1-2-1-1-loop) -- +(-0.1,-0.6) node (1-2-1-1-loop-label) {};
+    \draw (1-2-1-1-loop-label) node [below, box] {
+        \begin{tikzpicture}[lab]
+            \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+            \fill[flux] (1,0) rectangle (2,1);
+            \fill[flux] (3,0) rectangle (5,1);
+            \draw[on] (1,0) rectangle (2,1);
+            \draw[on] (3,0) rectangle (5,1);
+        \end{tikzpicture}
+    };
 
-% 3 single plaquette loops
-\draw[arr] (3-1-loop) -- +(-0.1,-1.2) node (3-1-loop-label) {};
-\draw (3-1-loop-label) node [below left, box] {
-    \begin{tikzpicture}[lab]
-        \draw[lattice]  (-0.5, 0) grid (5.5, 1);
-        \fill[flux] (0,0) rectangle +(1,1);
-        \fill[flux] (2,0) rectangle +(1,1);
-        \fill[flux] (4,0) rectangle +(1,1);
-        \draw[on] (0,0) rectangle +(1,1);
-        \draw[on] (2,0) rectangle +(1,1);
-        \draw[on] (4,0) rectangle +(1,1);
-    \end{tikzpicture}
-};
+    % 3 single plaquette loops
+    \draw[arr] (3-1-loop) -- +(-0.1,-1.2) node (3-1-loop-label) {};
+    \draw (3-1-loop-label) node [below left, box] {
+        \begin{tikzpicture}[lab]
+            \draw[lattice]  (-0.5, 0) grid (5.5, 1);
+            \fill[flux] (0,0) rectangle +(1,1);
+            \fill[flux] (2,0) rectangle +(1,1);
+            \fill[flux] (4,0) rectangle +(1,1);
+            \draw[on] (0,0) rectangle +(1,1);
+            \draw[on] (2,0) rectangle +(1,1);
+            \draw[on] (4,0) rectangle +(1,1);
+        \end{tikzpicture}
+    };
 
 
 
