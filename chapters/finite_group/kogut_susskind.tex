@@ -70,6 +70,7 @@ For each element $h \in G$, we define $L_h$ and $R_h$ such that for any $\ket{g}
     L_h \ket{g} = \ket{hg}
     \qand
     R_h \ket{g} = \ket*{gh^{-1}},
+    \label{eq:left_right_translations}
 \end{equation}
 which are the \emph{left} and \emph{right} multiplication operators, respectively.
 If the basis $\{\ket{g}\}$ is considered as the ``position basis'' then the operators $L_h$ and $R_h$ can be regarded as ``translation operators''.
@@ -146,17 +147,19 @@ where the sum is over the plaquettes of the lattice and the coupling is chosen i
 \label{sub:electric_hamiltonian}
 
 The construction of the electric term of the Hamiltonian is less trivial, since we cannot use \ac{wl}s in the time direction.
-Recall that in the continuum theory the electric field is the infinitesimal generators of translations of the gauge fields.
-Hence, we have to find the infinitesimal generators corresponding to the ``translations'' $L_h$ and $R_h$.
-From these then we can build the electric Hamiltonian.
+Recall that in the continuum theory the electric term is given by the square of the infinitesimal generators of the translations of the gauge fields.
+In a \ac{lgt}, the translations of the gauge fields are achieved via the operators $L_h$ and $R_h$, see \eqref{eq:left_right_translations}.
+Therefore, in order to find the construct the electric term we have to find the generators of $L_h$ and $R_h$.
+% Hence, we have to find the infinitesimal generators corresponding to the ``translations'' $L_h$ and $R_h$ in the lattice theory.
+% From these generators then is possible to build the electric Hamiltonian.
 % We have already seen that $L_h$ and $R_h$ are translation operators on the gauge field Hilbert space $\HilbertSpace^G$, but are finite translations.
 % We have to build the infinitesimal generators of $L_h$ and $R_h$ in order to obtain the electric field.
-In the case of Lie groups there is a recipe we can use for these generators.
+In the case of Lie groups there is a recipe for writing down these generators.
 
 % The maps $\hat{L}: h \mapsto L_h$ and $\hat{R}: h \mapsto R_h$ are known as the \emph{left} and \emph{right regular representations}, respectively.
 % The task of finding the infinitesimal generators of $L_h$ and $R_h$ is equivalent to finding the Lie algebra representations of the corresponding regular representation.
-So, consider the case of a compact Lie group $G$ and its Lie algebra $\g$.
-Given that $\hat{L}: h \mapsto L_h$ and $\hat{R}: h \mapsto R_h$ are regular representations of the Lie group $G$, we can easily find the regular representations of the Lie algebra.
+Consider a compact Lie group $G$ and its Lie algebra $\g$, for example $\SU(N)$ and $\su(N)$.
+The maps $\hat{L}: h \mapsto L_h$ and $\hat{R}: h \mapsto R_h$ are \emph{regular representations} of the Lie group $G$ and we have to find the corresponding regular representation of the Lie algebra $\g$.
 This is a linear map that maps every element $X \in \g$ into an element $\generator(X)$ such that
 % This is a linear map $X in \g \mapsto \generator(X)$  is defined a linear map $X \mapsto \hat{\ell(X)}$, from the Lie algebra to operators on $L^2(\SU(N))$, such that
 \begin{equation}

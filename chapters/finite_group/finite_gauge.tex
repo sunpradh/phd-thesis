@@ -8,11 +8,11 @@
 
 \todo{Scrivere paragrafo introduttivo}
 
-\subsection{The Hilbert space}
+\subsection{Hilbert space and gauge transformations}
 
 % \subsubsection{Basic construction}\label{sec:basic hilbert space}
 
-% In the Hamiltonian formulation of \ac{lgt}s \cite{kogut2975hamiltonian, milstead2018qyangmills, ZoharBurrello}, time is continuous while the $d$ spatial dimensions are discretized into a hypercubic lattice.
+% In the Hamiltonian formulation of \ac{lgt}s \cite{kogut1975hamiltonian, milstead2018qyangmills, ZoharBurrello}, time is continuous while the $d$ spatial dimensions are discretized into a hypercubic lattice.
 % Classically, we assign a group element $g \in G$ to each spatial lattice link, where $G$ is the gauge group.
 % In the Lie group case, one would typically write $U_\mu(x) = \exp{(iA_\mu(x))} \in G$ for the gauge field variable assigned to the lattice link between points $x$ and $x + \hat{\mu}$, where $A_\mu(x)$ is the vector potential.
 % Links are oriented, and if a link is traversed in the opposite orientation, then $g$ is replace with $g^{-1}$.
@@ -33,41 +33,53 @@ In the case of a finite group, the space $\HilbertG$ is known also as the \emph{
 The overall Hilbert space is given by the same formula \eqref{eq:total_Hilbert_space}.
 Note that for a finite group, $\C[G]$ has finite dimension, because it is spanned by the finitely-many group element states $\{\ket{g}\}$.
 Therefore the Hilbert space on each link is finite-dimensional and $\mathcal{H}$ is finite-dimensional on a finite lattice; its dimension is in fact given by $\abs{G}^L$ where $L$ is the number of lattice links.
-For a Lie group, on the other hand, we have infinitely many basis states $\{\ket{g}\}$ and therefore the Hilbert space is infinite-dimensional \textit{on each link}.
+For a Lie group, on the other hand, we have infinitely many basis states $\{\ket{g}\}$ and therefore the Hilbert space is infinite-dimensional \emph{on each link}.
 
-In the Hamiltonian formulation of gauge theories, the statement that the theory is invariant under gauge transformations translates at the level of the Hilbert space by restricting the allowed states only to those which are gauge-invariant.
-In particular, on the single-link Hilbert space one can define left and right \say{translation} operators, in the analogy where $\{\ket{g}\}$ is a position basis in group space \cite{ZoharBurrello},
+% In the Hamiltonian formulation of gauge theories, the statement that the theory is invariant under gauge transformations translates at the level of the Hilbert space by restricting the allowed states only to those which are gauge-invariant.
+On the group algebra the left and right translation operators are still well defined:
+%in the analogy where $\{\ket{g}\}$ is a position basis in group space \cite{ZoharBurrello},
 \begin{equation}
+    L_h \ket{g} = \ket{hg}
+    \qand
+    R_h \ket{g} = \ket*{gh^{-1}}.
     \label{eq:regular representations}
-    L_g \ket{h} = \ket{gh} \ , \quad \quad R_g \ket{h} = \ket{gh^{-1}} \ .
 \end{equation}
-A local gauge transformation is given by a choice of group element $g_x \in G$ at every site $x$ of the lattice \cite{milstead2018qyangmills}.
-This acts on the overall Hilbert space $\mathcal{H} = \bigotimes_{\mathrm{links}} L^2(G)$ or $\mathcal{H} = \bigotimes_{\mathrm{links}} \C[G]$ via the operator
+% A local gauge transformation is given by a choice of group element $g_x \in G$ at every site $x$ of the lattice \cite{milstead2018qyangmills}.
+A local gauge transformation ``rotates'' each site $x$ of the lattice $\Lattice$ by an element $g_x \in G$.
+This means that the state of a oriented link $\link$ connecting two sites, from $x$ to $y$, undergoes a transformation $L_{g_x} R_{g_y}$.
+In other words, if $\ket{g_{\link}}$ is the state of the link $\link$, then it transforms as
+\begin{equation*}
+    \ket{g_{\link}} \mapsto \ket{g_x g_{\link} g_y^{-1}}
+\end{equation*}
+Therefore, a gauge transformation on the overall Hilbert space $\HilbertSpace_{\text{tot}}$ is expressed as
+% This acts on the overall Hilbert space $\mathcal{H} = \bigotimes_{\mathrm{links}} L^2(G)$ or $\mathcal{H} = \bigotimes_{\mathrm{links}} \C[G]$ via the operator
 \begin{equation}
     \label{eq:gauss law operator}
-    \mathcal{G}(\{g_x\}) = \bigotimes_{l=\expval{xy} \in \mathrm{links}} L_{g_{x}} R_{g_y} \ ,
+    \mathcal{G}(\{g_x\}) = \bigotimes_{\link=\ev*{xy} \in \Lattice} L_{g_{x}} R_{g_y},
 \end{equation}
-where $\{g_x\}$ is an arbitrary choice of group elements $g_x$ at each lattice site $x$ and the link $l$ connects the points $x$ and $y$.
-In other words, on each link the gauge transformation is given on basis elements by the familiar $\ket{g_l} \to \ket{g_x g_l g_y^{-1}}$.
-The only physical states are those which satisfy the so-called \say{Gauss' law} constraint \cite{kogut2975hamiltonian, milstead2018qyangmills, tong2018gauge}
+where $\{g_x\}$ is an arbitrary choice of group elements $g_x$ at each lattice site $x$ and the link $\link$ connects the points $x$ and $y$.
+% In other words, on each link the gauge transformation is given on basis elements by the familiar $\ket{g_l} \to \ket{g_x g_l g_y^{-1}}$.
+The only physical states are those which satisfy the so-called ``Gauss' law'' constraint \cite{kogut1975hamiltonian, milstead2018qyangmills, tong2018gauge}
 \begin{equation}
     \label{eq:lattice gauss law}
-    \mathcal{G}(\{g_x\}) \ket{\psi}=\ket{\psi} \ ,
+    \mathcal{G}(\{g_x\}) \ket{\psi}=\ket{\psi},
 \end{equation}
 for any possible choice of local assignments $\{g_x\}$ of group variables to lattice sites.
-The states which satisfy eq.~\eqref{eq:lattice gauss law} form the physical, gauge-invariant Hilbert space $\mathcal{H}_\mathrm{phys}$.
-Note that the condition eq.~\eqref{eq:lattice gauss law} only involves group-valued quantities and is thus valid for both Lie groups and finite groups.
+The states which satisfy \eqref{eq:lattice gauss law} form the physical, gauge-invariant Hilbert space $\Hphys$.
+Note that the condition \eqref{eq:lattice gauss law} only involves group-valued quantities and is thus valid for both Lie groups and finite groups.
 In the case of finite groups, the condition simplifies because it is sufficient to impose invariance against a set of generators of the finite group.
 
 One can also straightforwardly include matter fields such as fermion fields which live on each lattice site.
 Under a gauge transformation, they transform as $\Psi(x) \to g_x \Psi(x)$.
 Since these always have a finite Hilbert space, they do not additional issues for \ac{qs} and we focus instead on the pure gauge theory.
 
+
 %
 % SUBSECTION: The representation basis and the Peter-Weyl theorem
 %
-\subsection{The representation basis and the Peter-Weyl theorem}
-\label{sec:representation basis}
+\subsection{The representation basis}
+\label{sub:the_representation_basis}
+
 
 It turns out to be fruitful to introduce a different basis of the overall Hilbert space $\mathcal{H}$, \say{dual} to the group element basis.
 The operators $L_g$ and $R_g$ introduced in eq.~\eqref{eq:regular representations} are unitary representations of $G$, known as the \textit{left} and \textit{right regular} representations \cite{Serre, KnappLieGroups}.
@@ -129,7 +141,7 @@ We then have a two-dimensional representation which spans a $2^2=4$ dimensional 
 
 % \subsubsection{Basic construction}\label{eq:hamiltonian basic construction}
 
-The Hamiltonian for a Yang-Mills gauge theory on the lattice takes the form \cite{kogut2975hamiltonian, ZoharBurrello}
+The Hamiltonian for a Yang-Mills gauge theory on the lattice takes the form \cite{kogut1975hamiltonian, ZoharBurrello}
 \begin{equation}
     \label{eq:generic hamiltonian}
     H = \lambda_E \sum_{l \in \mathrm{links}} h_E(g_l) + \lambda_B \sum_{\square} h_B(g_\square) \ ,
@@ -137,7 +149,7 @@ The Hamiltonian for a Yang-Mills gauge theory on the lattice takes the form \cit
 where $h_E$ depends only on each lattice link, while $h_B$ depends on the lattice plaquettes $\square$ and $g_\square = g_1 g_2 g_3^{-1} g_4^{-1}$ is the product of the four link variables in a lattice plaquette with the appropriate orientation.
 It is also possible to add matter fields such as fermions, but since this does not pose any further difficulty than in the usual Lie group case, we focus here on the pure gauge theory.
 
-In the Lie group case, the electric and magnetic Hamiltonians form the so-called Kogut-Susskind Hamiltonian where \cite{kogut2975hamiltonian, milstead2018qyangmills}
+In the Lie group case, the electric and magnetic Hamiltonians form the so-called Kogut-Susskind Hamiltonian where \cite{kogut1975hamiltonian, milstead2018qyangmills}
 \begin{equation}
     \label{eq:kog suss hE hB}
     h_E = \sum_{a} \pqty{\hat{\ell}^a_L}^2 \ , \quad \quad \quad \quad h_B = \dim{\rho} - \Re \tr{\rho(g_\square)} \ ,
@@ -161,7 +173,7 @@ If one thinks of a finite group as a natural discretization of some parent Lie g
 The geometric structure of a finite group is that of a graph, with group elements as vertices and the group operation defining the edges.
 This is called a \textit{Cayley graph}.
 The discrete Laplacian on the finite group is then naturally given by the graph Laplacian of the Cayley graph.
-This choice also preserves the interpretation of the electric Hamiltonian as a quantum-mechanical rotor in group space \cite{kogut2975hamiltonian}.
+This choice also preserves the interpretation of the electric Hamiltonian as a quantum-mechanical rotor in group space \cite{kogut1975hamiltonian}.
 We explain the construction of the finite group Laplacian in detail in Section \ref{sub:finite_group_laplacian}, and the resulting Hamiltonian takes the form of eq.~\eqref{eq:generic hamiltonian} with
 \begin{equation}
     \label{eq:generalized ym hamiltonian}
@@ -325,7 +337,7 @@ As explained in Section \ref{sec:action formulation} if we pick $h_B$ as the rea
 \subsection{Action formulation and Lorentz invariance}
 \label{sec:action formulation}
 
-The Kogut-Susskind Hamiltonian eq.~\eqref{eq:kog suss hE hB} may be obtained via the transfer-matrix formulation from the Euclidean Wilson action \cite{CreutzTransferMatrix,KogRev}
+The Kogut-Susskind Hamiltonian eq.~\eqref{eq:kog suss hE hB} may be obtained via the transfer-matrix formulation from the Euclidean Wilson action \cite{creutz1977transfermatrix,KogRev}
 \begin{equation}
     \label{eq:wilson action}
     S = -\frac{1}{g^2 a^{4-d}} \sum_{\square} \Re \tr{\rho(g_\square)} \ ,
