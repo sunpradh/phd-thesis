@@ -1,0 +1,26 @@
+\begin{tikzpicture}[
+    ket/.style = {font=\Large},
+    ->/.style={-stealth, ultra thick, shorten >=3pt, shorten <=3pt, Grey60},
+    system/.style = {draw, dotted, thick, rounded corners, inner sep=10pt},
+    simulator/.style = {draw, thick, rounded corners, inner sep=10pt}
+    ]
+    \node[ket] (phi0) at (0, 2.5) {$\ket{\phi(0)}$};
+    \node[ket] (phit) at (3, 2.5) {$\ket{\phi(t)}$};
+    \node[ket] (psi0) at (0, 0) {$\ket{\psi(0)}$};
+    \node[ket] (psit) at (3, 0) {$\ket{\psi(t)}$};
+
+    \node[fit=(phi0) (phit), system, label=above:{Quantum System}] {};
+    \node[fit=(psi0) (psit), simulator, label=above:{Simulator}] {};
+
+    \path (phi0) edge[->] node[above, black] {$U$} (phit);
+    \path (psi0) edge[->] node[above, black] {$U^{\prime}$} (psit);
+
+    \path (phi0) edge[->, dashed] (psi0);
+    \path (psit) edge[->, dashed] (phit);
+
+    \node (prep) at (0, -1.5) {preparation};
+    \node (meas) at (3, -1.5) {measurement};
+
+    \path (prep) edge[->] (psi0);
+    \path (psit) edge[->] (meas);
+\end{tikzpicture}
