@@ -1,8 +1,8 @@
 \section{The physical Hilbert space}\label{sec:physical Hilbert space}
 
 As we remarked in Sec.~\ref{sec:from_lie_groups_to_finite_groups}, while the overall Hilbert space of the pure gauge theory is $\mathcal{H} = \bigotimes_{\mathrm{links}} \C[G]$, only those states that satisfy the so-called \say{Gauss' law} constraint \eqref{eq:lattice gauss law} are to be considered physical \cite{kogut1975hamiltonian, milstead2018qyangmills, tong2018gauge}.
-For gauge theories based on most compact Lie groups, the \ac{wl}s (despite being overcomplete) span the space of gauge-invariant states \cite{Sengupta, Durhuus}.
-This, however, is not necessarily true for finite groups \cite{Sengupta, Cui}; this means that in some cases, it is possible to construct different gauge-invariant states, which nevertheless have the identical \ac{wl}s.
+For gauge theories based on most compact Lie groups, the \ac{wl}s (despite being overcomplete) span the space of gauge-invariant states \cite{sengupta1994gaugeinvariant, durhuus1980gaugeinvariant}.
+This, however, is not necessarily true for finite groups \cite{sengupta1994gaugeinvariant, cui2020kitaev}; this means that in some cases, it is possible to construct different gauge-invariant states, which nevertheless have the identical \ac{wl}s.
 We mention that this difficulty cannot arise for Abelian finite groups such as $\Z_N$, in which case the \ac{wl}s \textit{do} span the physical Hilbert space $\mathcal{H}_{\mathrm{phys}}$.
 In the following section we give a description of the gauge-invariant Hilbert space in terms of \textit{spin network states} and explain how this basis of states is particularly suitable to describe the physical Hilbert space of finite group gauge theories.
 We first consider the pure gauge physical Hilbert space in Section \ref{sec:spin networks pure gauge} and compute its dimension in Section \ref{sec:spin networks dimension}.
@@ -10,7 +10,7 @@ We first consider the pure gauge physical Hilbert space in Section \ref{sec:spin
 
 \subsection{Spin networks}\label{sec:spin networks pure gauge}
 
-The physical Hilbert space of pure gauge theories with either Lie or finite gauge group can be explicitly described in terms of \textit{spin network states} \cite{Baez, Burgio}.
+The physical Hilbert space of pure gauge theories with either Lie or finite gauge group can be explicitly described in terms of \textit{spin network states} \cite{baez1996spinnetworks, burgio2000physical}.
 Spin-network states can be defined indifferently when the $d$-dimensional space is discretized as an arbitrary graph, and are thus valid in arbitrary dimension with arbitrary lattices and boundary conditions.
 The first key observation is that the action of the Gauss' law operator eq.~\eqref{eq:lattice gauss law} is block-diagonal in the representation basis, as can be seen from eq.~\eqref{eq:translations peter weyl}.
 Then starting from the Hilbert space in the representation basis eq.~\eqref{eq:peterweyl}, we can, as usual, permute the summation and product, obtaining
@@ -53,7 +53,7 @@ A basis of \textit{spin network states} which arise from the description of eq.~
 For a hypercubic lattice in $d$ dimensions with periodic boundary conditions, each site is connected to $2d$ links and therefore $2d$ terms appear in the tensor product within each $\mathrm{Inv}$ in eq.~\eqref{eq:spin network Hilbert space}.
 If instead we choose open boundary conditions, the sites in the bulk will again be connected to $2d$ links, but the sites on the boundary will be connected to fewer links and thus fewer terms will appear in the tensor product for those sites.
 In the general case, the number of terms in the tensor product within each $\mathrm{Inv}$ may depend on the site.
-We choose to work directly with the spaces of invariant vectors rather than with spaces of intertwiners more commonly employed in the literature \cite{Baez, Burgio}.
+We choose to work directly with the spaces of invariant vectors rather than with spaces of intertwiners more commonly employed in the literature \cite{baez1996spinnetworks, burgio2000physical}.
 
 The calculation of a basis of invariant states (or, equivalently, of the intertwiners) can be difficult in the Lie group case, especially since they admit infinitely many irreps, but can quite easily be performed numerically for finite groups, which only have finitely many irreps.
 Since the number of links connected to each site is finite and independent of the lattice volume, one needs only compute the invariant states of a finite number of tensor product representations which does not scale with the lattice size.
@@ -117,7 +117,7 @@ On a lattice with $L$ links and $V$ sites, we will show that
     \dim{\mathcal{H}_{\mathrm{phys}}} = \sum_C \pqty{\frac{\abs{G}}{\abs{C}}}^{L-V} \ ,
 \end{equation}
 where the sum runs over all conjugacy classes $C$ of the group, and $\abs{C}$ is the size of $C$.
-The ratio $\abs{G}/\abs{C}$ is always an integer by the orbit-stabilizer theorem \cite{Serre}.
+The ratio $\abs{G}/\abs{C}$ is always an integer by the orbit-stabilizer theorem \cite{serre1967representations}.
 Using eq.\eqref{eq:invariant vectors counting}, together with the fact that the character of a tensor product is given by the product of the characters, we may readily prove eq.\eqref{eq:physical hilbert space dimension}.
 From the general formula for the gauge-invariant Hilbert space, we have
 \begin{align}
@@ -130,7 +130,7 @@ Thus grouping characters by link, we obtain
     \dim{\mathcal{H}_{\mathrm{phys}}} =\frac{1}{\abs{G}^V} \sum_{g_1 g_2 \cdots g_V} \prod_{l = \expval{xx'} \in \mathrm{links}} \expval{g_x, g_{x'}} \ .
 \end{equation}
 where we denoted $\expval{g, h} = \sum_j \chi_j(g)^* \chi_j(h)$.
-It is a well-known result that $\expval{g, h}$ is zero unless $g$ and $h$ belong to the same conjugacy class, in which case $\expval{g, h} = \abs{G} / \abs{C}$ where $C$ is the conjugacy class of both $g$ and $h$ \cite{Serre}.
+It is a well-known result that $\expval{g, h}$ is zero unless $g$ and $h$ belong to the same conjugacy class, in which case $\expval{g, h} = \abs{G} / \abs{C}$ where $C$ is the conjugacy class of both $g$ and $h$ \cite{serre1967representations}.
 If any two adjacent sites $x$ and $x'$ have $g_x$ and $g_{x'}$ in different conjugacy classes, then $\expval{g_x, g_{x'}}=0$ and the corresponding term in the sum is zero.
 Assuming that the lattice is connected, this implies that the product over all links is zero unless all the $g_x$ at each site $x$ belong to the same conjugacy class.
 Then, since $\expval{g_x, g_{x'}}$ is constant on conjugacy classes, we can write

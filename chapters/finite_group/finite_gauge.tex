@@ -12,7 +12,7 @@
 
 % \subsubsection{Basic construction}\label{sec:basic hilbert space}
 
-% In the Hamiltonian formulation of \ac{lgt}s \cite{kogut1975hamiltonian, milstead2018qyangmills, ZoharBurrello}, time is continuous while the $d$ spatial dimensions are discretized into a hypercubic lattice.
+% In the Hamiltonian formulation of \ac{lgt}s \cite{kogut1975hamiltonian, milstead2018qyangmills, zohar2015latticegauge}, time is continuous while the $d$ spatial dimensions are discretized into a hypercubic lattice.
 % Classically, we assign a group element $g \in G$ to each spatial lattice link, where $G$ is the gauge group.
 % In the Lie group case, one would typically write $U_\mu(x) = \exp{(iA_\mu(x))} \in G$ for the gauge field variable assigned to the lattice link between points $x$ and $x + \hat{\mu}$, where $A_\mu(x)$ is the vector potential.
 % Links are oriented, and if a link is traversed in the opposite orientation, then $g$ is replace with $g^{-1}$.
@@ -37,7 +37,7 @@ For a Lie group, on the other hand, we have infinitely many basis states $\{\ket
 
 % In the Hamiltonian formulation of gauge theories, the statement that the theory is invariant under gauge transformations translates at the level of the Hilbert space by restricting the allowed states only to those which are gauge-invariant.
 On the group algebra the left and right translation operators are still well defined:
-%in the analogy where $\{\ket{g}\}$ is a position basis in group space \cite{ZoharBurrello},
+%in the analogy where $\{\ket{g}\}$ is a position basis in group space \cite{zohar2015latticegauge},
 \begin{equation}
     L_h \ket{g} = \ket{hg}
     \qand
@@ -82,9 +82,9 @@ Since these always have a finite Hilbert space, they do not additional issues fo
 
 
 It turns out to be fruitful to introduce a different basis of the overall Hilbert space $\mathcal{H}$, \say{dual} to the group element basis.
-The operators $L_g$ and $R_g$ introduced in eq.~\eqref{eq:regular representations} are unitary representations of $G$, known as the \textit{left} and \textit{right regular} representations \cite{Serre, KnappLieGroups}.
+The operators $L_g$ and $R_g$ introduced in eq.~\eqref{eq:regular representations} are unitary representations of $G$, known as the \textit{left} and \textit{right regular} representations \cite{serre1967representations, knapp1996lie}.
 This is because $L_g L_h = L_{gh}$ and $(L_g)^{-1}=L_{g^{-1}}=(L_g)^\dagger$, as can be explicitly checked by acting on the group element basis, and the same holds for $R$.
-Their representation theory leads to the Peter-Weyl theorem \cite{KnappLieGroups, milstead2018qyangmills, marianithesis}, which states that for a finite or compact Lie group $G$,
+Their representation theory leads to the Peter-Weyl theorem \cite{knapp1996lie, milstead2018qyangmills, marianithesis}, which states that for a finite or compact Lie group $G$,
 \begin{equation}
     \label{eq:peterweyl}
     L^2(G) = \bigoplus_{j \in \Sigma} V_j^* \otimes V_j \ ,
@@ -93,7 +93,7 @@ where $j$ is a label for the irreducible representations (irreps) of $G$, and $\
 For finite groups $L^2(G)$ is replaced, as usual, with $\C[G]$.
 Here $V_j$ is the representation vector space corresponding to representation $j$ and $V_j^*$ its dual vector space.
 For both compact Lie groups and finite groups the irreps are finite-dimensional and can be chosen to be unitary.
-For a finite group, $\Sigma$ is a finite set, while it is countably infinite for a compact Lie group \cite{KnappLieGroups, Serre}.
+For a finite group, $\Sigma$ is a finite set, while it is countably infinite for a compact Lie group \cite{knapp1996lie, serre1967representations}.
 In terms of the Peter-Weyl decomposition, the left and right regular representations take a particularly simple form \cite{marianithesis},
 \begin{equation}
     \label{eq:translations peter weyl}
@@ -108,14 +108,14 @@ For each irrep $j$ one chooses appropriate bases for $V_j^*$ and $V_j$, which we
 Here $\dim{j} \equiv \dim{V_j}$ is the dimension of the representation.
 On each representation subspace, we use the shorthand notation $\ket{jmn} \equiv \ket{jm} \otimes \ket{jn}$.
 Then the \say{representation basis} for $L^2(G)$ or $\C[G]$ is given by the set $\{\ket{jmn}\}$ for all $j \in \Sigma$ and $1 \leq m,n \leq \dim{j}$.
-In terms of the group element basis, one has \cite{ZoharBurrello}
+In terms of the group element basis, one has \cite{zohar2015latticegauge}
 \begin{equation}
     \label{eq:change of basis}
     \expval{g|jmn}= \sqrt{\frac{\mathrm{dim}(j)}{\abs{G}}} \left[\rho_j(g)\right]_{mn} \ ,
 \end{equation}
 where the bases $\{\ket{jm}\}$, $\{\ket{jn}\}$ are chosen so that $\rho_j$ is unitary.
 It should be emphasized that eq.\eqref{eq:change of basis} is valid for both finite and compact Lie groups; $\abs{G}$ is either the order of the finite group or the volume $\abs{G}\equiv\int dU\, 1$ given by the possibly unnormalized Haar measure \cite{milstead2018qyangmills, marianithesis}.
-It is a basic result of the representation theory of finite groups that $\sum_j \pqty{\dim{j}}^2 = \abs{G}$, which ensures that the group element basis and the representation basis have the same number of states \cite{Serre}.
+It is a basic result of the representation theory of finite groups that $\sum_j \pqty{\dim{j}}^2 = \abs{G}$, which ensures that the group element basis and the representation basis have the same number of states \cite{serre1967representations}.
 
 Since every group admits a trivial, one-dimensional irrep with $\rho(g)\equiv 1$, we always have a singlet representation state $\ket{0}$, which may be extended to the whole lattice to form the \say{electric ground state} $\ket{0_E}$,
 \begin{equation}
@@ -141,7 +141,7 @@ We then have a two-dimensional representation which spans a $2^2=4$ dimensional 
 
 % \subsubsection{Basic construction}\label{eq:hamiltonian basic construction}
 
-The Hamiltonian for a Yang-Mills gauge theory on the lattice takes the form \cite{kogut1975hamiltonian, ZoharBurrello}
+The Hamiltonian for a Yang-Mills gauge theory on the lattice takes the form \cite{kogut1975hamiltonian, zohar2015latticegauge}
 \begin{equation}
     \label{eq:generic hamiltonian}
     H = \lambda_E \sum_{l \in \mathrm{links}} h_E(g_l) + \lambda_B \sum_{\square} h_B(g_\square) \ ,
@@ -167,7 +167,7 @@ where $C(j)$ is the quadratic Casimir operator, which depends only on the repres
 For $\U(1)$, for example $C(j)=j^2$, while for $\SU(2)$ one finds $C(j) = j(j+1)$.
 We note that the magnetic Hamiltonian depends only on group-valued quantities and is therefore well-defined for both Lie groups and finite groups.
 On the other hand, the electric Hamiltonian depends on the infinitesimal Lie algebra through $\hat{\ell}_L^a$ and therefore the definition does not extend to finite groups.
-The decomposition eq.~\eqref{eq:laplacian decomposition} is well-defined also for finite groups, but one must leave the coefficients $C(j)$ unsatisfactorily unspecified because finite groups do not have a Casimir operator \cite{ZoharBurrello}.
+The decomposition eq.~\eqref{eq:laplacian decomposition} is well-defined also for finite groups, but one must leave the coefficients $C(j)$ unsatisfactorily unspecified because finite groups do not have a Casimir operator \cite{zohar2015latticegauge}.
 
 If one thinks of a finite group as a natural discretization of some parent Lie group, the natural choice of electric Hamiltonian is a discrete Laplacian on the finite group.
 The geometric structure of a finite group is that of a graph, with group elements as vertices and the group operation defining the edges.
@@ -189,7 +189,7 @@ In other words, $\Gamma$ is a union of conjugacy classes of $G$.
 \end{enumerate}
 These conditions on $\Gamma$ ensure that the electric Hamiltonian is gauge-invariant.
 On the other hand, as usual, the magnetic term is gauge-invariant as long as $h_B$ is any real function such that $h_B(g_1 g_\square g_1^{-1})=h_B(g_\square)$ for any $g_1 \in G$.
-As explained in Section \ref{sec:action formulation}, the Hamiltonian eq.~\eqref{eq:generalized ym hamiltonian} includes as a special case the transfer-matrix Hamiltonian obtained in \cite{TransferMatrixFiniteGroup} which consists in a certain specific choice of subset $\Gamma$.
+As explained in Section \ref{sec:action formulation}, the Hamiltonian eq.~\eqref{eq:generalized ym hamiltonian} includes as a special case the transfer-matrix Hamiltonian obtained in \cite{harlow2018quantum} which consists in a certain specific choice of subset $\Gamma$.
 The choice of $\Gamma$ is in fact not unique, a fact which we will also discuss in later sections.
 
 While the magnetic Hamiltonian $h_B$ is diagonal in the group element basis, the electric Hamiltonian $h_E$ is diagonal in the representation basis, and in fact
@@ -262,7 +262,7 @@ Then we see that
     \pqty{\sum_{k \in \Gamma} \rho_j(k)} \rho_j(g) = \sum_{k \in \Gamma} \rho_j(kg) = \sum_{k \in \Gamma} \rho_j((g k g^{-1} g) = \rho_j(g) \pqty{\sum_{k \in \Gamma} \rho_j(k)} \ ,
 \end{equation}
 where we used the closure of $\Gamma$ under conjugation.
-Hence the operator $\pqty{\sum_{k \in \Gamma} \rho_j(k)}$ commutes with the irreducible representation $\rho_j$ and as such is proportional to the identity by Schur's lemma \cite{Serre}.
+Hence the operator $\pqty{\sum_{k \in \Gamma} \rho_j(k)}$ commutes with the irreducible representation $\rho_j$ and as such is proportional to the identity by Schur's lemma \cite{serre1967representations}.
 The constant of proportionality can be readily computed by taking a trace.
 This therefore implies
 \begin{equation}
@@ -281,12 +281,12 @@ For the group $\Z_N$ it is natural to construct the electric eigenvalues $f(j)$ 
     \label{eq:fj ZN}
     f(j)=f(N-j) = 4\sin^2\pqty{\frac{\pi j}{N}} \ ,
 \end{equation}
-which is the same as in \cite{Ercoetal1}.
+which is the same as in \cite{notarnicola2015discrete}.
 Moreover for large $N$,
 \begin{equation}
     f(j) \to \frac{4\pi^2}{N^2} j^2\,\,\,\,\,\,\,\,\,\,\,N\,\mathrm{large} \ ,
 \end{equation}
-which is proportional to the Casimir eigenvalues of the $\U(1)$ gauge theory \cite{Ercoetal2}.
+which is proportional to the Casimir eigenvalues of the $\U(1)$ gauge theory \cite{ercolessi2018znmodels}.
 Thus both a truncation of $\U(1)$ theory and proper $Z_N$ gauge theory naively approach $\U(1)$ theory for large $N$, albeit in different ways.
 One can however choose a different generating set, such as $\Gamma = \{g, g^{-1},g^2, g^{-2}\}$ and the corresponding eigenvalues would be
 \begin{equation}
@@ -337,7 +337,7 @@ As explained in Section \ref{sec:action formulation} if we pick $h_B$ as the rea
 \subsection{Action formulation and Lorentz invariance}
 \label{sec:action formulation}
 
-The Kogut-Susskind Hamiltonian eq.~\eqref{eq:kog suss hE hB} may be obtained via the transfer-matrix formulation from the Euclidean Wilson action \cite{creutz1977transfermatrix,KogRev}
+The Kogut-Susskind Hamiltonian eq.~\eqref{eq:kog suss hE hB} may be obtained via the transfer-matrix formulation from the Euclidean Wilson action \cite{creutz1977transfermatrix,kogut1979introduction}
 \begin{equation}
     \label{eq:wilson action}
     S = -\frac{1}{g^2 a^{4-d}} \sum_{\square} \Re \tr{\rho(g_\square)} \ ,
@@ -346,7 +346,7 @@ where $a$ is the lattice spacing and $g$ the coupling.
 The couplings in  eq.~\eqref{eq:kog suss hE hB} also take the specific form $\lambda_E = \frac{g^2}{2a^{d-2}}$ and $\lambda_B = \frac{2}{g^2 a^{4-d}}$.
 In the path-integral formulation, the lattice is fully discretized and thus plaquettes extend also in the time direction.
 The action eq.~\eqref{eq:wilson action} is also perfectly valid for finite groups, as one simply replaces the partition function integration measure over the Lie group with sum over the elements of a finite group.
-One may then repeat the transfer-matrix formulation for an arbitrary finite group \cite{TransferMatrixFiniteGroup}.
+One may then repeat the transfer-matrix formulation for an arbitrary finite group \cite{harlow2018quantum}.
 The resulting finite group Hamiltonian takes the form eq.~\eqref{eq:generalized ym hamiltonian}, with specific choices of $\Gamma$ and $h_B$.
 In particular, $h_B$ is chosen as usual like in eq.~\eqref{eq:kog suss hE hB}, while $\Gamma = \{g \in G,\,\, g \neq e, \mathrm{max} \bqty{\Re \tr{\rho(g)}}  \}$ is the set of non-identity elements which maximize $\Re \tr{\rho(g)}$.
 More generally, one may start from a Euclidean action of the form
@@ -356,7 +356,7 @@ More generally, one may start from a Euclidean action of the form
 \end{equation}
 where $\square_t$ and $\square_s$ are plaquettes in the time and space directions respectively, and $f_t, f_s$ are real functions such that $f(g_1 g_\square g_1^{-1})=f(g_\square)$ for any $g_1 \in G$.
 Then via the transfer matrix procedure one obtains a generalized Hamiltonian of the form of eq.~\eqref{eq:generalized ym hamiltonian} with $h_B = f_s$ and $\Gamma = \{g \in G,\,\, g \neq e, \mathrm{max} \bqty{f_t(g)} \}$.
-Even though we do not consider this case here, in order to improve the approach to the continuum it might also be interesting to consider other Euclidean actions \cite{Hasenfratz1,LammChairs}.
+Even though we do not consider this case here, in order to improve the approach to the continuum it might also be interesting to consider other Euclidean actions \cite{hasenfratz2011unexpected,lamm2019gluon}.
 
 In particle physics applications, one typically requires Lorentz invariance in the continuum.
 While the lattice breaks the Lorentz symmetry to the subgroup of Euclidean cubic rotations, as long as this subgroup is preserved one expects to recover Lorentz invariance in the continuum limit.
@@ -376,15 +376,15 @@ Given a gauge group $G$ in $d$ spatial dimensions, one may arbitrarily choose:
 
     \item A choice for the magnetic Hamiltonian $h_B = h_B(g_\square)$.
 Since it must be real and satisfy $h_B(g_1 g_\square g_1^{-1})= h_B(g_\square)$, i.e.
-it is a \textit{class function}, by a well-known result \cite{Serre} it may be expanded in a sum of characters of irreducible representations, $h_B(g) = \sum_j c_j \chi_j(g)$ for coefficients $c_j$ which may be chosen arbitrarily, while ensuring that $h_B(g)$ is real.
+it is a \textit{class function}, by a well-known result \cite{serre1967representations} it may be expanded in a sum of characters of irreducible representations, $h_B(g) = \sum_j c_j \chi_j(g)$ for coefficients $c_j$ which may be chosen arbitrarily, while ensuring that $h_B(g)$ is real.
     \item If present, possible choices of representations and Hamiltonians in the matter sector.
 For example in $D_4$ gauge theory, one can include \textit{staggered fermions} in the two-dimensional representation.
 
-    \item One can also add a Chern-Simons term as in \cite{Caspar_Wiese}.
+    \item One can also add a Chern-Simons term as in \cite{caspar2016doubledlattice}.
 This is especially interesting for \ac{qs}, because such theories have a sign problem.
 \end{enumerate}
 Further considerations involve the Lorentz symmetry, as explained in Section \ref{sec:action formulation}.
-Moreover, one may want to choose representations which are non-trivial when restricted to the center of the gauge group \cite{CenterSymmetry, Cohen_2014}.
+Moreover, one may want to choose representations which are non-trivial when restricted to the center of the gauge group \cite{holland2001center, cohen2014center}.
 
 We note that the above construction allows further generalizations.
 In particular, the discretized $d$-dimensional space does not have to take the form of a hypercubic lattice, but more generally can be a Bravais or non-Bravais lattice.

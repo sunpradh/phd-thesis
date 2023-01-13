@@ -4,25 +4,25 @@
 \section{Quantum simulation}
 \label{sec:quantum_simulation}
 
-Simulating quantum mechanics is a very challenging task, especially if one is interested in many-body systems.
+Simulating quantum mechanics is a very challenging task \cite{manin1980computable, feynman1982simulation}, especially if one is interested in many-body systems.
 The description of a state requires a large number of parameters, for keeping track of all the quantum amplitudes, and it grows exponentially with the system size.
 Hence, one would have an \emph{exponential explosion} in terms of \emph{classical} resources (e.g., computer memory), which clearly is not suitable.
 If simulating a quantum system is not a task for classical computers, then it is reasonable to assume that it might be a task for \emph{quantum computers}.
-This kind of devices, first envisioned from Feynman \cite{feynman2018simulating}, promises much more than simulating quantum mechanics.
-Indeed, quantum computation and quantum information theory are, still today, very active research fields \todo{inserire reviews}\citneeded.
+This kind of devices, first envisioned from Feynman \cite{feynman1982simulation}, promises much more than simulating quantum mechanics.
+Indeed, quantum computation and quantum information theory are, still today, very active research fields \cite{nielsen2010quantum, schleich2007elements, stolze2008quantum}.
 
 Using quantum mechanics for simulating quantum mechanics may seem like fighting fire with fire, but it is a totally reasonable approach.
 A quantum computer can encodes the large amount of information of a quantum system in its large number of amplitudes.
 So, the size of a quantum computer would only be proportional to the size of the quantum system it intends to simulate, \emph{without} an exponential explosion in \emph{quantum} resources.
 In fact, a quantum computer can indeed act as a \emph{universal quantum simulator} \cite{lloyd1996simulator}.
-This is basically the idea behind \emph{digital \acl{qs}}.
+This is basically the idea behind \emph{Digital \acl{qs}}.
 
 There is another kind of approach to quantum simulation, where one can mimic the evolution of a given quantum system by means of another \emph{analogous} and \emph{controllable} quantum system.
 Hence, we will only need a specific quantum machine for a specific class of problems and a full general-purpose quantum computer is not needed.
 % In this case, for a specific set of problems the full implementation of a quantum computer may not be necessary.
 This is the idea behind \emph{analog \acl{qs}}.
 
-In general, \emph{\acf{qs}} can be (loosely) defined as simulating a quantum system by quantum mechanical means.
+In general, \emph{\acf{qs}} can be (loosely) defined as simulating a quantum system by quantum mechanical means \cite{georgescu2014simulation}.
 There are three paths that can be taken in this regard:
 \begin{itemize}
     \item Digital \acl{qs}
@@ -46,7 +46,7 @@ The last option employs techniques, inspired by quantum information theory, that
 \subsection{Digital quantum simulations}
 \label{sub:digital_quantum_simulations}
 
-The digital approach to \ac{qs} employs the \emph{circuit model} of quantum computation.
+The digital approach to \ac{qs} employs the \emph{circuit model} of quantum computation \cite{nielsen2010quantum, deutsch1989quantum}.
 This model is analogous to the boolean logic model of classical computation, where one works with \emph{bits}, the smallest possible amount of information, an on--\emph{or}--off state, and \emph{logical operators} (like \texttt{NOT}, \texttt{AND}, \texttt{OR}, etc\dots).
 The quantum counterpart uses \emph{qubits}, the smallest possible quantum system which is a two-level system, and \emph{unitary operators}, also called \emph{quantum gates}.
 The set of qubits forms a \emph{quantum register} and it is where the information about the simulated system is encoded.
