@@ -1,0 +1,79 @@
+\begin{tikzpicture}[
+    scale=0.5,
+    font=\scriptsize,
+    % gate/.style = {rounded corners=2pt, fill=white}
+    ]
+    \foreach \n/\y in {0/0, 1/1.5, 2/4, 3/5.5} {
+        \node (q\n) at (0, -\y) {};
+        \node (q\n end) at (25, -\y) {};
+        % \path (q\n) edge (q\n end);
+    }
+    \node[left] at (q0) {$\ket{j_1}$};
+    \node[left] at (q1) {$\ket{j_2}$};
+    \node[left] at (q2) {$\ket{j_{n-1}}$};
+    \node[left] at (q3) {$\ket{j_{n}}$};
+
+    \node[right] at (q0end) {$\ket{0} + e^{i 2 \pi 0.j_1 \dots j_n} \ket{1}$};
+    \node[right] at (q1end) {$\ket{0} + e^{i 2 \pi 0.j_2 \dots j_n} \ket{1}$};
+    \node[right] at (q2end) {$\ket{0} + e^{i 2 \pi 0.j_{n-1} j_n} \ket{1}$};
+    \node[right] at (q3end) {$\ket{0} + e^{i 2 \pi 0.j_n} \ket{1}$};
+
+    \node[gate] at (1, 0) {$H$};
+    \node[gate] at (3, 0) {$R_2$};
+    \node[gate] at (6, 0) {$R_{n-1}$};
+    \node[gate] at (8, 0) {$R_{n}$};
+
+    \node[gate] at (10, -1.5) {$H$};
+    \node[gate] at (13, -1.5) {$R_{n-2}$};
+    \node[gate] at (15.5, -1.5) {$R_{n-1}$};
+
+    \node[gate] at (19, -4) {$H$};
+    \node[gate] at (21, -4) {$R_{2}$};
+
+    \node[gate] at (23.5, -5.5) {$H$};
+
+    \begin{scope}[on background layer]
+
+        % circuit lines
+
+        \draw (q0) -- (3.9, 0) coordinate (x);
+        \draw[dotted] (x) -- (4.7, 0) coordinate (x);
+        \draw (x) -- (q0end);
+
+        \draw (q1) -- (3.9, -1.5) coordinate (x);
+        \draw[dotted] (x) -- (4.7, -1.5) coordinate (x);
+        \draw (x) -- (11, -1.5) coordinate (x);
+        \draw[dotted] (x) -- (11.8, -1.5) coordinate (x);
+        \draw (x) -- (17, -1.5) coordinate (x);
+        \draw[dotted] (x) -- (17.8, -1.5) coordinate (x);
+        \draw (x) -- (q1end);
+
+        \draw (q2) -- (17, -4) coordinate (x);
+        \draw[dotted] (x) -- (17.8, -4) coordinate (x);
+        \draw (x) -- (q2end);
+
+        \draw (q3) -- (17, -5.5) coordinate (x);
+        \draw[dotted] (x) -- (17.8, -5.5) coordinate (x);
+        \draw (x) -- (q3end);
+
+
+        % control nodes and lines
+
+        \node[control] at (3, -1.5) {};
+        \draw[cline] (3, -1.5) -- (3, 0);
+        \node[control] at (6, -4) {};
+        \draw[cline] (6, -4) -- (6, 0);
+        \node[control] at (8, -5.5) {};
+        \draw[cline] (8, -5.5) -- (8, 0);
+
+        \node[control] at (13, -4) {};
+        \draw[cline] (13, -4) -- (13, -1.5);
+        \node[control] at (15.5, -5.5) {};
+        \draw[cline] (15.5, -5.5) -- (15.5, -1.5);
+
+        \node[control] at (21, -5.5) {};
+        \draw[cline] (21, -5.5) -- (21, -4);
+
+    \end{scope}
+
+\end{tikzpicture}

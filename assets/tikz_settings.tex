@@ -1,7 +1,8 @@
 % TikZ
 %----------------------------------------
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta, decorations.markings, patterns, fit, positioning}
+\usetikzlibrary{arrows.meta, decorations.markings, patterns, fit, positioning, backgrounds}
+
 \tikzset{
     font=\footnotesize,
     >={stealth},
@@ -33,6 +34,10 @@
     down spin/.style = {stealth-, ultra thick},
     % Plaquette flux
     flux/.style = {fill=Green, fill opacity=0.1},
+    % Quantum gates
+    gate/.style = {draw=black, fill=white, thick, minimum size=0.6cm, inner sep=1pt, font=\footnotesize},
+    control/.style = {draw=black, fill=black, minimum size=3pt, inner sep=0pt, circle},
+    cline/.style = {thick},
     % Misc
     freccia/.style={-stealth, very thick, shorten >=5pt, shorten <=5pt},
     box/.style={dotted, rounded corners, thick}

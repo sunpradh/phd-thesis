@@ -1,0 +1,23 @@
+\begin{tikzpicture}[
+    scale=0.5,
+    gate/.style = {draw=black, fill=white, thick, minimum size=0.6cm, inner sep=0pt, font=\footnotesize}
+    ]
+    \draw (0, 0) -- ++(3, 0) node [right=5pt] {$\frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} $};
+    \node[gate] at (1.5, 0) {$H$};
+
+    \draw (0, -3) -- ++(3, 0) node [right=5pt] {$ \begin{pmatrix} 1 & 0 \\ 0 & e^{i 2 \pi / 2^k} \end{pmatrix}$};
+    \node[gate] at (1.5, -3) {$R_k$};
+
+
+    \draw (0, -6) -- ++(3, 0);
+    \draw (0, -7.5) -- ++(3, 0);
+    \draw[cline] (1.5, -6) -- ++(0, -1.5) node {$\bigoplus$};
+    \node[control] at (1.5, -6) {};
+    \node[right=5pt] at (3, -6.75) {$\begin{pmatrix}
+                1 & 0 & 0 & 0 \\
+                0 & 1 & 0 & 0 \\
+                0 & 0 & 0 & 1 \\
+                0 & 0 & 1 & 0
+        \end{pmatrix}$};
+\end{tikzpicture}
+

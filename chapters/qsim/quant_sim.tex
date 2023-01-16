@@ -56,7 +56,9 @@ The last option employs techniques, inspired by quantum information theory, that
 \end{figure}
 
 
-
+%
+% SUBSECTION: Digital quantum simulations
+%
 \subsection{Digital quantum simulations}
 \label{sub:digital_quantum_simulations}
 
@@ -69,8 +71,21 @@ A bit can only have two values, either $0$ or $1$.
 In quantum computing these values are elevated to two \emph{orthonormal} states $\ket{0}$ and $\ket{1}$.
 Therefore, the bits are substituted with \emph{qubits}, which are two-levels quantum systems.
 A generic state of a qubit is $\ket{\psi} = \alpha \ket{0} + \beta \ket{1}$, with the normalization condition $\alpha^2 + \beta^2 = 1$, and the complex amplitudes $\alpha$ and $\beta$ encodes the carried information.
-A visual representation of the Hilbert space of a qubit is given by the Bloch sphere \todo{inserire figura}.
+A visual representation of the Hilbert space of a qubit is given by the Bloch sphere, see Fig.~\ref{fig:bloch_sphere}.
 A set of qubits is called a \emph{quantum register} and they encode the state of the quantum computational machine, the equivalent of the tape of a Turing machine.
+
+
+\begin{figure}[t]
+    \SideFigure[label=fig:bloch_sphere, desc={Bloch sphere}]{%
+        \input{assets/figures/bloch_sphere.tex}
+    }{%
+        Picture of a Bloch sphere.
+        A generic state of a qubit can be written as
+        $\ket{\psi} = \cos \frac{\theta}{2} \ket{0} + e^{i \varphi} \sin \frac{\theta}{2} \ket{1}$, so it is fully described by a two angles $\theta$ and $\phi$.
+        For this reason, the Hilbert space of a qubit can be visualized as a two-dimensional sphere.%
+    }
+\end{figure}
+
 
 The logical operators, or \emph{gates}, of classical computation are single-bit or double-bit functions that have only a single-bit output.
 This makes classical computation \emph{non-reversible}\footnote{%
@@ -93,6 +108,18 @@ Similar to the classical case, for quantum computing we only need single-qubit a
 The two-qubits gates have an important role, because they allow to introduce \emph{entanglement}, which is the secret ingredient that makes quantum computing distinct from classical computing.
 This minimal set usually entails a set of single-qubit and one two-qubits entangling gate (like the \texttt{CNOT} gate).
 \todo{inserire qualche figura}
+
+\begin{figure}[t]
+    \SideFigure[label=fig:quantum_gates, desc={Example of quantum gates}]{
+        \input{assets/figures/quantum_gates.tex}
+    }{
+        Examples of quantum gates.
+        From top to bottom:
+        \emph{(i)} Hadamard gate $H$;
+        \emph{(ii)} Phase gate $R_k$;
+        \emph{(iii)} \texttt{CNOT} (controlled \texttt{NOT}) gate.
+    }
+\end{figure}
 
 \medskip
 
@@ -153,50 +180,38 @@ The typical setup for a digital simulation consists of three steps:
 \end{description}
 
 
-\todo{cosa altro aggiungere?}
+
 
 \begin{figure}[t]
     \centering
-    \newcommand{\Gate}[3]{\draw[gate] (#1, -#2 + 0.25) rectangle ++(1.5, -#3 - 0.5);}
-    \begin{tikzpicture}[
-        scale=0.5,
-        gate/.style = {rounded corners=2pt, fill=white}
-        ]
-        \foreach \n in {0,...,7} {
-            \node (q\n) at (0, -\n) {$q_{\n}$};
-            \node (q\n end) at (14, -\n) {};
-            \path (q\n) edge (q\n end);
-        }
-        % \draw[gate] (1, 0 + 0.25) rectangle ++(1.5, -3 - 0.5);
-        \Gate{1}{0}{3}
-        \Gate{1}{5}{1}
-        \Gate{3}{2}{2}
-        \Gate{3}{6}{1}
-        \Gate{5}{1}{1}
-        \Gate{5}{4}{2}
-        \Gate{7}{5}{2}
-        \Gate{7}{2}{1}
-        \Gate{7}{0}{1}
-        \Gate{9}{3}{3}
-        \Gate{9}{1}{1}
-        \Gate{11}{2}{2}
-        \Gate{11}{6}{1}
-        \Gate{13}{0}{7}
-
-        \node at (0, -8) {quantum register};
-        \node at (7, -8) {sequence of quantum gates};
-        \node at (14, -8) {measurement};
-    \end{tikzpicture}
-    \caption{Example of a quantum circuit \todo{da finire}.}
+    \scalebox{0.75}{\input{assets/figures/quantum_fourier.tex}}
+    \caption{
+        Example of a quantum circuit.
+        In particular this circuit executes the quantum Fourier transform \cite{nielsen2010quantum}.
+        It uses some of the gates showed in Fig.~\ref{fig:quantum_gates}.
+    }
 \end{figure}
 
 
+%
+% SUBSECTION: Analog quantum simulations
+%
 \subsection{Analog quantum simulations}
 \label{sub:analog_quantum_simulations}
 
-Analog \ac{qs} (AQS) represent another kind of approach to \ac{qs}, where a one quantum system mimics or emulate another.
-The Hamiltonian of the system to be simulated, $H_{\text{sys}}$, is directly mapped onto the Hamiltonian of the quantum simulator, $H_{\text{sim}}$.
-Obviously, this can be done if there is a mapping between the system and the simulator.
+Analog \ac{qs} is another type of approach to \ac{qs}, where one quantum system (the simulator) mimics or emulate another (the target) \cite{buluta2009simulators, wei1997simulation, arguello2019simulation, aspuruguzik2012photonic, blatt2012trappedions, bloch2012ultracold, houck2012superconducting}.
+This approach is not based on building a universal machine, like a quantum computer, that can emulate any other system.
+Instead, it focuses on recreating the features, or a subset of relevant features, of a chosen class of models in order to compute some physically relevant quantities.
+Analog \ac{qs} follows the idea of \emph{analog computation}, where an experimental device is conceived for executing a specific algorithm, meaning that it is a specialized machine with some degree of controllability.
+Analog computation is not a new idea, rather it is the oldest type of computing devised by mankind, and analog machines are the earliest types of computers to ever be used \cite{kendon2010quantum}.
+Some historical examples can be the astrolabe for plotting the heavens, or the mechanical differential analyser for integrating differential equations \cite{thomson1876integration}.
+
+
+The Hamiltonian of the system to be simulated, $H^{\text{sys}}$, is directly mapped onto the Hamiltonian of the quantum simulator, $H^{\text{sim}}$:
+\begin{equation*}
+    H^{\text{sys}} \longleftrightarrow H^{\text{sim}}.
+\end{equation*}
+Obviously, this is possible only if there is a mapping between the system and the simulator.
 Note that the simulator may only partly reproduce the dynamics of the system, or simulate some effective description of the system.
 
 An important advantage of analog \ac{qs} is that it does not require a full quantum computer.
@@ -205,9 +220,13 @@ Finding the mapping in an analog \ac{qs} might look, at first, simpler than find
 The obvious drawback of AQS is that the quantum simulators are problem specific, but on the other hand, given that they do not require a full quantum computer, they are more feasible in the near-term.
 
 
-\todo{Aggiungere altro ma cosa?}
+\todo{da finire}
 
 
+
+%
+% SUBSECTION: Quantum-inspired algorithms
+%
 \subsection{Quantum-inspired algorithms}
 \label{sub:quantum_inspired_algorithms}
 
