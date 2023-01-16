@@ -110,7 +110,12 @@
 %----------------------------------------
 % Bibliography
 %----------------------------------------
-\usepackage[style=numeric-comp, sorting=none, bibstyle=nature]{biblatex}
+\usepackage[
+    style=numeric-comp,
+    sorting=none,
+    bibstyle=nature,
+    isbn=false
+    ]{biblatex}
 \bibliography{assets/biblio.bib}
 
 \ExecuteBibliographyOptions{doi=false}
@@ -119,7 +124,6 @@
   \iffieldundef{doi}{#1}{\href{http://dx.doi.org/\thefield{doi}}{#1}}}
 \DeclareFieldFormat{title}{\usebibmacro{string+doi}{\mkbibemph{#1}}}
 \DeclareFieldFormat[article]{title}{\usebibmacro{string+doi}{\mkbibquote{#1}}}
-
 
 %----------------------------------------
 % Macros for front page

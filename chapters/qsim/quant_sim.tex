@@ -5,25 +5,39 @@
 \label{sec:quantum_simulation}
 
 Simulating quantum mechanics is a very challenging task \cite{manin1980computable, feynman1982simulation}, especially if one is interested in many-body systems.
-The description of a state requires a large number of parameters, for keeping track of all the quantum amplitudes, and it grows exponentially with the system size.
-Hence, one would have an \emph{exponential explosion} in terms of \emph{classical} resources (e.g., computer memory), which clearly is not suitable.
-If simulating a quantum system is not a task for classical computers, then it is reasonable to assume that it might be a task for \emph{quantum computers}.
-This kind of devices, first envisioned from Feynman \cite{feynman1982simulation}, promises much more than simulating quantum mechanics.
-Indeed, quantum computation and quantum information theory are, still today, very active research fields \cite{nielsen2010quantum, schleich2007elements, stolze2008quantum}.
+The description of a state requires a large number of variables, for keeping track of all the quantum amplitudes, and it grows exponentially with the system size.
+Hence, one would have an \emph{exponential explosion} in terms of \emph{classical} resources (like for example computer memory), which clearly is not suitable.
 
-Using quantum mechanics for simulating quantum mechanics may seem like fighting fire with fire, but it is a totally reasonable approach.
-A quantum computer can encodes the large amount of information of a quantum system in its large number of amplitudes.
-So, the size of a quantum computer would only be proportional to the size of the quantum system it intends to simulate, \emph{without} an exponential explosion in \emph{quantum} resources.
-In fact, a quantum computer can indeed act as a \emph{universal quantum simulator} \cite{lloyd1996simulator}.
-This is basically the idea behind \emph{Digital \acl{qs}}.
+If simulating a quantum system is not a task for classical machines, then it should be a task for quantum machines \cite{feynman1982simulation, georgescu2014simulation, hauke2012simulators, kendon2010quantum, buluta2009simulators}.
+The possibility of using quantum devices for simulating physics was first envisioned by Feynman in his seminal talk \cite{feynman1982simulation}.
+The main idea is to encode the \ac{dof} of an ideal mathematical model of a physically relevant system into a controllable and reliable quantum system.
+In other words, a \emph{quantum simulator} is an experimental system that mimics a simple model, or a family of simple models \cite{hauke2012simulators}.
+Using quantum physics for simulating quantum physics itself may seem like fighting fire with fire, but it is actually a powerful idea.
+We will no longer need an exponentially large number of variables for describing the target system, because the \ac{dof} of the target system and the simulator would be in a one-to-one correspondence.
+Therefore, the size of a quantum computer would only be proportional to the size of the quantum system it intends to simulate, \emph{without} an exponential explosion in \emph{quantum} resources.
 
-There is another kind of approach to quantum simulation, where one can mimic the evolution of a given quantum system by means of another \emph{analogous} and \emph{controllable} quantum system.
-Hence, we will only need a specific quantum machine for a specific class of problems and a full general-purpose quantum computer is not needed.
-% In this case, for a specific set of problems the full implementation of a quantum computer may not be necessary.
-This is the idea behind \emph{analog \acl{qs}}.
+In this perspective, it would seem that one would need a specific quantum simulator for simulating a specific class of models.
+This is not necessarily true with a \emph{quantum computer} \cite{feynman1985quantum, nielsen2010quantum, schleich2007elements, stolze2008quantum}.
+The idea for such a device was put forward in \cite{feynman1982simulation, feynman1985quantum} and it would act as a \emph{universal quantum simulator}.
+This has proven by LLoyd in \cite{lloyd1996simulator}.
+The caveat is that the target system and its evolution would need some \emph{digitalization} scheme beforehand, because a quantum computer uses discrete \ac{dof}, the \emph{qubits}, so they are not suited for continuous-variable computation.
+This is analogous to the case of classical computers, where real numbers have to be truncated and represented with a finite-size register of bits.
+On the other hand, a problem-specific simulator can potentially uses some kind of physical platform which allows for continuous \ac{dof} \cite{kendon2010quantum, wagner2010continuous}.
+% What he put forward was the idea of a new kind of device, the \emph{quantum computer}, which would act as a \emph{universal quantum simulator}.
+% This kind of devices, first envisioned from Feynman \cite{feynman1982simulation}, promises much more than simulating quantum mechanics.
+% From the works \cite{manin1980computable, feynman1982simulation}, much more than quantum simulation was born and, to this day, quantum computation and quantum information are still very active research fields \cite{feynman1985quantum, nielsen2010quantum, schleich2007elements, stolze2008quantum}.
 
-In general, \emph{\acf{qs}} can be (loosely) defined as simulating a quantum system by quantum mechanical means \cite{georgescu2014simulation}.
-There are three paths that can be taken in this regard:
+% A quantum computer can encode the large number of variables of a quantum system in its wave-function.
+% In fact, a quantum computer can indeed be used as a \emph{universal quantum simulator} and this fact has been proven by \citeauthor{lloyd1996simulator} in \cite{lloyd1996simulator}.
+% Using quantum computers as quantum simulators is basically the idea behind \emph{Digital \acl{qs}}.
+
+% There is another kind of approach to quantum simulation, where one can mimic the evolution of a given quantum system by means of another \emph{analogous} and \emph{controllable} quantum system.
+% Hence, we will only need a specific quantum machine for a specific class of problems and a full general-purpose quantum computer is not needed.
+% % In this case, for a specific set of problems the full implementation of a quantum computer may not be necessary.
+% This is the idea behind \emph{analog \acl{qs}}.
+
+In general, \emph{\acf{qs}} can be (loosely) defined as simulating a quantum system by quantum mechanical means.
+There are three paths that can be taken in this regard \cite{georgescu2014simulation}:
 \begin{itemize}
     \item Digital \acl{qs}
     \item Analog \acl{qs}
@@ -47,39 +61,92 @@ The last option employs techniques, inspired by quantum information theory, that
 \label{sub:digital_quantum_simulations}
 
 The digital approach to \ac{qs} employs the \emph{circuit model} of quantum computation \cite{nielsen2010quantum, deutsch1989quantum}.
-This model is analogous to the boolean logic model of classical computation, where one works with \emph{bits}, the smallest possible amount of information, an on--\emph{or}--off state, and \emph{logical operators} (like \texttt{NOT}, \texttt{AND}, \texttt{OR}, etc\dots).
-The quantum counterpart uses \emph{qubits}, the smallest possible quantum system which is a two-level system, and \emph{unitary operators}, also called \emph{quantum gates}.
-The set of qubits forms a \emph{quantum register} and it is where the information about the simulated system is encoded.
-% Generally, the quantum simulator is a collection of \emph{qubits} (i.e., two-level quantum systems) called a \emph{quantum register}.
-% This register is then used to simulate the wave function of the target quantum system.
-In the \emph{computation basis}, the wave function of the register is in a superposition of bit strings, where each bit refers to the state of a qubit in the register, which can be either $\ket{0}$ or $\ket{1}$.
+This model is analogous to the circuit model of classical computation, where one works with \emph{bits}, the smallest possible amount of information, an on--\emph{or}--off state, and a minimal set of \emph{logical operators} (like \texttt{NOT}, \texttt{AND}, \texttt{OR}, etc\dots).
+In quantum computation, the set up is the same but with some key differences:
+bits are substituted with \emph{qubits} and the logical operators with \emph{unitary operators}.
 
-In the circuit model, any many-qubit unitary operator $U$ can be converted into a sequence of single- and two-qubit quantum gates.
-Therefore, any generic unitary evolution can be implemented with a minimal set of quantum gates\citneeded.
-This minimal set is usually composed of a number of single-qubit gates (for example, the Hadamard gate or the Pauli matrices) and a two-qubit \emph{entangling gate}, like a \texttt{CNOT} gate.
-% An example of a relevant unitary operator is the time-evolution operator, that solves the time-independent Schrödinger equation.
-Even though it has been proven \cite{lloyd1996simulator} that ``anything'' can be simulated on a quantum computer, not all unitary operations can be simulated \emph{efficiently}.
-Therefore, there are \emph{mathematically possible} Hamiltonians that cannot be efficiently simulated with a circuit-based model.
-Nonetheless, it is believed that \emph{physically relevant} Hamiltonians can indeed be simulated efficiently\citneeded.
+A bit can only have two values, either $0$ or $1$.
+In quantum computing these values are elevated to two \emph{orthonormal} states $\ket{0}$ and $\ket{1}$.
+Therefore, the bits are substituted with \emph{qubits}, which are two-levels quantum systems.
+A generic state of a qubit is $\ket{\psi} = \alpha \ket{0} + \beta \ket{1}$, with the normalization condition $\alpha^2 + \beta^2 = 1$, and the complex amplitudes $\alpha$ and $\beta$ encodes the carried information.
+A visual representation of the Hilbert space of a qubit is given by the Bloch sphere \todo{inserire figura}.
+A set of qubits is called a \emph{quantum register} and they encode the state of the quantum computational machine, the equivalent of the tape of a Turing machine.
+
+The logical operators, or \emph{gates}, of classical computation are single-bit or double-bit functions that have only a single-bit output.
+This makes classical computation \emph{non-reversible}\footnote{%
+    There exist models of classical computation that are reversible, see \cite{fredkin1982logic}, which will not be discussed here and are not very common in every-day applications.
+    In \cite{fredkin1982logic} a universal \emph{three-bits} gate is introduced that allows for reversible computation.%
+}.
+The idea behind quantum computing is to use the time-evolution of an ad-hoc quantum machine for performing computation.
+Time-evolution is a \emph{unitary} process, which means that is reversible.
+Hence, the non-reversible model of classical computation is not suited for quantum computing.
+There is no one-to-one correspondence between the operations on a classical machine and those on a quantum machine.
+Logical operations on a quantum computer, also called \emph{quantum gates}, have to implemented through \emph{unitary operators} that act on the quantum register.
+A succession of logical operator, therefore, is equivalent to the product of these unitary operators.
+This makes the whole computation a unitary process, hence reversible.
+
+It is known, in classical computing, that only a minimal set of logical gates are actually needed in order to perform any computation.
+For example, with a \texttt{NOT} gate and a \texttt{AND} gate is possible to implement every other possible logical function (actually only the \texttt{NAND} gate is necessary).
+A similar result is true also for quantum computing \cite{barenco1995gates}.
+One only needs a minimal set of quantum gates in order to implement any unitary operators with arbitrary precision.
+Similar to the classical case, for quantum computing we only need single-qubit and two-qubits gates.
+The two-qubits gates have an important role, because they allow to introduce \emph{entanglement}, which is the secret ingredient that makes quantum computing distinct from classical computing.
+This minimal set usually entails a set of single-qubit and one two-qubits entangling gate (like the \texttt{CNOT} gate).
+\todo{inserire qualche figura}
+
+\medskip
+
+Even though it has been proven that ``anything'' can be simulated on a quantum computer \cite{lloyd1996simulator}, not all unitary operations can be simulated \emph{efficiently}.
+The time-evolution of the target quantum system requires \emph{digitalization}, which means that it has to be decomposed in smaller steps in order to be encodable as a sequence of quantum gates.
+This is possible to an arbitrary precision thanks to the Trotter-Suzuki product formula for the exponentiation of complex matrices:
+\begin{equation}
+    e^{A + B}  = \lim_{n \to \infty} \qty( e^{A/n} e^{B/n} )^n.
+\end{equation}
+In most physically interesting case, the Hamiltonian is a sum of non-commuting terms:
+\begin{equation*}
+    H = \sum_{l} H_{l},
+\end{equation*}
+where $\comm{H_l}{H_{l^{\prime}}} \neq 0$ for $l \neq l^{\prime}$.
+In the case of a time-independent Hamiltonian, the time-evolution operator is given by
+\begin{equation}
+    U(t) = e^{-i t \sum_{l} H_l }
+    \quad \text{such that} \quad
+    U(t) \ket{\psi(0)} = \ket{\psi(t)}.
+    \label{eq:time_evolution_operator}
+\end{equation}
+In order to implement \eqref{eq:time_evolution_operator} on a quantum operator, the time-evolution has to be divided in $N$ steps of length $\Delta t$, such that $t = N \Delta t$ and $U(t) \simeq (U(\Delta t))^N$.
+For each single time step we can apply the first-order Trotter-Suzuki formula \cite{nielsen2010quantum, somma2002simulating} for the time-evolution operator:
+\begin{equation}
+    U(\Delta t)
+    = e^{- i \Delta t \sum_{l} H_l}
+    = \prod_{l} e^{-i \Delta t H_l} + O(\Delta t^2).
+    \label{eq:trotter_time_evolution}
+\end{equation}
+
+The drawback of Trotterization is that high accuracy comes at the cost of very small $\Delta t$ and therefore a very large number of quantum gates.
+The scheme used in \eqref{eq:trotter_time_evolution} has some shortcomings, that can be improved with higher order decompositions that will necessarily introduce more complexities in the quantum circuit.
+Moreover, some other types of methods have to be used in the case of time-dependent Hamiltonians \cite{wiebe2011simulation}.
+
+\medskip
 
 It should be stressed that we are still far from perfect digital quantum computation.
-A number of problems afflict quantum computers to this day.
-The first one is error correction and error detection.
-As one would expect, a quantum register is very delicate object and the presence of noise could, at any time, flip any of the qubits or modify the relative phases, which will spoil the encoded information.
-Another problem comes from \emph{decoherence}, where the interaction with the environment induces a \emph{loss of information}.
+A typical quantum computer is affected by noise due to its interaction with the environment.
+The effect of noise can corrupt the state of the quantum register, by flipping or dephasing the qubits for example.
+Furthermore, interaction with an external environment will necessarily lead to \emph{decoherence} where all the ``quantumness'' of the system is lost \cite{zurek1991decoherence, schlosshauer2014decoherence, schlosshauer2019decoherence}.
 
+It becomes clear that error correction is a necessity for \emph{fault-tolerant quantum computing} \cite{preskill1997faulttolerant, shor1996faulttolerant} but it can greatly increase the number of qubits needed for useful computations.
+Indeed, it is said we are currently living in the \emph{noisy intermidiate-scale quantum} (NISQ) era of quantum computing \cite{preskill2018quantumcomputing}.
+The term refers to moderately sized quantum computers (around 50--100 qubits) whose gates are still affected by noise but are not large enough to fully implement error correction.
 
-
-It should be stressed that the implemented unitary operations are often just approximations of the desired unitary operation.
-With greater precision comes a greater number of gates.
+\medskip
 
 The typical setup for a digital simulation consists of three steps:
 \begin{description}
-    \item[Initial-state preparation] the quantum register has to prepared in the initial state $\ket{\psi(0)}$.
-        This step can be by itself difficult, and it is not always guaranteed that an efficient algorithm may exist.
+    \item[Initial-state preparation] the quantum register is prepared in the initial state $\ket{\psi(0)}$.
+        This step can be difficult by itself, and it is not always guaranteed that an efficient algorithm may exist.
 
     \item[Unitary evolution]  the circuit has to reproduce or simulate the action of a unitary operator $U$.
-        In case of a unitary time evolution and local Hamiltonian this can be achieved approximately with some ``trotterization'' scheme.
+        This unitary operator is usually the time-evolution operator of the target system, which has to be decomposed in a sequence of smaller operation through trotterization, as explained before.
 
     \item[Final measurement] after obtaining the wanted state $\ket{\psi(t)} = U \ket{\psi(0)}$, a \emph{measurement} is needed in order to extract relevant physical information.
         Instead of capturing the whole wave function $\ket{\psi(t)}$, with, for example, quantum tomography, one may proceed with the direct estimation of certain physical quantities, such as correlation functions or spectra of operators.
