@@ -107,7 +107,7 @@ One only needs a minimal set of quantum gates in order to implement any unitary 
 Similar to the classical case, for quantum computing we only need single-qubit and two-qubits gates.
 The two-qubits gates have an important role, because they allow to introduce \emph{entanglement}, which is the secret ingredient that makes quantum computing distinct from classical computing.
 This minimal set usually entails a set of single-qubit and one two-qubits entangling gate (like the \texttt{CNOT} gate).
-\todo{inserire qualche figura}
+In Fig.~\ref{fig:quantum_gates} some example of quantum gates are shown, while in Fig.~\ref{fig:quantum_fourier} an example of a quantum circuit can be found.
 
 \begin{figure}[t]
     \SideFigure[label=fig:quantum_gates, desc={Example of quantum gates}]{
@@ -168,14 +168,14 @@ The term refers to moderately sized quantum computers (around 50--100 qubits) wh
 \medskip
 
 The typical setup for a digital simulation consists of three steps:
-\begin{description}
-    \item[Initial-state preparation] the quantum register is prepared in the initial state $\ket{\psi(0)}$.
+\begin{description}[font=\normalfont\itshape, labelsep=1.1em]
+    \item[Initial-state preparation.] The quantum register is prepared in the initial state $\ket{\psi(0)}$.
         This step can be difficult by itself, and it is not always guaranteed that an efficient algorithm may exist.
 
-    \item[Unitary evolution]  the circuit has to reproduce or simulate the action of a unitary operator $U$.
+    \item[Unitary evolution.] The circuit has to reproduce or simulate the action of a unitary operator $U$.
         This unitary operator is usually the time-evolution operator of the target system, which has to be decomposed in a sequence of smaller operation through trotterization, as explained before.
 
-    \item[Final measurement] after obtaining the wanted state $\ket{\psi(t)} = U \ket{\psi(0)}$, a \emph{measurement} is needed in order to extract relevant physical information.
+    \item[Final measurement.] After obtaining the wanted state $\ket{\psi(t)} = U \ket{\psi(0)}$, a \emph{measurement} is needed in order to extract relevant physical information.
         Instead of capturing the whole wave function $\ket{\psi(t)}$, with, for example, quantum tomography, one may proceed with the direct estimation of certain physical quantities, such as correlation functions or spectra of operators.
 \end{description}
 
@@ -190,6 +190,7 @@ The typical setup for a digital simulation consists of three steps:
         In particular this circuit executes the quantum Fourier transform \cite{nielsen2010quantum}.
         It uses some of the gates showed in Fig.~\ref{fig:quantum_gates}.
     }
+    \label{fig:quantum_fourier}
 \end{figure}
 
 
@@ -199,29 +200,52 @@ The typical setup for a digital simulation consists of three steps:
 \subsection{Analog quantum simulations}
 \label{sub:analog_quantum_simulations}
 
-Analog \ac{qs} is another type of approach to \ac{qs}, where one quantum system (the simulator) mimics or emulate another (the target) \cite{buluta2009simulators, wei1997simulation, arguello2019simulation, aspuruguzik2012photonic, blatt2012trappedions, bloch2012ultracold, houck2012superconducting}.
+Analog \ac{qs} is another type of approach to \ac{qs}, where one quantum system (the simulator) mimics or emulate another (the target) \cite{buluta2009simulators, wei1997simulation, arguello2019simulation, aspuruguzik2012photonic, blatt2012trappedions, bloch2012ultracold, houck2012superconducting, lewenstein2012ultracold}.
 This approach is not based on building a universal machine, like a quantum computer, that can emulate any other system.
 Instead, it focuses on recreating the features, or a subset of relevant features, of a chosen class of models in order to compute some physically relevant quantities.
+
 Analog \ac{qs} follows the idea of \emph{analog computation}, where an experimental device is conceived for executing a specific algorithm, meaning that it is a specialized machine with some degree of controllability.
 Analog computation is not a new idea, rather it is the oldest type of computing devised by mankind, and analog machines are the earliest types of computers to ever be used \cite{kendon2010quantum}.
-Some historical examples can be the astrolabe for plotting the heavens, or the mechanical differential analyser for integrating differential equations \cite{thomson1876integration}.
+Some historical examples can be the astrolabe for plotting the heavens (around 200 BC), the Antikythera mechanism for predicting astronomical routes (around 150 BC), or the mechanical differential analyser for integrating differential equations (around 1876) \cite{thomson1876integration}.
 
-
-The Hamiltonian of the system to be simulated, $H^{\text{sys}}$, is directly mapped onto the Hamiltonian of the quantum simulator, $H^{\text{sim}}$:
+In an analog simulation, the Hamiltonian of the target $H^{\text{targ}}$, is directly mapped onto the Hamiltonian of the simulator, $H^{\text{sim}}$:
 \begin{equation*}
-    H^{\text{sys}} \longleftrightarrow H^{\text{sim}}.
+    H^{\text{targ}} \longleftrightarrow H^{\text{sim}}.
 \end{equation*}
 Obviously, this is possible only if there is a mapping between the system and the simulator.
-Note that the simulator may only partly reproduce the dynamics of the system, or simulate some effective description of the system.
-
-An important advantage of analog \ac{qs} is that it does not require a full quantum computer.
-Even more, the simulator does not even need to be a computer at all.
+If $\ket{\phi(0)}$ is the initial state of the target, then it can be mapped to the initial state $\ket{\psi(0)}$ of the simulator, via an operator $\mathcal{O}$, i.e.~$\ket{\psi(0)} = \mathcal{O} \ket{\phi(0)}$.
+Next, the simulator would perform the desired time evolution $U(t) \ket{\psi(0)} = \ket{\psi(t)}$.
+The result then can be mapped back to a state of the target system via $\mathcal{O}^{-1}$, i.e.~$\mathcal{O}^{-1}\ket{\psi(t)} = \ket{\phi(t)}$.
+In this case the Hamiltonians would be related by the mapping $\mathcal{O}$, $H^{\text{sim}} = \mathcal{O} H^{\text{targ}} \mathcal{O}^{-1}$.
+Note that the simulator may only partly reproduce the dynamics of the target, or simulate some effective description of the system.
+The choice of the mapping depends on what needs to be simulated and on the capabilities of the simulator \cite{georgescu2014simulation}.
 Finding the mapping in an analog \ac{qs} might look, at first, simpler than finding the most efficient gate decomposition of a Hamiltonian, but it is not always true and there are no recipes ready for constructing these mappings in a general case.
-The obvious drawback of AQS is that the quantum simulators are problem specific, but on the other hand, given that they do not require a full quantum computer, they are more feasible in the near-term.
+% The obvious drawback of AQS is that the quantum simulators are problem specific, but on the other hand, given that they do not require a full quantum computer, they are more feasible in the near-term.
 
+Initial state preparation is not such a topic in analog \ac{qs}, as it is in digital \ac{qs}.
+This is based on the assumption that the target system and the simulator are presumed to be very similar.
+It is expected that the preparation of the initial state can occur naturally in processes mimicking the natural relaxation of the simulated system to an equilibrium state.
+Moreover, analog \ac{qs} has the natural advantage that physical quantities can be measured directly, without the need of special schemes like in digital \ac{qs}, which can yield direct information about the target system \cite{hauke2012simulators}.
 
-\todo{da finire}
+One important advantage of analog \ac{qs} is that fact that it does not require a fully fledged quantum computer.
+In fact, the simulator does not even need to be a quantum computer at all.
+This possibly makes analog \ac{qs} much more achievable from the experimental point of view.
+Many different platforms are already available:
+\begin{itemize}[label=$-$]
+    \item ultracold atoms and molecules \cite{lewenstein2012ultracold, bloch2012ultracold, bloch2008ultracold, lin2009ultracold, muller2012ions, aidelsburger2011ultracold};
+    \item trapped ions \cite{blatt2012trappedions, muller2012ions, johanning2009ions, schneider2012ions};
+    \item photons \cite{aspuruguzik2012photonic, angelakis2017quantum};
+    \item polaritons \cite{angelakis2017quantum, hartmann2006polaritons};
+    \item nuclear magnetic resonance (NMR) systems \cite{somaroo1999simulation, tseng1999nmr};
+    \item artificial lattices \cite{singha2011lattice};
+    \item superconducting qubits \cite{houck2012superconducting, makhlin2001superconducting, devoret2004superconducting, you2005superconducting, pritchett2010superconducting}.
+\end{itemize}
 
+Analog \ac{qs} can be useful even in the presence of errors, up to a certain tolerance level, because it would still be able to give qualitative answers.
+Suppose one is interested in knowing if whether a certain set of physical conditions leads to a given quantum phase transition.
+Even without the full quantitative description or the perfect tuning of the control parameters, an analog simulator would, potentially, still be able to show the presence or not of a phase transition.
+Furthermore, due to the analog nature of these simulators, standard error correction and fault tolerance are not allowed \cite{hauke2012simulators}, while the level of controllability depends on the type of platform used.
+For example, in the case of ultracold atoms in optical lattices the typical control parameters involve lattice parameters (laser wavelength, geometry, dimensionality, etc\dots), temperature and other thermodynamical control parameters, as well as atomic interaction strength \cite{lewenstein2012ultracold}.
 
 
 %
@@ -230,16 +254,31 @@ The obvious drawback of AQS is that the quantum simulators are problem specific,
 \subsection{Quantum-inspired algorithms}
 \label{sub:quantum_inspired_algorithms}
 
-Thanks to the developing science of quantum information, new \emph{classical algorithms} have been invented for the simulation of quantum many-body systems.
-One of the most important examples of these quantum-inspired algorithms are \emph{tensor networks} methods\todo{inserire citazioni di review}\citneeded.
+Classical simulations of quantum systems are usually done using one of the following methods:
+\begin{itemize}[itemsep=0pt]
+    \item Quantum Monte Carlo.
+    \item Systematic perturbation theory.
+    \item \Ac{ed}.
+    \item \Ac{dmrg}.
+\end{itemize}
+Each of these methods has its problems.
+Quantum Monte Carlo methods can work with large systems but fails for fermionic systems due to the sign problem \cite{sandvik2010computational, troyer2010computational}.
+Perturbation theory is applicable only when there is a small coupling constant, so it fails for strongly interacting systems.
+\Ac{ed} works only for rather small systems \cite{sandvik2010computational, troyer2010computational}.
+\Ac{dmrg} is a variation methods that has been proven to work also for strongly interacting systems \cite{schollwock2011dmrg, mcculloch2007dmrg, dechiara2008dmrg}.
+It has been proven to be of great success for one-dimensional systems, while for two-dimensional models it can be quite limited \cite{stoudenmire2012dmrg}.
 
-Tensor networks make it possible to ``compress'' the information about a many-body wave function by expressing it as a contraction of a network of tensors (as suggested by the name).
+Thanks to the development of quantum information, new \emph{classical algorithms} have been invented for the simulation of many-body systems that much more exploit the quantum nature of these systems.
+One of the most groundbreaking example of quantum-inspired algorithms is the use of \emph{\ac{tn} states} \cite{orus2014tensor, verstraete2004algo, verstraete2008tensor, verstraete2004dmrg, vidal2008simulation, cirac2009tensor}.
+% One of the most important examples of these quantum-inspired algorithms is \emph{tensor networks} methods\todo{inserire citazioni di review}\citneeded.
+\Acp{tn} make it possible to ``compress'' the information about a many-body wave function by expressing it as a \emph{contraction} of a network of tensors (as suggested by the name).
+
 In details, to each physical site we associate a tensor with a number of indices (or legs).
 One of these indices is called the \emph{physical index} of the tensors, which runs over the basis of the local Hilbert space.
 The other indices are \emph{auxiliary indices}, their dimension is governed by a parameter $\chi$ called the \emph{bond dimension} and are ``connected'' to other sites.
 Roughly speaking, these auxiliary indices encodes the entanglement information between the connected sites.
 
-For a large class of physically relevant models, the ground state is gapped and has, in a certain sense, a finite amount of entanglement.
+For a large class of physically relevant models, the ground state is gapped and has, in a certain sense, a finite amount of entanglement, which can be explained by the finite correlation length.
 This fact is expressed by the so-called \emph{area law}, where the entanglement between two partitions of the system grows with size of the boundary, the area between the two partitions, and not with the size of the partition itself.
 The main advantage of tensor networks is their ability to capture this area law.
 
