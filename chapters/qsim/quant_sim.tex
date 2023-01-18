@@ -23,18 +23,6 @@ This has proven by LLoyd in \cite{lloyd1996simulator}.
 The caveat is that the target system and its evolution would need some \emph{digitalization} scheme beforehand, because a quantum computer uses discrete \ac{dof}, the \emph{qubits}, so they are not suited for continuous-variable computation.
 This is analogous to the case of classical computers, where real numbers have to be truncated and represented with a finite-size register of bits.
 On the other hand, a problem-specific simulator can potentially uses some kind of physical platform which allows for continuous \ac{dof} \cite{kendon2010quantum, wagner2010continuous}.
-% What he put forward was the idea of a new kind of device, the \emph{quantum computer}, which would act as a \emph{universal quantum simulator}.
-% This kind of devices, first envisioned from Feynman \cite{feynman1982simulation}, promises much more than simulating quantum mechanics.
-% From the works \cite{manin1980computable, feynman1982simulation}, much more than quantum simulation was born and, to this day, quantum computation and quantum information are still very active research fields \cite{feynman1985quantum, nielsen2010quantum, schleich2007elements, stolze2008quantum}.
-
-% A quantum computer can encode the large number of variables of a quantum system in its wave-function.
-% In fact, a quantum computer can indeed be used as a \emph{universal quantum simulator} and this fact has been proven by \citeauthor{lloyd1996simulator} in \cite{lloyd1996simulator}.
-% Using quantum computers as quantum simulators is basically the idea behind \emph{Digital \acl{qs}}.
-
-% There is another kind of approach to quantum simulation, where one can mimic the evolution of a given quantum system by means of another \emph{analogous} and \emph{controllable} quantum system.
-% Hence, we will only need a specific quantum machine for a specific class of problems and a full general-purpose quantum computer is not needed.
-% % In this case, for a specific set of problems the full implementation of a quantum computer may not be necessary.
-% This is the idea behind \emph{analog \acl{qs}}.
 
 In general, \emph{\acf{qs}} can be (loosely) defined as simulating a quantum system by quantum mechanical means.
 There are three paths that can be taken in this regard \cite{georgescu2014simulation}:
@@ -180,12 +168,10 @@ The typical setup for a digital simulation consists of three steps:
 \end{description}
 
 
-
-
 \begin{figure}[t]
     \centering
     \scalebox{0.75}{\input{assets/figures/quantum_fourier.tex}}
-    \caption{
+    \caption[Example of a quantum circuit]{
         Example of a quantum circuit.
         In particular this circuit executes the quantum Fourier transform \cite{nielsen2010quantum}.
         It uses some of the gates showed in Fig.~\ref{fig:quantum_gates}.
@@ -230,8 +216,8 @@ Moreover, analog \ac{qs} has the natural advantage that physical quantities can 
 One important advantage of analog \ac{qs} is that fact that it does not require a fully fledged quantum computer.
 In fact, the simulator does not even need to be a quantum computer at all.
 This possibly makes analog \ac{qs} much more achievable from the experimental point of view.
-Many different platforms are already available:
-\begin{itemize}[label=$-$]
+Many different platforms are already available (see also Fig.~\ref{fig:analog_simulators}):
+\begin{itemize}
     \item ultracold atoms and molecules \cite{lewenstein2012ultracold, bloch2012ultracold, bloch2008ultracold, lin2009ultracold, muller2012ions, aidelsburger2011ultracold};
     \item trapped ions \cite{blatt2012trappedions, muller2012ions, johanning2009ions, schneider2012ions};
     \item photons \cite{aspuruguzik2012photonic, angelakis2017quantum};
@@ -248,13 +234,34 @@ Furthermore, due to the analog nature of these simulators, standard error correc
 For example, in the case of ultracold atoms in optical lattices the typical control parameters involve lattice parameters (laser wavelength, geometry, dimensionality, etc\dots), temperature and other thermodynamical control parameters, as well as atomic interaction strength \cite{lewenstein2012ultracold}.
 
 
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{assets/figures/quantum_simulators.png}
+    \caption[Examples of analog quantum simulators]{
+        Figure taken from \cite{buluta2009simulators}.
+        Examples of analog quantum simulators:
+        \emph{(a)} atoms in optical lattices,
+        \emph{(b)} one-dimensional or
+        \emph{(c)} two-dimensional arrays of cavities;
+        \emph{(d)} ions in linear chains,
+        \emph{(e)} two-dimensional arrays of planar traps, or
+        \emph{(f)} two-dimensional Coulomb crystal;
+        \emph{(g)} electrons in quantum dot arrays created by a mesh gate,
+        \emph{(h)} in arrays of superconducting circuits, or
+        \emph{(i)} trapped on the surface of liquid helium.
+        For more details see \cite{buluta2009simulators, georgescu2014simulation}.
+    }
+    \label{fig:analog_simulators}
+\end{figure}
+
+
 %
 % SUBSECTION: Quantum-inspired algorithms
 %
 \subsection{Quantum-inspired algorithms}
 \label{sub:quantum_inspired_algorithms}
 
-Classical simulations of quantum systems are usually done using one of the following methods:
+Classical simulations of quantum systems are usually done using one of the following methods \cite{hauke2012simulators}:
 \begin{itemize}[itemsep=0pt]
     \item Quantum Monte Carlo.
     \item Systematic perturbation theory.
@@ -270,7 +277,6 @@ It has been proven to be of great success for one-dimensional systems, while for
 
 Thanks to the development of quantum information, new \emph{classical algorithms} have been invented for the simulation of many-body systems that much more exploit the quantum nature of these systems.
 One of the most groundbreaking example of quantum-inspired algorithms is the use of \emph{\ac{tn} states} \cite{orus2014tensor, verstraete2004algo, verstraete2008tensor, verstraete2004dmrg, vidal2008simulation, cirac2009tensor}.
-% One of the most important examples of these quantum-inspired algorithms is \emph{tensor networks} methods\todo{inserire citazioni di review}\citneeded.
 \Acp{tn} make it possible to ``compress'' the information about a many-body wave function by expressing it as a \emph{contraction} of a network of tensors (as suggested by the name).
 
 In details, to each physical site we associate a tensor with a number of indices (or legs).
@@ -278,8 +284,41 @@ One of these indices is called the \emph{physical index} of the tensors, which r
 The other indices are \emph{auxiliary indices}, their dimension is governed by a parameter $\chi$ called the \emph{bond dimension} and are ``connected'' to other sites.
 Roughly speaking, these auxiliary indices encodes the entanglement information between the connected sites.
 
-For a large class of physically relevant models, the ground state is gapped and has, in a certain sense, a finite amount of entanglement, which can be explained by the finite correlation length.
-This fact is expressed by the so-called \emph{area law}, where the entanglement between two partitions of the system grows with size of the boundary, the area between the two partitions, and not with the size of the partition itself.
-The main advantage of tensor networks is their ability to capture this area law.
+To make it more clear, consider a one-dimensional open chain (with $L$ sites), where each site has a $d$-dimensional local Hilbert space with basis $\{\ket{i}, i = 1,\dots,d\}$.
+A general global state $\ket{\Psi}$ of the whole chain can be written as
+\begin{equation}
+    \ket{\Psi} = \sum_{i_1, \dots, i_L} C_{i_1, \dots, i_L} \ket{i_1 \cdots i_L}.
+\end{equation}
+It is easy to see that the whole state is encoded in the $L$-th order tensor $C_{i_1, \dots, i_L}$ and the indices $i_n$ are called physical indices.
+Notice that $C_{i_1, \dots, i_L}$ has $d^L$ entries.
+Through \emph{\ac{svd}} it is possible to factorize the tensor $C_{i_1, \dots, i_L}$ into $L$ tensors $A^{i_n}$, one for each site \cite{schollwock2011dmrg}:
+\begin{equation}
+    C_{i_1, \dots, i_L}
+    = \sum_{\alpha_1, \dots, \alpha_{L-1}}
+    A^{i_1}_{\alpha_1}
+    A^{i_2}_{\alpha_1, \alpha_2}
+    \cdots
+    A^{i_{L-1}}_{\alpha_{L-2}, \alpha_{L-1}}
+    A^{i_L}_{\alpha_{L-1}}.
+    \label{eq:mps_decomposition}
+\end{equation}
+The indices $\alpha_n$ are called auxiliary indices.
 
-\todo{Aggiungere altro}
+The order of $\alpha_n$ depends on the number of Schmidt eigenvalues of the bipartition that separates the first $n$ sites from the rest.
+In other words, it depends on the entanglement entropy between the first $n$ sites of the chain and the rest.
+Not all the Schmidt eigenvalues are of the same importance, therefore each tensor $A^{i_n}$ can be optimized by discarding the Schmidt eigenvalues under a certain threshold.
+In this way we compress the wave-function, by preserving the information that best represent the entanglement in the state.
+The order of the indices $\alpha_n$ is called the \emph{bond-dimension}, often denoted $\chi$, and it is this parameter that fine tunes the amount of entanglement.
+Notice that with $\chi$ fixed, the right hand side of \eqref{eq:mps_decomposition} has only around $L d \chi^2$ entries, which scales better that $d^L$.
+If the system has a finite amount of entanglement, then there is an optimal value for the bond dimension $\chi$.
+This would mean that we do not really need all the $d^L$ entries of $C$, but the $L d \chi^2$ entries of \eqref{eq:mps_decomposition} are sufficient to faithfully represent $\ket{\Psi}$.
+
+For a large class of physically relevant models, the ground state is gapped and has, in a certain sense, a finite amount of entanglement, which can be explained by the finite correlation length.
+This fact is expressed by the so-called \emph{area law}, where the entanglement between two partitions of the system grows with size of the boundary, the area between the two partitions, and not with the size of the partition itself \cite{vidal2003arealaw, calabrese2004qft, srednicki1993area, plenio2005area}.
+The main advantage of \ac{tn} methods is their ability to capture this area law, which lead to an efficient computation of the ground states of these models.
+
+\Acp{tn} were first inspired by the ground state of the AKLT model \cite{affleck1987aklt}, and from there different types \acp{tn} were developed.
+The paradigmatic example of \acp{tn} are the \emph{\acp{mps}} in one-dimension \cite{vidal2008simulation, schollwock2011dmrg}, and the \emph{\acp{peps}} in two dimensions \cite{verstraete2004algo, jordan2008ipeps}.
+Some other variants of \acp{tn} exists, like \emph{Tree \acp{tn}} \cite{tagliacozzo2009tree, fannes1992trees} or \emph{\ac{mera}} \cite{evenbly2013mera, vidal2007entanglement, evenbly2009entanglement}.
+
+\todo{inserire un immagine}

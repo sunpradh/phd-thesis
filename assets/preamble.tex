@@ -118,12 +118,19 @@
     ]{biblatex}
 \bibliography{assets/biblio.bib}
 
+% Make the title an hyperlink with the url of the reference
 \ExecuteBibliographyOptions{doi=false}
 \ExecuteBibliographyOptions{url=false}
 \newbibmacro{string+doi}[1]{%
   \iffieldundef{doi}{#1}{\href{http://dx.doi.org/\thefield{doi}}{#1}}}
 \DeclareFieldFormat{title}{\usebibmacro{string+doi}{\mkbibemph{#1}}}
 \DeclareFieldFormat[article]{title}{\usebibmacro{string+doi}{\mkbibquote{#1}}}
+
+% First initial and then last name
+\DeclareNameAlias{default}{given-family}
+
+% Use a simply comma before last author name
+\renewcommand*{\finalnamedelim}{\addcomma\space}
 
 %----------------------------------------
 % Macros for front page
@@ -166,3 +173,7 @@
 \DeclareAcronym{ed}{short={ED}, long={Exact Diagonalization}}
 \DeclareAcronym{dmrg}{short={DMRG}, long={Density Matrix Renormalization Group}}
 \DeclareAcronym{tn}{short={TN}, long={Tensor Network}}
+\DeclareAcronym{mps}{short={MPS}, long={Matrix Product State}}
+\DeclareAcronym{peps}{short={PEPS}, long={Projected Entangled Pair State}}
+\DeclareAcronym{mera}{short={MERA}, long={Multiscale Entanglement Renormalization Ansatz}}
+\DeclareAcronym{svd}{short={SVD}, long={Singular Value Decomposition}}
