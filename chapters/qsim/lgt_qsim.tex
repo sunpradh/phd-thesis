@@ -5,27 +5,49 @@
 \label{sec:simulating_gauge_theories}
 
 
-The problem of \ac{lgt}s is arguably one of the most computationally intensive quantum many-body problem of all, due to the large numbers of \ac{dof} per site and the necessity of simulation in three spatial dimensions.
-We have already shown a formulation of \ac{lgt} in the path integral formalism.
-It can be used for simulations with Monte Carlo methods and indeed it already yielding very interesting results \todo{inserire quali}\citneeded.
-However, Monte Carlo methods suffers some problem that are related to Euclidean space-time formulation and the sign problem in the presence finite fermion density.
-% Simulation in Euclidean space time cannot approach several problems.
-For example, we already shown that the presence of fermionic matter leads to the so-called sign problem, which makes it very difficult to simulate situations with finite chemical potential.
-Another desirable feature it the real time evolution in Minkowski space time, which is absent when time is imaginary.
+The problem of \ac{lgt}s is arguably one of the most computationally intensive quantum many-body problem of all, due to the large numbers of \ac{dof} and local gauge constraints.
+Typically, \ac{lgt} computations uses the Quantum \ac{mc} method in the path integral formulation in Euclidean space-time.
+This is due to the natural presence of Boltzmann factor in the action, that is used as a weight for computing expectation values of observables.
+\ac{mc} methods already yielded very interesting results for the study of \ac{qcd}.
+These results includes calculations of fundamental properties of \ac{qcd} (such as quark masses and the running coupling), masses of QCD bound states (such as protons, neutron, pions, etc.), structure of hadrons (for example how quarks and gluons interact with one another inside the proton), flavour physics (leading to constraints on the CKM matrix elements) \cite{banuls2020lgtreview}.
 
-Recently, different approaches have been proposed for the \ac{qs} of \ac{lgt}s, from different communities, one for each possible path in \ac{qs} (showed previously).
-For quantum-inspired classical simulation, different methods have been proposed for the simulation of \ac{lgt}s using \emph{tensor networks states}, to study the ground state, time evolution, and phase structure with both numerical and analytical models.
-The second type of approach relies on \emph{analog simulation} with different kind of controllable experimental devices.
-The options ranges from ultracold atoms in optical lattices\citneeded, trapped ions\citneeded, or superconducting qubits\citneeded.
+However, \ac{mc} methods suffer some problems, mostly due to the Euclidean space-time formulation and the sign problem.
+The Euclidean space-time, due to its imaginary time, makes it impossible to compute observables that depend on real time.
+They are accessible only in Minkowski space-time, where time has a different signature.
+An example of these observables are light-cone correlations, in terms of which partonic properties are formulated and expressed \cite{cichy2019lightcone}.
+Another severe shortcoming of Lattice \ac{qcd} is posed by the sign problem, which has already been briefly discussed in Sec.~\ref{sub:the_sign_problem}.
+When chemical potential is introduced, the Boltzmann weight acquire a complex phase and can no longer be interpreted as a statistical weight.
+It should be noted that the sign problem in Lattice \ac{qcd} is not strictly of fermionic origin, as it usually happens in quantum many-body physics, but is more fundamental and is due to the signature of space-time \cite{banuls2020lgtreview}.
+
+It has been proven that the sign problem is $\mathsf{NP}$--hard\footnote{
+    $\mathsf{NP}$--hard problems are, informally, at least as hard as the hardest problem in $\mathsf{NP}$.
+    In very layman terms, $\mathsf{NP}$ is the class of problems that are \emph{verifiable in polynomial time}, and is set against the $\mathsf{P}$ class where the problems are \emph{solvable in polynomial time} \cite{arora2009computational}.
+    If it is true that $\mathsf{NP} \neq \mathsf{P}$, then $\mathsf{NP}$ problems would not admit an \emph{efficient} algorithms for finding solution, ``efficient'' would mean in polynomial time.
+    Although it is widely believed that $\mathsf{NP} \neq \mathsf{P}$, this conjecture it is still yet not proven and it is one of the Millennium Prize Problems.
+}
+for the three-dimensional Ising spin glass \cite{troyer2005fermionioc}, so, most probably, is also $\mathsf{NP}$--hard for Lattice \ac{qcd}.
+$\mathsf{NP}$--hardness should not discourage a scientist from trying to solve a problem, rather it is what makes a problem interesting.
+Indeed, $\mathsf{NP}$--hardness only prevents a \emph{generic} and \emph{efficient} solution from existing (if $\mathsf{NP} \neq \mathsf{P}$ is, in fact, true).
+However, this does not mean that there are not ways to alleviate the hardness of a problem, in particular if one uses some physical insight on the models under study.
+One way where physical insight has been used for classical simulation is represented by \acp{tn} methods, which completely avoids the sign problem (see Sec.~\ref{sub:quantum_inspired_algorithms}).
+They achieve such a result by not relying on the \ac{mc} methods and importance sampling, but with working directly in the Hilbert space of the system under investigation.
+As with every computational technique, it still has its shortcomings, which we will talk about later.
+
+On the other hand, one can try to avoid any computational complexity by means of \ac{qs}.
+Recently, different approaches have been proposed for the \ac{qs} of \ac{lgt}s, from different communities, both in the digital or analog realm \cite{banuls2020lgtreview, dalmonte2016lgtreview, banuls2020simulating}.
+
+For analog \ac{qs}, the options ranges from ultracold atoms in optical lattices\citneeded, trapped ions\citneeded, or superconducting qubits\citneeded.
 The proposals have addressed \ac{lgt}s of different levels of complexity, Abelian or non-Abelian, with or without dynamical matter, etc\dots.
-The last but not the least type of approach is digital \ac{qs}, where the task of simulating the theory is done by a quantum computer.
-We will mainly focus on this last approach.
-
-In order to be able to simulate a \ac{lgt} on a quantum computer, some kind of \emph{digitization} of the fields is necessary.
+Regarding digital \ac{qs} of \ac{lgt}, some kind of \emph{digitization} of the fields is necessary.
 By digitization, we mean the task of formulation, representing, and encoding \ac{qft} (choosing the basis) in ways useful for computational calculations.
-The lattice field theory, presented in Sec.~\ref{sec:wilson_approach_to_lft}, is the most conventional digitization scheme of non-perturbative field theory but it is only feasible for classical computers.
+The lattice field theory, presented in Sec.~\ref{sec:wilson_approach_to_lft}, is the most conventional digitization scheme of non-perturbative field theory but it is not feasible for quantum computing.
 It relies on resources far beyond near-term quantum computers.
-In conventional \ac{lgt}, fermionic fields are integrated out, leaving a non-local action.
+For example, in gauge theories with continuous groups, like \ac{qcd} or \ac{qed}, the \ac{dof} lives on a compact manifold.
+This means an infinite number of states for each point in space-time or on the lattice.
+In other terms, the bosons that represent the gauge fields have an infinite-dimensional Hilbert space.
+This is obviously not feasible on quantum computer with a finite quantum register, for the same reason that real numbers cannot be represented on a classical computers.
+Hence, some kind of truncation scheme is necessary.
+Furthermore, in the path-integral formulation of \ac{lgt}, fermionic fields are integrated out, leaving a non-local action.
 A direct application of this procedure to quantum computers would require a high connectivity between qubits.
 Furthermore, for bosons, \ac{lgt} works with bosons (i.e., the gauge fields) which have a infinite-dimensional local Hilbert space.
 This is prohibited on a real quantum computer, where we have only finite quantum registers.
