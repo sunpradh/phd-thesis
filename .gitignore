@@ -1,4 +1,5 @@
 assets/cache/
+testing/
 ltex.*txt
 *.aux
 *.auxlock
