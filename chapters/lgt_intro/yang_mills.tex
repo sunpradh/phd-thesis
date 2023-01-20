@@ -8,7 +8,6 @@ A \ac{ym} theory is a gauge field theory on Minkowski space $\R^{1,d}$ coupled t
     The gauge group $G$ is usually chosen to be a compact Lie group like $\U(1)$ or $\SU(N)$ and the matter fields are defined by a representation of $G$.
     For example, \ac{qcd} is an $SU(3)$ gauge theory with Dirac spinors in the fundamental representation.
 We choose to keep the dimension $d$ of space completely general and to use $D$ to denote the full dimension of space-time, i.e., $D=d+1$.
-% Following the example of \ac{qcd}, the Lagrangian of the theory is
 
 We start from the Lagrangian.
 Considering that \ac{ym} theory can be seen as the generalization of \ac{qed}, a $\U(1)$ gauge theory, to any compact Lie group, the Lagrangian looks exactly like the one from \ac{qed}:
@@ -21,12 +20,15 @@ Hereafter, the Einstein summation rule is implied.
 Notice that in \eqref{eq:yang_mills_lagrangian} we have only considered one fermionic species.
 In more realistic cases we would have a some over the different fermion flavors but for simplicity and ease of exposition we will ignore flavors and consider only type of fermion.
 
-% The fermion $\psi$ are taken in the fundamental representation of $G$ and the covariant derivative is $D_{\mu} = \partial_{\mu} - i A_{\mu}$.
+
+
+
 \paragraph*{Gauge fields}
 
 The symbol $D_{\mu}$ in \eqref{eq:yang_mills_lagrangian} denote the \emph{covariant derivative}:
 \begin{equation}
     D_{\mu} = \partial_{\mu} - i A_{\mu},
+    \label{eq:covariant_derivative}
 \end{equation}
 where $A_{\mu}$ are the space-time components of the gauge fields.
 Each component is Lie algebra valued function of space-time:
@@ -55,22 +57,30 @@ Only scalar terms are allowed in the Lagrangian \eqref{eq:yang_mills_lagrangian}
 \begin{equation*}
     \tr F^{\mu \nu} F_{\mu \nu} = \sum_{a} F^{\mu \nu a} F_{\mu \nu}^a.
 \end{equation*}
-% Both the gauge field $A_{\mu}$ and the tensor $F_{\mu \nu}$ live in the Lie algebra $\mathfrak{su}(N)$.
+
+
 
 \paragraph*{Fermions}
 
-Regarding the fermion field $\psi$, this is taken in the \emph{fundamental representation} of $G$.
-The matrices $\gamma^{\mu}$ form a Clifford algebra, which is defined by the relations
+Given the fact that we will not look at dynamical matter fields in this manuscript, we only give a very brief introduction to fermions.
+The fermion field $\psi(x)$ lives in the \emph{fundamental representation} of $G$.
+The Lagrangian of a free fermion field $\psi$ is
+\begin{equation}
+    \Lagrangian_{\psi} = \overline{\psi} \qty( \partial_{\mu} \gamma^{\mu} - m ).
+\end{equation}
+The matrices $\gamma^{\mu}$ form a \emph{Clifford algebra}, which is defined by the relations
 \begin{equation}
     \acomm{\gamma^{\mu}}{\gamma^{\nu}} = 2 \eta^{\mu \nu},
 \end{equation}
-where $\eta^{\mu \nu}$ the space-time metric.
+where $\eta^{\mu \nu}$ is the space-time metric.
 For the latter we choose the convention $\eta^{\mu \nu} = \mathrm{diag}(+1, -1, -1, -1)$.
-The conjugate $\overline{\psi}$ is defined as
+The conjugate field $\overline{\psi}$ is defined as
 \begin{equation*}
     \overline{\psi} = \psi^{\dagger}\gamma^0.
 \end{equation*}
-\todo{dire qualcosina in più}
+The interaction with the gauge field can be obtained with a simple minimal coupling, where the derivative $\partial_{\mu}$ is substituted with the covariant derivative $D_{\mu}$ in \eqref{eq:covariant_derivative}.
+
+
 
 
 \paragraph*{Gauge transformations}
@@ -215,7 +225,7 @@ where the indices are all Euclidean and $D_{\mu} = \partial_{\mu} + i A_{\mu}$.
 \subsection{Hamiltonian formulation}
 \label{sub:hamiltonian_formulation}
 
-Even tough Wilson formulation \cite{wilson1974confinement} was in the path-integral and Lagrangian language, we will also review the Hamiltonian formulation of non-Abelian \ac{qft} because its connection to Quantum Simulation.
+Even tough Wilson's formulation \cite{wilson1974confinement} is in the path-integral and Lagrangian language, we will also review the Hamiltonian formulation of non-Abelian \ac{qft} because its connection to Quantum Simulation.
 Expressing a \ac{ym} theory in the Hamiltonian language can be tricky, especially in the presence of gauge symmetries.
 Usually, one has to procede by computing the conjugate momenta and perform a Legendre transform in order to obtain the Hamiltonian.
 In the presence of gauge symmetries, the time-component $A_0$ of the gauge fields does \emph{not} have a conjugate momentum.

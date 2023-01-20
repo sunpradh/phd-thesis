@@ -5,36 +5,34 @@
 \label{sec:quantum_simulation}
 
 Simulating quantum mechanics is a very challenging task \cite{manin1980computable, feynman1982simulation}, especially if one is interested in many-body systems.
-The description of a state requires a large number of variables, for keeping track of all the quantum amplitudes, and it grows exponentially with the system size.
+The description of a state requires a large number of variables, for keeping track of all the quantum amplitudes, which grows exponentially with the system size.
 Hence, one would have an \emph{exponential explosion} in terms of \emph{classical} resources (like for example computer memory), which clearly is not suitable.
 
-If simulating a quantum system is not a task for classical machines, then it should be a task for quantum machines \cite{feynman1982simulation, georgescu2014simulation, hauke2012simulators, kendon2010quantum, buluta2009simulators}.
+If simulating a quantum system is not a task for classical machines, then it should be a task for \emph{quantum machines} \cite{feynman1982simulation, georgescu2014simulation, hauke2012simulators, kendon2010quantum, buluta2009simulators}.
 The possibility of using quantum devices for simulating physics was first envisioned by Feynman in his seminal talk \cite{feynman1982simulation}.
-The main idea is to encode the \ac{dof} of an ideal mathematical model of a physically relevant system into a controllable and reliable quantum system.
-In other words, a \emph{quantum simulator} is an experimental system that mimics a simple model, or a family of simple models \cite{hauke2012simulators}.
-Using quantum physics for simulating quantum physics itself may seem like fighting fire with fire, but it is actually a powerful idea.
+The main idea is to encode the \ac{dof} of an ideal mathematical model of a physical system into a controllable and reliable quantum system.
+In other words, a \emph{quantum simulator} is an experimental device that mimics a simple model, or a family of simple models \cite{hauke2012simulators}.
+Using quantum physics for simulating quantum physics itself may seem like fighting fire with fire, but it can actually be a powerful strategy.
 We will no longer need an exponentially large number of variables for describing the target system, because the \ac{dof} of the target system and the simulator would be in a one-to-one correspondence.
 Therefore, the size of a quantum computer would only be proportional to the size of the quantum system it intends to simulate, \emph{without} an exponential explosion in \emph{quantum} resources.
 
-In this perspective, it would seem that one would need a specific quantum simulator for simulating a specific class of models.
+In this perspective, one would need a specific quantum simulator for simulating a specific class of models.
 This is not necessarily true with a \emph{quantum computer} \cite{feynman1985quantum, nielsen2010quantum, schleich2007elements, stolze2008quantum}.
-The idea for such a device was put forward in \cite{feynman1982simulation, feynman1985quantum} and it would act as a \emph{universal quantum simulator}.
-This has proven by LLoyd in \cite{lloyd1996simulator}.
-The caveat is that the target system and its evolution would need some \emph{digitalization} scheme beforehand, because a quantum computer uses discrete \ac{dof}, the \emph{qubits}, so they are not suited for continuous-variable computation.
-This is analogous to the case of classical computers, where real numbers have to be truncated and represented with a finite-size register of bits.
+The idea for such a device was put forward in \cite{manin1980computable, feynman1982simulation, feynman1985quantum} and it would act as a \emph{universal quantum simulator}, a statement proved by LLoyd in \cite{lloyd1996simulator}.
+One caveat of the universal simulator is the need of \emph{digitalization} of the target system \ac{dof} and its evolution, because a quantum computer is essentially discrete, it is made up of \emph{qubits}, so they are not suited for continuous-variable computation.
+This is in some sense analogous to classical computers, where real numbers have to be truncated and represented with a finite-size register of bits.
 On the other hand, a problem-specific simulator can potentially uses some kind of physical platform which allows for continuous \ac{dof} \cite{kendon2010quantum, wagner2010continuous}.
 
-In general, \emph{\acf{qs}} can be (loosely) defined as simulating a quantum system by quantum mechanical means.
+In general, \emph{\acf{qs}} can be (loosely) defined as simulating a quantum system by quantum mechanical means, and by \emph{quantum simulator} we mean a \emph{controllable} quantum system used for simulating or emulating another quantum system.
 There are three paths that can be taken in this regard \cite{georgescu2014simulation}:
 \begin{itemize}
     \item Digital \acl{qs}
     \item Analog \acl{qs}
     \item Quantum Information inspired algorithms for classical simulation
 \end{itemize}
-We will discuss briefly each one of them.
-By \emph{quantum simulator} we mean a \emph{controllable} quantum system used to simulate or emulate other quantum systems.
-We see that only digital and analog \ac{qs}s employ a quantum simulator.
-The last option employs techniques, inspired by quantum information theory, that make it possible to truncate and approximates quantum states in order to have efficient classical simulations.
+We will review each path in the following sections.
+Out of the three options, only the digital and analog \acp{qs} are actually based a some kind of quantum simulator.
+The last option uses methods inspired by quantum information for efficiently and faithfully approximates quantum states, which in turns makes classical simulations feasible for a large class of models.
 
 
 \begin{figure}[t]
@@ -51,7 +49,7 @@ The last option employs techniques, inspired by quantum information theory, that
 \label{sub:digital_quantum_simulations}
 
 The digital approach to \ac{qs} employs the \emph{circuit model} of quantum computation \cite{nielsen2010quantum, deutsch1989quantum}.
-This model is analogous to the circuit model of classical computation, where one works with \emph{bits}, the smallest possible amount of information, an on--\emph{or}--off state, and a minimal set of \emph{logical operators} (like \texttt{NOT}, \texttt{AND}, \texttt{OR}, etc\dots).
+This model is analogous to the circuit model of classical computation, where one works with \emph{bits}, the smallest possible amount of information, an on--\emph{or}--off state, and a minimal set of \emph{logical operators} (like \texttt{NOT}, \texttt{AND}, \texttt{OR}, etc.).
 In quantum computation, the set up is the same but with some key differences:
 bits are substituted with \emph{qubits} and the logical operators with \emph{unitary operators}.
 

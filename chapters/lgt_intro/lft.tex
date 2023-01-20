@@ -90,7 +90,7 @@ Then, our lattice action will be defined as the sum over the plaquettes of $\tr 
     \Action_{\text{W}} = - \frac{1}{g^2} \sum_{\square} \qty( \tr \WilsonPlaq + \tr \WilsonPlaq^{\dagger} ).
     \label{eq:wilson_action}
 \end{equation}
-This is known as the \emph{Wilson action} \citneeded.
+This is known as the \emph{Wilson action} \cite{wilson1974confinement, creutz1985book}.
 The quantity $\tr \WilsonPlaq$ behaves as expected in the continuum limit, where we have to work with the strength field $F^{\mu \nu}$:
 \begin{equation}
     \tr \WilsonPlaq \approx N - \frac{a^{4}}{2} \tr F_{\mu \nu} F^{\mu \nu} + \mathcal{O}(a^6),
@@ -214,14 +214,22 @@ But it is \emph{non-local} in nature, as it involves the asymptotic behaviour of
 \subsection{Fermions on a lattice}
 \label{sub:fermions_on_a_lattice}
 
-Defining fermions is not an easy task due to the known \emph{doubling problem}.
-In simple terms, when introducing fermions on a lattice, instead of a continuous space, it leads to a extra spurious fermions, which are just lattice artifacts.
+The fermionic degrees of freedom lives on the sites of the lattice.
+So, for each site $x$ of the lattice $\Lattice$, we have a spinor variable $\psi_x$.
+Then, in order to build the lattice action, the derivative $\partial_{\mu} \psi(x)$ has to be substituted with a symmetric finite difference
+\begin{equation*}
+    \partial_{\mu} \psi(x)
+    \quad \longrightarrow \quad
+    \frac{1}{2 a} \qty( \psi_{x - \hat{\mu}} - \psi_{x + \hat{\mu}}).
+\end{equation*}
+One can suppose that this substitution, accompanied with the usual substitution of integrals with sums over the lattice will yield the correct lattice action for fermions.
+Unfortunately, this is not the whole story.
+Defining lattice fermions is not this straightforward due to the known \emph{doubling problem} \cite{nielsen1981fermions, susskind1977fermions}.
+In simple terms, when introducing fermions on a lattice, instead of a continuous space, it leads to an extra number of spurious fermions, which are just lattice artifacts.
 
-\todo{parlare della discretizzazione del fermione prima}
-
-In order to briefly see this, consider the correlation function for a single fermionic species.
+In order to get an insight into the fermion doubling issue, consider the correlation function for a single fermionic species.
 If $K$ is the kinetic matrix for the fermions, then $G = K^{-1}$ gives their correlation matrix.
-One finds \citneeded that the correlation function between two sites $x$ and $y$ has the form
+One finds that the correlation function between two sites $x$ and $y$ has the form \cite{creutz1985book}
 \begin{equation}
     (G)_{x,y} = \frac{1}{a^d L^d} \sum_{k} \tilde{G}_{k} e^{2 \pi i k \cdot (x - y) / L},
     \label{eq:fermionic_corr_func_real_space}
@@ -270,9 +278,7 @@ For each direction in space, we have two independent regions that gives a free f
 We have effectively \emph{doubled} the number of fermions for each direction.
 In a $d$-dimensional lattice we end up with $2^d$ independent fermions, even though we initially started with just one.
 
-\todo{parlare del ruolo della chiralità}
-
-There are many solutions to this fermion doubling problem\citneeded, but we will focus only on one in this manuscript: \emph{the staggered fermions}\citneeded.
+There are many solutions to this fermion doubling problem \cite{susskind1977fermions, tong2018gauge}, but we will focus only on one in this manuscript: \emph{the staggered fermions} \cite{kogut1975hamiltonian}.
 We have seen that these fictitious fermions come from the large momenta regions, where $q_{\mu} \sim \pi/a$.
 Brutally cutting out this large momenta regions spoils the completeness of the Fourier transform, so it is not a solution, but a smarter solution can give out the same effect.
 The idea is to spread the fermionic \ac{dof} over multiple lattice sites, reducing effectively the momenta space.
@@ -297,7 +303,7 @@ In particular, in two dimensions we have
     \quad \text{and} \quad
     \eta_2(x) = (-1)^{n_1},
 \end{equation}
-while in four (Euclidean) dimension we have instead \todo{Citare Tong, gauge theories}
+while in four (Euclidean) dimension we have instead \cite{tong2018gauge}
 \begin{equation}
     \eta_1(x) = 1, \quad
     \eta_2(x) = (-1)^{n_1}, \quad
