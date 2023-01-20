@@ -1,0 +1,14 @@
+\begin{tikzpicture}[
+    scale=0.5,
+    quark/.style = {circle, draw, thick, minimum size=0.3cm, inner sep=0pt, fill=Yellow},
+    field/.style = {->-=0.5, thick}
+    ]
+    \node[quark, label=left:{$+q$}] (q1) at (0, 0) {};
+    \node[quark, label=right:{$-q$}] (q2) at (7, 0) {};
+
+    \path (q1) edge[field] (q2);
+    \draw[field] (q1) .. controls (1, 1)   and (6, 1)  .. (q2);
+    \draw[field] (q1) .. controls (1, -1)  and (6, -1) .. (q2);
+    \draw[field] (q1) .. controls (-2, 2)  and (9, 2)  .. (q2);
+    \draw[field] (q1) .. controls (-2, -2) and (9, -2) .. (q2);
+\end{tikzpicture}

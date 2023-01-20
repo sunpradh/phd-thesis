@@ -31,6 +31,14 @@ The definition of these \ac{dof} will need some care, because we have two main r
 \end{itemize}
 Lorentz invariance is naturally broken on a lattice but we expect to recover it in the continuum limit.
 
+\begin{figure}[t]
+    \centering
+    \input{assets/figures/three_dim_lattice.tex}
+    \caption[three-dimensional lattice]{
+        \emph{Left}. Unit vectors $\hat{\mu}$ in three-dimensional lattice.
+        \emph{Right}. Example of a three-dimensional lattice.
+    }
+\end{figure}
 
 %
 % SUBSECTION: Gauge fields on a lattice
@@ -148,6 +156,19 @@ We have just showed that the problem when considering something like $\ev*{U_{\m
 So, the most reasonable step forward is to consider \emph{gauge-invariant quantities} as order parameters.
 We have already seen that tracing over a product of $U_{\mu}$ variables along a closed curve is a gauge-invariant quantity, called \emph{\ac{wl}}.
 
+\begin{figure}[t]
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \parbox[t][6cm][c]{\textwidth}{\centering\input{assets/figures/space_time_wilson.tex}}
+        \caption{Space-like and time-like Wilson loop.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \parbox[t][6cm][c]{\textwidth}{\centering\input{assets/figures/quark_antiquark.tex}}
+        \caption[Quark-antiquark pair]{A time-like Wilson loop can be seen as a process where a quark-antiquark pair is created and then annihilated.}
+    \end{minipage}
+\end{figure}
+
 In so far, we have considered only single plaquette loops but nothing restraints us from considering arbitrary large loops, indeed it serves as a \emph{confinement test} for pure gauge theories.
 % One of the most important quantity that can be computed for a pure \ac{lgt} is the \ac{wl} for generic closed paths $\mathcal{C}$.
 % It serves as \emph{confinement} test.
@@ -164,6 +185,7 @@ On the other hand, in the absence of confinement one finds instead the \emph{per
 \end{equation}
 where $P(\mathcal{C})$ is the perimeter of the curve $\mathcal{C}$ and $k$ just some constant.
 
+
 The reason behind this behaviour can be seen with a simple qualitative picture \cite{creutz1985book, wilson1974confinement}.
 A closed timelike \ac{wl} basically represents a process in which a quark-antiquark pair is produced, moved along the sides of the loop and annihilated.
 If we are in a confining phase we can then expect a liner potential between the quark and antiquark.
@@ -174,11 +196,18 @@ In this case the energy of the whole process depends only on the self-energy of 
 Therefore, the leading energy contribution of this process depends on the perimeter, instead of the area.
 Obviously, this picture is no longer valid when dynamical matter is involved.
 In a confining phase, pair production is always preferred when separating two quarks at large distances.
-\todo{inserire immagine}
 
 From \eqref{eq:wilson_area_law} and \eqref{eq:wilson_perimeter_law}, we can deduce that the string tension $\sigma$ can be used as an order parameter.
 It is non-zero for a confining phase, while it vanishes for a deconfined phase.
 But it is \emph{non-local} in nature, as it involves the asymptotic behaviour of potential, and therefore of the correlation functions of the theory.
+
+\begin{figure}[t]
+    \SideFigure[label=fig:quark_binding, desc={Quark binding mechanism}]{
+        \input{assets/figures/quark_binding.tex}
+    }{
+        Example of a flux tube binding two charges, which gives rise to the quark binding mechanics
+    }
+\end{figure}
 
 
 

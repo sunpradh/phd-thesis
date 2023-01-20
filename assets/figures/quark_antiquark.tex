@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+    point/.style = {circle, minimum size=1.5mm, inner sep=0pt, fill=Orange, draw=Orange},
+    ]
+    \node (start) at (3, 0) {};
+    \node (end) at (0, 3) {};
+
+    \draw[very thick, Orange, ->-=0.25, ->-=0.75] (start.center)
+        .. controls (0, 0) and (1, 1) .. (end.center)
+        node [pos=0.5, below left, black] {$+q$}
+        .. controls (2, 3.5)  and (3.5, 1) .. (start.center)
+        node [pos=0.5, right, black] {$-q$}
+    ;
+    \fill[black, fill opacity=0.05] (start.center)
+        .. controls (0, 0) and (1, 1) .. (end.center)
+        .. controls (2, 3.5)  and (3.5, 1) .. (start.center);
+
+    \node[point] at (start) {};
+    \node[point] at (end) {};
+    \draw[axis] (4, 1) -- (4, 2) node [above] {$t$};
+\end{tikzpicture}

@@ -1,0 +1,55 @@
+\begin{tikzpicture}[
+    lattice/.style={Grey70},
+    site/.style={circle, inner sep=0pt, minimum size=4pt, draw=black, fill=white}
+    ]
+    \begin{scope}[scale=1.25]
+        \draw[lattice] (-1.5, 0, 0) -- (0, 0, 0);
+        \draw[lattice] (0, -1.5, 0) -- (0, 0, 0);
+        \draw[lattice] (0, 0, -1.5) -- (0, 0, 0);
+        \draw[lattice] (1.5, 0, 0) -- (0, 0, 0);
+        \draw[lattice] (0, 1.5, 0) -- (0, 0, 0);
+
+        \draw[axis] (0, 0, 0) -- (1,  0, 0) node [above] {$\hat{1}$};
+        \draw[axis] (0, 0, 0) -- (-1, 0, 0) node [above] {$- \hat{1}$};
+        \draw[axis] (0, 0, 0) -- (0,  1, 0) node [left] {$\hat{2}$};
+        \draw[axis] (0, 0, 0) -- (0, -1, 0) node [right] {$-\hat{2}$};
+        \draw[axis] (0, 0, 0) -- (0,  0, -1) node [above] {$\hat{3}$};
+
+        \node[site] at (0, 0) {};
+        \node[below right] at (0, 0) {$x$};
+
+        \draw[lattice] (0, 0, 2) -- (0, 0, 0);
+        \draw[axis] (0, 0, 0) -- (0,  0, 1) node [below] {$-\hat{3}$};
+    \end{scope}
+
+    \begin{scope}[xshift=5cm, yshift=-1cm, scale=1.25]
+        \foreach \z in {0, ..., 2} {
+            \foreach \y in {0, ..., 2} {
+                \foreach \x in {0, ..., 2}
+                \node[site] (site \x \y \z) at (\x, \y, \z) {};
+
+                \foreach \xone in {0, 1} {
+                    \pgfmathtruncatemacro{\xtwo}{\xone + 1}
+                    \path (site \xone \y \z) edge[lattice] (site \xtwo \y \z);
+                }
+            }
+
+            \foreach \yone in {0, 1} {
+                \pgfmathtruncatemacro{\ytwo}{\yone + 1}
+                \foreach \x in {0, ..., 2}
+                    \path (site \x \yone \z) edge[lattice] (site \x \ytwo \z);
+
+            }
+        }
+
+        \foreach \zone in {1, 2} {
+            \pgfmathtruncatemacro{\ztwo}{\zone - 1}
+            \foreach \y in {0, ..., 2}
+                \foreach \x in {0, ..., 2}
+                    \path (site \x \y \zone) edge[lattice] (site \x \y \ztwo.center);
+        }
+
+        \draw[decorate, decoration=brace] (1, -0.2, 2) -- (0, -0.2, 2) node [midway, below=3pt] {$a$};
+    \end{scope}
+\end{tikzpicture}
+
