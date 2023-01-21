@@ -8,7 +8,7 @@ Simulating quantum mechanics is a very challenging task \cite{manin1980computabl
 The description of a state requires a large number of variables, for keeping track of all the quantum amplitudes, which grows exponentially with the system size.
 Hence, one would have an \emph{exponential explosion} in terms of \emph{classical} resources (like for example computer memory), which clearly is not suitable.
 
-If simulating a quantum system is not a task for classical machines, then it should be a task for \emph{quantum machines} \cite{feynman1982simulation, georgescu2014simulation, hauke2012simulators, kendon2010quantum, buluta2009simulators}.
+If simulating a quantum system is not a task for classical machines, then it should be a task for \emph{quantum machines} \cite{feynman1982simulation, georgescu2014simulation, hauke2012simulators, kendon2010quantum, buluta2009simulators, cirac2012goals}.
 The possibility of using quantum devices for simulating physics was first envisioned by Feynman in his seminal talk \cite{feynman1982simulation}.
 The main idea is to encode the \ac{dof} of an ideal mathematical model of a physical system into a controllable and reliable quantum system.
 In other words, a \emph{quantum simulator} is an experimental device that mimics a simple model, or a family of simple models \cite{hauke2012simulators}.
@@ -236,7 +236,7 @@ For example, in the case of ultracold atoms in optical lattices the typical cont
     \centering
     \includegraphics[width=\textwidth]{assets/figures/quantum_simulators.png}
     \caption[Examples of analog quantum simulators]{
-        Figure taken from \cite{buluta2009simulators}.
+        Picture from \cite{buluta2009simulators}.
         Examples of analog quantum simulators:
         \emph{(a)} atoms in optical lattices,
         \emph{(b)} one-dimensional or
@@ -312,7 +312,7 @@ If the system has a finite amount of entanglement, then there is an optimal valu
 This would mean that we do not really need all the $d^L$ entries of $C$, but the $L d \chi^2$ entries of \eqref{eq:mps_decomposition} are sufficient to faithfully represent $\ket{\Psi}$.
 
 For a large class of physically relevant models, the ground state is gapped and has, in a certain sense, a finite amount of entanglement, which can be explained by the finite correlation length.
-This fact is expressed by the so-called \emph{area law}, where the entanglement between two partitions of the system grows with size of the boundary, the area between the two partitions, and not with the size of the partition itself \cite{vidal2003arealaw, calabrese2004qft, srednicki1993area, plenio2005area}.
+This fact is expressed by the so-called \emph{area law}, where the entanglement between two partitions of the system grows with size of the boundary, the area between the two partitions, and not with the size of the partition itself \cite{vidal2003arealaw, calabrese2004qft, calabrese2009cft, srednicki1993area, plenio2005area}.
 The main advantage of \ac{tn} methods is their ability to capture this area law, which lead to an efficient computation of the ground states of these models.
 
 \Acp{tn} were first inspired by the ground state of the AKLT model \cite{affleck1987aklt}, and from there different types \acp{tn} were developed.
@@ -325,3 +325,12 @@ Some other variants of \acp{tn} exists, like \emph{Tree \acp{tn}} \cite{tagliaco
     \caption{Examples of \acp{tn}}
 \end{figure}
 
+\Ac{tn} methods can still have some shortcomings.
+They work especially well for one-dimension gapped systems, but then can become challenging to make them work efficiently for gapless systems or higher dimensions.
+When a system is in a gapless phase, the correlation length diverges, which leads to changes in the structure of entanglement.
+This is best captured by the behaviour of entanglement entropy in massive or massless one-dimensional systems \cite{calabrese2004qft, calabrese2009cft}.
+In a massive and gapped theory, the entanglement entropy is directly proportional to number of boundary points, irregardless of the subsystem size (as long as it is larger then the correlation length).
+On the other hand, in a massless and critical phase the entanglement entropy has a direct dependence on the size of the subsystem.
+Therefore, it is easy to see that in a critical phases the bond-dimension would, potentially, need to increase with the system size in order to effectively capture the ground-state wave-function.
+Another shortcoming is the computational complexities of tensor contractions in dimensions higher than one.
+This is because the order of each tensor increases with the dimensionality of the system, which lead to higher computational costs when performing calculations \cite{orus2014tensor}.

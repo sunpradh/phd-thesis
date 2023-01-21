@@ -5,17 +5,17 @@
 \label{sec:simulating_gauge_theories}
 
 
-The problem of \ac{lgt}s is arguably one of the most computationally intensive quantum many-body problem, due to the large numbers of \ac{dof} and especially the local gauge constraints.
+The problem of \ac{lgt}s is arguably one of the most computationally intensive quantum many-body problem, due to the large numbers of \ac{dof} and, especially, the local gauge constraints.
 Typically, \ac{lgt} computations uses the Quantum \ac{mc} method in the Euclidean path integral formulation, due to the natural presence of Boltzmann factor in the action, that act as a statistical weight.
-\Ac{mc} methods applied Lattice \ac{qcd} already yielded a number of very interesting results, which includes \cite{lin2018qcd}:
-calculations of fundamental properties of \ac{qcd} (such as quark masses and the running coupling); masses of QCD bound states (such as protons, neutron, pions, etc.); structure of hadrons (for example how quarks and gluons interact with one another inside the proton); flavour physics (leading to constraints on the CKM matrix elements) \cite{banuls2020lgtreview}.
+\Ac{mc} methods applied Lattice \ac{qcd} already yielded a number of very interesting results, which includes \cite{lin2018qcd, banuls2020lgtreview}:
+calculations of fundamental properties of \ac{qcd} (such as quark masses and the running coupling); masses of QCD bound states (such as protons, neutron, pions, etc.); structure of hadrons (for example how quarks and gluons interact with one another inside the proton); flavour physics (leading to constraints on the CKM matrix elements).
 
 However, \ac{mc} methods suffer from some issues, mostly due to the Euclidean space-time formulation and the sign problem.
 The Euclidean space-time, due to its imaginary time, makes it impossible to compute observables that depend on real time.
 They are accessible only in Minkowski space-time, where time has a different signature.
 An example of these observables are light-cone correlations, in terms of which partonic properties are formulated and expressed \cite{cichy2019lightcone}.
-Another severe shortcoming of Lattice \ac{qcd} is posed by the sign problem, which has already been briefly discussed in Sec.~\ref{sub:the_sign_problem}.
-When chemical potential is introduced, the Boltzmann weight acquire a complex phase and can no longer be interpreted as a statistical weight.
+As already mentioned, another severe shortcoming of Lattice \ac{qcd} is posed by the sign problem, which has already been briefly discussed in Sec.~\ref{sub:the_sign_problem}.
+In summary, when chemical potential is introduced, the Boltzmann weight acquire a complex phase and can no longer be interpreted as a statistical weight.
 It should be noted that the sign problem in Lattice \ac{qcd} is not strictly of fermionic origin, as it usually happens in quantum many-body physics, but is more fundamental and is due to the signature of space-time \cite{banuls2020lgtreview}.
 
 Furthermore, it has been proven that the sign problem is $\mathsf{NP}$--hard\footnote{
@@ -30,13 +30,15 @@ Indeed, $\mathsf{NP}$--hardness only prevents a \emph{generic} and \emph{efficie
 However, this does not mean that there are not ways to alleviate the hardness of a problem, in particular if one uses some physical insight on the models under study.
 One way where physical insight has been used for classical simulation is represented by \acp{tn} methods, which completely avoids the sign problem (see Sec.~\ref{sub:quantum_inspired_algorithms}).
 They achieve such a result by not relying on the \ac{mc} methods and importance sampling, but with working directly in the Hilbert space of the system under investigation.
-As with every computational technique, it still has its shortcomings, which we will talk about later.
+As with every computational technique, it still has its shortcomings (see Sec.~\ref{sub:quantum_inspired_algorithms}).
 
 On the other hand, one can try to avoid any computational complexity by means of \ac{qs}, either digital or analog.
 Recently, different approaches have been proposed for the \ac{qs} of \ac{lgt}s, from different communities \cite{banuls2020lgtreview, dalmonte2016lgtreview, banuls2020simulating}.
 
-For analog \ac{qs}, the options ranges from ultracold atoms in optical lattices\citneeded, trapped ions\citneeded, or superconducting qubits\citneeded.
-The proposals have addressed \ac{lgt}s of different levels of complexity, Abelian or non-Abelian, with or without dynamical matter, etc\dots.
+For analog \ac{qs}, the options ranges from ultracold atoms in optical lattices \cite{wiese2013ultracold, zohar2013ultracold, zohar2015quantum, zohar2011qed, banerjee2012atomic}, trapped ions \cite{hauke2013trappedions, yang2016trappedions}, or superconducting qubits \cite{marcos2013sclgt, marcos2014sclgt2d, brennen2016lgt}.
+The proposals have addressed \acp{lgt} of different levels of complexity, Abelian or non-Abelian, with or without dynamical matter, etc.
+For a complete review, see \cite{banuls2020simulating, banuls2020lgtreview}.
+
 Regarding digital \ac{qs} of \ac{lgt}, some kind of \emph{digitization} of the fields is necessary.
 By digitization, we mean the task of formulation, representing, and encoding \ac{qft} (choosing the basis) in ways useful for computational calculations.
 The lattice field theory, presented in Sec.~\ref{sec:wilson_approach_to_lft}, is the most conventional digitization scheme of non-perturbative field theory but it is not feasible for quantum computing.
