@@ -7,40 +7,91 @@
 \label{chap:introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-Gauge theories are essential ingredients in our microscopical description of physical fundamental laws and are a cornerstone of contemporary scientific research.
+Gauge theories are an essential ingredients in our microscopical description of physical fundamental laws and are a cornerstone of contemporary scientific research.
 In high-energy physics, they underlie the Standard Model that describe the elementary particles and their interaction.
-In condensed matter physics, gauge theories emerge as effective descriptions of strongly correlated phenomena, such as superconductivity or the fraction Hall effect.
+While in \ac{cm}, gauge theories emerge as effective descriptions of strongly correlated phenomena, such as superconductivity or the fractional Hall effect.
 
-One of the most important open questions in high-energy physics is confinement in \ac{qcd}, which is an example of non-Abelian gauge theory and it is believed to be the correct theory that describe the strong interaction.
-The best evidence for confinement comes from the Wilson formulation of gauge theories on a lattice \cite{wilson1974confinement}, which, at first glance, can appear odd because the vacuum is not a crystal \cite{creutz1985book}.
-Indeed, there have not been experimental proofs so far that show any deviations from the symmetries of the Lorentz group.
+\emph{Lattice Gauge Theories} (LGTs) are one of the most promising methods for non-perturbative studies of gauge theories \cite{banuls2020simulating}.
+First developed by Wilson in 1974 for investigating quark confinement \cite{wilson1974confinement}, it is now going through a renaissance period due to the growing field of \emph{Quantum Simulation} (QS) \cite{cirac2012goals}.
+The work by Wilson opened up the possibility of simulating Quantum Field Theories, in particular QCD, in regimes that are not accessible through perturbative methods.
+Unfortunately, the numerical simulations can also be limited, due to some intrinsic issues of the methodologies used.
+One infamous example is the sign problem in the presence of a finite chemical potential.
 
-From the point of view of particle physics, the lattice represents a mathematical trick.
-It provides a cutoff, which removes the ultraviolet infinities that infest \ac{qft}.
-It is just a regulator and as such it must be removed after renormalization.
-Physical results can only be extracted in the continuum limit, where the lattice spacing goes to zero.
+Nonetheless, the simulation on classical devices of quantum systems is inherently limited, due to the exponential growth of the Hilbert space.
+For this reason, in 1982, Feynman \cite{feynman1982simulation} suggested that the best way to simulate a quantum model is through a controllable experimental quantum device, which is able to mimic or emulate the degrees of freedom and dynamical laws of another system.
+In short, Feynman was the first physicist to put forward the idea of \emph{quantum simulators}.
+These devices can either be a specialized machine, able to simulate a specific class of models or a universal machine that can simulate any model, i.e., a quantum computer.
 
-But why do we need such a regulator?
-Infinities has always been present in quantum field theories since its conception.
-Consider the case of \ac{qed}.
-It had an immense success without ever using a discrete space-time, thanks to \emph{perturbation theory}.
-The most conventional calculation schemes are based on Feynman expansions,
-where a given observable is expressed as a power series in the interaction coupling.
-The terms are computed until a divergence is met in a particular diagram.
-These divergences can then be removed with some regularization method.
+\medskip
 
-The reason why this methodology does not work in non-Abelian theories lies in the fact that some phenomena, like confinement, are inherently \emph{non-perturbative}.
-Roughly speaking, perturbation theory relies on the fact that the true interacting theory is just a slight modification of the free theory.
-In other words, it works only when the coupling constants are small.
-In the case of \ac{qcd}, the free theory with vanishing coupling constant has no resemblance to the observed phenomenon.
+What characterizes a gauge theory is the presence of local symmetries, which can be regarded as local constraints, that signal the presence of redundant degrees of freedom.
+In order to make them approachable via QS, they have to be reformulated on a lattice in a Hamiltonian framework.
+In this way, they can be fully treated as quantum many-body systems.
+However, the extensive number of local gauge constraints can complicate the implementation and simulation process.
+Some kind of scheme has to be employed in order to either eliminate redundant degrees of freedom, or make unphysical configurations inaccessible.
 
-In order to go beyond the diagrammatic approach of Feynman expansions, one needs a non-perturbative cutoff.
-This is the main strength of the lattice, it eliminates all the wavelengths smaller than the lattice spacing before any kind of expansions is done.
-Furthermore, on a lattice a field theory is \emph{mathematically well-defined}, in contrast with many standard formulations of \ac{qft}s (like the path-integral approach).
+Another point of debate regarding LGTs is the digitalization of gauge fields.
+In a typical gauge theory, like QED or QCD, the degrees of freedom live on a compact manifold (the gauge group manifold) making the number of states de facto infinite for each point in space.
+This is not compatible with a typical quantum simulator, where only a finite register of states is available, especially on a quantum computer.
+Therefore, some care has to be adopted in order to find a set of states and operators that can effectively reproduce a gauge theory in the continuum.
+There are many methods available: quantum link models, finite subgroups, representations truncations, etc.
 
-\Ac{lgt} is just a reformulation of \ac{qft} on a lattice, which exposes a close connection with \emph{\ac{sm}}.
-In fact, it can be showed that a path-integral in \ac{qft} is equivalent to a partition function in \ac{sm}.
-The square of the coupling constant in \ac{qft} corresponds directly to the temperature, and a strong coupling expansion becomes equivalent to a high temperature expansion.
-Thus, with a lattice formulation of \ac{qft}s allows a particle physicist to use the full technology of \ac{sm} and condensed matter theory.
+\bigskip
 
-\todo{finire}
+In this work we focus on finite group gauge theories.
+We argue that choosing a finite subgroup of a Lie group (like $\mathrm{U}(1)$ or $\mathrm{SU}(N)$) offers a more natural way of truncating the number of degrees of freedom.
+It preserves the unitarity of the parallel transporters, associated with the gauge fields.
+This property is lost, for example, if one chooses to truncate the irreducible representations of the Lie group instead.
+We focus on both Abelian \cite{pradhan2022ladder} and non-Abelian \cite{pradhan_unpublished} finite groups, and examined different aspects.
+
+\bigskip
+
+\noindent This manuscript is structured as follow:
+\begin{description}[labelsep=1.1em]
+    \item[Chap.~\ref{chap:introduction_to_lattice_gauge_theories}]
+        As a starting point, in the first part of the chapter we review Yang-Mills theory.
+        It is a gauge field theory based on the compact Lie groups like $\SU(N)$.
+        They can be regarded as generalizations of QED and are the basis for theories like QCD.
+        In order to create a clear context for LGTs, we also review Yang-Mills theory in Euclidean space-time and its Hamiltonian formulation.
+
+        In the second part of the chapter we move onto Wilson's lattice gauge formulation \cite{wilson1974confinement}.
+        This is going to be useful in showcasing some fundamental concepts: the discretization on the lattice, how to construct interaction terms for the gauge fields, what kind of order parameters can be used, etc.
+
+
+    \item[Chap.~\ref{chap:quantum_simulation_of_lattice_gauge_theories}]
+        In this chapter, we change subject and introduce in more detail the topic of Quantum Simulation.
+        After a general exposition and explanation of its context, we review the current landscape through the possible paths that can be taken in Quantum Simulation: digital, analog and quantum-inspired.
+        Then, we focus more on the state of the art of Quantum Simulation of LGTs.
+
+
+    \item[Chap.~\ref{chap:dualities_in_abelian_models}]
+        The contents of this chapter is based on \cite{pradhan2022ladder}.
+        %, where we focused on a class of Abelian gauge models on a ladder geometry.
+        We considered LGTs with gauge group $\mathbb{Z}_N$, in order to have a discretized $U(1)$ theory.
+        Then, we formulated these models on a ladder geometry, because it is an almost one-dimensional lattice that allows for magnetic terms, which are not possible in a pure one-dimensional chain.
+
+        With QS in mind, we wanted to find an effective description of these models that was able to resolve all the gauge constraints.
+        One of the main achievements of the work is the construction of a \emph{duality map} between these $\mathbb{Z}_N$ models and \emph{quantum clock models} (QCMs) \cite{ortiz2012dualities}.
+        Thanks to this duality, we were able to show that the super-selection sectors of the gauge model map to a different class of QCMs.
+        % This is because a longitudinal field appears in the Hamiltonian which directly depends on the super-selection.
+        This leads to the fact that each super-selection sector has its own distinguished phase diagram, in particular regarding deconfinement-confinement phase transitions.
+
+
+    \item[Chap.~\ref{chap:finite_group_gauge_theories}]
+        The contents of this chapter is based on \cite{pradhan_unpublished}, where we consider lattice gauge theories with finite gauge group, focusing more on the non-Abelian case,
+        inspired by the Hamiltonian formulation of Kogut and Susskind \cite{kogut1975hamiltonian},
+
+        In the case of a Lie group, the electric Hamiltonian is given by the Casimir element of the Lie algebra, which can be reinterpreted as the Laplacian on the group manifold.
+        In this chapter we show that in the case of a finite group, an analogous construction is possible, even though there is no equivalent of a Lie algebra for a finite group.
+        In particular, we show that the electric Hamiltonian can still be written as a natural Laplacian, but, this time, on the \emph{Cayley graph} of the finite group.
+        % Given this fact, it is possible to apply graph-theoretical notions to derive some consequence on the spectrum.
+        % Furthermore, given the freedom of choice in constructing the Cayley graph, it is possible to have an entire family of Hamiltonians associated with the same group.
+
+        Another important result of this work is the full description of the physical, gauge-invariant Hilbert space, regardless of the choice of group or Hamiltonian.
+        This was possible thanks to the use of \emph{spin network states}, which exploits the subspace of invariant states of a vertex.
+        % In summary, the physical Hilbert space can be constructed as a sum over all the possible configurations of irreducible representations.
+        % Each term of the sum corresponds to a specific product of subspaces, once the irreducible representations have been fixed.
+        Additionally, we show also how to compute the dimension of the physical Hilbert space for any lattice size.
+
+\end{description}
+

@@ -75,10 +75,10 @@ it has to be \emph{gauge-invariant} and reduce to the pure gauge \ac{ym} action 
 From \eqref{eq:gauge_transf_field_lattice}, we can immediately deduce that taking the product of $U_{\mu}(x)$ along a closed curve will yield a gauge-invariant quantity.
 The simplest close curve we can consider is a \emph{plaquette}, i.e., the smallest square face.
 
-Consider a plaquette $\plaquette$ sitting in the $(\mu, \nu)$-plane at site $x$.
+Consider a plaquette sitting in the $(\mu, \nu)$-plane at site $x$ \todo{inserire figura}.
 We define the \emph{single plaquette \acl{wl}} $\WilsonPlaq$ as
 \begin{equation}
-    \WilsonPlaq =
+    \WilsonPlaq(x) =
     U_{\mu}(x) U_{\nu}(x + a \hat{\mu}) U_{\mu}(x + a \hat{\nu})^{\dagger} U_{\nu}(x)^{\dagger}.
     \label{eq:single_plaquette_Wilson_loop}
 \end{equation}
@@ -87,7 +87,7 @@ Notice that we do not have any sum in the indices $\mu$ and $\nu$ because they a
 Only scalar quantities are allowed in the action, so we need to take the trace of $\WilsonPlaq$.
 Then, our lattice action will be defined as the sum over the plaquettes of $\tr \WilsonPlaq$ (and its Hermitian conjugate):
 \begin{equation}
-    \Action_{\text{W}} = - \frac{1}{g^2} \sum_{\square} \qty( \tr \WilsonPlaq + \tr \WilsonPlaq^{\dagger} ).
+    \Action_{\text{W}} = - \frac{1}{g^2} \sum_{x} \sum_{\mu, \nu}  \qty( \tr \WilsonPlaq(x) + \tr \WilsonPlaq^{\dagger}(x) ).
     \label{eq:wilson_action}
 \end{equation}
 This is known as the \emph{Wilson action} \cite{wilson1974confinement, creutz1985book}.
@@ -98,7 +98,7 @@ The quantity $\tr \WilsonPlaq$ behaves as expected in the continuum limit, where
 
 The lattice action is not unique.
 The Wilson action in \eqref{eq:wilson_action} is the simplest choice that one can make that satisfy our requirement.
-Some other modification, for example, can include other types of closed loops and these modification can have their place.
+Some other modifications, for example, can include other types of closed loops and these modification can have their place\citneeded.
 However, they will not be considered here.
 
 Obviously, in a path-integral formulation of \ac{lgt}s we need to define the path-integral in order to have a quantum theory:
@@ -107,7 +107,7 @@ Obviously, in a path-integral formulation of \ac{lgt}s we need to define the pat
     \label{eq:path_intelgral_Wilson_lgt}
 \end{equation}
 Here we integrate over all possible values for the gauge variables.
-Due to the fact that $U_{\mu}$ are elements of a group $G$ that for most physical applications is compact, the most natural choice is to the invariant group measure also known as \emph{Haar measure}.
+Due to the fact that $U_{\mu}$ are elements of a group $G$ that for most physical applications is compact, the most natural choice is to the invariant group measure also known as \emph{Haar measure}\citneeded.
 % where the integration measure $\dd U_{\mu}(x)$ is understood to be the Haar measure.
 % In case of a compact group, like $\SU(N)$, it is well defined and yields a finite value.
 Notice that \eqref{eq:path_intelgral_Wilson_lgt} is now a well defined mathematical quantity, unlike the path-integral in continuum theory where a clear mathematical definition is still lacking.
@@ -133,6 +133,7 @@ The analogue of such an order parameter in \ac{lgt} would be something like
     \label{eq:non_zero_link_var_expt_value}
 \end{equation}
 but it has been shown that this is impossible in Wilson theory \cite{elitzur1975theorem}.
+Let's argue why.
 
 In standard spin models, a non-zero magnetization represents a spontaneous breaking of the global symmetry of the system.
 Consider the simplest case of the classical Ising model, where the \ac{dof} are binary variables $\sigma = \pm 1$.
@@ -147,7 +148,7 @@ Hence, thermal fluctuations will induce such rotations and in the long rung it w
 \begin{equation}
     \ev*{U_{\mu}(x)} = \int \dd U_{\mu}(x) U_{\mu}(x) = 0
 \end{equation}
-if $U_{\mu}$ contains only non-trivial irreducible representations of the group (see Th.~\ref{th:orthogonality_compact_groups} and \eqref{eq:corollary_orthogonality_th}).
+if $U_{\mu}$ contains only non-trivial irreducible representations of the group (see Th.~\ref{th:orthogonality_compact_groups} in App.~\ref{app:some_results_in_representation_theory}).
 This means that ``magnetization'' is always vanishing in a \ac{lgt} and gauge invariance cannot be spontaneously broken, which is the contents of the Elitzur theorem \cite{elitzur1975theorem}.
 
 The conclusion of this brief discussion may seem rather grim, as magnetization in spin models is the most convenient and used order parameter.
@@ -194,8 +195,8 @@ Then, it is easy to image that the energy of this whole process will necessarily
 On the other hand, if we are in a deconfined phase then there is no potential binding the two quarks.
 In this case the energy of the whole process depends only on the self-energy of quarks, which move along the sides of the loop.
 Therefore, the leading energy contribution of this process depends on the perimeter, instead of the area.
-Obviously, this picture is no longer valid when dynamical matter is involved.
-In a confining phase, pair production is always preferred when separating two quarks at large distances.
+Obviously, this picture is no longer valid when dynamical matter is involved, because in a confining phase pair production is always preferred when separating two quarks at large distances.
+% In a confining phase, pair production is always preferred when separating two quarks at large distances.
 
 From \eqref{eq:wilson_area_law} and \eqref{eq:wilson_perimeter_law}, we can deduce that the string tension $\sigma$ can be used as an order parameter.
 It is non-zero for a confining phase, while it vanishes for a deconfined phase.
@@ -239,7 +240,7 @@ where $a$ is the lattice spacing, $L^d$ the total volume and $\tilde{G}_k$ the c
     \tilde{G}^{-1}_k = m + \frac{i}{a} \sum_{\mu} \gamma_{\mu} \sin(2 \pi k_{\mu} / L).
     \label{eq:fermionic_corr_func_latt}
 \end{equation}
-It involves a trigonometric function because the derivative term involves nearest neighbouring sites.
+It involves a simple trigonometric function because the derivative term involves nearest neighbouring sites.
 One can then take the model to a large lattice, which justifies in substituting the discrete sums with integrals:
 \begin{equation}
     \frac{2 \pi k_{\mu}}{La}  \; \to \; q_{\mu}
@@ -290,7 +291,7 @@ To obtain a staggered fermion, we define a new fermionic species $\chi(x)$ such 
     \psi(x) = \prod_{\mu} (\gamma^{\mu})^{n_{\mu}} \chi(x),
 \end{equation}
 where $x_{\mu} = an_{\mu}$.
-Now, if we want to express the discredited covariant derivative, the term $\gamma^{\mu} \psi(x+a n_{\mu})$ have two extra powers of $\gamma^{\mu}$ compared to $\overline{\psi}$.
+Now, if we want to express the discretized covariant derivative, the term $\gamma^{\mu} \psi(x+a n_{\mu})$ have two extra powers of $\gamma^{\mu}$ compared to $\overline{\psi}$.
 Since $(\gamma^{\mu})^2 = \pm 1$, we have therefore
 \begin{equation}
     \overline{\psi}(x) \gamma^{\mu} \psi(x) = (-1)^{\eta_{\mu}(x)} \chi(x)^{\dagger} \chi(x + a n_{\mu}),

@@ -4,10 +4,52 @@
 \chapter{Introduction to Lattice Gauge Theories}
 \label{chap:introduction_to_lattice_gauge_theories}
 
+One of the most important open questions in high-energy physics is \emph{confinement} in \ac{qcd},
+or in general in a non-Abelian gauge theory.
+%which is an example of non-Abelian gauge theory and it is believed to be the correct theory that describe the strong interaction.
+The best evidence for confinement comes from the Wilson formulation of gauge theories on a lattice \cite{wilson1974confinement}, which, at first glance, can appear odd because the vacuum is not a crystal \cite{creutz1985book}.
+Indeed, there have not been experimental proofs so far that show any deviations from the symmetries of the Lorentz group.
+
+From the point of view of particle physics, the lattice represents a mathematical trick.
+It provides a cutoff, which removes the ultraviolet infinities that often appear in \acp{qft}.
+It is just a regulator and as such it must be removed after renormalization.
+Physical results can only be extracted in the continuum limit, where the lattice spacing goes to zero.
+
+But why do we need such a regulator?
+Infinities has always been present in \acp{qft} since its conception.
+Consider the case of \ac{qed}.
+It had an immense success without ever using a discrete space-time, thanks to \emph{perturbation theory}.
+The most conventional calculation schemes are based on Feynman expansions,
+where a given observable is expressed as a power series in the interaction coupling.
+The terms are computed until a divergence is met in a particular diagram.
+Then, these divergences can be removed using some regularization scheme or methods provided by the Renormalization Group \cite{peskin1995qft}.
+
+The reason why this methodology may fail in non-Abelian theories lies in the fact that some phenomena, like confinement, are inherently \emph{non-perturbative}.
+Roughly speaking, perturbation theory relies on the fact that the true interacting theory is just a slight modification of the free theory.
+In other words, it works only when the coupling constants are small.
+In the case of \ac{qcd}, the free theory with vanishing coupling constant has no resemblance to the observed phenomenon.
+
+In order to go beyond the diagrammatic approach of Feynman expansions, one needs a non-perturbative cutoff.
+This is the main strength of the lattice, it eliminates all the wavelengths smaller than the lattice spacing before any kind of expansions is done.
+Furthermore, on a lattice a field theory is \emph{mathematically well-defined}, in contrast with many standard formulations of \ac{qft}s (like the path-integral approach).
+
+\Acp{lgt} are just a reformulation of \acp{qft} on a lattice, which exposes a close connection with \emph{\ac{sm}}.
+For example, it can be showed that a path-integral in \ac{qft} is equivalent to a partition function in \ac{sm}.
+Furthermore, it can be showed that the coupling constant in \ac{qft} corresponds directly to the temperature, and a strong coupling expansion becomes equivalent to a high temperature expansion.
+Thus, with a lattice formulation of \ac{qft}s allows a particle physicist to use the full technology of \ac{sm} and \ac{cm}.
+Notice that this connection between \ac{qft} and \ac{sm} does not require a lattice, but it is only made more transparent by it.
+
+While in particle physics the lattice is a useful trick, this is not true in \ac{cm}.
+Indeed, in this field a lattice structure can emerge naturally, or rather it can even be required.
+It is sufficient to think that many materials have a crystalline structure, hence the mathematical models describing these materials have to be formulated on a lattice.
+Then, field theories can be used for probing the physics at scale lengths much larger that the lattice spacing.
+Therefore, in \ac{cm} the roles are reversed: continuous fields are ``approximations'' of what really happens on a lattice.
+
+
+\bigskip
+
 In this section we first briefly review Yang-Mills theory, which is the generalization of \ac{qed} to any non-Abelian compact gauge group, like $\SU(N)$.
 Then, we move onto the Wilson formulation of \acp{lgt} in the path-integral approach.
-
-\todo{c'è altro da aggiungere?}
 
 % SECTION: Review of Yang-Mills theory
 \input{chapters/lgt_intro/yang_mills.tex}

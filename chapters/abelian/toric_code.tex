@@ -23,7 +23,7 @@ It is important to note that these matrices $X$ and $Z$ \emph{anticommutes} on t
 \begin{equation}
     \acomm{X_{\link}}{Z_{\link}} = 0,
 \end{equation}
-while the commuting with operators of other links.
+while they commute with operators of other links.
 
 The main \emph{local} operators that enters the Hamiltonian are the \emph{star operator} and \emph{plaquette operator} of the lattice.
 The term \emph{star} refers to the links attached to a common vertex $v$, while by \emph{plaquette} $p$ we mean the links around a face of the lattice.
@@ -100,7 +100,7 @@ In fact, a simple calculation
 \end{equation}
 shows that we obtain an eigenstate of $B_p$ with eigenvalue $+1$, due to $B_p^2 = \identity$.
 
-Therefore, we can obtain a ground state for the \ac{tc} as
+Therefore, we can obtain a ground state for the \ac{tc} Hamiltonian
 \begin{equation}
     \ket{\Omega} = \prod_{p} \frac{\identity + B_p}{\sqrt{2}} \ket{0}_{\text{TC}}.
 \end{equation}
@@ -109,8 +109,8 @@ More generally, we can define the space of ground states
     \mathcal{G} = \qty{ \ket{\Omega} : A_s \ket{\Omega} = \ket{\Omega}, \quad B_p \ket{\Omega} = \ket{\Omega} \quad \forall s, p },
     \label{eq:TC_protected_subspace}
 \end{equation}
-which contents \emph{depends on the topology of the lattice}.
-For example, later we will show that with \emph{periodic boundary conditions} then there are
+whose content \emph{depends on the topology of the lattice}.
+For example, we will show that with \emph{periodic boundary conditions} then there are
 \emph{four degenerate ground states}.
 
 
@@ -305,7 +305,7 @@ So in the regime of strong coupling we expect to be in a \emph{polarized phase},
 Therefore, there is a critical coupling $\lambda_c$ for which we have a \emph{phase transition}.
 In the language of gauge theories, the loop condensate corresponds to a \emph{deconfined phase} while the polarized one is a \emph{confined phase}.
 Hence, for $\lambda_c$ we have a deconfined-confined phase transition.
-\todo{inserire diagramma di fase}
+% \todo{inserire diagramma di fase}
 
 \begin{figure}[t]
     \SideFigure[label=fig:physical_state_z2, desc={Physical states in the $\Z_2$ \ac{lgt}}]{%

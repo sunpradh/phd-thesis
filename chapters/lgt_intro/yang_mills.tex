@@ -27,7 +27,7 @@ In more realistic cases we would have a some over the different fermion flavors 
 
 The symbol $D_{\mu}$ in \eqref{eq:yang_mills_lagrangian} denote the \emph{covariant derivative}:
 \begin{equation}
-    D_{\mu} = \partial_{\mu} - i A_{\mu},
+    D_{\mu} = \partial_{\mu} - i q A_{\mu},
     \label{eq:covariant_derivative}
 \end{equation}
 where $A_{\mu}$ are the space-time components of the gauge fields.
@@ -35,7 +35,8 @@ Each component is Lie algebra valued function of space-time:
 \begin{equation}
     A_{\mu}(x) = \sum_{a} A_{\mu}^a(x) T^a,
 \end{equation}
-where the sum is over the generators of the Lie algebra $\g$, corresponding to the group $G$.
+where the sum is over the generators $T^a$ of the Lie algebra $\g$, corresponding to the group $G$.
+In the following, we will use Greek indices for space-time coordinates, and Latin indices for the algebra structure.
 We choose the convention where the generators $T^a$ are Hermitian with
 \begin{equation}
     [T^a, T^b] = i f^{abc} T^c
@@ -110,7 +111,7 @@ For a path integral formulation we need to first define the action.
 This is just the integral of the Lagrangian in \eqref{eq:yang_mills_lagrangian}, over the $D$-dimensional space-time:
 % The action of the theory in $D=d+1$ dimensions is the given by
 \begin{equation}
-    \Action[A, \psi, \overline{\psi}] = \int_{\R^{1,d}}  \dd^{D} \Lagrangian.
+    \Action[A, \psi, \overline{\psi}] = \int_{\R^{1,d}}  \dd^{D} x \Lagrangian.
     \label{eq:action_def}
 \end{equation}
 The action \eqref{eq:action_def} defines the ``weight'' in the path-integral.
@@ -119,6 +120,7 @@ Now we can write down the partition function for a \ac{ym} theory:
     \PartFunc = \int \DD A\, \DD \overline{\psi}\, \DD \psi \, e^{i \Action[A, \psi, \overline{\psi}]}.
     \label{eq:partition_function_mink}
 \end{equation}
+The measures $\DD A$, $\DD \overline{\psi}$ and $\DD \psi$ can be physically interpreted as a measure over all the possible configurations of the fields $A_{\mu}$, $\overline{\psi}$ and $\psi$, respectively, but are still lacking a rigorous mathematical definition, which is a topic we will not elaborate on \cite{peskin1995qft}.
 
 
 %----------------------------------------
@@ -183,11 +185,12 @@ In other words, following the spirit of \ac{sm}, we have now a probability distr
 % \end{equation}
 % The rotation $x_0 = -i x_4$ leads to $\Lagrangian_E = - \Lagrangian_M$.
 %
+Let's describe this procedure in more details.
 The Wick rotation does not change the aspect of the gauge kinetic term,
 \begin{equation}
     - \frac{1}{2 g^2} \tr(F_{\mu \nu} F^{\mu \nu}),
 \end{equation}
-but the sum is now a simple Euclidean sum, where there are minus signs appear when raising or lowering indices, and $\mu = 1, \dots, d+1$.
+but the sum is now a simple Euclidean sum, where there are minus signs appearing when raising or lowering indices, and $\mu = 1, \dots, d+1$.
 
 Considering now the fermionic part of the \ac{ym} Lagrangian, we need to perform the Wick rotation on the Dirac fields $\psi$ and $\overline{\psi}$.
 In Minkowski space-time
@@ -225,7 +228,7 @@ where the indices are all Euclidean and $D_{\mu} = \partial_{\mu} + i A_{\mu}$.
 \subsection{Hamiltonian formulation}
 \label{sub:hamiltonian_formulation}
 
-Even tough Wilson's formulation \cite{wilson1974confinement} is in the path-integral and Lagrangian language, we will also review the Hamiltonian formulation of non-Abelian \ac{qft} because its connection to Quantum Simulation.
+Even though Wilson's formulation \cite{wilson1974confinement} is in the path-integral and Lagrangian language, we will also review the Hamiltonian formulation of non-Abelian \ac{qft} because its connection to Quantum Simulation.
 Expressing a \ac{ym} theory in the Hamiltonian language can be tricky, especially in the presence of gauge symmetries.
 Usually, one has to procede by computing the conjugate momenta and perform a Legendre transform in order to obtain the Hamiltonian.
 In the presence of gauge symmetries, the time-component $A_0$ of the gauge fields does \emph{not} have a conjugate momentum.
@@ -265,7 +268,7 @@ In the Hamiltonian formulation, the fields $\mathbf{A}$ and $\mathbf{E}$ have to
     \end{split}
     \label{eq:comm_rel_E_A_continuum}
 \end{equation}
-An astute observer will notice that \eqref{eq:comm_rel_E_A_continuum} are completely analogous to a position-momentum commutation relation, similar to $\comm{x_i}{p_j} = i \delta_{ij}$.
+A careful reader will notice that \eqref{eq:comm_rel_E_A_continuum} are completely analogous to a position-momentum commutation relation, similar to $\comm{x_i}{p_j} = i \delta_{ij}$.
 In fact, like in the latter case, where the momentum $p_i$ is the generator of translations of $x_i$, the electric field $\mathbf{E}$ is the generator of translation of $\mathbf{A}$.
 To be more precise, it is the canonical momentum $\mathbf{E}/g^2$ that generates translations of $\mathbf{A}$.
 In other words, $\mathbf{E}/g^2$ \emph{generates infinitesimal gauge transformations}.
@@ -307,24 +310,24 @@ Moreover, even \ac{lgt}s, at least in the path-integral formulation, is not appl
 \begin{figure}[t]
     \centering
     \input{assets/figures/qcd_phase_diagram.tex}
-    \caption{A (very) rough sketch of the phase diagram of \ac{qcd}.}
+    \caption{A (very) rough sketch of the phase diagram of \ac{qcd} \cite{aarts2016qcd}.}
     \label{fig:qcd_phase_diagram}
 \end{figure}
 
 
 In the Hamiltonian formulation, the chemical potential in introduced in the same manner as standard \ac{sm}.
-If $H$ is the Hamiltonian operator and $N$ a number operator, then one can simply replace $H$ with $H - \mu N$.
-In the case of a \ac{ym} theory, the number operator would correspond to the fermion number operator $N = \psi^{\dagger} \psi$.
+If $H$ is the Hamiltonian density operator and $N$ a fermion density operator, then one can simply replace $H$ with $H - \mu N$.
+In the case of a \ac{ym} theory, the fermion density operator would correspond to the fermion number operator $N = \psi^{\dagger} \psi$.
 
 In the path integral formalism, fermions are introduced as Grassmann variables.
-This means that they easily be integrated out \cite{peskin1995qft, aarts2016qcd}:
+This means that they can easily be integrated out \cite{peskin1995qft, aarts2016qcd}:
 \begin{equation}
-    \int \DD \overline{\psi}\, \DD \psi \exp(-\int d^{d+1} \overline{\psi} K \psi) = \det K,
+    \int \DD \overline{\psi}\, \DD \psi \exp(-\int d^{D} \overline{\psi} K \psi) = \det K,
 \end{equation}
 where $K$ is the kinetic operator for the fermions.
 If the fermions are coupled to $A_{\mu}$, as it happens in \ac{ym} theory, then $K$ has some complicated dependence on the fields $A_{\mu}$.
 If one includes the chemical potential term $\mu \psi^{\dagger} \psi$ in the Lagrangian, then the fermion determinant $\det K$ turns out to be complex \cite{aarts2016qcd}, with a non-trivial phase factor.
 
-As a result, the integrand of the path-integral is no longer positive-defined, and it cannot be interpreted as a probability distribution.
+As a result, the integrand of the path-integral is no longer positive-definite, and it cannot be interpreted as a probability distribution.
 Furthermore, a complex weight in the path-integral makes the integrand oscillatory, which does not help with convergence.
-This is summarizes the infamous \emph{sign problem}, which poses severe limitation to, for example, \ac{mc} simulations in the finite $\mu$ region.
+This is summarizes the so-called \emph{sign problem}, which poses severe limitation to, for example, \ac{mc} simulations in the finite $\mu$ region.

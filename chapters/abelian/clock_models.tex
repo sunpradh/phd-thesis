@@ -1,35 +1,22 @@
 \subsection{Quantum clock models}%
 \label{sub:clock_models}
 
-\Acp{clock} are a class of models that generalizes the \ac{ising} \cite{fendley2014parafermions, baxter1989clock}.
+\Acfp{clock} are a class of models that generalizes the \ac{ising} \cite{fendley2014parafermions, baxter1989clock}.
 They show a resemblance to the $\Z_N$ \ac{lgt} models we introduced previously, in Sec.~\ref{sec:generalization_to_zn}.
 In fact, this similarity will later be exploited in order to obtain a gauge-reducing duality of the $\Z_N$ \ac{lgt} ladder models.
 
-% For a discussion about clock models we start from the Hamiltonian of the \ac{ising} with transverse field, which can simply be written as
-% \begin{equation}
-%     H = - \sum_{i} \sigma^z_i \sigma^z_{i+1} - h \sum_{i} \sigma^x_i,
-%     \label{eq:ising_hamiltonian_duality}
-% \end{equation}
-% where $\sigma^{x,z}_i$ are the usual $2 \times 2$ Pauli matrices for each site $i$:
-% \begin{equation}
-%     \sigma^x_i = \pmqty{ 0 & 1 \\ 1 &  0 }, \quad
-%     \sigma^z_i = \pmqty{ 1 & 0 \\ 0 & -1 }.
-% \end{equation}
 The Hamiltonian \eqref{eq:hamiltonian_ising}  of \ac{ising}, with trasverse field, uses Pauli matrices $\sigma^z$ and $\sigma^x$ as basic operators and they have the fundamental property that they \emph{anticommutes} on the same site, $\acomm{\sigma^z_i}{\sigma^x_i} = 0$
 This relation rewritten as
 \begin{equation}
     \sigma^z_i \sigma^x_i = - \sigma^x_i \sigma^z_i,
     \label{eq:anticommutation_Pauli_matrices}
 \end{equation}
-which be read as follows:\emph{if the two operators are exchanged, then a phase $-1$ is acquired}.
+which be read as follows: \emph{if the two operators are exchanged, then a phase $-1$ is acquired}.
 Another important fact about Pauli matrices we want highlight is that they \emph{square to the identity}:
 \begin{equation}
     (\sigma^x_i)^2 = (\sigma^z_i)^2 = \identity.
     \label{eq:identity_Pauli_matrices}
 \end{equation}
-% In a \ac{clock}, these Pauli matrices
-% They are a set of unitary matrices that commute on different sites, while on the same site they anticommute $\sigma^x \sigma^z = - \sigma^z \sigma^x$.
-% Another way to put it is to say that the exchange of $\sigma_x$ and $\sigma_z$ on the same site produces a phase $e^{i \pi} = -1$.
 
 \Ac{clock} are generalizations of the \ac{ising}, but not to higher spins.
 A $p$-state \ac{clock} (or simply a $p$-clock model) utilizes a set of unitary operators that generalizes \eqref{eq:anticommutation_Pauli_matrices} and \eqref{eq:identity_Pauli_matrices} in the following sense:
@@ -60,10 +47,10 @@ A typical $p$-clock model Hamiltonian with transverse field has the form
 which is, as expected, very similar to the quantum Ising Hamiltonian in \eqref{eq:hamiltonian_ising}.
 Furthermore, just like the latter, $p$-clock models with only transverse field are \emph{self-dual}:
 the clocks can be mapped into the kinks (or domain walls) and one would obtain the same exact Hamiltonian description but with inverted transverse field \cite{ortiz2012dualities}.
-For $p < 5$, the clock models presents a self dual point in $\lambda = 1$, that separates an ordered phase from a disordered one.
+For $p < 5$, the clock models present a self dual point for $\lambda = 1$, that separates an ordered phase from a disordered one.
 On the other hand, for $p \geq 5$ we have an intermediate continuous critical phase between the ordered and disordered phase with two BKT transition points, which are related to each other through the self-duality \cite{sun2019phase}.
 
-These models have been thoroughly studied, even with the addition of a longitudinal field $\propto Z_i$ \cite{baxter1982exactlysm} or chiral interactions.
+These models have been thoroughly studied, even with the addition of a longitudinal field proportional to $Z_i$ \cite{baxter1982exactlysm} or chiral interactions.
 In particular, in the case of chiral interactions, it was shown \cite{fendley2012parafermions} that the Hamiltonian \eqref{eq:clock_hamiltonian} can be mapped to a parafermionic chain through a Fradkin-Kadanoff transformation, and in presence of a $\mathbb{Z}_3$ symmetry, it shows three different phases \cite{zhuang2015clock}, if open boundaries are implemented: a trivial, a topological and an incommensurate (IC) phase.
 The case which presents a real longitudinal field term was considered in \cite{huang2019clock},  where some of the critical exponents have been estimated.
 The general case, where chiral interactions are included in a $\mathbb{Z}_N$ model, has been studied in \cite{fendley2012parafermions}.

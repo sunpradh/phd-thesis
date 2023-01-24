@@ -18,10 +18,10 @@ The essential legacy of Kramers and Wannier is the fact that self-dualities can 
 
 Not all dualities are self-dualities.
 In fact, it also possible to relate two apparently different physical models with a duality transformation.
-A known example is the Jordan-Wigner transformation \cite{schultz1964ising, jordan1928pauli}, where spin \ac{dof} (which are bosonic in nature) are mapped onto fermionic \ac{dof} in one-dimension \todo{elaborare}.
-This duality shows that, in fact, there is not much difference between bosonic and fermionic \ac{dof}.
+A known example is the Jordan-Wigner transformation \cite{schultz1964ising, jordan1928pauli}, where spin \ac{dof} (which are bosonic in nature) are mapped onto fermionic \ac{dof} in one-dimension. %\todo{elaborare}.
+This duality shows that, in fact, there is not much difference between bosonic and fermionic \ac{dof} in one dimension.
 
-\todo{forse aggiungere qualcosa in più}
+% \todo{forse aggiungere qualcosa in più}
 
 %
 % SUBSECTION: The bond-algebraic approach
@@ -100,7 +100,7 @@ In mathematical terms, given any $u,v \in \algebra_1$ and any complex number $\l
 To be more precise with our definition of quantum duality,
 consider two Hamiltonians $H_1$ and $H_2$ that act on Hilbert spaces of the same dimensions.
 They are said to be \emph{dual} if there is some bond-algebra $\algebra_{H_1}$ of $H_1$ that is homomorphic to some bond-algebra $\algebra_{H_2}$ of $H_2$ and if the homomorphism $\Phi : \algebra_{H_1} \to \algebra_{H_2}$ maps $H_1$ onto $H_2$, $\Phi(H_1) = H_2$.
-These mappings do not need to be isomorphisms, especially when gauge symmetries are involved, and we will explain why later.
+These mappings do not need to be isomorphisms (i.e. invertible), especially when gauge symmetries are involved, and we will explain why later.
 
 In a traditional approach to quantum dualities, one tries to map each degree of freedom of $H_1$ onto a degree of freedom of $H_2$.
 This can be rather cumbersome, because in this way most duality transformations appear to be non-local.
@@ -108,7 +108,7 @@ In other words, one degree of freedom on one side may correspond to a large numb
 This is apparent, for example, with the Jordan-Wigner transformation, where a single spin is dual to a whole chain of fermions.
 
 Quantum dualities in the bond-algebraic approach are instead \emph{local}, meaning that each single \emph{bond} $h_{\Gamma_1}$ of $H_1$ is mapped onto a single bond $h_{\Gamma_2}$ of $H_2$.
-This may translates in non-locality when treating elementary \ac{dof} and is due to the fact that the generators of a bond algebra are usually two- (or more) body operators and expressing the elementary \ac{dof} with these operators may require large (if not infinite) products.
+This may translates in non-locality when treating elementary \ac{dof} and this is due to the fact that the generators of a bond algebra are usually two- (or more) body operators and expressing the elementary \ac{dof} with these operators may require large (if not infinite) products.
 
 An isomorphism like $\Phi$ is physically sound if it is \emph{unitarily implementable} \cite{cobanera2011bond}, which means that there is a unitary matrix $\mathcal{U}$ such that the duality isomorphism reads
 \begin{equation}
@@ -116,23 +116,16 @@ An isomorphism like $\Phi$ is physically sound if it is \emph{unitarily implemen
     \mathcal{U} \mathcal{O} \mathcal{U}^{\dagger}, \quad
     \forall \mathcal{O} \in \algebra,
 \end{equation}
-where $\algebra$ is the operator algebra of the model under investigation.
-\todo{elaborate}
+where $\algebra$ is the operator algebra of the model under investigation \cite{cobanera2011bond}.
+% \todo{elaborate}
 
 
 To make the bond-algebraic approach more clear we will consider one example: the \emph{\acf{ising}}.
 In this model we will see an example of self-duality through the use of disorder variables.
 Our intent is not to shine new physics but to show how the use of bond-algebras offers a clear \emph{formalism} for treating dualities.
 
-\todo{parlare anche della Jordan-Wigner?}
+% \todo{parlare anche della Jordan-Wigner?}
 % approach clearer we now apply it to the 1D quantum Ising model with transverse field.
-
-
-% To make the bond-algebraic approach more clear we will consider two examples:
-% the \emph{quantum Ising model} and the \emph{XY model}.
-% In the first model we will see an examples of self-duality through the use of disorder variables, while in the latter an example of duality that relates two very different models using the Jordan-Wigner transformation.
-% Our intent is not to shine new physics but to show how the use of bond-algebras offers a clear \emph{formalism} for treating dualities of different kinds.
-% % approach clearer we now apply it to the 1D quantum Ising model with transverse field.
 
 
 \subsection{The quantum Ising model}
@@ -163,21 +156,21 @@ These two sets of terms are the bonds of the Hamiltonian $\HamilIsing$, therefor
 \end{equation*}
 We consider an infinite chain in order to avoid subtleties with the boundaries conditions, which can have major effects on a duality transformation.
 
-% We recognize as bonds the operators $\{\sigma^x_i\}$ and $\{\sigma^z_i \sigma^z_{i+1}\}$, which generates $\algebra \{\sigma^z_i \sigma^z_{i+1}, \sigma^x_i\} \equiv \algebra^{\ising}$.
 The algebraic relations that defines the generators of $\algebra^{\ising}$ can be summarized as follows:
 \begin{enumerate}
-    \item each bonds square to the identity operator
+    \item each bonds square to the identity operator,
         \begin{equation*}
             (\sigma^z_i \sigma^z_{i+1})^2 = (\sigma^x_i)^2 = \identity.
         \end{equation*}
 
-    \item the bonds $\sigma_i^x$ anticommutes only with $\sigma^z_i \sigma^z_{i+1}$ and $\sigma^z_{i-1} \sigma^z_i$
+    \item the bonds $\sigma_i^x$ anticommutes with $\sigma^z_i \sigma^z_{i+1}$ and $\sigma^z_{i-1} \sigma^z_i$ while commuting with the others,
         \begin{equation*}
             \acomm{\sigma_i^x}{\sigma^z_i \sigma^z_{i+1}} =
             \acomm{\sigma_i^x}{\sigma^z_{i-1} \sigma^z_i} = 0.
         \end{equation*}
 
-    \item the bonds $\sigma^z_i \sigma^z_{i+1}$ anticommutes only with $\sigma^x_i$ and $\sigma^x_{i+1}$
+
+    \item the bonds $\sigma^z_i \sigma^z_{i+1}$ anticommutes with $\sigma^x_i$ and $\sigma^x_{i+1}$ while commuting with the others,
         \begin{equation*}
             \acomm{\sigma^z_i \sigma^z_{i+1}}{\sigma^x_i} =
             \acomm{\sigma^z_i \sigma^z_{i+1}}{\sigma^x_{i+1}} = 0.
@@ -210,7 +203,6 @@ We have thus obtained
 henceforth $\Phi^{\ising}$ is a \emph{self-duality} of \eqref{eq:hamiltonian_ising}.
 Notice that $\HamilIsing(h)$ is mapped onto itself but with the inverted coupling, $h \mapsto h^{-1}$, meaning that we can map the strongly coupled phase $h \gg 1$ into the weakly coupled phase $h \ll 1$, and vice versa.
 This is basically the quantum version the \emph{Kramers-Wannier duality} \cite{kramers1941statistics, fradkin1978order}.
-% but, unlike the usual formulation of this duality, we did not need to introduce \emph{disorder variables} to write down the transformation.
 
 If we think of the term $\sigma^x_i$ as living on the site $i$ and of $\sigma^z_i \sigma^z_{i+1}$ as of living on the \emph{link} between the site $i$ and $i+1$, then we can think of $\Phi^{\ising}$ as mapping \eqref{eq:hamiltonian_ising} onto the \emph{dual lattice}.
 In fact, the dual lattice of a chain is still a chain and the site term $\sigma^x_i$ is mapped onto a link term $\sigma^z_i \sigma^z_{i+1}$, and vice versa.
@@ -266,41 +258,6 @@ From this point of view, a single spin-flip $\sigma^x_i \ket{\Omega_{\uparrow}}$
     }
 \end{figure}
 
-\todo{serve aggiungere altro o è già abbastanza lungo il discorso?}
-
-% The disorder variables are defined as
-% \begin{equation}
-%     \mu^x_i = \sigma^z_i \sigma^z_{i+1}, \qquad
-%     \mu^z_i = \prod_{j=i}^{\infty} \sigma^x_j.
-%     \label{eq:disorder_variables}
-% \end{equation}
-% and satisfy all the relations that characterize the Pauli matrices,
-% they square to the identity and anticommutes with each other:
-% \begin{equation}
-%     (\mu^{\rho}_i)^2 = \identity
-%     \qand
-%     \acomm{\mu^x_i}{\mu^z_i} = 0,
-% \end{equation}
-% where $\rho=x,z$.
-% The first operator, $\mu^x_i$, measures the alignment of two neighbouring spins while the second, $\mu^z_i$, flips all the spins from the $i$-th spin.
-% Instead of defining a priori these new variables we can obtain them through the map $\Phi^{\ising}$ applied to the elementary \ac{dof} $\sigma^z_i$ and $\sigma^x_i$.
-% In other to do so, have to be part of the algebra $\algebra^{\ising}$.
-% We already know that the operators $\sigma^x_i$ are in $\algebra^{\ising}$ and they transform as
-% \begin{equation}
-%     \Phi^{\ising} (\sigma^x_i) =
-% \end{equation}, because they appear in the Hamiltonian \eqref{eq:hamiltonian_ising}, but not $\sigma^z_i$ but these can be obtained with the product
-% \begin{equation}
-%     \sigma^z_i = \prod_{j=i}^{\infty} \sigma^z_i \sigma^z_{i+1}.
-%     \label{eq:infinite_product_sigma_z}
-% \end{equation}
-% Applying $\Phi^\ising$ to \eqref{eq:infinite_product_sigma_z} we obtain
-% \begin{equation}
-%     \Phi^{\ising}(\sigma^z_i)
-%     = \Phi^{\ising} \qty(\prod_{j = i}^{\infty} \sigma^z_j \sigma^z_{j+1})
-%     = \prod_{j = i}^{\infty} \Phi^{\ising}(\sigma^z_j \sigma^z_{j+1})
-%     = \mu^x_{i+1}
-% \end{equation}
-
 
 %
 % SUBSECTION: Gauge-reducing dualities
@@ -310,7 +267,6 @@ From this point of view, a single spin-flip $\sigma^x_i \ket{\Omega_{\uparrow}}$
 
 In this section we will review the notion of \emph{gauge-reducing dualities},
 In order to do so we start by highlighting the difference between ordinary symmetries and quantum symmetries.
-% but it is best first to start with the difference between between ordinary symmetries and quantum symmetries.
 
 Following the statement of Wigner's theorem\citneeded, a quantum symmetry is a unitary or anti-unitary mapping that commute with the Hamiltonian.
 This does not mean that all symmetries have the same physical meaning or mathematical consequences.
@@ -320,25 +276,16 @@ These symmetries have a direct physical impact, since they can influence the lev
 On the other hand, gauge symmetries are \emph{local symmetries} of the model that signal the presence of \emph{redundant \ac{dof}}.
 In fact, it is better to think of gauge symmetries as \emph{local constraints} on the elementary \ac{dof} of the gauge model.
 As a result, the state space of a gauge model is larger than set of physical states, which are exactly the states that are invariant under the action of the gauge symmetries.
-%, which mean that they satisfies the local constraints of the model.
-% in fact gauge invariance can be thought as a set of \emph{local constraints} on the elementary \ac{dof} of the model.
-% This means that the state space of the model is larger than set of physical states and these are exactly the states that are invariant under the action of the gauge symmetries, which mean that they satisfies the local constraints of the model.
 The same reasoning applies to the observables of the gauge model.
 An observables is represented by an Hermitian operator and a \emph{physical observable} is represented by an Hermitian operator that commutes with gauge symmetries.
 
 So, if physical states and physical observables already satisfies the local constraints of the gauge symmetries, this means that the physical impact of the latter is already encoded in the former.
-% For example, ordinary symmetries add new information on the structure of the state space, i.e.~selection rules.
-% While on the other hand, gauge symmetries \emph{do not add} new information on the structure of the \emph{physical state space}, because the latter is obtained by resolving the local constraints.
 It is clear that the ordinary symmetries and gauge symmetries are very different and is better them conceptually far apart as possible \cite{cobanera2011bond}.
-
-
-% represent a physical observable only if it commutes with the gauge symmetries, which makes them gauge-invariant.
-% If
 
 When dealing with a gauge model, it would be natural to assume that, in order to establish a duality with any gauge symmetries, these have to be eliminated from the former model first.
 In other terms, that it would be necessary to project the operator content on the subspace of physical states first or, alternatively, proceed with gauge-fixing.
 Although this is common in traditional approach to dualities, with bond algebras this is not strictly necessary.
-As stated in \cite{cobanera2011bond}, with the bond-algebraic approach one can find mappings to models without any gauge symmetry that preserve all the important algebraic properties, without the need to projection or gauge-fixing.
+As stated in \cite{cobanera2011bond}, with the bond-algebraic approach one can find mappings to models without any gauge symmetry that preserve all the important algebraic properties, without the need to projection or gauge-fixing \todo{argomentare?}.
 
 The procedure goes as follows: consider a gauge model and let $H^{\text{G}}$ be its Hamiltonian and $G_{\Gamma}$ its gauge symmetries.
 An operator $\mathcal{O}$ is gauge-invariant if and only if it commutes with all the $G_{\Gamma}$:\begin{equation*}
@@ -376,10 +323,8 @@ In the next section we will use an example of gauge-reducing duality, which will
 \subsection{Dualities in two dimensions}
 \label{sub:dualities_in_two_dimensions}
 
-% \todo{arricchire}
 
 As an example of gauge-reducing duality, we will apply the technology introduced in Sec.~\ref{sub:gauge_reducing_dualities} to the $\Z_2$ \ac{lgt} in two-dimensions.
-% A clear example of a gauge-reducing duality is provided by the $\Z_N$, $d=2$ gauge model
 We resume the Hamiltonian \eqref{eq:z2_lgt_hamiltonian}
 \begin{equation*}
     H^{\Z_2}
@@ -394,38 +339,16 @@ which generate the gauge symmetries and commute with the Hamiltonian
 \begin{equation}
     \comm{H^{\Z_2}}{A_v} = 0 \quad \forall v \in \Lattice.
 \end{equation}
-% \begin{equation}
-% 	H_{\text{G}} = \sum_r \left( V_{(r,\hat{1})} + V_{(r,\hat{2})} + \lambda U_r \right).
-% \end{equation}
-
-% Its group of gauge symmetries is generated by \eqref{eq:gauss_operator}.
-% In the simplest case where $N=2$, the $V$'s can be represented by the Pauli operators $\sigma^z$ and the $U$'s by $\sigma^x$.
-% In so doing, the Gauss operator becomes
-% \begin{equation}
-% 	G_r =
-% 	\sigma^z_{(r, \hat{1})}
-% 	\sigma^z_{(r, \hat{2})}
-% 	\sigma^z_{(r, -\hat{1})}
-% 	\sigma^z_{(r, -\hat{2})},
-% 	\label{eq:gauss_operator_Z2}
-% \end{equation}
-% and commutes with $H_{\text{G}}$ and with the bonds $\left\{\sigma^z_{(r,\hat{1})},\ \sigma^z_{(r,\hat{2})},\ U_r\right\} $.
 
 In particular, each term of the Hamiltonian commutes with the Gauss operators, which means that the bond algebra they generate is gauge-invariant,
 This bond-algebra satisfy three simple relations:
 \begin{enumerate}[label=(\roman*)]
     \item all the bonds square to the identity,
-        % \begin{equation*}
-        %     B_p^2 = \identity, \quad
-        %     Z_{(x, +\hat{1})}^2 = \identity, \qand
-        %     Z_{(x, +\hat{2})}^2 = \identity
-        % \end{equation*}
     \item each spin $Z$ anti-commutes with two adjacent plaquettes operators $U$
     \item each plaquette operator $U$ anti-commutes with four spins $Z$.
 \end{enumerate}
 
 The model $H^{\Z_2}$ is dual to the $d=2$ \ac{ising}.
-% set of relations is identical to those satisfied by the bonds of the $d=2$ \ac{ising}:
 The Hamiltonian of the latter in two-dimensions is
 \begin{equation}
     \HamilIsing =
@@ -464,7 +387,6 @@ From \eqref{eq:duality_2d}, one readily obtains
     \Phi^{\text{2d}}(G_x) = \identity,
 \end{equation*}
 which means that $\Phi^{\text{2d}}$ is in fact a \emph{gauge-reducing duality}.
-% Moreover, $\Phi^{\text{2d}}$ is a gauge-reducing duality homomorphism, since $\Phi(G_x) = \identity$.
 Therefore, $\HamilIsing$ represents all the physics contained in $H_{\text{gauge}}$, but without all the redundant \ac{dof}.
 In the general case, i.e.~for a generic $\Z_N$ symmetry, the duality leads to an $N$-clock model \cite{radicevic2019spin}.
 
@@ -479,6 +401,6 @@ The plaquette operator $U_p$ flips the state of the plaquette, therefore it shou
 The electric fields $V_{(x, \hat{1})}$ and $V_{(x, \hat{2})}$ are just domain walls between plaquettes, therefore they should be mapped to interaction terms like $\sigma^z_{i-\hat{1}} \sigma^z_{i}$ and $\sigma^z_{i-\hat{2}} \sigma^z_i$.
 
 
-\todo{cosa altro c'è da aggiungere?}
+\todo{Parlare del caso ZN}
 
 % vim: spelllang=en
