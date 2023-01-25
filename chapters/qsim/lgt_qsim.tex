@@ -5,18 +5,20 @@
 \label{sec:simulating_gauge_theories}
 
 
-The problem of \ac{lgt}s is arguably one of the most computationally intensive quantum many-body problem, due to the large numbers of \ac{dof} and, especially, the local gauge constraints.
-Typically, \ac{lgt} computations uses the Quantum \ac{mc} method in the Euclidean path integral formulation, due to the natural presence of Boltzmann factor in the action, that act as a statistical weight.
-\Ac{mc} methods applied Lattice \ac{qcd} already yielded a number of very interesting results, which includes \cite{lin2018qcd, banuls2020lgtreview}:
-calculations of fundamental properties of \ac{qcd} (such as quark masses and the running coupling); masses of QCD bound states (such as protons, neutron, pions, etc.); structure of hadrons (for example how quarks and gluons interact with one another inside the proton); flavour physics (leading to constraints on the CKM matrix elements).
+\ac{lgt}s are arguably one of the most computationally intensive quantum many-body problem, due to the large numbers of \ac{dof} and, especially, the local gauge constraints.
+Typically, \ac{lgt} computations uses the Quantum \ac{mc} method in the Euclidean path integral formulation, due to the natural presence of a Boltzmann factor in the action, that act as a statistical weight.
+\Ac{mc} methods applied to \ac{qcd}, which from here it will be referred as Lattice \ac{qcd}, already yielded a number of very interesting results, that includes:
+calculations of fundamental properties of \ac{qcd} (such as quark masses and the running coupling); masses of QCD bound states (such as protons, neutron, pions, etc.); structure of hadrons (for example how quarks and gluons interact with one another inside the proton); flavour physics (leading to constraints on the CKM matrix elements) and much more \cite{lin2018qcd, banuls2020lgtreview}.
 
 However, \ac{mc} methods suffer from some issues, mostly due to the Euclidean space-time formulation and the sign problem.
-The Euclidean space-time, due to its imaginary time, makes it impossible to compute observables that depend on real time.
+The Euclidean space-time, due to its imaginary time, makes it impossible to compute observables that explicitly depend on real time.
 They are accessible only in Minkowski space-time, where time has a different signature.
 An example of these observables are light-cone correlations, in terms of which partonic properties are formulated and expressed \cite{cichy2019lightcone}.
 As already mentioned, another severe shortcoming of Lattice \ac{qcd} is posed by the sign problem, which has already been briefly discussed in Sec.~\ref{sub:the_sign_problem}.
 In summary, when chemical potential is introduced, the Boltzmann weight acquire a complex phase and can no longer be interpreted as a statistical weight.
 It should be noted that the sign problem in Lattice \ac{qcd} is not strictly of fermionic origin, as it usually happens in quantum many-body physics, but is more fundamental and is due to the signature of space-time \cite{banuls2020lgtreview}.
+
+\medskip
 
 Furthermore, it has been proven that the sign problem is $\mathsf{NP}$--hard\footnote{
     $\mathsf{NP}$--hard problems are, informally, at least as hard as the hardest problem in $\mathsf{NP}$.
@@ -26,36 +28,71 @@ Furthermore, it has been proven that the sign problem is $\mathsf{NP}$--hard\foo
 }
 for the three-dimensional Ising spin glass \cite{troyer2005fermionioc}, so, most probably, is also $\mathsf{NP}$--hard for Lattice \ac{qcd}.
 $\mathsf{NP}$--hardness should not discourage a scientist from trying to solve a problem, rather it is what makes a problem interesting.
-Indeed, $\mathsf{NP}$--hardness only prevents a \emph{generic} and \emph{efficient} solution from existing (if $\mathsf{NP} \neq \mathsf{P}$ is, in fact, true).
-However, this does not mean that there are not ways to alleviate the hardness of a problem, in particular if one uses some physical insight on the models under study.
-One way where physical insight has been used for classical simulation is represented by \acp{tn} methods, which completely avoids the sign problem (see Sec.~\ref{sub:quantum_inspired_algorithms}).
-They achieve such a result by not relying on the \ac{mc} methods and importance sampling, but with working directly in the Hilbert space of the system under investigation.
-As with every computational technique, it still has its shortcomings (see Sec.~\ref{sub:quantum_inspired_algorithms}).
+$\mathsf{NP}$--hardness only prevents a \emph{generic} and \emph{efficient} solution from existing (if $\mathsf{NP} \neq \mathsf{P}$ is in fact true).
+However, this does not mean that there are not ways to alleviate the hardness of a problem, in particular if one uses some physical insight.
+
+One way where physical insight has been used for classical simulation is represented by \acp{tn} methods, which completely avoids the sign problem for \acp{lgt}.
+They achieve such a result by not relying on \ac{mc} methods and importance sampling, but by working directly in the Hilbert space of the model under investigation.
+As with every computational technique, it still has its shortcomings (see the discussion in Sec.~\ref{sub:quantum_inspired_algorithms}).
+
+\medskip
 
 On the other hand, one can try to avoid any computational complexity by means of \ac{qs}, either digital or analog.
-Recently, different approaches have been proposed for the \ac{qs} of \ac{lgt}s, from different communities \cite{banuls2020lgtreview, dalmonte2016lgtreview, banuls2020simulating}.
+Recently, different approaches have been proposed for the \ac{qs} of \acp{lgt}, from different communities \cite{banuls2020lgtreview, dalmonte2016lgtreview, banuls2020simulating}.
 
 For analog \ac{qs}, the options ranges from ultracold atoms in optical lattices \cite{wiese2013ultracold, zohar2013ultracold, zohar2015quantum, zohar2011qed, banerjee2012atomic}, trapped ions \cite{hauke2013trappedions, yang2016trappedions}, or superconducting qubits \cite{marcos2013sclgt, marcos2014sclgt2d, brennen2016lgt}.
-The proposals have addressed \acp{lgt} of different levels of complexity, Abelian or non-Abelian, with or without dynamical matter, etc.
-For a complete review, see \cite{banuls2020simulating, banuls2020lgtreview}.
+The proposals have addressed \acp{lgt} of at different levels (Abelian or non-Abelian, with or without dynamical matter, etc.)
+For a complete review, see \cite{banuls2020simulating, banuls2020lgtreview, dalmonte2016lgtreview}.
 
-Regarding digital \ac{qs} of \ac{lgt}, some kind of \emph{digitization} of the fields is necessary.
-By digitization, we mean the task of formulation, representing, and encoding \ac{qft} (choosing the basis) in ways useful for computational calculations.
-The lattice field theory, presented in Sec.~\ref{sec:wilson_approach_to_lft}, is the most conventional digitization scheme of non-perturbative field theory but it is not feasible for quantum computing.
+Regarding digital \ac{qs} of \ac{lgt}, some kind of \emph{digitalization} of the fields is necessary.
+By digitalization, we mean the task of formulating, representing, and encoding \ac{qft} in ways that are useful for computations.
+The path-integral formulation, presented in Sec.~\ref{sec:wilson_approach_to_lft}, is the most straightforward digitalization scheme for non-perturbative field theory but it is not feasible for quantum computing.
 It relies on resources far beyond near-term quantum computers.
-For example, in gauge theories with continuous groups, like \ac{qcd} or \ac{qed}, the \ac{dof} lives on a compact manifold.
-This means an infinite number of states for each point in space-time or on the lattice.
+For example, in gauge theories with Lie groups, like \ac{qcd} or \ac{qed}, the \ac{dof} lives on a compact manifold.
+This means that there an infinite number of states for each point in space-time (or lattice).
 In other terms, the bosons that represent the gauge fields have an infinite-dimensional Hilbert space.
 This is obviously not feasible on quantum computer with a finite quantum register, for the same reason that real numbers cannot be represented on a classical computers.
 Hence, some kind of truncation scheme is necessary.
-Furthermore, in the path-integral formulation of \ac{lgt}, fermionic fields are integrated out, leaving a non-local action.
-A direct application of this procedure to quantum computers would require a high connectivity between qubits.
-Furthermore, for bosons, \ac{lgt} works with bosons (i.e., the gauge fields) which have a infinite-dimensional local Hilbert space.
-This is prohibited on a real quantum computer, where we have only finite quantum registers.
-We will show the different tactics for solving this issue later in the chapter
+Additionally, in the path-integral formulation of \ac{lgt}, fermionic fields are integrated out, leaving a non-local action.
+A direct application of this procedure to quantum computers would require a high connectivity between qubits, which again is not feasible for near-term quantum computers.
 
-The starting point for a digital simulation of a \ac{lgt} is its Hamiltonian formulation.
-This has been worked by Kogut and Susskind in their seminal paper\citneeded, the starting point for any endeavour in \ac{qs} of \ac{lgt}s, which we will review in the following section
+\bigskip
 
+% In the following, we will showcase the different tactics for the digitalization of gauge fields in \ac{qs}.
+The starting point for the digital simulation of \acp{lgt} is the Hamiltonian formulation.
+This has been worked out by Kogut and Susskind in their seminal paper \cite{kogut1975hamiltonian}, but it has been done with compact Lie groups in mind, like $\SU(N)$.
+So, some extra steps are necessary in order to have a formulation of \acp{lgt} that are implementable on a quantum computer.
+Several proposal for digitized \acp{lgt} have been put out
+\cite{zohar2015latticegauge, zohar2017digital, zohar2017z2gauge, milstead2018qyangmills, bender2018lgt3d, cui2020circuit, byrnes2006lgt, chandrasekharan1997linkmodels, hackett2019lgt, lamm2019lgt}
+and different paths are possible.
+In the following list we highlight the main approaches for digitalized \acp{lgt}:
+\begin{description}[labelsep=1.1em]
+    \item[Quantum Link Models]
+        Essentially, this proposal \cite{chandrasekharan1997linkmodels, brower1999linkmodel} digitizes $\U(N)$ and $\SU(N)$ gauge fields with spin operators in extra dimensions, while preserving gauge symmetry.
+        This makes them suitable for digital simulations, because spins have finite \ac{dof}, while the continuum limit is reached with dimensional reduction techniques.
 
-\todo{Sezione da finire}
+    \item[Dual variables]
+        Many gauge theories have compact \ac{dof}.
+        This compactness means that the lattice action admits a (possibly infinite) character expansion in the irreducible representations of the gauge group.
+        These irreducible representations are the dual variables \cite{savit1980duality, kaplan2020lgt}.
+        The discreteness of these dual variables makes them adapt for \ac{qs}.
+        Then, the irreducible representations can be further truncated in order to have a finite number of \ac{dof}.
+
+    \item[Finite subgroups]
+        The simplest way to approximate a continuous group would be by substituting it with one of its discrete subgroup.
+        This reduces the number of \ac{dof} to a finite number, one for each element of the subgroup.
+        This can greatly simplifies theoretical analysis \cite{fradkin1979phase} and the development of algorithms\citneeded.
+        On the other hand, it introduces issues when considering the continuum limit, due to a ``freezing transition''\citneeded, that can be mitigated with the addition of some extra terms\citneeded.
+
+\end{description}
+
+In the works presented in this manuscript \cite{pradhan2022ladder, pradhan_unpublished} we chose to focus on finite groups, because they allow a formulation of \acp{lgt} where the unitarity of the gauge fields is preserved\footnote{To be more specific, the parallel transporters associated with the gauge fields and their conjugate operators are unitary.}.
+With digital \ac{qs} as the main goal, unitarity is particularly convenient.
+In quantum computation only unitary operations are directly implementable as sequence of quantum gates.
+Hence, when a basis is fixed, the action of both the gauge fields and the electric fields will be translatable in terms of sequence of quantum gates.
+This greatly simplifies the development of quantum algorithms for \acp{lgt}.
+
+However, this comes with a cost.
+The need to preserve unitarity may require the modification of the algebraic relations between the gauge fields and its conjugates.
+This is extremely relevant if one cares about the continuum limit, which is an important topic for someone that is interested in simulations of \ac{qcd} for example.
+But if one is just interested in the theoretical exploration of finite group gauge theories, then this issue can be put aside, which is what we intend to do.

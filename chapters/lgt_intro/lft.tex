@@ -75,8 +75,8 @@ it has to be \emph{gauge-invariant} and reduce to the pure gauge \ac{ym} action 
 From \eqref{eq:gauge_transf_field_lattice}, we can immediately deduce that taking the product of $U_{\mu}(x)$ along a closed curve will yield a gauge-invariant quantity.
 The simplest close curve we can consider is a \emph{plaquette}, i.e., the smallest square face.
 
-Consider a plaquette sitting in the $(\mu, \nu)$-plane at site $x$ \todo{inserire figura}.
-We define the \emph{single plaquette \acl{wl}} $\WilsonPlaq$ as
+Consider a plaquette sitting in the $(\mu, \nu)$-plane at site $x$ (see Fig.~\ref{fig:single_plaq_wilson_loop}).
+We define the \emph{single plaquette \acl{wl}} $\WilsonPlaq(x)$ as
 \begin{equation}
     \WilsonPlaq(x) =
     U_{\mu}(x) U_{\nu}(x + a \hat{\mu}) U_{\mu}(x + a \hat{\nu})^{\dagger} U_{\nu}(x)^{\dagger}.
@@ -96,9 +96,20 @@ The quantity $\tr \WilsonPlaq$ behaves as expected in the continuum limit, where
     \tr \WilsonPlaq \approx N - \frac{a^{4}}{2} \tr F_{\mu \nu} F^{\mu \nu} + \mathcal{O}(a^6),
 \end{equation}
 
+
+\begin{figure}[t]
+    \SideFigure[label=fig:single_plaq_wilson_loop, desc={Single plaquette Wilson loop}]{%
+        \input{assets/figures/single_plaq_wilson_loop.tex}
+    }{%
+        Single plaquette Wilson loop $W_{\mu \nu}(x)$, which is defined on the plaquette in the $(\mu, \nu)$--plane at $x$ (highlighted in blue).
+        For convenience we have set $a = 1$.
+    }
+\end{figure}
+
 The lattice action is not unique.
 The Wilson action in \eqref{eq:wilson_action} is the simplest choice that one can make that satisfy our requirement.
-Some other modifications, for example, can include other types of closed loops and these modification can have their place\citneeded.
+Some other modifications are possible, they can include other types of closed loops or other representations.
+These modification have their place, for example for improving the continuum limit or errors \cite{bhanot1982modified, edgar1982generalised, creutz1983generalized}.
 However, they will not be considered here.
 
 Obviously, in a path-integral formulation of \ac{lgt}s we need to define the path-integral in order to have a quantum theory:
@@ -107,9 +118,7 @@ Obviously, in a path-integral formulation of \ac{lgt}s we need to define the pat
     \label{eq:path_intelgral_Wilson_lgt}
 \end{equation}
 Here we integrate over all possible values for the gauge variables.
-Due to the fact that $U_{\mu}$ are elements of a group $G$ that for most physical applications is compact, the most natural choice is to the invariant group measure also known as \emph{Haar measure}\citneeded.
-% where the integration measure $\dd U_{\mu}(x)$ is understood to be the Haar measure.
-% In case of a compact group, like $\SU(N)$, it is well defined and yields a finite value.
+Due to the fact that $U_{\mu}$ are elements of a group $G$ that for most physical applications is compact, the most natural choice is to the invariant group measure also known as \emph{Haar measure} \cite[Chap.~8]{creutz1985book}.
 Notice that \eqref{eq:path_intelgral_Wilson_lgt} is now a well defined mathematical quantity, unlike the path-integral in continuum theory where a clear mathematical definition is still lacking.
 Now that the path-integral measure has been defined, we can compute the average of an observable $\mathcal{O}$ with
 \begin{equation}
@@ -155,7 +164,7 @@ The conclusion of this brief discussion may seem rather grim, as magnetization i
 But this does not mean that there are no other order parameters in a \ac{lgt}.
 We have just showed that the problem when considering something like $\ev*{U_{\mu}}$ is gauge invariance.
 So, the most reasonable step forward is to consider \emph{gauge-invariant quantities} as order parameters.
-We have already seen that tracing over a product of $U_{\mu}$ variables along a closed curve is a gauge-invariant quantity, called \emph{\ac{wl}}.
+We have already seen that tracing over a product of $U_{\mu}$ variables along a closed curve is a gauge-invariant quantity, called \emph{\acf{wl}}.
 
 \begin{figure}[t]
     \begin{minipage}[t]{0.48\textwidth}
@@ -279,7 +288,7 @@ For each direction in space, we have two independent regions that gives a free f
 We have effectively \emph{doubled} the number of fermions for each direction.
 In a $d$-dimensional lattice we end up with $2^d$ independent fermions, even though we initially started with just one.
 
-There are many solutions to this fermion doubling problem \cite{susskind1977fermions, tong2018gauge}, but we will focus only on one in this manuscript: \emph{the staggered fermions} \cite{kogut1975hamiltonian}.
+There are many solutions to this fermion doubling problem \cite{susskind1977fermions, tong2018gauge}, but we will focus only on one in this manuscript: \emph{the staggered fermions} \cite{kogut1975hamiltonian, susskind1977fermions}.
 We have seen that these fictitious fermions come from the large momenta regions, where $q_{\mu} \sim \pi/a$.
 Brutally cutting out this large momenta regions spoils the completeness of the Fourier transform, so it is not a solution, but a smarter solution can give out the same effect.
 The idea is to spread the fermionic \ac{dof} over multiple lattice sites, reducing effectively the momenta space.

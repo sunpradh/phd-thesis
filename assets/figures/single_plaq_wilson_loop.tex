@@ -1,0 +1,23 @@
+\begin{tikzpicture}[scale=1.25]
+    % background axis
+    \draw[axis] (2, 0, 0) -- (3, 0, 0) node [right] {$\hat{\nu}$};
+    \draw[axis] (0, 0, 0) -- (0, 1, 0) node [left] {};
+
+    % plaquette term
+    \draw[U] (0, 0, 0) -- (0, 0, 2) node [midway, left] {$U_{\mu}(x)$};
+    \draw[U] (0, 0, 2) -- (2, 0, 2) node [midway, below] {$U_{\nu}(x + \hat{\mu})$};
+    \draw[U] (2, 0, 2) -- (2, 0, 0) node [midway, right] {$U_{\mu}^{\dagger}(x + \hat{\nu})$};
+    \draw[U] (2, 0, 0) -- (0, 0, 0) node [midway, above] {$U_{\nu}^{\dagger}(x)$};
+    \fill[Blue, fill opacity=0.1] (0, 0, 0) -- (0, 0, 2) -- (2, 0, 2) -- (2, 0, 0) -- cycle;
+    \node at (1, 0, 1) {$W_{\mu \nu}(x)$};
+
+    % Sites at mu=0
+    \node[site, label=above left:{$x$}] at (0, 0, 0) {};
+    \node[site, label=above:{$x+ \hat{\nu}$}] at (2, 0, 0) {};
+
+    \draw[axis] (0, 0, 2) -- (0, 0, 3) node [below] {$\hat{\mu}$};
+
+    % Sites at mu=2
+    \node[site, label=left:{$x + \hat{\mu}$}] at (0, 0, 2) {};
+    \node[site] at (2, 0, 2) {};
+\end{tikzpicture}

@@ -17,7 +17,7 @@
     font=\normalsize,
     text=black,
     text opacity=1
-    ] (psi) at (0, 0) {$\ket{\psi}$};
+    ] (psi) at (0, 0) {$\ket{\Psi}$};
     \foreach \n in {-3.5, -2.5, ..., 3.5} {
         \draw[index] (\n, -0.8) -- (\n, -0.8 |- psi.south);
     }
@@ -95,9 +95,10 @@
     \end{scope}
 
     % Labels
-    \node[anchor=south east] at (-3.5, -2) {MPS};
-    \node[anchor=south east] at (-3.5, -5) {PEPS};
-    \node[anchor=south east] at (-3.5, -8.5) {TTN};
+    \node[anchor=south west] at (-5.5, 0.75) {(a) Quantum state};
+    \node[anchor=south west] at (-5.5, -2)   {(b) MPS};
+    \node[anchor=south west] at (-5.5, -4.75)   {(c) PEPS};
+    \node[anchor=south west] at (-5.5, -8.5) {(d) TTN};
 
     % for centering
     \path (-6, 0) -- (6, 0);

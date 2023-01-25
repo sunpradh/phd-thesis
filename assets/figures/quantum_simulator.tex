@@ -1,8 +1,8 @@
 \begin{tikzpicture}[
     ket/.style = {font=\Large},
-    ->/.style={-stealth, ultra thick, shorten >=3pt, shorten <=3pt, Grey60},
-    system/.style = {draw, dotted, thick, rounded corners, inner sep=10pt},
-    simulator/.style = {draw, thick, rounded corners, inner sep=10pt}
+    ->/.style={-stealth, ultra thick, shorten >=3pt, shorten <=3pt, Grey80},
+    system/.style = {draw, dotted, thick, rounded corners, inner sep=10pt, fill=Green, fill opacity=0.1},
+    simulator/.style = {draw, thick, rounded corners, inner sep=10pt, fill=Blue, fill opacity=0.1}
     ]
     \node[ket] (phi0) at (0, 2.5) {$\ket{\phi(0)}$};
     \node[ket] (phit) at (3, 2.5) {$\ket{\phi(t)}$};
@@ -10,8 +10,8 @@
     \node[ket] (psit) at (3, 0) {$\ket{\psi(t)}$};
 
     \begin{scope}[on background layer]
-        \node[fit=(phi0) (phit), system, label=above:{Quantum System}, fill=Blue, fill opacity=0.1] {};
-        \node[fit=(psi0) (psit), simulator, label=above:{Simulator}, fill=Blue, fill opacity=0.1] {};
+        \node[fit=(phi0) (phit), system, label=above:{Quantum System}] {};
+        \node[fit=(psi0) (psit), simulator, label=above:{Simulator}] {};
     \end{scope}
 
     \path (phi0) edge[->] node[above, black] {$U$} (phit);

@@ -57,7 +57,7 @@ A bit can only have two values, either $0$ or $1$.
 In quantum computing these values are elevated to two \emph{orthonormal} states $\ket{0}$ and $\ket{1}$.
 Therefore, the bits are substituted with \emph{qubits}, which are two-levels quantum systems.
 A generic state of a qubit is $\ket{\psi} = \alpha \ket{0} + \beta \ket{1}$, with the normalization condition $\alpha^2 + \beta^2 = 1$, and the complex amplitudes $\alpha$ and $\beta$ encodes the carried information.
-A visual representation of the Hilbert space of a qubit is given by the Bloch sphere, see Fig.~\ref{fig:bloch_sphere}.
+A visual representation of the Hilbert space of a qubit is given by the Bloch sphere (see Fig.~\ref{fig:bloch_sphere}).
 A set of qubits is called a \emph{quantum register} and they encode the state of the quantum computational machine, the equivalent of the tape of a Turing machine.
 
 
@@ -201,7 +201,7 @@ If $\ket{\phi(0)}$ is the initial state of the target, then it can be mapped to 
 Next, the simulator would perform the desired time evolution $U(t) \ket{\psi(0)} = \ket{\psi(t)}$.
 The result then can be mapped back to a state of the target system via $\mathcal{O}^{-1}$, i.e.~$\mathcal{O}^{-1}\ket{\psi(t)} = \ket{\phi(t)}$.
 In this case the Hamiltonians would be related by the mapping $\mathcal{O}$, $H^{\text{sim}} = \mathcal{O} H^{\text{targ}} \mathcal{O}^{-1}$.
-Note that the simulator may only partly reproduce the dynamics of the target, or simulate some effective description of the system.
+Note that the simulator may only partly reproduce the dynamics of the target, or simulate some effective description of it.
 The choice of the mapping depends on what needs to be simulated and on the capabilities of the simulator \cite{georgescu2014simulation}.
 Finding the mapping in an analog \ac{qs} might look, at first, simpler than finding the most efficient gate decomposition of a Hamiltonian, but it is not always true and there are no recipes ready for constructing these mappings in a general case.
 % The obvious drawback of AQS is that the quantum simulators are problem specific, but on the other hand, given that they do not require a full quantum computer, they are more feasible in the near-term.
@@ -213,14 +213,14 @@ Moreover, analog \ac{qs} has the natural advantage that physical quantities can 
 
 One important advantage of analog \ac{qs} is that fact that it does not require a fully fledged quantum computer.
 In fact, the simulator does not even need to be a quantum computer at all.
-This possibly makes analog \ac{qs} much more achievable from the experimental point of view.
+This possibly makes analog \ac{qs} much more achievable from the experimental point of view in the short term.
 Many different platforms are already available (see also Fig.~\ref{fig:analog_simulators}):
 \begin{itemize}
     \item ultracold atoms and molecules \cite{lewenstein2012ultracold, bloch2012ultracold, bloch2008ultracold, lin2009ultracold, muller2012ions, aidelsburger2011ultracold};
     \item trapped ions \cite{blatt2012trappedions, muller2012ions, johanning2009ions, schneider2012ions};
     \item photons \cite{aspuruguzik2012photonic, angelakis2017quantum};
     \item polaritons \cite{angelakis2017quantum, hartmann2006polaritons};
-    \item nuclear magnetic resonance (NMR) systems \cite{somaroo1999simulation, tseng1999nmr};
+    \item nuclear magnetic resonance systems \cite{somaroo1999simulation, tseng1999nmr};
     \item artificial lattices \cite{singha2011lattice};
     \item superconducting qubits \cite{houck2012superconducting, makhlin2001superconducting, devoret2004superconducting, you2005superconducting, pritchett2010superconducting}.
 \end{itemize}
@@ -261,7 +261,7 @@ For example, in the case of ultracold atoms in optical lattices the typical cont
 
 Classical simulations of quantum systems are usually done using one of the following methods \cite{hauke2012simulators}:
 \begin{itemize}[itemsep=0pt]
-    \item Quantum \ac{mc}.
+    \item Quantum \acf{mc}.
     \item Systematic perturbation theory.
     \item \Ac{ed}.
     \item \Ac{dmrg}.
@@ -270,14 +270,14 @@ Each of these methods has its problems.
 Quantum \ac{mc} methods can work with large systems but fails for fermionic systems due to the sign problem \cite{sandvik2010computational, troyer2010computational}.
 Perturbation theory is applicable only when there is a small coupling constant, so it fails for strongly interacting systems.
 \Ac{ed} works only for rather small systems \cite{sandvik2010computational, troyer2010computational}.
-\Ac{dmrg} is a variation methods that has been proven to work also for strongly interacting systems \cite{schollwock2011dmrg, mcculloch2007dmrg, dechiara2008dmrg}.
-It has been proven to be of great success for one-dimensional systems, while for two-dimensional models it can be quite limited \cite{stoudenmire2012dmrg}.
+\Ac{dmrg} is a variational method that has been proven to be fully functional for strongly interacting systems \cite{schollwock2011dmrg, mcculloch2007dmrg, dechiara2008dmrg}.
+Additionally, it has been proven to be of great success for one-dimensional systems, while for two-dimensional models it can be quite limited \cite{stoudenmire2012dmrg}.
 
-Thanks to the development of quantum information, new \emph{classical algorithms} have been invented for the simulation of many-body systems that much more exploit the quantum nature of these systems.
-One of the most groundbreaking example of quantum-inspired algorithms is the use of \emph{\ac{tn} states} \cite{orus2014tensor, verstraete2004algo, verstraete2008tensor, verstraete2004dmrg, vidal2008simulation, cirac2009tensor}.
-\Acp{tn} make it possible to ``compress'' the information about a many-body wave function by expressing it as a \emph{contraction} of a network of tensors (as suggested by the name).
+Thanks to the development of quantum information, new \emph{classical algorithms} have been invented for the simulation of quantum many-body systems, that much more exploit the quantum nature of these systems.
+One of the most groundbreaking example of quantum-inspired algorithms is the use of \emph{\acp{tn}} \cite{orus2014tensor, verstraete2004algo, verstraete2008tensor, verstraete2004dmrg, vidal2008simulation, cirac2009tensor}.
+They make it possible to ``compress'' the information about a many-body wave function by expressing it as a \emph{contraction} of a network of tensors (as suggested by the name).
 
-In details, to each physical site we associate a tensor with a number of indices (or legs).
+In a \ac{tn}, to each physical site there is associate a tensor with a certain number of indices (or legs).
 One of these indices is called the \emph{physical index} of the tensors, which runs over the basis of the local Hilbert space.
 The other indices are \emph{auxiliary indices}, their dimension is governed by a parameter $\chi$ called the \emph{bond dimension} and are ``connected'' to other sites.
 Roughly speaking, these auxiliary indices encodes the entanglement information between the connected sites.
@@ -287,9 +287,9 @@ A general global state $\ket{\Psi}$ of the whole chain can be written as
 \begin{equation}
     \ket{\Psi} = \sum_{i_1, \dots, i_L} C_{i_1, \dots, i_L} \ket{i_1 \cdots i_L}.
 \end{equation}
-It is easy to see that the whole state is encoded in the $L$-th order tensor $C_{i_1, \dots, i_L}$ and the indices $i_n$ are called physical indices.
-Notice that $C_{i_1, \dots, i_L}$ has $d^L$ entries.
-Through \emph{\ac{svd}} it is possible to factorize the tensor $C_{i_1, \dots, i_L}$ into $L$ tensors $A^{i_n}$, one for each site \cite{schollwock2011dmrg}:
+The whole state is encoded in the tensor $C_{i_1, \dots, i_L}$ of order $L$, which has a total of $d^L$ entries.
+The indices $i_n$ are physical indices of the tensor.
+Through Singular Value Decomposition, it is possible to factorize the tensor $C_{i_1, \dots, i_L}$ into $L$ tensors $A^{i_n}$, one for each site \cite{schollwock2011dmrg}:
 \begin{equation}
     C_{i_1, \dots, i_L}
     = \sum_{\alpha_1, \dots, \alpha_{L-1}}
@@ -300,37 +300,53 @@ Through \emph{\ac{svd}} it is possible to factorize the tensor $C_{i_1, \dots, i
     A^{i_L}_{\alpha_{L-1}}.
     \label{eq:mps_decomposition}
 \end{equation}
-The indices $\alpha_n$ are called auxiliary indices.
+We have introduced a set of indices $\alpha_n$, the auxiliary indices, which are contracted (i.e. summed over).
+The example above is basically the essence of a \emph{\acp{mps}}, a typical example of \ac{tn} in one dimension.
 
-The order of $\alpha_n$ depends on the number of Schmidt eigenvalues of the bipartition that separates the first $n$ sites from the rest.
+The order of the indices $\alpha_n$ depends on the number of Schmidt eigenvalues of the bipartition that separates the first $n$ sites from the rest.
 In other words, it depends on the entanglement entropy between the first $n$ sites of the chain and the rest.
-Not all the Schmidt eigenvalues are of the same importance, therefore each tensor $A^{i_n}$ can be optimized by discarding the Schmidt eigenvalues under a certain threshold.
-In this way we compress the wave-function, by preserving the information that best represent the entanglement in the state.
-The order of the indices $\alpha_n$ is called the \emph{bond-dimension}, often denoted $\chi$, and it is this parameter that fine tunes the amount of entanglement.
+Not all the Schmidt eigenvalues are of the same importance, therefore each tensor $A^{i_n}$ can be optimized by discarding the Schmidt eigenvalues that are under a certain threshold.
+In this way we \emph{compress} the wave-function, by preserving the information that best represent the entanglement in the state.
+The order of the indices $\alpha_n$ after the optimization is the \emph{bond-dimension}, and it is this parameter that fine tunes the amount of entanglement.
 Notice that with $\chi$ fixed, the right hand side of \eqref{eq:mps_decomposition} has only around $L d \chi^2$ entries, which scales better that $d^L$.
 If the system has a finite amount of entanglement, then there is an optimal value for the bond dimension $\chi$.
-This would mean that we do not really need all the $d^L$ entries of $C$, but the $L d \chi^2$ entries of \eqref{eq:mps_decomposition} are sufficient to faithfully represent $\ket{\Psi}$.
+This would mean that we do not really need all the $d^L$ entries of $C_{i_1, \dots, i_L}$.
+Only the $L d \chi^2$ entries of the right hand side of \eqref{eq:mps_decomposition} are sufficient to \emph{faithfully} represent $\ket{\Psi}$.
 
-For a large class of physically relevant models, the ground state is gapped and has, in a certain sense, a finite amount of entanglement, which can be explained by the finite correlation length.
-This fact is expressed by the so-called \emph{area law}, where the entanglement between two partitions of the system grows with size of the boundary, the area between the two partitions, and not with the size of the partition itself \cite{vidal2003arealaw, calabrese2004qft, calabrese2009cft, srednicki1993area, plenio2005area}.
+For a large class of physical models, the ground state is gapped and has a finite correlation length, which leads to a finite amount of entanglement.
+This fact is expressed by the so-called \emph{area law}, where the entanglement between two partitions of the system grows with size of the boundary, the area between the two partitions, and not with the volume of the partition itself \cite{vidal2003arealaw, calabrese2004qft, calabrese2009cft, srednicki1993area, plenio2005area}.
 The main advantage of \ac{tn} methods is their ability to capture this area law, which lead to an efficient computation of the ground states of these models.
 
 \Acp{tn} were first inspired by the ground state of the AKLT model \cite{affleck1987aklt}, and from there different types \acp{tn} were developed.
-The paradigmatic example of \acp{tn} are the \emph{\acp{mps}} in one-dimension \cite{vidal2008simulation, schollwock2011dmrg}, and the \emph{\acp{peps}} in two dimensions \cite{verstraete2004algo, jordan2008ipeps}.
-Some other variants of \acp{tn} exists, like \emph{Tree \acp{tn}} \cite{tagliacozzo2009tree, fannes1992trees} or \emph{\ac{mera}} \cite{evenbly2013mera, vidal2007entanglement, evenbly2009entanglement}.
-
-\begin{figure}[t]
-    \centering
-    \input{assets/figures/tensor_networks.tex}
-    \caption{Examples of \acp{tn}}
-\end{figure}
+The paradigmatic example of \acp{tn} are the \acp{mps} in one-dimension \cite{vidal2008simulation, schollwock2011dmrg}, and the \emph{\acp{peps}} in two dimensions \cite{verstraete2004algo, jordan2008ipeps}.
+Some other variants of \acp{tn} exists, like \emph{Tree \acp{tn}} \cite{tagliacozzo2009tree, fannes1992trees} or \emph{Multi-scale Entanglement Renormalization Ansatz (MERA)} \cite{evenbly2013mera, vidal2007entanglement, evenbly2009entanglement}.
+An example of \ac{mps}, \ac{peps}, and Tree \ac{tn} are shown in Fig.~\ref{fig:tensor_networks}.
 
 \Ac{tn} methods can still have some shortcomings.
-They work especially well for one-dimension gapped systems, but then can become challenging to make them work efficiently for gapless systems or higher dimensions.
-When a system is in a gapless phase, the correlation length diverges, which leads to changes in the structure of entanglement.
-This is best captured by the behaviour of entanglement entropy in massive or massless one-dimensional systems \cite{calabrese2004qft, calabrese2009cft}.
-In a massive and gapped theory, the entanglement entropy is directly proportional to number of boundary points, irregardless of the subsystem size (as long as it is larger then the correlation length).
+They work especially well for one-dimensional gapped systems, but it can become quite challenging to make them work efficiently in gapless systems or in higher dimensions.
+When a system is in a gapless phase, the correlation length diverges, which leads to drastic change in the entanglement structure.
+This is best captured by comparing the behaviour of entanglement entropy in massive (gapped) and massless (critical) one-dimensional models \cite{calabrese2004qft, calabrese2009cft}.
+In a massive theory the entanglement entropy is directly proportional to number of boundary points, regardless of the subsystem size (as long as it is larger then the correlation length).
 On the other hand, in a massless and critical phase the entanglement entropy has a direct dependence on the size of the subsystem.
-Therefore, it is easy to see that in a critical phases the bond-dimension would, potentially, need to increase with the system size in order to effectively capture the ground-state wave-function.
+
+Therefore, in a critical phases the bond-dimension would, potentially, need to increase with the system size in order to effectively capture the ground-state wave-function.
 Another shortcoming is the computational complexities of tensor contractions in dimensions higher than one.
-This is because the order of each tensor increases with the dimensionality of the system, which lead to higher computational costs when performing calculations \cite{orus2014tensor}.
+This is because the number of legs of a tensor increases with the dimensionality of the system, which lead to higher computational costs when performing calculations \cite{orus2014tensor}.
+
+
+\begin{figure}[p]
+    \centering
+    \input{assets/figures/tensor_networks.tex}
+
+    \vspace*{0.5cm}
+
+    \caption[Examples of Tensor Networks]{Examples of \acp{tn}. From top to bottom:
+        \emph{(a)} a generic quantum state can be represented as a unique tensor, with one index (or leg) for each site.
+        \emph{(b)} a \ac{mps} in one dimension; each site have one tensor with one physical leg and two auxiliary legs that connects with the neighbouring sites (only one leg at the boundary).
+        \emph{(c)} a \ac{peps} in two dimensions on a square lattice; each site has an auxiliary legs going in each possible direction on the lattice.
+        \emph{(d)} a Tree \ac{tn} state in one-dimension; each site has one tensor with one physical leg, but now these tensors are contracted in hierarchical structure, with intermediate tensors, that do not reflect the lattice geometry.
+    }
+    \label{fig:tensor_networks}
+\end{figure}
+
+\clearpage
