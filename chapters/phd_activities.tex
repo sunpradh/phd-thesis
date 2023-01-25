@@ -1,0 +1,213 @@
+\chapter*{Report on PhD activities}
+\addcontentsline{toc}{chapter}{Report on PhD activities}
+
+% No paragraph indentation
+\setlength{\parindent}{0pt}
+\newcommand{\PhD}{Ph.D.\xspace}
+\newcommand{\MSc}{M.Sc.\xspace}
+\newcommand{\BSc}{B.Sc.\xspace}
+
+% arXiv ID
+\newcommand{\arXiv}[1]{\href{https://arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+
+% Common locations
+\newcommand{\Unibo}{University of Bologna}
+\newcommand{\GGI}{Galileo Galilei Institute, Florence, Italy}
+
+% Section headings
+%
+% Arguments:
+%   1. Section title
+\newcommand{\Section}[1]{
+    \vspace*{0.5cm}
+    \noindent%
+    % \textsc{\Large \lowercase{#1}}\vspace{1em} ~~~\textcolor{black!70}{\hrulefill}
+    {\Large\PlexMedium #1}
+    \vspace*{0.35cm}
+}
+
+% Item
+%
+% Arguments:
+%   1. right block text (large block and normal text)
+% Optional arguments:
+%   1. left block (narrow block and italicized text)
+% Lenghts:
+%   \ItemLeftWidth  width of the left block
+%   \ItemRightWidth width of the right block
+\newcommand{\Item}[2][\null]{
+    {
+        \begin{tabular}{p{\ItemLeftWidth}p{\ItemRightWidth}}
+            \raggedleft#1 & \parbox[t]{\linewidth}{#2}
+        \end{tabular}
+        \vspace{\ItemVspace}
+    }
+}
+
+% Defines the widths
+\newlength{\ItemRightWidth}
+\newlength{\ItemLeftWidth}
+\newlength{\ItemVspace}
+\setlength{\ItemLeftWidth}{1cm}
+\setlength{\ItemRightWidth}{\textwidth}
+\addtolength{\ItemRightWidth}{-\ItemLeftWidth}
+\setlength{\ItemVspace}{5pt}
+
+
+% Pubblication
+%
+% Arguments:
+%   1. Authors
+%   2. Title
+%   3. Other info (arXiv id, status, etc...)
+%   4. Year
+\newcommand{\Publication}[4]{
+    \Item[{\normalfont #4}]{
+        \frenchspacing #1\nonfrenchspacing\\
+        \emph{#2}\\
+        #3
+    }
+}
+
+% Thesis (for cosupervisioning)
+%
+% Arguments:
+%   1. Authors
+%   2. Title
+%   3. Year
+\newcommand{\Thesis}[3]{
+    \Item[{\normalfont #3}]{
+        \frenchspacing #1\nonfrenchspacing\\
+        \emph{#2}
+    }
+}
+
+% Events (School, workshop, etc...)
+%
+% Arguments:
+%   1. Event name
+%   2. Localtion
+%   3. Year
+\newcommand{\Event}[3]{
+    \Item[{\normalfont #3}]{
+        #1 \\
+        {\small #2}
+    }
+}
+
+
+\vspace*{-1.25cm}
+
+\Section{Publications}
+
+\Publication{\underline{SP}, A. Maroncelli, E. Ercolessi}{Discrete Abelian lattice gauge theories on a ladder and their dualities with quantum clock models}{\arXiv{2208.04182} (in pubblication)}{2022}
+
+\Publication{A. Mariani, \underline{SP}, E. Ercolessi}{Hamiltonians and gauge-invariant Hilbert space for Yang-Mills theories with finite gauge group }{(in preparation)}{2023}
+
+\Publication{\underline{SP}, E. Ercolessi}{Long-range Kitaev chains and Toeplitz matrices}{(in preparation)}{2023}
+
+\Publication{F. Dell'Anna, \underline{SP}, E. Ercolessi}{Fisher information and multipartite entanglement in long-range systems}{(in preparation)}{2023}
+
+
+
+\Section{Co-supervisioning of \MSc~Thesis}
+
+\Thesis{R. Cioli}{Digital quantum simulations of the $\mathbb{Z}_N$ Toric Code}{2022}
+
+\Thesis{L. Pecorari}{Diagnosing criticality in symmetric and chiral clock models}{2022}
+
+\Thesis{D. Rossi}{Fracton phases: analytical description and simulations of their thermal behavior}{2021}
+
+\Thesis{L. Lumia}{Digital quantum simulations of Yang-Mills lattice gauge theories}{2021}
+
+\Thesis{P. Baglioni}{Ergodicity and localization in $\mathbb{Z}_n$ lattice Schwinger model}{2020}
+
+\Thesis{F. Rotella}{Topological characterization of two-dimensional p-wave superconductors}{2020}
+
+
+
+\Section{PhD Schools}
+
+\Event{Tensor$22$ School on Tensor Networks based approaches to Quantum Many-Body Systems}{Vienna, Austria}{2022}
+
+\Event{SQMS/GGI Summer School on Quantum Simulation of Field Theories}{\GGI}{2022}
+
+\Event{Quantum Sensing, Information Processing and Computing}{Bologna, Italy}{2022}
+
+\Event{SFT$2022$ Lectures on Statistical Field Theories}{\GGI}{2022}
+
+\Event{SFT$2021$ Lectures on Statistical Field Theories}{\GGI}{2021}
+
+\Event{SCQM$20$ Winter school on strongly correlated quantum matter}{Max Planck Institute for the Physics of Complex Systems, Dresden, Germany}{2020}
+
+\Event{Autumn School on Correlated Electrons: Topology, Entanglement, and Strong Correlations}{Forschungzentrum J\"ulich, Germany}{2020}
+
+
+
+\Section{Workshops and Conferences}
+
+\Event{Quantum Methods for Lattice Gauge Theories}{MITP, Mainz, Germany}{2022}
+
+\vspace*{-3pt}
+
+\Item{\underline{Talk}: ``\emph{Discrete Abelian lattice guage theories on a ladder and their dualities with quantum clock models}''}
+
+\Event{IQIS$2022$ Italian Quantum Information Science Conference}{Palermo, Italy}{2022}
+
+\vspace*{-3pt}
+
+\Item{\underline{Poster}: ``\emph{Quantum Fisher Information and Topological Phases}''}
+
+\Event{AQC$2022$ Conference on Adiabatic Quantum Computation / Quantum Annealing}{ICTP, Trieste, Italy}{2022}
+
+\Event{Randomness, Integrability and Universality}{\GGI}{2022}
+
+\Event{Topological properties of gauge theories and their applications to high-energy and condensed matter physics}{\GGI}{2021}
+
+\Event{The Hitchhiker's Guide to Condensed Matter and Statistical Physics: Topological Phenomena in Condensed Matter}{ICTP, Trieste, Italy}{2021}
+
+\Event{Gravity and Emergent Gauge Fields in Condensed and Synthetic Matter}{MITP, Mainz, Germany}{2021}
+
+\Event{The Hitchhiker's Guide to Condensed Matter and Statistical Physics: Machile Learning for Condensed Matter}{ICTP, Trieste, Italy}{2021}
+
+
+
+\Section{Visiting periods}
+
+\Event{Visiting period at the Center for Quantum Devices under the supervision of Prof.~Michele Burrello, from $17/10/21$ to $4/01/22$ ($3$ months)}{Niels Bohr Institute, Copenhagen, Denmark}{2021}
+
+\vspace*{-3pt}
+
+\Item{\underline{Talk}: ``Toeplitz Matrices for the Long-range Kitaev Model''}
+
+
+
+\Section{Teaching experience}
+
+\Event{Tutor for the School \emph{Quantum Sensing, Information Processing and Computing}}{\small Dept.~of Physics and Astronomy, \Unibo}{2022}
+
+\Event{Tutor for \emph{General Physics} (\BSc in Mathematics)}{\small Dept.~of Mathematics, \Unibo}{2022}
+
+
+
+\Section{Courses}
+
+\setlength{\ItemVspace}{-8pt}
+
+\Item[2020]{Quantum mechanics and entanglements (24h)}
+
+\Item[2020]{Higgs and electroweak physics at LHC (24h)}
+
+\Item[2020]{Dark matter phenomenology and gravitational waves (24h)}
+
+\Item[2020]{Collider physics (12h)}
+
+\Item[2020]{Fundamentals of photonics (12h)}
+
+\Item[2021]{Renormalization group in QFTs and Critical theories (12h)}
+
+\Item[2021]{Solitons in Modern Perspective (12h)}
+
+\Item[2021]{European strategies and funding opportunities (12h)}
+
+
