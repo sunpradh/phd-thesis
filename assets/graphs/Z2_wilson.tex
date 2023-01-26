@@ -1,3 +1,12 @@
+\newcommand{\ZTwoWilsonGraph}[1]{
+        \nextgroupplot
+        \addplot+[thick] table [y=10x2] {assets/graphs/data/Z2_wilson_#1.csv};
+        \addplot+[thick] table [y=12x2] {assets/graphs/data/Z2_wilson_#1.csv};
+        \addplot+[thick] table [y=14x2] {assets/graphs/data/Z2_wilson_#1.csv};
+        \addplot+[thick] table [y=16x2] {assets/graphs/data/Z2_wilson_#1.csv};
+        \addplot+[thick] table [y=18x2] {assets/graphs/data/Z2_wilson_#1.csv};
+}
+
 \begin{tikzpicture}[
         % scale=0.8,
         font=\small,

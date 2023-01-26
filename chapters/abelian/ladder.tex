@@ -15,6 +15,19 @@ On the ladder, each rung is identified by a coordinate $i=1,\dots,L$, where $L$ 
 Links, as usual, will be denoted by $\link$.
 On the legs they are labelled as $\toplink_i$ (upper leg) or $\botlink_i$ (lower leg), while on the rungs they are labelled $\runglink_i$.
 
+\begin{figure}[t]
+    \centering
+    \input{assets/figures/ladder_operators_full.tex}
+    \caption[Operators of a $\Z_N$ ladder \ac{lgt}]{%
+        Picture of the different ladder operators.
+        \emph{Left}: the magnetic and electric link operators.
+        \emph{Right}: plaquette operator $U_i$ and the Gauss operators $\GaussUp_j$ and $\GaussDown_k$.
+        Notice that operators and sites on the upper leg are indicated with an up arrow, on the lower leg with a down arrow and on the rungs with a superscript $0$.
+    }
+    \label{fig:ladder_operators}
+\end{figure}
+
+
 We preserve the same formulation of $\Z_N$ \ac{lgt} but in order to lighten our notation,
 we use the symbols $V^0_i, \; U^0_i$ for the operators defined on the rung $i$, and  $V^{\rho}_i, \; U^{\rho}_i$ with $\rho = \uparrow, \downarrow$ for the operators on the horizontal links of the upper and lower leg, respectively, to the right of the rung.
 In synthesis:
@@ -44,19 +57,6 @@ Moreover, on a ladder the vertices are three-legged, so the Gauss operators are 
 \end{equation}
 where $\GaussUp_i$ and $\GaussDown_i$ refers, respectively, to the Gauss operators on the vertices $i^{\uparrow}$ and $i^{\downarrow}$.
 As a reference see Fig.~\ref{fig:ladder_operators}.
-
-\begin{figure}
-    \centering
-    \input{assets/figures/ladder_operators_full.tex}
-    \caption[Operators of a $\Z_N$ ladder \ac{lgt}]{%
-        Picture of the different ladder operators.
-        \emph{Left}: the magnetic and electric link operators.
-        \emph{Right}: plaquette operator $U_i$ and the Gauss operators $\GaussUp_j$ and $\GaussDown_k$.
-        Notice that operators and sites on the upper leg are indicated with an up arrow, on the lower leg with a down arrow and on the rungs with a superscript $0$.
-    }
-    \label{fig:ladder_operators}
-\end{figure}
-
 
 Finally, we write explicitly the Hamiltonian for a $\Z_N$ \ac{lgt} on a ladder:
 \begin{equation}

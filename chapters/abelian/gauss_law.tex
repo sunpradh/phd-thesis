@@ -1,40 +1,28 @@
-% \section{Numerical analysis}%
-% \label{sec:numerical_analysis}
-%
-% In this work we studied numerically the different topological sectors (and their phase diagrams) of the $\Z_N$ \ac{lgt} on ladder for $N=2,3,4$ through \emph{exact diagonalization} (ED).
-% We chose ED instead of other variational methods like DMRG because we were able to construct exactly the Hilbert space of the different topological sectors of the models, exploiting the duality in Sec.~\ref{sec:dualities_of_the_ladder}.
-%
-
-\subsection{Implementing the Gauss law}%
+\subsection{Implementing the Gauss law in numerics}%
 \label{sub:implementing_the_gauss_law}
 
 \begin{figure}[t]
     \centering
-    \input{assets/figures/z2_vacua.tex}
-    \caption[Vacuum states of the super-selection sectors of the $\Z_2$ ladder \ac{lgt}]{The different ``Fock vacua'' $\ket{\Omega_{(0,0)}}$ and $\ket{\Omega_{(1,0)}}$ of the $\Z_2$ ladder \ac{lgt}.
-        The latter can be obtained from the former by applying the \ac{wl} operator $W_1$.
-        The states $\ket{0}$ and $\ket{1}$ refers to the eigenstates of the electric field operator $V$, which is just $\sigma_{z}$ in the $\Z_2$ model.
-    }
-    \label{fig:z2_vacua}
-\end{figure}
-
-\begin{figure}
-    \centering
     \input{assets/figures/z2_states.tex}
-    \caption[Duality between clock states and ladder states]{Duality between the states of a $2$--chain and the states of a $\Z_2$ ladder \ac{lgt} in the different sectors $(0,0)$ (no non-contractible electric loop) and $(1,0)$ (one non-contractible loop around the ladder).
-        In the sector $(0,0)$ it is evident that all the physical states contains closed electric loops.
-        On the other hand, in the sector $(1,0)$ the physical states are all the possible deformation of the electric string that goes around the ladder.}
+    \caption[Duality between clock states and ladder states]{Duality between the states of a $2$--chain and the states of a $\Z_2$ ladder \ac{lgt} in the different sectors $n=0$ (no non-contractible electric loop) and $n=1$ (one non-contractible loop around the ladder).
+        In the sector $n=0$ it is evident that all the physical states contains closed electric loops.
+        On the other hand, in the sector $n=1$ the physical states are all the possible deformation of the electric string that goes around the ladder.}
     \label{fig:z2_states}
 \end{figure}
 
-In order to proceed with ED one has to provide two things: (i) the basic operators of the theory ($U_{\ell}$ and $V$) and (ii) the physical (gauge-invariant) Hilbert space, given a lattice with specified size and boundary conditions.
-The former was fairly standard while the latter was the most challenging and interesting part to implement.
+
+In order to proceed with \ac{ed} one has to provide two things:
+\begin{itemize}
+    \item the basic operators of the theory ($U_{\link}$ and $V_{\link}$);
+    \item the physical Hilbert space, given a lattice with specified size and boundary conditions.
+\end{itemize}
+The former is fairly standard, while the latter is the most challenging and interesting aspect to implement.
 
 If one has to work with only physical states, then one has to check the Gauss law for every site.
 With the brute-force method one has to generate all the possible states and then filter out all the states that violate Gauss law.
 This method, like any brute-force method, is not very efficient.
 To better exemplify this, consider a $\Z_2$ theory on a $L \times L$ periodic lattice, which have $L^2$ sites and $2L^2$ links.
-There are therefore $2^{2 L^2}$ possible states and for each one up to $L^2$ checks (one per site) has to be performed.
+There are therefore $2^{2 L^2}$ possible configurations and for each one up to $L^2$ checks (one per site) has to be performed.
 Moreover, it can be showed that there are only $2^{L^2}$ \emph{physical} states.
 As a result, the construction of the physical Hilbert space involves $O(L^2 2^{2 L ^2})$ operations in a search space of $2^{2 L^2}$ objects for finding only $2^{L^2}$ elements.
 All of this makes the inefficiency of this brute-force method very clear, even for moderately small lattices.
@@ -43,24 +31,34 @@ All of this makes the inefficiency of this brute-force method very clear, even f
 The approach adopted in this work exploits the duality in Sec.~\ref{sec:dualities_of_the_ladder} and represents an \emph{exponential speedup} with respect to the brute-force method.
 It is not a search or pattern-matching algorithm, each physical configuration is procedurally generated from the states of the dual clock model.
 
-Given a $\Z_N$ \ac{lgt} on a lattice of size $L \times L$, we consider the dual $N$-clock model on a similar lattice with $A = L^2$ sites,
-In its Hilbert space $\mathcal{H}_{N\text{-clock}}$ there is no gauge constraint or physical condition to apply,
+Given a $\Z_N$ \ac{lgt} on a lattice of size $L \times L$, we consider the dual $N$-clock model on a similar lattice with $A = L^2$ sites.
+In its Hilbert space $\mathcal{H}_{N\text{-clock}}$ there is no gauge constraint or to apply,
 hence the basis is the set of states $\ket{ \{s_i\} } \equiv \ket{s_0 s_1 \cdots s_{A-1}}$ with each $s_i = 0, \dots, N-1$.
-From a state $\ket{ \{s_i\} }$ we can obtain the dual state for the \ac{lgt} model in the $(m,n)$ sector:
+Each state $s_i$ of the dual clock model corresponds to the flux state in the $i$-th plaquette of the gauge model.
+Additionally, the operators $U_i$ and $U_i^{\dagger}$ act as ``creation'' or ``annihilation'' operators on the flux state (respectively), meaning that they increase or decrease the flux in the $i$-th plaquette.
+Hence, if we establish first what the $\ket{0 \cdots 0}$ clock state would correspond in the gauge model, then we can proceed to obtain the dual to a generic state $\ket{\{s_i\}}$ by applying the $U_i$ operators.
+The clock state $\ket{0 \cdots 0}$ is the Fock vacuum from which every other clock state can be obtained, by applying the $X_i$ clock operators.
+The corresponding state in the gauge model would be a state with no flux in the plaquettes.
+In this regard, the ``Fock vacuum'' is not unique.
+There is one vacuum for each super-selection sector.
+
+Therefore, from a clock state $\ket{ \{s_i\} }$ we can obtain the dual gauge state model in the $(m, n)$ sector, by means of powers of $U_i$:
 \begin{equation}
     \ket{\{s_i\} } \; \longmapsto \;
-    \prod_{i=0}^{A-1} U_i^{s_i} \ket{\Omega_{(n,m)}},
+    \prod_{i=0}^{A-1} U_i^{s_i} \ket*{\Omega_{(n,m)}},
 \end{equation}
-where $U_i$ is the plaquette operator on the $i$-th plaquette and $\ket{\Omega_{(m,n)}}$ is the ``Fock vacuum'' of the $(m,n)$ sector.
-As one can deduce, the information about the topological sector of the \ac{lgt} model is carried in the Hamiltonian $H_{N\text{-clock}}$ of the dual clock model and not in the structure of $\mathcal{H}_{N \text{-clock}}$.
-This means that is possible to build each sector $\Hphys^{(n,m)}$ in \eqref{eq:decomposizione_Hphys} from $\mathcal{H}_{N \text{-clock}}$, with the appropriate $\ket{\Omega_{(n,m)}}$.
+where $U_i$ is the plaquette operator on the $i$-th plaquette and $\ket*{\Omega_{(m,n)}}$ is the ``Fock vacuum'' of the $(m, n)$ sector.
 
-
-Moreover, also the ``Fock vacuums'' $\ket{\Omega_{(n,m)}}$ can be obtained easily, thanks to \eqref{eq:azione_wilson_loop}:
+Moreover, the ``Fock vacua'' $\ket*{\Omega_{(n,m)}}$ can be obtained easily, thanks to \eqref{eq:azione_wilson_loop}:
 \begin{equation}
-    \ket{\Omega_{(n,m)}} = (W_1)^n (W_2)^m \ket{\Omega_{(0,0)}},
+    \ket*{\Omega_{(n,m)}} = (\Wilson_1)^n (\Wilson_2)^m \ket*{\Omega_{(0,0)}},
 \end{equation}
-where $\ket{\Omega_{(0,0)}}$ is just the state $\ket{000 \cdots 0}$ (in the electric basis) for all the links.
+where $\ket{\Omega_{(0,0)}}$ is just the state $\ket{000 \cdots 0}$ in the electric basis of the gauge model, where all the links are in zero electric field state (see Fig.~\ref{fig:z2_vacua}).
+
+
+As one can deduce, the information about the super-selection sector of the \ac{lgt} model is carried out in the Hamiltonian $H_{N\text{-clock}}$ of the dual clock model and not in the structure of $\mathcal{H}_{N \text{-clock}}$ itself.
+This means that is possible to build each sector $\Hphys^{(n,m)}$ in \eqref{eq:decomposizione_Hphys} from $\mathcal{H}_{N \text{-clock}}$, with the appropriate $\ket{\Omega_{(n,m)}}$.
+In order to simplify notation, we will denote the vacua of the ladder model simply as $\ket{\Omega_{n}}$ for the $n$-th sector.
 
 
 If we want to quantify the obtained speedup with this method, in the case of a $\Z_2$ theory on a square lattice $L \times L$ there are $2^{L^2}$ possible clock configurations.
@@ -68,20 +66,13 @@ For each configuration, there are at most $L^2$ magnetic fluxes to apply.
 This translates into $O(L^2 2^{L^2})$ operations, which is an exponential speedup with respect to the brute-force (notice the lack of a factor 2 in the exponent) and is easily generalizable for any $\Z_N$.
 Although, it remains an open question whether a similar method can be applied for gauge theories with non-Abelian finite groups.
 
-
-
-% \subsection{Non-local order parameters}%
-% \label{sub:non_local_order_parameters}
-
-% In Sec.~\ref{sub:investigating_the_phase_diagram} we talked about how a \ac{wl} $W_{\mathcal{R}}$ or an \ac{ths} $S_{\tilde{\mathcal{C}}}$ work as a non-local order parameters and can be used to investigated the phase diagram of a $\Z_N$ \ac{lgt} model.
-% In fact, we analyzed these exact observables on the ladder geometry for $N = 2,3$ and $4$.
-% Given a ladder of length $L$, the \ac{wl} $W$ have been calculated over a region that covers the first $L/2$ plaquettes, while the \ac{ths} cuts through the first $L/2$ plaquettes (see Fig.~\ref{fig:nlop_ladder}).
-
-% \begin{figure}[t]
-%     \centering
-%     \input{assets/figures/nonlocal_order_parameters.tex}
-%     \caption[Non-local order parameters on the ladder]{The non-local order parameters that have been used for investigating the phase diagram of $\Z_N$ ladder \ac{lgt}.
-%     \emph{Top}: half-ladder \ac{wl}.
-%     \emph{Bottom}: half-ladder \ac{ths} operator.}%
-%     \label{fig:nlop_ladder}
-% \end{figure}
+\begin{figure}[t]
+    \centering
+    \input{assets/figures/z2_vacua.tex}
+    \caption[Vacuum states of the super-selection sectors of the $\Z_2$ ladder \ac{lgt}]{%
+        The different ``Fock vacua'' $\ket{\Omega_{0}}$ and $\ket{\Omega_{1}}$ of the $\Z_2$ ladder \ac{lgt}.
+        The latter can be obtained from the former by applying the \ac{wl} operator $W_1$.
+        The states $\ket{0}$ and $\ket{1}$ refers to the eigenstates of the electric field operator $V$, which is just $\sigma_{z}$ in the $\Z_2$ model.
+    }
+    \label{fig:z2_vacua}
+\end{figure}

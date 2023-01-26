@@ -32,8 +32,9 @@
 \newcommand{\HamilIsing}{H^{\ising}} % Ising Hamiltonian
 \newcommand{\HamilTC}{H^{\text{TC}}} % Toric Code Hamiltonian
 \newcommand{\HamilZ}[1][2]{H^{\Z_{#1}}} % ZN Hamiltonian (default N=2)
-\newcommand{\HamilClock}{H^{\text{clock}}} % Clock Hamiltonian
-\newcommand{\HamilLadder}{H^{\text{lad}}} % Ladder Hamiltonian
+\newcommand{\HamilClock}[1][N]{H^{#1\text{-clock}}} % Clock Hamiltonian
+\newcommand{\HamilDual}[1][N]{H^{#1\text{-dual}}} % Dual clock Hamiltonian
+\newcommand{\HamilLadder}{H^{N\text{-lad}}} % Ladder Hamiltonian
 % shorthand for the lattice and its objects
 \newcommand{\Lattice}{\mathbb{L}} % lattice
 \newcommand{\DualLattice}{\mathbb{L}^{\ast}} % lattice

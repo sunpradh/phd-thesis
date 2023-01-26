@@ -18,10 +18,9 @@ The essential legacy of Kramers and Wannier is the fact that self-dualities can 
 
 Not all dualities are self-dualities.
 In fact, it also possible to relate two apparently different physical models with a duality transformation.
-A known example is the Jordan-Wigner transformation \cite{schultz1964ising, jordan1928pauli}, where spin \ac{dof} (which are bosonic in nature) are mapped onto fermionic \ac{dof} in one-dimension. %\todo{elaborare}.
+A known example is the Jordan-Wigner transformation \cite{schultz1964ising, jordan1928pauli}, where spin \ac{dof} (which are bosonic in nature) are mapped onto fermionic \ac{dof} in one-dimension.
 This duality shows that, in fact, there is not much difference between bosonic and fermionic \ac{dof} in one dimension.
 
-% \todo{forse aggiungere qualcosa in più}
 
 %
 % SUBSECTION: The bond-algebraic approach
@@ -29,7 +28,7 @@ This duality shows that, in fact, there is not much difference between bosonic a
 \subsection{The bond-algebraic approach}
 \label{sub:the_bond_algebraic_approach}
 
-In the following section we will quickly review the bond-algebraic approach to dualities \cite{cobanera2011bond}, because it offers a powerful and convenient way for dealing with duality transformations, in particular when gauge symmetries are involved.
+In the following section we will quickly review the bond-algebraic approach to dualities \cite{cobanera2010unified, cobanera2011bond}, because it offers a powerful and convenient way for dealing with duality transformations, in particular when gauge symmetries are involved.
 The concept of \emph{bond-algebra} was first introduced in \cite{nussinov2009bond} and it exploits the fact that most \emph{Hamiltonian are a sum of simple and (quasi)local terms}:
 \begin{equation}
     H = \sum_{\Gamma} \lambda_{\Gamma} h_{\Gamma},
@@ -117,16 +116,11 @@ An isomorphism like $\Phi$ is physically sound if it is \emph{unitarily implemen
     \forall \mathcal{O} \in \algebra,
 \end{equation}
 where $\algebra$ is the operator algebra of the model under investigation \cite{cobanera2011bond}.
-% \todo{elaborate}
 
 
 To make the bond-algebraic approach more clear we will consider one example: the \emph{\acf{ising}}.
 In this model we will see an example of self-duality through the use of disorder variables.
 Our intent is not to shine new physics but to show how the use of bond-algebras offers a clear \emph{formalism} for treating dualities.
-
-% \todo{parlare anche della Jordan-Wigner?}
-% approach clearer we now apply it to the 1D quantum Ising model with transverse field.
-
 
 \subsection{The quantum Ising model}
 \label{sub:the_quantum_ising_model}
@@ -268,7 +262,7 @@ From this point of view, a single spin-flip $\sigma^x_i \ket{\Omega_{\uparrow}}$
 In this section we will review the notion of \emph{gauge-reducing dualities},
 In order to do so we start by highlighting the difference between ordinary symmetries and quantum symmetries.
 
-Following the statement of Wigner's theorem\citneeded, a quantum symmetry is a unitary or anti-unitary mapping that commute with the Hamiltonian.
+Following the statement of Wigner's theorem \cite{wigner2012group}, a quantum symmetry is a unitary or anti-unitary mapping that commute with the Hamiltonian.
 This does not mean that all symmetries have the same physical meaning or mathematical consequences.
 By the term ``\emph{ordinary symmetries}'' we refer to the most common types of symmetry that we encounter in physical systems that usually correspond to \emph{global transformation} of the physical apparatus or system, like for example rotational invariance.
 These symmetries have a direct physical impact, since they can influence the level degeneracy of an Hamiltonian and force strict selection rules.
@@ -280,12 +274,17 @@ The same reasoning applies to the observables of the gauge model.
 An observables is represented by an Hermitian operator and a \emph{physical observable} is represented by an Hermitian operator that commutes with gauge symmetries.
 
 So, if physical states and physical observables already satisfies the local constraints of the gauge symmetries, this means that the physical impact of the latter is already encoded in the former.
-It is clear that the ordinary symmetries and gauge symmetries are very different and is better them conceptually far apart as possible \cite{cobanera2011bond}.
+It is clear that the ordinary symmetries and gauge symmetries are very different and is better to put them conceptually far apart as possible \cite{cobanera2011bond}.
 
-When dealing with a gauge model, it would be natural to assume that, in order to establish a duality with any gauge symmetries, these have to be eliminated from the former model first.
-In other terms, that it would be necessary to project the operator content on the subspace of physical states first or, alternatively, proceed with gauge-fixing.
-Although this is common in traditional approach to dualities, with bond algebras this is not strictly necessary.
-As stated in \cite{cobanera2011bond}, with the bond-algebraic approach one can find mappings to models without any gauge symmetry that preserve all the important algebraic properties, without the need to projection or gauge-fixing \todo{argomentare?}.
+When dealing with a gauge model, it would be natural to assume that, in order to establish a duality, the gauge symmetries have to be eliminated \emph{first} from the gauge model.
+In other terms, that it would be necessary to proceed with gauge-fixing \cite{savit1980duality}.
+By gauge-fixing we mean the process of ``turning off'' \emph{some} \ac{dof}, by means of gauge transformations.
+A popular example of gauge-fixing in $\Z_2$ or $\Z_N$ \acp{lgt} is the axial gauge, where all the gauge \ac{dof} along a specified direction are fixed \cite{savit1980duality} (i.e.~turned off).
+A global gauge-fixing is not always possible and it may depends, for example, on the geometry of system or its boundary conditions.
+
+Although gauge-fixing is common in traditional approach to dualities in gauge models, it is not strictly necessary with bond-algebras.
+As stated in \cite{cobanera2011bond}, with the bond-algebraic approach one can find mappings to models without any gauge symmetry, that preserve all the important algebraic properties without the need of gauge-fixing.
+Later in the chapters, we will see some examples of gauge-reducing dualities that do not need require gauge-fixing first.
 
 The procedure goes as follows: consider a gauge model and let $H^{\text{G}}$ be its Hamiltonian and $G_{\Gamma}$ its gauge symmetries.
 An operator $\mathcal{O}$ is gauge-invariant if and only if it commutes with all the $G_{\Gamma}$:\begin{equation*}
@@ -310,7 +309,7 @@ such that $H^{\text{G}}$ is mapped onto $H^{\text{GR}}$ while making all the gau
 Unlike the dualities in Sec.~\ref{sub:the_bond_algebraic_approach}, a gauge-reducing duality like $\Phi_{\text{GR}}$ has to be implementable as a \emph{projective unitary operator} $\mathcal{U}$.
 Formally, this can be written as
 \begin{equation}
-    \Phi_{\text{GR}} ( \mathcal{O} ) = \mathcal{U} \mathcal{O} \mathcal{U}^\dagger, \quad
+    \Phi^{\text{GR}} ( \mathcal{O} ) = \mathcal{U} \mathcal{O} \mathcal{U}^\dagger, \quad
     \mathcal{U} \mathcal{U}^\dagger = \identity, \quad
     \mathcal{U}^\dagger \mathcal{U} = P_{\text{GI}}
 \end{equation}
@@ -320,25 +319,27 @@ Roughly speaking, this projective unitary operator can be represented as rectang
 In the next section we will use an example of gauge-reducing duality, which will be instrumental for the rest of the chapter.
 
 
+
 \subsection{Dualities in two dimensions}
 \label{sub:dualities_in_two_dimensions}
 
 
 As an example of gauge-reducing duality, we will apply the technology introduced in Sec.~\ref{sub:gauge_reducing_dualities} to the $\Z_2$ \ac{lgt} in two-dimensions.
 We resume the Hamiltonian \eqref{eq:z2_lgt_hamiltonian}
-\begin{equation*}
+\begin{equation}
     H^{\Z_2}
     = - \sum_{p} B_p - \lambda \sum_{\link} Z_{\link}
     = - \sum_{p} B_p - \lambda \sum_{x} \qty(Z_{(x, +\hat{1})} + Z_{(x, +\hat{2})}),
-\end{equation*}
+    \label{eq:hamiltonian_z2_2d}
+\end{equation}
 and its Gauss (or vertex) operators
 \begin{equation}
     A_v = \prod_{\link \in v}  Z_{\link},
 \end{equation}
 which generate the gauge symmetries and commute with the Hamiltonian
-\begin{equation}
+\begin{equation*}
     \comm{H^{\Z_2}}{A_v} = 0 \quad \forall v \in \Lattice.
-\end{equation}
+\end{equation*}
 
 In particular, each term of the Hamiltonian commutes with the Gauss operators, which means that the bond algebra they generate is gauge-invariant,
 This bond-algebra satisfy three simple relations:
@@ -372,14 +373,14 @@ With this notation, we can now build the duality mapping $\Phi^{\text{2d}}$ as f
     \label{eq:duality_2d}
 \end{equation}
 Applying to $\Phi^{\text{2d}}$ to $H^{\Z_2}$ we obtain
-\begin{equation}
-    \Phi^{2d} (H^{\Z_2}) =
+\begin{equation*}
+    \Phi^{\text{2d}} (H^{\Z_2}) =
     - \sum_{i} \sigma^x_i - \lambda \sum_{i} \qty(
         \sigma^z_{(i-\hat{2})} \sigma^z_i +
         \sigma^z_{(i-\hat{1})} \sigma^z_i
     ) =
     \lambda \HamilIsing(\lambda^{-1})
-\end{equation}
+\end{equation*}
 Thus, $\Phi^{\text{2d}}$ maps $H^{\Z_2}$ to $\HamilIsing$, up to a multiplicative constant, if we identify the constants $\lambda \leftrightarrow h^{-1}$.
 
 From \eqref{eq:duality_2d}, one readily obtains
@@ -388,7 +389,8 @@ From \eqref{eq:duality_2d}, one readily obtains
 \end{equation*}
 which means that $\Phi^{\text{2d}}$ is in fact a \emph{gauge-reducing duality}.
 Therefore, $\HamilIsing$ represents all the physics contained in $H_{\text{gauge}}$, but without all the redundant \ac{dof}.
-In the general case, i.e.~for a generic $\Z_N$ symmetry, the duality leads to an $N$-clock model \cite{radicevic2019spin}.
+Notice that we started with the ``raw'' Hamiltonian \eqref{eq:hamiltonian_z2_2d} and obtained $\Phi^{\text{2d}}$ without the need of gauge-fixing.
+%In the general case, i.e.~for a generic $\Z_N$ symmetry, the duality leads to an $N$-clock model \cite{radicevic2019spin}.
 
 The reason why it is possible to encode the physical content of the gauge model in a simpler \ac{ising} is the following.
 The physical states of a pure gauge model is made of closed electric loops and each electric loop can be thought as containing magnetic flux.
@@ -401,6 +403,9 @@ The plaquette operator $U_p$ flips the state of the plaquette, therefore it shou
 The electric fields $V_{(x, \hat{1})}$ and $V_{(x, \hat{2})}$ are just domain walls between plaquettes, therefore they should be mapped to interaction terms like $\sigma^z_{i-\hat{1}} \sigma^z_{i}$ and $\sigma^z_{i-\hat{2}} \sigma^z_i$.
 
 
-\todo{Parlare del caso ZN}
+This duality can be extended to $\Z_N$ models in straightforward manner \cite{radicevic2019spin}.
+This requires substituting the Pauli matrices with an equivalent set of operators, that act on a $N$-dimensional local Hilbert space and satisfy an algebra similar to the Schwinger-Weyl algebra \eqref{eq:schwinger_weyl_algebra}.
+These operators are the \emph{clock operators} that define the \aclp{clock}.
+We will discuss these models in a bit.
 
 % vim: spelllang=en

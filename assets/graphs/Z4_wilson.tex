@@ -1,3 +1,10 @@
+\newcommand{\ZFourWilsonGraph}[1]{
+    \nextgroupplot
+    \addplot+ [thick] table [y=6x2]  {assets/graphs/data/Z4_wilson_#1.csv};
+    \addplot+ [thick] table [y=8x2]  {assets/graphs/data/Z4_wilson_#1.csv};
+    \addplot+ [thick] table [y=10x2] {assets/graphs/data/Z4_wilson_#1.csv};
+}
+
 \begin{tikzpicture}[
         font=\small,
         notes/.style={gray!20!black, font=\scriptsize}

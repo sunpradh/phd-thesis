@@ -6,9 +6,9 @@
     legend/.style = {text=black, inner sep=5pt}
 ]
 
-%%% Sector (0,0) vacuum
+%%% Sector n=0 vacuum
 \begin{scope}[local bounding box=trivial]
-    \node at (3,1) [above=5pt, legend]  {sector $(0,0)$ vacuum $\ket{\Omega_{(0,0)}}$};
+    \node at (3,1) [above=5pt, legend]  {vacuum $\ket{\Omega_0}$ of the sector $n=0$};
     % ladder
     \draw[ladder] (-0.5,0) grid (6.5,1);
     % sites
@@ -16,10 +16,9 @@
     \useasboundingbox (-1,0) -- (7,0) -- +(0,-0.5);
 \end{scope}
 
-%%% Sector (1,0) vacuum
-% \begin{scope}[xshift=11cm, local bounding box=topol]
+%%% Sector n=1 vacuum
 \begin{scope}[yshift=-3.5cm, local bounding box=topol]
-    \node at (3,1) [above=5pt, legend]  {sector $(1,0)$ vacuum $\ket{\Omega_{(1,0)}}$};
+    \node at (3,1) [above=5pt, legend]  {vacuum $\ket{\Omega_1}$ of the sector $n=1$};
     % ladder
     \draw[ladder] (-0.5,0) grid (6.5,1);
     % Wilson loop
@@ -39,9 +38,8 @@
 
 \draw[thin, Gray] (trivial.south west) rectangle (trivial.north east);
 \draw[thin, Gray] (topol.south west) rectangle (topol.north east);
-% \draw[thin, Gray] (legend.south west) rectangle (legend.north east);
 \draw [shorten >= 3pt] (trivial.east)
     edge [-{Latex}, Gray, very thick, out=0, in=0]
-    node [font=\normalsize, right, text=black] {$W_1$}
+    node [font=\normalsize, right, text=black] {$\Wilson_1$}
     (topol.east);
 \end{tikzpicture}

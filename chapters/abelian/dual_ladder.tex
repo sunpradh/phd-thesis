@@ -1,8 +1,9 @@
 \section{Dualities of the ladder LGT}%
 \label{sec:dualities_of_the_ladder}
 
-In this section we discuss the main result in \cite{pradhan2022ladder}, which is a construction of a duality map between a \acfp{lgt} on a \emph{ladder geometry} and \emph{\aclp{clock}}.
+In this section we discuss the main result in \cite{pradhan2022ladder}, which is a construction of a duality map between \acp{lgt} on a \emph{ladder geometry} and \emph{\aclp{clock}}.
 Before proceeding with construction of the duality map, we briefly describe what are \acp{clock}.
+
 
 %
 % SECTION: Clock models
@@ -10,22 +11,11 @@ Before proceeding with construction of the duality map, we briefly describe what
 \input{chapters/abelian/clock_models.tex}
 
 
-\begin{figure}[t]
-    \centering
-    \input{assets/figures/ladder_duality.tex}
-    \caption[Duality map of $\Z_N$ ladder \ac{lgt}]{Visual representation of the duality transformation from the $\Z_N$ ladder \ac{lgt} to the $N$-clock model.
-    The plaquette operator $U_i$ and the electric operators $\Vup$ and $\Vdown$ map to one-site operators in the clock model, while
-    the remaining electric operator $V^0$ maps to a hopping term between nearest neighbouring sites.}
-    \label{fig:ladder_duality}
-\end{figure}
-
 %--------------------------------------------------
 % SUBSECTION: Duality on the clock models
 %--------------------------------------------------
 \subsection{Gauge-reducing duality onto clock models}
 \label{sub:duality_onto_clock_models}
-
-\todo{controllare notazione}
 
 In this section we will show one of the main result of \cite{pradhan2022ladder}: how to construct a mapping of the $\Z_N$ ladder \ac{lgt} onto a $N$-clock model on a chain with a transversal field and a longitudinal field, the latter depending on the super-selection sector of the ladder \ac{lgt}.
 
@@ -44,7 +34,7 @@ and indeed they acquire different phases.
 
 The plan is to associate to each plaquette a clock degree of freedom, hence we identify a plaquette $\square_i$ with a site $i$ of a clock chain and the magnetic flux of a plaquette becomes the ``fundamental gauge invariant degree of freedom'' of the \ac{lgt} ladder model.
 Given the fact that we are working in the electric basis, we chose for convenience to map the $\Z_N$ magnetic operator $U_i$ to the ``momentum'' operator $X_i$ of the $N$-clock chain.
-The electric field on a vertical link $\runglink$ is the result of the flux difference between the two plaquettes that it separates, which suggests that the operator $V_{\runglink}$ have to be mapped to a kinetic-type term like $Z_i^\dagger Z_{i-1}$.
+The electric field on a vertical link $\runglink$ is the result of the flux difference between the two plaquettes that it separates, which suggests that the operator $\Vrung$ have to be mapped to a kinetic-type term like $Z_i^\dagger Z_{i-1}$.
 This can be readily verified.
 From \eqref{eq:plaq_op_ladder} we get
 \begin{equation*}
@@ -86,7 +76,7 @@ Using the mappings \eqref{eq:elec_h_and_plaq_op_map} and \eqref{eq:elec_op_horiz
     \label{eq:gauss_law_map_ladder}
 \end{equation}
 
-Gauss law have to be satisfied in a pure gauge theory, which mean that we have to impose $G^\uparrow_i = \identity$ and $G^\downarrow_i = \identity$ for all $x$.
+Gauss law have to be satisfied in a pure gauge theory, which mean that we have to impose $G^\uparrow_i = \identity$ and $G^\downarrow_i = \identity$ for all $i$.
 This is only possible if
 \begin{equation}
     \coeffdown_i = \coeffdown, \qquad
@@ -111,8 +101,9 @@ Given a super-selection sector $\omega^k$, using the mapping \eqref{eq:elec_op_h
 \begin{equation}
     S_2 \; \longmapsto \; ( \coeffup Z^\dagger_i ) ( \coeffdown Z_i ) = \coeffup \coeffdown = \omega^k.
 \end{equation}
-From here, in order to solve for the coefficients $\coeffup$ and $\coeffdown$, one needs only to fix one of the to $1$ and the other to $\omega^k$.
-We choose to fix these coefficients as follows:
+Here, one is free to choose $\coeffup$ and $\coeffdown$, given that their product has to be equal to $\omega^k$.
+This freedom is a global symmetry of the system and it has nothing to due with the gauge symmetries, because the latter has already been solved.
+We choose to fix $\coeffup$ to $1$ and $\coeffdown$ to $\omega^k$:
 \begin{equation}
     \coeffup = 1, \qquad
     \coeffdown = \omega^k.
@@ -131,15 +122,17 @@ In conclusion, we summarize the duality mapping for the super-selection sector $
 
 With the duality \eqref{eq:ladder_duality}, from \eqref{eq:ladder_hamiltonian} in the sector $(\omega^k, 1)$ we obtain
 \begin{equation}
-    H_{\text{ladder}}(\lambda) \; \longmapsto \; \lambda H_{\text{clock}}(\lambda^{-1})
+    \HamilLadder(\lambda) \; \longmapsto \; \lambda \HamilDual(\lambda^{-1})
 \end{equation}
-where
+where $\HamilDual$ is the dual $N$-clock Hamiltonian:
 \begin{equation}
-    H_{\text{clock}}(\lambda^{-1}) =
-    - \sum_{i} Z_i^\dagger Z_{i-1}
-    - \lambda^{-1} \sum_{i} X_i
-    - (1 + \omega^k) \sum_{i} Z_i
-    + \text{h.c.}
+    \HamilDual(\lambda^{-1}) =
+    - \sum_{i} \qty(
+        Z_i^\dagger Z_{i-1}
+        + \lambda^{-1}  X_i
+        + (1 + \omega^k)  Z_i
+        + \text{h.c.}
+    )
     \label{eq:dual_ladder_hamiltonian}
 \end{equation}
 
@@ -147,20 +140,33 @@ We see that \eqref{eq:dual_ladder_hamiltonian} is a clock model with both \emph{
 In particular, the longitudinal field carries the information of the super-selection sector of the ladder model.
 
 Interestingly, for $N$ even the sector $k = N/2$ has a special role.
-Within this sector $\omega^k = -1$, for which the \emph{longitudinal field disappears} and $H_{\text{clock}}$ reduces to self-dual quantum clock models with a known quantum phase transition.
+Within this sector $\omega^k = -1$, for which the \emph{longitudinal field disappears} and $\HamilClock$ reduces to self-dual quantum clock models with a known quantum phase transition.
 This phase transitions for $k = N/2$ can be put in correspondence with a \emph{confined-deconfined} transition, which will be discussed in much more detail in the next section.
 
 Let us remark that the complex coupling $(1 + \omega^n)$ does not make the Hamiltonian  (\ref{eq:dual_ladder_hamiltonian}) necessarily chiral \cite{fendley2012parafermions, whitsitt2018clock}.
 In fact, one can get the real Hamiltonian
 \begin{equation}
-    H_N = H_p(1/\lambda) - 2 \cos \pqty{\frac{\pi n}{N}} \sum_{i} \pqty{Z_i + Z_i^{\dagger}}.
+    \HamilDual(\lambda^{-1}) = \HamilClock(\lambda^{-1}) - 2 \cos \pqty{\frac{\pi n}{N}} \sum_{i} \pqty{Z_i + Z_i^{\dagger}}.
     \label{eq:dual_ladder_hamiltonian_real}
 \end{equation}
-by absorbing the complex phase in the $Z_i$-operators, with the transformation $Z_i \mapsto w^{-n/2} Z_i$. This transformation globally rotates the eigenvalues of the $Z_i$-operators, while preserving the algebra relations.
-For $n$ even, this is just a permutation of the eigenvalues, meaning that it does not affect the Hamiltonian spectrum. Instead, for $n$ odd, up to a reorder, the eigenvalues are shifted by an angle $\pi/N$, i.e.~half the phase of $\omega$.
+by absorbing the complex phase in the $Z_i$-operators, with the transformation $Z_i \mapsto \omega^{-n/2} Z_i$. This transformation globally rotates the eigenvalues of the $Z_i$-operators, while preserving the algebra relations.
+For $n$ even, this is just a permutation of the eigenvalues, meaning that it does not affect the Hamiltonian spectrum.
+Instead, for $n$ odd, up to a reorder, the eigenvalues are shifted by an angle $\pi/N$, i.e.~half the phase of $\omega$.
+In the latter case we will denote the rotated $Z_i$ operator with $\tilde{Z}_i$.
 The energy contribution of the extra term in \eqref{eq:dual_ladder_hamiltonian_real}  depends on the real part of these eigenvalues and for $n$ odd we obtain that the lowest energy state is no longer unique, in fact it is doubly degenerate.
 This means that for $\lambda \to \infty$, where the extra term becomes dominant, we expect an ordered phase with a doubly degenerate ground state.
 Finally, one can easily prove that the sectors $n$ and $N-n$ are equivalent
 \footnote{For the sector $N-n$ we have that the overall factor $\cos(\pi(N-n)/N)$ is just $-\cos(\pi n/N)$.
 The minus sign can then be again absorbed into the $Z$'s operators.
 This overall operation is equivalent to the mapping $Z \mapsto \omega^{-n/2} Z$ for the sector $N-n$.}.
+
+
+\begin{figure}[t]
+    \centering
+    \input{assets/figures/ladder_duality.tex}
+    \caption[Duality map of $\Z_N$ ladder \ac{lgt}]{Visual representation of the duality transformation from the $\Z_N$ ladder \ac{lgt} to the $N$-clock model.
+    The plaquette operator $U_i$ and the electric operators $\Vup$ and $\Vdown$ map to one-site operators in the clock model, while
+    the remaining electric operator $V^0$ maps to a hopping term between nearest neighbouring sites.}
+    \label{fig:ladder_duality}
+\end{figure}
+

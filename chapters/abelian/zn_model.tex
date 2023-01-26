@@ -105,7 +105,6 @@ $\hat{i}=\hat{1}, \hat{2}$ the two independent unit vectors.
 In this way, $(x, \pm\hat{i})$ will refer to the link that start in $x$ and goes in the positive (negative) direction~$\hat{i}$.
 As we will see later, the choice of the orientation affects the definition of any string operator.
 The general rule for when defining a string operator as a product of $\mathcal{O}$ operators, where $\mathcal{O}$ is either $U$ or $V$ for example, is to use $\mathcal{O}$ when going in the positive direction or $\mathcal{O}^{\dagger}$ otherwise.
-%This notation will be simplified when we reduce to the ladder case.
 
 
 \begin{figure}
@@ -204,7 +203,6 @@ The class of models we consider are described by the Hamiltonian \cite{tagliacoz
     \label{eq:hamiltonian_base}
 \end{equation}
 where the first sum is over the plaquettes $\plaquette$ of the lattice while the second sum is over the links $\link$.
-% One can easily see that this Hamiltonian is local and gauge-invariant, hence the dynamics it describes it is fully contained in $\Hphys$.
 As stated before, the operators $\PlaqOp$ plays the role of a \emph{magnetic} term, to be more precise it is the magnetic flux inside the plaquette $\plaquette$, while $V$ is the \emph{electric} term.
 The coupling $\lambda$ tunes the relative strength of the electric and magnetic energy contribution.
 
@@ -215,24 +213,6 @@ The coupling $\lambda$ tunes the relative strength of the electric and magnetic 
 \end{figure}
 
 
-% These models are akin to the \ac{tc} \cite{kitaev2003fault}, which can be thought as a prime example of a $\Z_2$ \ac{lgt}.
-% More precisely, $H_{\Z_2}$ in \eqref{eq:hamiltonian_base} can be thought as a \emph{deformation} of the former, where an external ``transverse'' field is added to it.
-% Indeed, using the notation used so far, the \ac{tc} can be formulated as:
-% \begin{equation}
-%     H_{\text{TC}} = - J_m \sum_{\plaquette} \PlaqOp - J_e \sum_{x} G_x.
-%     \label{eq:hamiltoniana_toric_code}
-% \end{equation}
-% whose ground states $\ket{\Psi}$ satisfies the constraints
-% \begin{equation}
-%     \PlaqOp \ket{\Psi} = \ket{\Psi} \;\; \forall \; \plaquette, \quad
-%     G_x \ket{\Psi} = \ket{\Psi} \;\; \forall x.
-%     \label{eq:constraints_gs_toric_code}
-% \end{equation}
-% Only elementary excitations above the ground state can violate these constraints and they can be of two type: a \emph{magnetic vortex} (which violates the plaquette constraint) or a \emph{electric charge} (which violates the Gauss law).
-% If one imposes $J_e \gg J_m$ to enforce Gauss law, in the low-energy sector there are no electric charges and one recovers the pure gauge $\Z_2$ model of \eqref{eq:hamiltonian_base} for $\lambda = 0$.
-% Therefore, in general the $\Z_N$ models described in \eqref{eq:hamiltonian_base} can be considered as generalization of the \ac{tc}, from the point of view of \ac{lgt}s.
-
-
 %
 % SUBSECTION: Physical Hilbert space and super-selection sectors
 %
@@ -240,7 +220,6 @@ The coupling $\lambda$ tunes the relative strength of the electric and magnetic 
 \label{sub:physical_hilbert_space_and_super_selection_sectors}
 
 
-% \todo{Sottosezione da riscrivere in luce della sezione sul toric code}
 The total Hilbert space $\mathcal{H}_{\text{tot}}$ is given by
 \begin{equation}
     \HilbertSpace_{\text{tot}} = \bigotimes_{\link \in \Lattice} \HilbertSpace_{\link},
@@ -248,13 +227,11 @@ The total Hilbert space $\mathcal{H}_{\text{tot}}$ is given by
 where $\HilbertSpace_\link \simeq \C^N$ in the case of $\Z_N$ theory.
 A state of the whole lattice $\ket{\phi_{\phys}} \in \HilbertSpace_{\text{tot}}$ is said to be \emph{physical} if it is a \emph{gauge-invariant state}:
 \begin{equation}
-    % G_x \ket{\Psi_{\text{ph}}} = \ket{\Psi_{\text{ph}}}, \qquad \forall x \in \lattice
     G_x \ket{\phi_{\phys}} = \ket{\phi_\phys}, \qquad \forall \, x \in \Lattice.
     \label{eq:gauss_law}
 \end{equation}
 This condition can be translated into a constraint on the eigenvalues $v_{\link}$ of the electric operators $V_{\link}$.
 Given that a link $\link$ can be referred to as $(x, \hat{i})$,  then the constraint \eqref{eq:gauss_law} can be translated to
-% $v_{(x, \pm \hat{i})}= \omega^{k_{(x, \pm \hat{i})} }$  of the operators $V_\link$ on the links $\link = (x, \pm \hat{i})$ of the vertex $x$:
 \begin{equation}
     v_{(x, \hat{1})}^{\phantom{\ast}}
     v_{(x, \hat{2})}^{\phantom{\ast}}
@@ -262,7 +239,6 @@ Given that a link $\link$ can be referred to as $(x, \hat{i})$,  then the constr
     v_{(x, -\hat{2})}^\ast = 1.
 \end{equation}
 For a $\Z_N$ theory we have $v_\link = \omega^{k_{\link}}$, where $\omega = e^{i2 \pi / N}$, which leads to
-% or, because of (\ref{eq:elect_basis_op_action}):
 \begin{equation}
     \sum_{i=1,2} \pqty{ k_{(x, \hat{i})} - k_{(x, -\hat{i})} } = 0 \quad \text{mod $N$}.
     \label{eq:gauss_law_elec_eigvals}
@@ -270,8 +246,6 @@ For a $\Z_N$ theory we have $v_\link = \omega^{k_{\link}}$, where $\omega = e^{i
 for \eqref{eq:gauss_law}.
 Given the fact that the $k$ in \eqref{eq:schwinger_weyl_algebra} represent the values of the electric field, one can see that \eqref{eq:gauss_law_elec_eigvals} can be interpreted as a discretized version of the Gauss law $\nabla \cdot \vec{E} = 0$ in two dimensions, for a pure gauge theory.
 
-% Let us consider the \ac{tc}.
-% One of its main features is the presence of topologically protected degenerate ground states \cite{kitaev2003fault}.
 Consider now the \emph{physical Hilbert space} for a $\Z_N$ theory:
 \begin{equation}
     \Hphys = \{ \ket{\phi_\phys} : G_x \ket{\phi_\phys} = \ket{\phi_\phys} \quad \forall \, x \in \Lattice \}.

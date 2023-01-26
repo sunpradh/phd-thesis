@@ -1,5 +1,5 @@
-\subsection{Distribution of the amplitudes in the ground state}
-\label{sub:amplitudes_distribution}
+\subsubsection{Distribution of the amplitudes of the ground state}
+\label{ssub:amplitudes_distribution}
 
 In the $N=2$ case, we further differentiate the phase diagrams of the two sectors by looking at the ground state amplitudes distribution, for $\lambda<1$ and $\lambda>1$.
 Obviously, the ground state can be written as a superposition of the gauge invariant states of $\Hphys$ in the given sector
@@ -9,24 +9,11 @@ Obviously, the ground state can be written as a superposition of the gauge invar
 \end{equation}
 The basis $\ket{n}$ and the amplitudes $c_n$ are sorted in a decreasing order with respect to the modulus of the latter.
 The first state of the list, with amplitude $c_1$, is always the Fock vacua $\ket{\Omega}$ of the sector, hence we consider the distribution of the ratios $\abs{c_n / c_1}$, which are plotted in Fig.~\ref{fig:gs_ampl_distr_0.1_Z2}--\ref{fig:gs_ampl_distr_1.5_Z2} for $\lambda=0.1$ and $\lambda=1.5$, respectively.
-The most interesting one is at $\lambda = 0.1$, where the difference between the deconfined phase in the sector $(1,0)$ and the confined one in the sector $(0,0)$ can be seen.
+The most interesting one is at $\lambda = 0.1$, where the difference between the deconfined phase in the sector $n=1$ and the confined one in the sector $n=0$ can be seen.
 In particular, in the deconfined phase the ground state is a superposition of deformations of the Fock vacuum, i.e~the non-contractible electric string, which can be thought as a \emph{kink condensate} \cite{fradkin1978order} (or as a paramagnetic phase), where each kink corresponds to a deformation of the string.
 Meanwhile, for $\lambda > 1$, where we have confinement in both sectors, the ground state is essentially a product state, akin to a ferromagnetic state.
 This is explained in Fig.~\ref{fig:gs_ampl_distr_0.1_Z2} and Fig.~\ref{fig:gs_ampl_distr_1.5_Z2}.
 
-
-\begin{figure}[h]
-    \centering
-    \hspace{3em}$\Z_2$ g.s.~amplitudes distribution, $\lambda=1.5$\\[5pt]
-    \input{assets/graphs/Z2_ladder_sec_00_gs_amp_distr_size_12x2_lambda_1.5.tex}\\[-2pt]\hspace{0.4pt}
-    \input{assets/graphs/Z2_ladder_sec_10_gs_amp_distr_size_12x2_lambda_1.5.tex}
-    \caption[$\Z_2$ ground state amplitude distribution for $\lambda = 1.5$]{
-    $\Z_2$ ground state amplitude distribution for $\lambda=1.5$ of the first 200 states and with lattice size $12 \times 2$.
-    For both sectors $(0,0)$ (\emph{top}) and $(1,0)$ (\emph{bottom}) we are in a confined phase, which corresponds to a ferromagnetic phase in the Ising chain.
-    Here we see a polarized state where the domain walls are suppressed and the ground state is essentially a product state.
-    }
-    \label{fig:gs_ampl_distr_1.5_Z2}
-\end{figure}
 
 
 \begin{figure}[h]
@@ -36,9 +23,9 @@ This is explained in Fig.~\ref{fig:gs_ampl_distr_0.1_Z2} and Fig.~\ref{fig:gs_am
     \input{assets/graphs/Z2_ladder_sec_10_gs_amp_distr_size_12x2_lambda_0.1.tex}
     \caption[$\Z_2$ ground state amplitude distribution for $\lambda = 0.1$]{
         $\Z_2$ ground state amplitude distribution for $\lambda=0.1$ of the first 200 states and with lattice size $12 \times 2$.
-        \emph{Top}: distribution of the ratios $|{c_n/c_1}|$ for the sector $(0,0)$ (see \eqref{eq:gs_amplitudes}).
+        \emph{Top}: distribution of the ratios $|{c_n/c_1}|$ for the sector $n=0$ (see \eqref{eq:gs_amplitudes}).
         We see that the heaviest states that enters the ground state, apart from the vacuum that sets the scale, are made of small electric loops, typical of a confined phase.
-        \emph{Bottom}: the same distribution of ratios for the sector $(1,0)$.
+        \emph{Bottom}: the same distribution of ratios for the sector $n=1$.
         We see that the heaviest states are made of bigger and bigger deformations of the electric string that goes around the ladder.
         This happens because the energy contributions depends only on the domain walls between two plaquettes with different flux content.
         This behaviour is similar to the so-called \emph{kink condensation} in spin chains \cite{fradkin1978order}, where the disordered state can be expressed as a superposition of all possible configuration of kinks (i.e.~domain walls between two differently ordered regions).
@@ -47,5 +34,21 @@ This is explained in Fig.~\ref{fig:gs_ampl_distr_0.1_Z2} and Fig.~\ref{fig:gs_am
     \label{fig:gs_ampl_distr_0.1_Z2}
 \end{figure}
 
+
+
+\begin{figure}[h]
+    \centering
+    \hspace{3em}$\Z_2$ g.s.~amplitudes distribution, $\lambda=1.5$\\[5pt]
+    \input{assets/graphs/Z2_ladder_sec_00_gs_amp_distr_size_12x2_lambda_1.5.tex}\\[-2pt]\hspace{0.4pt}
+    \input{assets/graphs/Z2_ladder_sec_10_gs_amp_distr_size_12x2_lambda_1.5.tex}
+    \caption[$\Z_2$ ground state amplitude distribution for $\lambda = 1.5$]{
+        $\Z_2$ ground state amplitude distribution for $\lambda=1.5$ of the first 200 states and with lattice size $12 \times 2$.
+        \emph{Top}: distribution of the ratios $|{c_n/c_1}|$ for the sector $n=0$ (see \eqref{eq:gs_amplitudes}).
+        \emph{Bottom}: the same distribution of ratios for the sector $n=1$.
+        For both sectors $n=0$ (\emph{top}) and $n=1$ (\emph{bottom}) we are in a confined phase, which corresponds to a ferromagnetic phase in the dual model (the \ac{ising}).
+        Here we see a polarized state where the domain walls are suppressed and the ground state is essentially a product state.
+    }
+    \label{fig:gs_ampl_distr_1.5_Z2}
+\end{figure}
 
 

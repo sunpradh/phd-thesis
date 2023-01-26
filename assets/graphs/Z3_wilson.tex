@@ -1,3 +1,11 @@
+\newcommand{\ZThreeWilsonGraph}[1]{
+        \nextgroupplot
+        \addplot+[thick] table [y=7x2]  {assets/graphs/data/Z3_wilson_#1.csv};
+        \addplot+[thick] table [y=9x2]  {assets/graphs/data/Z3_wilson_#1.csv};
+        \addplot+[thick] table [y=11x2] {assets/graphs/data/Z3_wilson_#1.csv};
+        \addplot+[thick] table [y=13x2] {assets/graphs/data/Z3_wilson_#1.csv};
+}
+
 \begin{tikzpicture}[
         notes/.style={gray!20!black, font=\scriptsize},
         font=\small
@@ -42,7 +50,7 @@
         \draw (axis cs:0,1) node (deconf) [circle, fill=gray!40!black, inner sep=0pt, minimum size=4pt] {};
         \draw[<-, shorten <=2pt, gray!40!black] (deconf) -- +(0.15,-0.4) node [below, notes,align=center] {deconfined\\point};
         \draw (axis cs:1.65,0) node [above=3pt, notes] {double degeneracy};
-        \draw (axis cs:0.65,0.5) node [above, rotate=-45, notes] {crossover};
+        \draw (axis cs:0.65,0.5) node [above, rotate=-50, notes] {crossover};
 
     \end{groupplot}
 
