@@ -102,7 +102,8 @@
 \newcommand{\todo}[1]{\textcolor{red}{[ \textsf{#1} ]}}
 % macro for missing citations
 \newcommand{\citneeded}{\textcolor{red}{\textsf{\textsuperscript{[citation?]}}}}
-
+% arXiv ID
+\newcommand{\arXiv}[1]{\href{https://arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
 
 %----------------------------------------
 % Bibliography
@@ -111,13 +112,13 @@
     style=numeric-comp,
     sorting=none,
     bibstyle=nature,
-    isbn=false
+    isbn=false,
+    doi=false,
+    url=false
     ]{biblatex}
 \bibliography{assets/biblio.bib}
 
 % Make the title an hyperlink with the url of the reference
-\ExecuteBibliographyOptions{doi=false}
-\ExecuteBibliographyOptions{url=false}
 \newbibmacro{string+doi}[1]{%
   \iffieldundef{doi}{#1}{\href{http://dx.doi.org/\thefield{doi}}{#1}}}
 \DeclareFieldFormat{title}{\usebibmacro{string+doi}{\mkbibemph{#1}}}
@@ -176,3 +177,6 @@
 \DeclareAcronym{mera}{short={MERA}, long={Multiscale Entanglement Renormalization Ansatz}}
 \DeclareAcronym{svd}{short={SVD}, long={Singular Value Decomposition}}
 \DeclareAcronym{mc}{short={MC}, long={Monte Carlo}}
+
+
+
