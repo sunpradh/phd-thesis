@@ -1,0 +1,181 @@
+\section{The physical Hilbert space}\label{sec:physical Hilbert space}
+
+As we remarked in Sec.~\ref{sec:from_lie_groups_to_finite_groups}, while the overall Hilbert space of the pure gauge theory is $\mathcal{H} = \bigotimes_{\mathrm{links}} \C[G]$, only those states that satisfy the so-called \say{Gauss' law} constraint \eqref{eq:lattice gauss law} are to be considered physical \cite{kogut1975hamiltonian, milstead2018qyangmills, tong2018gauge}.
+For gauge theories based on most compact Lie groups, the \ac{wl}s (despite being overcomplete) span the space of gauge-invariant states \cite{sengupta1994gaugeinvariant, durhuus1980gaugeinvariant}.
+This, however, is not necessarily true for finite groups \cite{sengupta1994gaugeinvariant, cui2020kitaev}; this means that in some cases, it is possible to construct different gauge-invariant states, which nevertheless have the identical \ac{wl}s.
+We mention that this difficulty cannot arise for Abelian finite groups such as $\Z_N$, in which case the \ac{wl}s \textit{do} span the physical Hilbert space $\mathcal{H}_{\mathrm{phys}}$.
+In the following section we give a description of the gauge-invariant Hilbert space in terms of \textit{spin network states} and explain how this basis of states is particularly suitable to describe the physical Hilbert space of finite group gauge theories.
+We first consider the pure gauge physical Hilbert space in Section \ref{sec:spin networks pure gauge} and compute its dimension in Section \ref{sec:spin networks dimension}.
+% In Section \ref{sec:spin networks matter} we extend this construction to matter fields.
+
+\subsection{Spin networks}\label{sec:spin networks pure gauge}
+
+The physical Hilbert space of pure gauge theories with either Lie or finite gauge group can be explicitly described in terms of \textit{spin network states} \cite{baez1996spinnetworks, burgio2000physical}.
+Spin-network states can be defined indifferently when the $d$-dimensional space is discretized as an arbitrary graph, and are thus valid in arbitrary dimension with arbitrary lattices and boundary conditions.
+The first key observation is that the action of the Gauss' law operator eq.~\eqref{eq:lattice gauss law} is block-diagonal in the representation basis, as can be seen from eq.~\eqref{eq:translations peter weyl}.
+Then starting from the Hilbert space in the representation basis eq.~\eqref{eq:peterweyl}, we can, as usual, permute the summation and product, obtaining
+\begin{equation}
+    \label{eq:hilbert space permuted}
+    \mathcal{H} = \bigotimes_{\mathrm{links}} \bigoplus_{j \in \Sigma} V_j^* \otimes V_j=\bigoplus_{\{j\} \in \{\Sigma\}} \bigotimes_{l \in \mathrm{links}}  V_{j_l}^* \otimes V_{j_l} \ ,
+\end{equation}
+where now $\{j\}$ is an assignment of an irrep $j_l$ to each lattice link $l$, and $\{\Sigma\}$ is the set of the possible such assignments.
+The second key observation is that the gauge transformations eq.~\eqref{eq:lattice gauss law} are given by an independent group-valued variable $g_x$ at each site $x$ of the lattice.
+Moreover, due to eq.~\eqref{eq:translations peter weyl} the gauge transformation associated to one site $x$ acts at most on one of $V_j$ or $V_j^*$ but it cannot act on both.
+One can then split the two vector spaces $V_j$ and $V_j^*$ associated with each link and reorder the $V$s in the tensor product over links so that $V_j$s are now grouped together according to the \textit{sites} and not the links,
+\begin{equation}
+    \mathcal{H} = \bigoplus_{\{j\} \in \{\Sigma\}} \bigotimes_{x \in \mathrm{sites}} \pqty{\bigotimes_{l_-=x} V_{j_l}^*} \otimes \pqty{\bigotimes_{l_+=x} V_{j_l} }\ ,
+\end{equation}
+where by $l_+$ and $l_-$ we denote respectively the target and source vertex of link of link $l$.
+We can repeat the same set of operations for the gauge transformation operator eq.~\eqref{eq:gauss law operator}, which are therefore given by
+\begin{equation}
+    \mathcal{G}(\{g_x\}) = \bigoplus_{\{j\} \in \{\Sigma\}} \bigotimes_{x \in \mathrm{sites}} \pqty{\bigotimes_{l_-=x} \rho_{j_l}^*(g_x)} \otimes \pqty{\bigotimes_{l_+=x} \rho_{j_l}(g_x) }\ .
+\end{equation}
+In the above decomposition, the gauge transformations now act independently for each $x$ and the Gauss' law constraint EQ.~\eqref{eq:lattice gauss law} gives the physical Hilbert space
+\begin{equation}
+    \label{eq:spin network Hilbert space}
+    \mathcal{H}_{\mathrm{phys}} = \bigoplus_{\{j\} \in \{\Sigma\}} \bigotimes_{x \in \mathrm{sites}} \mathrm{Inv}\bqty{\pqty{\bigotimes_{l_-=x} V_{j_l}^*} \otimes \pqty{\bigotimes_{l_+=x} V_{j_l} }} \ .
+\end{equation}
+
+
+\begin{figure}[t]
+    \SideFigure[label=fig:periodic plaquette, desc={Links on the $2 \times 2$ lattice}]{%
+        \input{assets/figures/lattice_2x2.tex}
+    }{%
+    A $2\times 2$ square lattice with periodic boundary conditions, showing the labels of the links.
+    }
+\end{figure}
+
+Given a representation $\rho$ (not necessarily irreducible) with representation space $V_\rho$, the set of invariant vectors $\mathrm{Inv}(V_\rho)$ is the set of vectors $v \in V_\rho$ such that $\rho(g) v = v$ for all $g\in G$.
+Note that this is a separate notion from that of an \say{invariant subspace}.
+A basis of \textit{spin network states} which arise from the description of eq.~\eqref{eq:spin network Hilbert space} are of the form $\ket{\{j\},A}$ where $\{j\}$ is an assignment of irreps to links and $A=(a_1, \ldots a_V)$ labels the choice of a gauge-invar
+
+
+For a hypercubic lattice in $d$ dimensions with periodic boundary conditions, each site is connected to $2d$ links and therefore $2d$ terms appear in the tensor product within each $\mathrm{Inv}$ in eq.~\eqref{eq:spin network Hilbert space}.
+If instead we choose open boundary conditions, the sites in the bulk will again be connected to $2d$ links, but the sites on the boundary will be connected to fewer links and thus fewer terms will appear in the tensor product for those sites.
+In the general case, the number of terms in the tensor product within each $\mathrm{Inv}$ may depend on the site.
+We choose to work directly with the spaces of invariant vectors rather than with spaces of intertwiners more commonly employed in the literature \cite{baez1996spinnetworks, burgio2000physical}.
+
+The calculation of a basis of invariant states (or, equivalently, of the intertwiners) can be difficult in the Lie group case, especially since they admit infinitely many irreps, but can quite easily be performed numerically for finite groups, which only have finitely many irreps.
+Since the number of links connected to each site is finite and independent of the lattice volume, one needs only compute the invariant states of a finite number of tensor product representations which does not scale with the lattice size.
+
+As an example, we work out explicitly the case of a $2\times 2$ square lattice with periodic boundary conditions.
+As shown in Fig.~\ref{fig:periodic plaquette}, this system has four vertices and eight links.
+Expanding explicitly eq.~\eqref{eq:spin network Hilbert space} we see that in this case
+\begin{align}
+    \mathcal{H}_{\mathrm{phys}} &= \bigoplus_{j_1, \ldots j_8}
+    \mathrm{Inv}\bqty{V_{j_1}^* \otimes V_{j_4}^* \otimes V_{j_5} \otimes V_{j_8}} \otimes
+    \mathrm{Inv}\bqty{V_{j_5}^* \otimes V_{j_2}^* \otimes V_{j_1} \otimes V_{j_7}}  \otimes \\
+    &\quad\otimes\mathrm{Inv}\bqty{V_{j_6}^* \otimes V_{j_7}^* \otimes V_{j_3} \otimes V_{j_2}} \otimes
+    \mathrm{Inv}\bqty{V_{j_3}^* \otimes V_{j_8}^* \otimes V_{j_6} \otimes V_{j_4}} \ . \nonumber
+\end{align}
+Now consider a single invariant subspace $\mathrm{Inv}\bqty{V_{j_1}^* \otimes V_{j_2}^* \otimes V_{j_3} \otimes V_{j_4}}$ with arbitrary assignment of representations.
+This vector space admits an orthonormal basis $\{\ket{j_1 j_2 j_3 j_4 ; a}\}$ where $1 \leq a \leq \dim\mathrm{Inv}\bqty{V_{j_1}^* \otimes V_{j_2}^* \otimes V_{j_3} \otimes V_{j_4}}$ indexes the basis vector.
+We can expand the basis vectors explicitly in terms of the bases of the $V_j$ as (see also the discussion around eq.~\eqref{eq:change of basis})
+\begin{equation}
+    \ket{j_1 j_2 j_3 j_4 ; a} = \sum_{m_1, m_2, n_3, n_4} \psi\pqty{j_1 m_1 j_2 m_2 j_3 n_3 j_4 n_4 ; a} \ket{j_1 m_1} \otimes \ket{j_2 m_2} \otimes \ket{j_3 n_3} \otimes \ket{j_4 n_4} \ .
+\end{equation}
+The basis vectors can be chosen orthonormal.
+By virtue of spanning the space $\mathrm{Inv}\bqty{V_{j_1}^* \otimes V_{j_2}^* \otimes V_{j_3} \otimes V_{j_4}}$, they are invariant vectors of the tensor product representation $\rho \equiv \rho_{j_1}^* \otimes \rho_{j_2}^* \otimes \rho_{j_3} \otimes \rho_{j_4}$; as such, they satisfy $\rho(g) \ket{j_1 j_2 j_3 j_4 ; a} = \ket{j_1 j_2 j_3 j_4 ; a}$ for all $g \in G$.
+The coefficients of the expansion $\psi\pqty{j_1 m_1 j_2 m_2 j_3 n_3 j_4 n_4 ; a}$ may be easily computed, for example by writing the tensor product representation matrices $\rho(g)$ explicitly and then solving the simultaneous equations $\rho(g) v = v$ for all $g \in G$ (it is actually sufficient to do so on a set of generators of $G$).
+The dimension of the space of invariant vectors depends on the four representations assigned to the relevant site.
+Now let $A = \pqty{a_1, a_2, a_3, a_4}$, which implicitly depends on $\{j\}$ (because the range of each $a_i$ depends on the irreps assigned to site $i$).
+Given any assignment of irreps $\{j\}$, $A$ is a choice of a basis vector of invariant states at the four sites.
+Therefore an orthonormal basis for the gauge invariant Hilbert space is given by
+\begin{equation}
+    \ket{ \{j\};A} = \ket{j_1 j_4 j_5 j_8 ; a_1} \otimes \ket{j_5 j_2 j_1 j_7 ; a_2} \otimes \ket{j_6 j_7 j_3 j_2 ; a_3} \otimes \ket{j_3 j_8 j_6 j_4 ; a_4} \ ,
+\end{equation}
+for any possible assignment $\{j\}$ of irreps to links, and then all possible choices $A$ of an invariant vector at each of the four sites.
+
+The spin-network states $\ket{ \{j\};A}$ then form a basis of the gauge-invariant Hilbert space.
+Expanding the tensor product, we find an explicit expression for these states in terms of the representation basis,
+\begin{align}
+    \ket{ \{j\};A} &= \sum_{n_1, \ldots n_8} \sum_{m_1, \ldots m_8} \psi\pqty{j_1 m_1 j_4 m_4 j_5 n_5 j_8 n_8 | a_1} \psi\pqty{j_5 m_5 j_2 m_2 j_1 n_1 j_7 n_7 | a_2} \times \\
+    &\quad \quad \times \psi\pqty{j_6 m_6 j_7 m_7 j_3 n_3 j_2 n_2 | a_3} \psi\pqty{j_3 m_3 j_8 m_8 j_6 n_6 j_4 n_4 | a_4} \times \\
+    &\quad \quad \times \ket{j_1 m_1 n_1} \otimes \ket{j_2 m_2 n_2} \otimes \cdots \ket{j_8 m_8 n_8} \ ,
+\end{align}
+where we have restored the ordering of the vector spaces $V_j$s and used again the shorthand $\ket{jmn}=\ket{jm}\otimes \ket{jn}$.
+We note in particular that despite having introduced a splitting of the variables at each link, in the final answer this splitting disappears and the spin-network states can be entirely expressed in terms of the representation basis $\ket{jmn}$.
+
+\subsection{The dimension of the physical Hilbert space}\label{sec:spin networks dimension}
+
+As we have seen in the previous section, spin network states give an explicit description of the physical Hilbert space $\mathcal{H}_{\mathrm{phys}}$ as
+\begin{equation}
+    \mathcal{H}_{\mathrm{phys}} =\bigoplus_{\{\rho\} \in \{\Sigma\}} \bigotimes_{v \in \mathrm{sites}} \mathrm{Inv}\bqty{\pqty{\bigotimes_{l_- = v}  V_{\rho_l}^*} \otimes \pqty{\bigotimes_{l_+ = v}  V_{\rho_l}}} \ ,
+\end{equation}
+where $\mathrm{Inv}(\rho)$ is the space of invariant vectors of the representation $\rho$, $\{\rho\}$ is an assignment of irreps to links and $\{\Sigma\}$ is the set of such possible assignments.
+For a finite group,
+\begin{equation}
+    \label{eq:invariant vectors counting}
+    \dim{\mathrm{Inv}(\rho)} = \frac{1}{\abs{G}} \sum_{g \in G} \chi_\rho(g) \ ,
+\end{equation}
+where $\chi_\rho$ is the character of $\rho$.
+We prove this result in Appendix \ref{sec:counting invariant states}.
+This fact can be used to obtain a general formula for the dimension of the $\mathcal{H}_{\mathrm{phys}}$, which is valid for any lattice in any dimension with any boundary conditions.
+On a lattice with $L$ links and $V$ sites, we will show that
+\begin{equation}
+    \label{eq:physical hilbert space dimension}
+    \dim{\mathcal{H}_{\mathrm{phys}}} = \sum_C \pqty{\frac{\abs{G}}{\abs{C}}}^{L-V} \ ,
+\end{equation}
+where the sum runs over all conjugacy classes $C$ of the group, and $\abs{C}$ is the size of $C$.
+The ratio $\abs{G}/\abs{C}$ is always an integer by the orbit-stabilizer theorem \cite{serre1967representations}.
+Using eq.\eqref{eq:invariant vectors counting}, together with the fact that the character of a tensor product is given by the product of the characters, we may readily prove eq.\eqref{eq:physical hilbert space dimension}.
+From the general formula for the gauge-invariant Hilbert space, we have
+\begin{align}
+    \dim{\mathcal{H}_{\mathrm{phys}}} &=\sum_{j_1 j_2 \cdots j_L} \prod_{v \in \mathrm{sites}} \dim\mathrm{Inv}\bqty{\pqty{\bigotimes_{l_- = v}  V_{\rho_l}^*} \otimes \pqty{\bigotimes_{l_+ = v}  V_{\rho_l}}} = \nonumber \\
+    &=\frac{1}{\abs{G}^V}\sum_{j_1 j_2 \cdots j_L} \sum_{g_1 g_2 \cdots g_V} \prod_{v \in \mathrm{sites}} \pqty{\prod_{l_- = v}  \chi_{j_l}^*(g_v)}  \pqty{\prod_{l_+ = v} \chi_{j_l}(g_v)} \nonumber \ .
+\end{align}
+Within the product over all sites, there are exactly $2L$ factors of characters $\chi$, as each link contributes two representation spaces $V$ and each representation space gives rise to a character.
+Thus grouping characters by link, we obtain
+\begin{equation}
+    \dim{\mathcal{H}_{\mathrm{phys}}} =\frac{1}{\abs{G}^V} \sum_{g_1 g_2 \cdots g_V} \prod_{l = \expval{xx'} \in \mathrm{links}} \expval{g_x, g_{x'}} \ .
+\end{equation}
+where we denoted $\expval{g, h} = \sum_j \chi_j(g)^* \chi_j(h)$.
+It is a well-known result that $\expval{g, h}$ is zero unless $g$ and $h$ belong to the same conjugacy class, in which case $\expval{g, h} = \abs{G} / \abs{C}$ where $C$ is the conjugacy class of both $g$ and $h$ \cite{serre1967representations}.
+If any two adjacent sites $x$ and $x'$ have $g_x$ and $g_{x'}$ in different conjugacy classes, then $\expval{g_x, g_{x'}}=0$ and the corresponding term in the sum is zero.
+Assuming that the lattice is connected, this implies that the product over all links is zero unless all the $g_x$ at each site $x$ belong to the same conjugacy class.
+Then, since $\expval{g_x, g_{x'}}$ is constant on conjugacy classes, we can write
+\begin{equation}
+    \dim{\mathcal{H}_{\mathrm{phys}}}
+    =\frac{1}{\abs{G}^V} \sum_C \sum_{g_1 g_2 \cdots g_V \in C} \frac{\abs{G}^L}{\abs{C}^L} = \sum_C  \pqty{\frac{\abs{G}}{\abs{C}}}^{L-V} \ ,
+\end{equation}
+which concludes the proof.
+In the Abelian case the above formula simplifies as all conjugacy classes are singlets and therefore $\dim{\mathcal{H}_{\mathrm{phys}}} = \abs{G}^{L-V+1}$.
+Thus finite Abelian groups have the largest physical Hilbert space among all groups of the same order.
+For periodic boundary conditions in a hypercubic lattice, $L=Vd$ and as such $\dim{\mathcal{H}}=\abs{G}^{Vd}$, while $\dim{\mathcal{H}_{\mathrm{phys}}} \approx \abs{G}^{V (d-1)}$, so that $\dim{\mathcal{H}_{\mathrm{phys}}} \approx (\dim{\mathcal{H}})^{1-1/d}$ and both spaces grow exponentially with the lattice size.
+For a finite group, one may compute all possible relevant spaces of invariant vectors with little effort as the number of tensor product spaces is bounded in $d$ spatial dimensions by $\pqty{\dim{j}_\mathrm{max}}^{2d} \leq \abs{G}^d$, owing to $\sum_j \pqty{\dim{j}}^2 = \abs{G}$, independently from the lattice volume.
+The exponential scaling arises from considering all possible assignments of irreps to lattice links.
+
+As a further example, we consider the dimension of the Hilbert space for pure $D_4$ gauge theory.
+Using eq.~\eqref{eq:physical hilbert space dimension}, we find for $G=D_4$ on a lattice with $L$ links and $V$ sites,
+\begin{equation}
+    \dim{\mathcal{H}_{\mathrm{phys}}} = 8^{L-V}\pqty{2+\frac{3}{2^{L-V}}} \ .
+\end{equation}
+The dimension of the physical Hilbert space for some two-dimensional finite square lattices in $2+1$ dimensions is shown in Table \ref{tab:numstates}.
+We see that its size grows quickly with the lattice size.
+We point out that even for a $2 \times 2$ periodic lattice with a small group such as $D_4$ it is not even feasible to write down all possible gauge-invariant states.
+Unless the structure happens to be very sparse, writing down the $8960$ physical basis elements in terms of the $\abs{G}^L = 8^8$ basis elements in the representation basis using $4 \mathrm{B}$ floating point numbers would require roughly $600 \mathrm{GB}$ of memory.
+\begin{table}[t]
+    \centering
+    \begin{tabular}{clrrcr}
+        \toprule
+        Size~~~ & BCs & $L$ & $V$ & $L-V$ &$\dim{\mathcal{H}_{\mathrm{phys}}}$\\
+        \midrule
+        \multirow{2}{3em}{$2 \times 2$}
+            & open & $4$ & $4$ & $0$ & $5$\\
+            & periodic & $8$ & $4$ & $4$ & $8960$ \\[5pt]
+        \multirow{2}{3em}{$2 \times 3$}
+            & open & $7$ & $6$ & $1$ & $28$ \\
+            & periodic & $12$ & $6$ & $6$ & $536576$ \\[5pt]
+        \multirow{2}{3em}{$3 \times 3$}
+            & open & $12$ & $9$ & $3$ & $1216$ \\
+            & periodic & $18$ & $9$ & $9$ & $269221888$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Dimension of the physical subspace of $D_4$ gauge theory on some small lattices in $2+1$ dimensions.
+$L$ is the number of links and $V$ is the number of vertices.}
+    \label{tab:numstates}
+\end{table}
+
+% \subsection{Extension to matter fields} \label{sec:spin networks matter}
+%
+% The spin network states may be extended to matter

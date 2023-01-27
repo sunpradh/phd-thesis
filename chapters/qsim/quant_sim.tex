@@ -18,7 +18,7 @@ Therefore, the size of a quantum computer would only be proportional to the size
 
 In this perspective, one would need a specific quantum simulator for simulating a specific class of models.
 This is not necessarily true with a \emph{quantum computer} \cite{feynman1985quantum, nielsen2010quantum, schleich2007elements, stolze2008quantum}.
-The idea for such a device was put forward in \cite{manin1980computable, feynman1982simulation, feynman1985quantum} and it would act as a \emph{universal quantum simulator}, a statement proved by LLoyd in \cite{lloyd1996simulator}.
+The idea for such a device was put forward in \cite{manin1980computable, feynman1982simulation, feynman1985quantum} and it would act as a \emph{universal quantum simulator}, a statement proved by Lloyd in \cite{lloyd1996simulator}.
 One caveat of the universal simulator is the need of \emph{digitalization} of the target system \ac{dof} and its evolution, because a quantum computer is essentially discrete, it is made up of \emph{qubits}, so they are not suited for continuous-variable computation.
 This is in some sense analogous to classical computers, where real numbers have to be truncated and represented with a finite-size register of bits.
 On the other hand, a problem-specific simulator can potentially uses some kind of physical platform which allows for continuous \ac{dof} \cite{kendon2010quantum, wagner2010continuous}.
@@ -214,16 +214,17 @@ Moreover, analog \ac{qs} has the natural advantage that physical quantities can 
 One important advantage of analog \ac{qs} is that fact that it does not require a fully fledged quantum computer.
 In fact, the simulator does not even need to be a quantum computer at all.
 This possibly makes analog \ac{qs} much more achievable from the experimental point of view in the short term.
-Many different platforms are already available (see also Fig.~\ref{fig:analog_simulators}):
+Many different platforms are already available  (see also Fig.~\ref{fig:analog_simulators}):
 \begin{itemize}
-    \item ultracold atoms and molecules \cite{lewenstein2012ultracold, bloch2012ultracold, bloch2008ultracold, lin2009ultracold, muller2012ions, aidelsburger2011ultracold};
-    \item trapped ions \cite{blatt2012trappedions, muller2012ions, johanning2009ions, schneider2012ions};
-    \item photons \cite{aspuruguzik2012photonic, angelakis2017quantum};
-    \item polaritons \cite{angelakis2017quantum, hartmann2006polaritons};
-    \item nuclear magnetic resonance systems \cite{somaroo1999simulation, tseng1999nmr};
+    \item ultracold atoms and molecules \cite{lewenstein2012ultracold, bloch2012ultracold, bloch2008ultracold};
+    \item trapped ions \cite{blatt2012trappedions};
+    \item photons \cite{aspuruguzik2012photonic};
+    \item polaritons \cite{angelakis2017quantum};
+    \item nuclear magnetic resonance systems \cite{somaroo1999simulation};
     \item artificial lattices \cite{singha2011lattice};
-    \item superconducting qubits \cite{houck2012superconducting, makhlin2001superconducting, devoret2004superconducting, you2005superconducting, pritchett2010superconducting}.
+    \item superconducting qubits \cite{houck2012superconducting}.
 \end{itemize}
+For more details see \cite{buluta2009simulators, georgescu2014simulation, hauke2012simulators} and references therein.
 
 Analog \ac{qs} can be useful even in the presence of errors, up to a certain tolerance level, because it would still be able to give qualitative answers.
 Suppose one is interested in knowing if whether a certain set of physical conditions leads to a given quantum phase transition.
@@ -259,7 +260,7 @@ For example, in the case of ultracold atoms in optical lattices the typical cont
 \subsection{Quantum-inspired algorithms}
 \label{sub:quantum_inspired_algorithms}
 
-Classical simulations of quantum systems are usually done using one of the following methods \cite{hauke2012simulators}:
+Traditionally, classical simulations of quantum systems have been done using one of the following methods \cite{hauke2012simulators}:
 \begin{itemize}[itemsep=0pt]
     \item Quantum \acf{mc}.
     \item Systematic perturbation theory.
@@ -273,9 +274,10 @@ Perturbation theory is applicable only when there is a small coupling constant, 
 \Ac{dmrg} is a variational method that has been proven to be fully functional for strongly interacting systems \cite{schollwock2011dmrg, mcculloch2007dmrg, dechiara2008dmrg}.
 Additionally, it has been proven to be of great success for one-dimensional systems, while for two-dimensional models it can be quite limited \cite{stoudenmire2012dmrg}.
 
-Thanks to the development of quantum information, new \emph{classical algorithms} have been invented for the simulation of quantum many-body systems, that much more exploit the quantum nature of these systems.
+Thanks to the development of quantum information, new \emph{classical algorithms} have been put forward for the simulation of quantum many-body systems, that much more exploit the quantum nature of these systems.
 One of the most groundbreaking example of quantum-inspired algorithms is the use of \emph{\acp{tn}} \cite{orus2014tensor, verstraete2004algo, verstraete2008tensor, verstraete2004dmrg, vidal2008simulation, cirac2009tensor}.
 They make it possible to ``compress'' the information about a many-body wave function by expressing it as a \emph{contraction} of a network of tensors (as suggested by the name).
+Additionally, \ac{tn} also helped shining a light of the effectiveness of \ac{dmrg}.
 
 In a \ac{tn}, to each physical site there is associate a tensor with a certain number of indices (or legs).
 One of these indices is called the \emph{physical index} of the tensors, which runs over the basis of the local Hilbert space.

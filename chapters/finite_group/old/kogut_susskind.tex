@@ -1,0 +1,242 @@
+%----------------------------------------
+% SECTION: Kogut-Susskind Hamiltonian
+%----------------------------------------
+\section{Kogut-Susskind Hamiltonian formulation}
+\label{sec:kogut_susskind_hamiltonian_formulation}
+
+The Hamiltonian approach to Wilson's \ac{lgt} was first formulated by Kogut and Susskind, in \cite{kogut1975hamiltonian}.
+In this formulation, space is discretized while time is kept continuous.
+It has been later shown that the two formulations can be related via transfer matrix \cite{creutz1977transfermatrix}, where two different lattice spacing are assigned to time and spatial dimensions and then the continuum limit for the time direction is taken.
+In this text, we decided to adopt a more modern approach, based on \cite{milstead2018qyangmills,zohar2015latticegauge}.
+
+As one can expect, the Kogut-Susskind Hamiltonian $\HamilKS$ is made of two terms, the electric part and the magnetic part:
+\begin{equation}
+    \HamilKS = H_{\text{E}} + H_{\text{B}}.
+\end{equation}
+These will be constructed separately and for a simple reason.
+The magnetic term involves only the spatial component of the field strength tensor, i.e., $\mathbf{B}^{2} \sim F^{ij}F_{ij}$, while the electric term involves also the temporal components, i.e., $\mathbf{E}^2 \sim F^{0i} F_{0i}$.
+Given that in the Hamiltonian formalism time is continuous while space is discrete, the two terms cannot be treated on the same footing.
+This differs from the Wilson action approach, where the magnetic and electric are treated equally because it has to be Lorentz-invariant.
+
+Another point of divergence with the path-integral approach is that now both the electric field and magnetic term are \emph{operators}, not simple variables.
+In order to have a well-defined operators we also have to define the appropriate Hilbert space on which these operators act.
+In the following, we will focus on the case of Lie groups like $\SU(N)$, before moving onto finite groups.
+
+
+%
+% SUBSECTION: Single link Hilbert space and operators
+%
+\subsection{Single link Hilbert space and operators}
+\label{sub:single_link_hilbert_space_and_operators}
+
+On a spatial oriented lattice $\Lattice$, the gauge \ac{dof} are defined on the links $\link \in \Lattice$.
+% We start by defining the gauge \ac{dof} on a single link $\link$.
+In the construction in Sec.~\ref{sub:gauge_fields_on_a_lattice}, given a gauge group $G$ we have associated an element $g \in G$ for each link $\link$.
+Hence, the configuration space for each link $\link$ is exactly $G$.
+When quantizing a theory, the configuration space has to be upgraded to a Hilbert space.
+In this case, for a single link $\link$, the configuration space $G$ is upgraded to the Hilbert space $\HilbertG$, spanned by the elements of $G$:
+\begin{equation}
+    \HilbertSpace^G \equiv \text{span}\{\ket{g} : g \in G\},
+    \label{eq:single_link_Hilbert_space}
+\end{equation}
+where the set $\{\ket{g}\}$ is an orthonormal basis.
+Therefore, an element $\ket{\psi}$ of $\HilbertSpace^G$ can be written as
+\begin{equation}
+    \ket{\psi} = \int \dd g \; \psi(g) \ket{g},
+\end{equation}
+where $\int \dd g$ is the Haar measure of $G$, if $G$ is a compact Lie group.
+In the case of a Lie group, $\HilbertG$ is equivalent to the space of square-integrable functions $L^2(G)$ of $G$, i.e., each element $\ket{\psi}$ can be identified with the (wave)function $\psi(g)$.
+The total Hilbert space of the model is simply given by the tensor product
+\begin{equation}
+    \HilbertSpace_{\text{tot}} = \bigotimes_{\link} \HilbertG_{\link},
+    \label{eq:total_Hilbert_space}
+\end{equation}
+where $\HilbertG_{\link}$ is Hilbert space on the link $\link$.
+
+\medskip
+
+The first set of operators we can define on it are the \emph{position observables} $\transport_{mn}$:
+\begin{equation}
+    \transport_{mn} \ket{g} = U(g)_{mn} \ket{g},
+\end{equation}
+where $U(g)_{mn}$ is the matrix element $(m, n)$ of $U(g)$, the image of $g$ in the fundamental representation $U$ of $G$.
+In the case of $SU(N)$, for examples, the fundamental representation has dimension $N$.
+One can then define a matrix of operators $\transport$, whose elements are precisely the operators $\transport_{mn}$.
+Note that $\transport$ is unitary as long as the chosen representation is unitary, but this not guarantee that each operator $\transport_{mn}$ is unitary.
+Indeed, it can be shown that $(\transport_{mn})^{\dagger} = (\transport^{\dagger})_{mn}$.
+
+\medskip
+
+A second set of operators is defined on $\HilbertG$, which makes use of the group structure of $G$.
+For each element $h \in G$, we define $L_h$ and $R_h$ such that for any $\ket{g} \in G$
+\begin{equation}
+    L_h \ket{g} = \ket{hg}
+    \qand
+    R_h \ket{g} = \ket*{gh^{-1}},
+    \label{eq:left_right_translations}
+\end{equation}
+which are the \emph{left} and \emph{right} multiplication operators, respectively.
+If the basis $\{\ket{g}\}$ is considered as the ``position basis'' then the operators $L_h$ and $R_h$ can be regarded as ``translation operators''.
+The left multiplications commutes with the rights one and both $L_h$ and $R_h$ respects the group structure of $G$, i.e.,
+\begin{equation}
+    L_g L_h = L_{gh}
+    \qand
+    R_g R_h = R_{gh},
+\end{equation}
+indeed the maps $\hat{L}: h \mapsto L_h$ and $\hat{R}: h \mapsto R_h$ are basically \emph{regular representations} of the group $G$.
+It can also be shown that $L_h$ and $R_h$ are unitary operators and satisfy
+\begin{equation}
+    (L_h)^{\dagger} = (L_h)^{-1} = L_{h^{-1}}
+    \qand
+    (R_h)^{\dagger} = (R_h)^{-1} = R_{h^{-1}}.
+\end{equation}
+
+
+\medskip
+
+
+With the left and right multiplication, we can now define the gauge transformations at a site $x \in \Lattice$, which ``rotates'' the state of the links attached to the site $x$.
+Given that the lattice is oriented, we have to distinguish \emph{incoming} and \emph{outgoing} links with respect to a site $x$.
+We choose the convention where links going out from $x$ are left-multiplied and links going into $x$ are right-multiplied.
+In other words, if the two neighbouring sites $x$ and $y$ are rotated by the elements $g_x$ and $g_y$ (respectively), then the state of the link $\link$ that connects from $x$ to $y$ is transformed as
+\begin{equation}
+    \ket{g_{\link}}  \longmapsto  \ket{g_x g_{\link} g_y^{-1}}.
+\end{equation}
+
+On a square oriented two-dimensional lattice, there are two incoming links and two outgoing links.
+Given an element $h \in G$, the gauge transformation operator at $x$ can be defined as
+
+
+
+\subsection{Magnetic Hamiltonian}
+\label{sub:magnetic_hamiltonian}
+
+As already mentioned, it is relatively easy to obtain the magnetic term if we already know the Wilson approach but it order to make the presentation clear we repeat the step for major clarity.
+
+Fixing the lattice orientation, on a link $\link$ we define
+\begin{equation}
+    \transport_{mn}(\link) =
+    \begin{cases}
+        \transport_{mn} & \text{if $\link$ traversed in the positive direction}, \\
+        \transport_{mn}^{\dagger} & \text{if $\link$ traversed in the negative direction}.
+    \end{cases}
+\end{equation}
+Then, let $\gamma$ be a oriented path, which we write as $\gamma = \ev*{\link_1 \link_2 \dots \link_q}$.
+Next, on $\gamma$ we can define the \emph{Wilson line} $W_{\gamma}$ whose matrix elements are
+\begin{equation}
+    (W_{\gamma})_{mn} =
+    \sum_{m_1 \dots m_{q-1}}
+        \transport_{m m_1} (\link_1)
+        \transport_{m_1 m_2} (\link_2)
+        \cdots
+        \transport_{m_{q-1} n} (\link_q),
+\end{equation}
+which can be written in a more compact way as
+\begin{equation}
+    W_{\gamma} =
+        \transport(\link_1)
+        \transport(\link_2)
+        \cdots
+        \transport(\link_n),
+\end{equation}
+where the matrix multiplication is implied.
+When considering closed path, we can take the trace of $W_{\gamma}$ in order to have no free matrix indices:
+\begin{equation}
+    \tr W_{\gamma} = \sum_{m} (W_{\gamma})_{mm}
+\end{equation}
+
+Since $\mathbf{B}^2 = \frac{1}{2} F_{ij} F^{ij}$, we can copy the spatial part of the Wilson formulation and consider single plaquette \ac{wl}s:
+\begin{equation}
+    \tr \hat{\WilsonPlaq} = \tr \qty(
+        \transport(\link_1) \transport(\link_2) \transport(\link_3)^{\dagger}  \transport(\link_4)^{\dagger}
+    ),
+\end{equation}
+where $\link_1, \dots, \link_4$ are the links around a purely spatial plaquette.
+Thus, the magnetic Hamiltonian is
+\begin{equation}
+    H_B = - \frac{1}{g^2 a^{4-d}} \sum_{\square} \qty( \tr \WilsonPlaq + \tr \WilsonPlaq^{\dagger} ),
+\end{equation}
+where the sum is over the plaquettes of the lattice and the coupling is chosen in order to have the correct limit.
+
+
+\subsection{Electric Hamiltonian}
+\label{sub:electric_hamiltonian}
+
+The construction of the electric term of the Hamiltonian is less trivial, since we cannot use \ac{wl}s in the time direction.
+Recall that in the continuum theory the electric term is given by the square of the infinitesimal generators of the translations of the gauge fields.
+In a \ac{lgt}, the translations of the gauge fields are achieved via the operators $L_h$ and $R_h$, see \eqref{eq:left_right_translations}.
+Therefore, in order to find the construct the electric term we have to find the generators of $L_h$ and $R_h$.
+% Hence, we have to find the infinitesimal generators corresponding to the ``translations'' $L_h$ and $R_h$ in the lattice theory.
+% From these generators then is possible to build the electric Hamiltonian.
+% We have already seen that $L_h$ and $R_h$ are translation operators on the gauge field Hilbert space $\HilbertSpace^G$, but are finite translations.
+% We have to build the infinitesimal generators of $L_h$ and $R_h$ in order to obtain the electric field.
+In the case of Lie groups there is a recipe for writing down these generators.
+
+% The maps $\hat{L}: h \mapsto L_h$ and $\hat{R}: h \mapsto R_h$ are known as the \emph{left} and \emph{right regular representations}, respectively.
+% The task of finding the infinitesimal generators of $L_h$ and $R_h$ is equivalent to finding the Lie algebra representations of the corresponding regular representation.
+Consider a compact Lie group $G$ and its Lie algebra $\g$, for example $\SU(N)$ and $\su(N)$.
+The maps $\hat{L}: h \mapsto L_h$ and $\hat{R}: h \mapsto R_h$ are \emph{regular representations} of the Lie group $G$ and we have to find the corresponding regular representation of the Lie algebra $\g$.
+This is a linear map that maps every element $X \in \g$ into an element $\generator(X)$ such that
+% This is a linear map $X in \g \mapsto \generator(X)$  is defined a linear map $X \mapsto \hat{\ell(X)}$, from the Lie algebra to operators on $L^2(\SU(N))$, such that
+\begin{equation}
+    L_{e^{i \epsilon X}} = \exp \qty(i \epsilon \generator_L(X))
+    \qand
+    R_{e^{i \epsilon X}} = \exp \qty(i \epsilon \generator_R(X)).
+\end{equation}
+% Because $\hat{L}$ and $\hat{R}$ are left and right regular representations, the maps $\generator_L$ and $\generator_R$ are left and right Lie algebra representations.
+The maps $\generator_L$ and $\generator_R$ are the left and right Lie algebra representations.
+It does not matter which one we use, so we chose the left representation.
+Similar calculation can be carried out with the right one as well.
+
+If $L_h$ is unitary, then $\generator(X)$ is necessarily Hermitian.
+% Also, given that $L_h$ is a Lie group representation, it follows that $\generator(X)$ is a Lie algebra representation.
+Let $\{T^a\}$ be the Hermitian generators of $\g$ with commutation relations
+\begin{equation}
+    \comm*{T^a}{T^b} = i f^{abc} T^c,
+    \label{eq:Lie_algebra_comm_relations}
+\end{equation}
+where $f^{abc}$ are the structure constants.
+Obviously, $X \mapsto \generator_L(X)$ is a ordinary Lie group representation (not to be confused with regular representation).
+Hence, we can defined the momentum operators as the images of the generators $T^a$ through $\generator_L$:
+\begin{equation}
+    \generator^a_L \equiv \generator_L(T^a),
+\end{equation}
+and they automatically satisfy \eqref{eq:Lie_algebra_comm_relations},
+\begin{equation}
+    \comm{\generator^a_L}{\generator^b_L} = i f^{abc} \generator^c_L.
+\end{equation}
+Alternatively, the operators $\generator^a_L$ can also be obtained by differentiating $L_h$:
+\begin{equation}
+    \generator^a_L = \eval{-i \dv{\epsilon} L_{e^{i \epsilon T^a}}}_{\epsilon=0}
+\end{equation}
+The operators $\generator^a_L$ will act as ``conjugate variables'' to the operators $\transport$, with commutation relations
+\begin{equation}
+    \comm*{\generator_L^a}{\transport} = -T^a \transport.
+\end{equation}
+
+Bearing in mind that the continuum Hamiltonian contains the square of the electric field, we may then form the group Laplacian $\laplacian_{\link}$ on a link $\link$ as the square of the generators $\generator^a_L$:
+\begin{equation}
+    \laplacian_{\link} = \sum_{a} \qty( \generator^a_L )^2.
+\end{equation}
+This is a Laplacian on the space $L^2(\SU(N))$, in an entirely analogous way to the Laplacian operator of ordinary quantum mechanics, which is given by the sum of squares of the infinitesimal generators of translations in each space direction.
+With the continuum limit in mind, then the correct form the electric Hamiltonian is
+\begin{equation}
+    H_E =
+    \frac{g^2}{2 a^{d-2}} \sum_{\link} \laplacian_{\link} =
+    \sum_{\link} \sum_{a} \qty( \generator_L^a )^2
+\end{equation}
+where the sum is taken over the links of the lattice.
+Therefore, the overall Kogut-Susskind Hamiltonian is given by
+\begin{equation}
+    H =
+    \frac{g^2}{2 a^{d-2}} \sum_{\link} \laplacian_{\link}
+    - \frac{1}{g^2 a^{4-d}} \sum_{\square} \qty(
+        \tr\WilsonPlaq + \tr \WilsonPlaq^{\dagger}
+    )
+\end{equation}
+
+
+% \subsection{Gauge transformations}
+% \label{sub:gauge_transformations}
+
+
