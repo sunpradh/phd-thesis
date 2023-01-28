@@ -1,12 +1,12 @@
 \section{The physical Hilbert space}\label{sec:physical Hilbert space}
 
-As we remarked in Sec.~\ref{sec:from_lie_groups_to_finite_groups}, while the overall Hilbert space of the pure gauge theory is $\mathcal{H} = \bigotimes_{\mathrm{links}} \C[G]$, only those states that satisfy the so-called \say{Gauss' law} constraint \eqref{eq:lattice gauss law} are to be considered physical \cite{kogut1975hamiltonian, milstead2018qyangmills, tong2018gauge}.
+As we remarked in Sec.~\ref{sec:from_lie_groups_to_finite_groups}, while the overall Hilbert space of the pure gauge theory is $\mathcal{H} = \bigotimes_{\mathrm{links}} \C[G]$, only those states that satisfy the so-called ``Gauss' law'' constraint \eqref{eq:lattice gauss law} are to be considered physical \cite{kogut1975hamiltonian, milstead2018qyangmills, tong2018gauge}.
 For gauge theories based on most compact Lie groups, the \ac{wl}s (despite being overcomplete) span the space of gauge-invariant states \cite{sengupta1994gaugeinvariant, durhuus1980gaugeinvariant}.
 This, however, is not necessarily true for finite groups \cite{sengupta1994gaugeinvariant, cui2020kitaev}; this means that in some cases, it is possible to construct different gauge-invariant states, which nevertheless have the identical \ac{wl}s.
 We mention that this difficulty cannot arise for Abelian finite groups such as $\Z_N$, in which case the \ac{wl}s \textit{do} span the physical Hilbert space $\mathcal{H}_{\mathrm{phys}}$.
 In the following section we give a description of the gauge-invariant Hilbert space in terms of \textit{spin network states} and explain how this basis of states is particularly suitable to describe the physical Hilbert space of finite group gauge theories.
-We first consider the pure gauge physical Hilbert space in Section \ref{sec:spin networks pure gauge} and compute its dimension in Section \ref{sec:spin networks dimension}.
-% In Section \ref{sec:spin networks matter} we extend this construction to matter fields.
+We first consider the pure gauge physical Hilbert space in Sec.~\ref{sec:spin networks pure gauge} and compute its dimension in Sec.~\ref{sub:dimension_physical_hilbert_space}.
+% In Sec.~\ref{sec:spin networks matter} we extend this construction to matter fields.
 
 \subsection{Spin networks}\label{sec:spin networks pure gauge}
 
@@ -46,7 +46,7 @@ In the above decomposition, the gauge transformations now act independently for 
 \end{figure}
 
 Given a representation $\rho$ (not necessarily irreducible) with representation space $V_\rho$, the set of invariant vectors $\mathrm{Inv}(V_\rho)$ is the set of vectors $v \in V_\rho$ such that $\rho(g) v = v$ for all $g\in G$.
-Note that this is a separate notion from that of an \say{invariant subspace}.
+Note that this is a separate notion from that of an ``invariant subspace''.
 A basis of \textit{spin network states} which arise from the description of eq.~\eqref{eq:spin network Hilbert space} are of the form $\ket{\{j\},A}$ where $\{j\}$ is an assignment of irreps to links and $A=(a_1, \ldots a_V)$ labels the choice of a gauge-invar
 
 
@@ -96,7 +96,7 @@ Expanding the tensor product, we find an explicit expression for these states in
 where we have restored the ordering of the vector spaces $V_j$s and used again the shorthand $\ket{jmn}=\ket{jm}\otimes \ket{jn}$.
 We note in particular that despite having introduced a splitting of the variables at each link, in the final answer this splitting disappears and the spin-network states can be entirely expressed in terms of the representation basis $\ket{jmn}$.
 
-\subsection{The dimension of the physical Hilbert space}\label{sec:spin networks dimension}
+\subsection{The dimension of the physical Hilbert space}\label{sub:dimension_physical_hilbert_space}
 
 As we have seen in the previous section, spin network states give an explicit description of the physical Hilbert space $\mathcal{H}_{\mathrm{phys}}$ as
 \begin{equation}

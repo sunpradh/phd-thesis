@@ -4,41 +4,46 @@
 \chapter{Finite Group Gauge Theories}
 \label{chap:finite_group_gauge_theories}
 
-% In this chapter we present the work \cite{pradhan_unpublished}.
-% We first start by reviewing the Kogut-Susskind Hamiltonian formulation of \acp{lgt}, which works for compact Lie groups.
-% Next we will see how to transition from compact Lie groups to finite groups.
-% With, we will present the main results of \cite{pradhan_unpublished}, which is the construction of the Hamiltonian and the physical Hilbert space.
+In this chapter we present the work \cite{pradhan_unpublished}, where a class of finite group \ac{lgt} in the Hamiltonian formulation are considered.
 
-In this chapter we present the work \cite{pradhan_unpublished}, where a class of finite-group gauge theories in the Hamiltonian formulation, which mimic some aspects of Lie group Yang-Mills theories on the lattice.
-The Hamiltonian is based on the construction of a natural Laplacian operator on the finite group, and is valid for any Abelian or non-Abelian finite group.
-As a special case, this includes both the finite-group Hamiltonian obtained via the transfer-matrix formulation from the finite-group Wilson action, but also a wider class of non-Lorentz invariant theories which could be relevant for condensed matter systems.
+One of the main results of \cite{pradhan_unpublished} is the construction of an electric term, that admits an interpretation of as a \emph{Laplacian operator on the group}.
+This construction is valid in both Abelian or non-Abelian case.
 The characterization of the Hamiltonian using the finite-group Laplacian may be used to obtain non-trivial physical information about the theory.
-Irrespective of the choice of Hamiltonian, we show that spin-network states are particularly suitable to give a description of the physical, gauge-invariant Hilbert space for pure gauge theories, and, based on this, we derive a simple formula to compute the dimension of the physical Hilbert space.
-Finally, we illustrate the use of the gauge-invariant basis by constructing the Hamiltonian for a gauge theory based on the dihedral group and compute some quantities of interest via exact diagonalization.
 
+Another important finding of \cite{pradhan_unpublished}, is the construction of the physical, gauge-invariant Hilbert space, independently of the choice of Hamiltonian.
+This relies on the use of \emph{spin network states}, which are particularly suitable in the case of finite groups.
+Based on this fact, we derive a simple formula for computing the dimension of the physical Hilbert space.
 
-% SECTION: Kogut-Susskind Hamiltonian
-% \input{chapters/finite_group/kogut_susskind.tex}
+Finally, we illustrate the use of the gauge-invariant basis by constructing the Hamiltonian for a gauge theory based on the dihedral group and compute some quantities of interest via \ac{ed}.
+
 
 % SECTION: From Lie groups to finite groups
 \input{chapters/finite_group/finite_gauge.tex}
 
-% SECTION: The physical Hilbert space
-% \input{chapters/finite_group/physical.tex}
-
+% SECTION:
 \input{chapters/finite_group/hilbert_space.tex}
 
+% SECTION: A case study: D_4
 \input{chapters/finite_group/dihedral.tex}
 
-% SECTION: Some proofs
-\input{chapters/finite_group/proofs.tex}
+
+\section{Concluding remarks}
+\label{sec:concluding_remarks_finite}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In this work we considered Hamiltonians for gauge theories with a finite gauge group and we have shown that the electric term may be interpreted as a natural Laplacian operator on the finite group, constructed as the graph Laplacian of its Cayley graph.
+The choice of generating set of the Cayley graph has a simple relation with the ground state degeneracy of the electric Hamiltonian.
+We have also given careful consideration to the various choices involved in constructing a finite group gauge theory and their consequences.
 
+Independently from the choice of Hamiltonian, we have shown that the physical, gauge-invariant Hilbert space of pure gauge theories may be explicitly described in terms of spin-network states, which are particularly suitable for finite groups.
+This also allows us to derive a simple formula to compute the dimension of the physical Hilbert space on an arbitrary lattice.
+Using the spin-network basis, we diagonalized $D_4$ gauge theory on a small periodic lattice with different Hamiltonians.
+Due to the small system size, these results are only suggestive, but they point to the possibility that theories with a degenerate electric Hamiltonian may have a different phase structure than commonly expected.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The methods employed in this work may be extended in several directions. The graph Laplacian construction may be adapted to those approaches where a Lie group is discretized to a finite subset, not necessarily a subgroup \cite{hackett2019lgt}. In that case the finite subset may be seen as a weighted graph, with the edge weights representing the distance between group elements in the parent Lie group.
 
+As we have seen, working directly in the gauge-invariant basis reduces the size of the Hilbert space and and implements the Gauss' law exactly, at the expense of higher complexity of the Hamiltonian. It would be worthwhile to explore whether the gauge-invariant basis can be efficiently implemented, for example in a quantum circuit. It is also possible to extend the spin-network basis to gauge theories coupled to matter fields, and we will treat this case in a future publication.
 
+Finally, it would be very interesting to explore the possibility of a non-standard mechanism to obtain a continuum limit for finite group gauge theories; for example, this is possible in quantum link models via the D-theory formulation \cite{brower2004dtheory, wiese2006dtheory}.
 
 

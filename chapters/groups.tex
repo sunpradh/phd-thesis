@@ -89,15 +89,15 @@ The characters of the one-dimensional irreps will be denoted with $\psi_0, \dots
 
 Next we consider representations of degree $2$.
 Put $\omega = e^{i 2 \pi / N}$ and let $h$ be an arbitrary integer.
-We define a representation $\rho^h$ of $D_N$ by setting:
+We define a representation $\rho_h$ of $D_N$ by setting:
 \begin{equation}
-    \rho^h(r) =
+    \rho_h(r) =
     \begin{pmatrix}
         \omega^{h} & 0 \\
         0 & \omega^{-h}
     \end{pmatrix}
     \qand
-    \rho^h(s) =
+    \rho_h(s) =
     \begin{pmatrix}
         0 & 1 \\ 1 & 0
     \end{pmatrix}.
@@ -105,23 +105,23 @@ We define a representation $\rho^h$ of $D_N$ by setting:
 \end{equation}
 A direct calculation shows that this is indeed a representation and for generic elements $r^k$ and $r^k s$ we have:
 \begin{equation}
-    \rho^h(r^k) =
+    \rho_h(r^k) =
     \begin{pmatrix}
         \omega^{hk} & 0 \\
         0 & \omega^{-hk}
     \end{pmatrix}
     \qand
-    \rho^h(r^k s) =
+    \rho_h(r^k s) =
     \begin{pmatrix}
         0 & \omega^{hk} \\ \omega^{-hk} & 0
     \end{pmatrix}.
 \end{equation}
 % This representation is \emph{induced} by the representation of $\Z_N$ with character $\chi_h$.
-Moreover, $\rho^h$ and $\rho^{N-h}$ are isomorphic.
+Moreover, $\rho_h$ and $\rho^{N-h}$ are isomorphic.
 Hence we may assume $0 \leq h \leq N/2$.
 The extreme cases $h=0$ and $h=N/2$ are uninteresting:
 The former corresponds to the one-dimensional irrep with character $\psi_0 + \psi_1$, while the latter to $\psi_2 + \psi_3$.
-On the other hand, for $0 < h < N/2$, the representation $\rho^h$ are \emph{irreducible}.
+On the other hand, for $0 < h < N/2$, the representation $\rho_h$ are \emph{irreducible}.
 The corresponding characters $\chi_h$ are given by:
 \begin{equation}
     \chi_h(r^k) = \omega^{hk} + \omega^{-hk} = 2 \cos \frac{2 \pi hk}{N}
@@ -156,7 +156,7 @@ In the case of odd $N$ we only have \emph{two one-dimensional irreps}, with char
 
 We are missing the irreps $\psi_2$ and $\psi_3$ of the previous case because $(-1)^N = +1$ is true only for $N$ even.
 
-The representations $\rho^h$ of degree 2 are defined by the same formulas \eqref{eq:irreps_2d_DN} as in the case where $N$ is even.
+The representations $\rho_h$ of degree 2 are defined by the same formulas \eqref{eq:irreps_2d_DN} as in the case where $N$ is even.
 Those corresponding to $0 < h < N/2$ are irreducible and pairwise non-isomorphic.
 Observe that, since $N$ is odd, the condition $h < n/2$ can also be written as $h \leq (n-1)/2$.
 The formulas of their characters is the same as \eqref{eq:chars_2d_DN}.
@@ -186,27 +186,27 @@ and it has $5$ conjugacy classes:
     \{rs,r^3s\}.
 \end{equation*}
 
-We also have $5$ irreps $\{\pi_j\}$, which we number them with $j=0, \dots, 4$.
+We also have $5$ irreps $\{\rho_j\}$, which we number them with $j=0, \dots, 4$.
 For $j=0, \dots,3$ we have the one-dimensional irreps, while for $j=4$ we have the only two-dimensional irrep:
 \begin{equation}
-    \pi_4(r) =
+    \rho_4(r) =
     \begin{pmatrix}
         i & 0 \\ 0 & -i
     \end{pmatrix}
     \qand
-    \pi_4(s) =
+    \rho_4(s) =
     \begin{pmatrix}
         0 & 1 \\ 1 & 0
     \end{pmatrix}.
 \end{equation}
 Alternatively, we can choose another two-dimensional representation $\overline{\pi}_4$ which uses only real matrices
 \begin{equation}
-    \overline{\pi}_4(r) =
+    \overline{\rho}_4(r) =
     \begin{pmatrix}
         0 & -1 \\ 1 & 0
     \end{pmatrix}
     \qand
-    \overline{\pi}_4(s) =
+    \overline{\rho}_4(s) =
     \begin{pmatrix}
         1 & 0 \\ 0 & -1
     \end{pmatrix}
@@ -233,4 +233,3 @@ The character table is shown in Table \ref{tab:chars_D4}.
 \end{table}
 
 As the $j=4$ is the only faithful representation, it is a natural choice for the magnetic Hamiltonian.
-\todo{forse ci sono un po' di notazione inconsistenti}
