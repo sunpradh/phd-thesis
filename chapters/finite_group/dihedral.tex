@@ -31,7 +31,16 @@ Then, the gauge-invariant states can be stored just as labels of the choice of \
 When the coefficients of a physical state are needed, it is sufficient to call the appropriate $\psi$'s based on the label of the state.
 Therefore one has to store just the invariant vectors of a single vertex and the labels of the physical states, without needing to expand \eqref{eq:spin network states 2x2} and save the full result.
 This greatly cuts down on the amount of memory necessary for storing the gauge-invariant basis.
-Using these coefficients, we then compute the matrix elements of the electric and magnetic Hamiltonians separately in the spin-network basis \eqref{eq:spin network states 2x2}.
+
+Let's try to quantify this gain.
+In the $D_4$ gauge theory in two dimensions, we found that the total number of invariant vectors for a vertex is $164$.
+The size of the invariant vectors depends on the \acp{irrep} configuration around the vertex, but they are at most $16$-dimensional.
+Using single-precision float (which requires $4 \mathrm{B}$), in the worst case scenario (all vectors are $16$-dimensional) the storage for the invariant vectors would require only around $10 \mathrm{KB}$.
+This is a fixed storage cost independent of the lattice size.
+On a $2 \times 2$ periodic lattice, in order to label the states we would need $8$ integers (\ac{irrep} index) plus $4$ integers (invariant vector choice at each vertex).
+With $8960$ states and $2 \mathrm{B}$ per integer, the total storage cost would amount to $\sim \! 230 \mathrm{KB}$, a huge decrease from the $600 \mathrm{GB}$ estimated before.
+In the case of a $3 \times 3$ lattice, the storage cost would increase to $\sim \! 15 \mathrm{GB}$, orders of magnitude less than $2 \times 10^{16} \mathrm{GB}$.
+Using these coefficients $\psi$, we then compute the matrix elements of the electric and magnetic Hamiltonians separately in the spin-network basis \eqref{eq:spin network states 2x2}.
 
 
 \subsection{Explicit computation of the Hamiltonian}
@@ -119,10 +128,11 @@ Thus, using \eqref{eq:spin network states 2x2}, we finally obtain the expression
     \centering
     \includegraphics[width=7cm]{assets/graphs/magn_sparse.png}
     \caption[Non-zero elements of $H_B$]{%
-        Plot of the elements of the magnetic Hamiltonian $H_B$.
+        Plot of the $8960$-dimensional Hamiltonian matrix $H_B$.
+        % Plot of the elements of the magnetic Hamiltonian $H_B$.
         The non-zero elements are presented as white dots, which have been enlarged in order to make them visible against the black background.
         It can be noticed that there is a lot of regular structure, which suggests that may be methods for further compressing the Hamiltonian.
-        Note that the diagonal lines are just slightly offset from the true diagonal at the matrix.
+        Note that the diagonal lines are just slightly offset from the true diagonal at the matrix, which contains only zeros.
     }
     \label{fig:magn_sparse}
 \end{figure}
@@ -138,26 +148,26 @@ Another note that is important to point out is the role of the delta functions i
 These are what make the magnetic Hamiltonian sparse, combined with the structure of $C$.
 The only non-zero matrix elements are only those between two states whose \ac{irrep} configuration coincide outside a plaquette $\plaquette$.
 Then, inside the plaquette $\plaquette$ also the coefficients $C$'s has to be non-zero.
-It is easy to see that these two facts greatly restrict where the matrix elements of $H_B$ can be non-zero.
+It is easy to see that these two facts greatly restrict what matrix elements of $H_B$ can be non-zero.
 
 
-
-\newpage
 
 \subsection{Numerical results}
 \label{sub:numerical_results_D4}
 
 \subsubsection*{Ground state energy and gap}
 
-The ground state energy and gap are shown in Figs.~\ref{fig:ground_state_energy_D4}--\ref{fig:energy_gap_D4}.
-Regarding the ground state energy $E_0$, the qualitative picture is rather similar in all three cases, with the electric energy increasing with $\lambda$ and the magnetic energy decreasing with $\lambda$.
-The ground state energies coincide at $\lambda = 0$, because $h_E$ always has a zero eigenvalue, and at $\lambda=1$ where the Hamiltonian reduces to $H_B$, which is the same in the three cases.
+Looking at the ground state energy in Fig.~\ref{fig:ground_state_energy_D4}, one sees that the system evolves from a electric ground state to a magnetic one, with a transition around $0.6 \lesssim \lambda \lesssim 0.8$, for all three case.
+This is because the Hamiltonian at $\lambda = 0$ coincide with $H_E$ and $h_E$ has always a zero eigenvalue, while at $\lambda=1$ the Hamiltonian reduces to $H_B$, which is the same in all three cases.
+Therefore, a transition is expected for an intermediate value of $\lambda$.
 
 The energy gap corresponds to the difference $E_1 - E_0$, where $E_1$ is the energy of the first excited state.
 When the energy gaps are considered, we notice a clear difference between $\Gamma_3$ and the rest.
-Degenerate ground states, in which case $E_1-E_0=0$, occurs for all three cases near $\lambda=1$, but it also happens for $\Gamma_3$ at $\lambda=0$
-% This occurs in all three cases at $\lambda=1$ and, for $\Gamma_3$, also at $\lambda=0$.
-For $\Gamma_3$, the ground state degeneracy at $\lambda=0$ is lifted at any $\lambda > 0$ but the scale of the gap remains much smaller than in the other two cases; also, unlike the other two, the gap peaks near the transition region.
+For $\Gamma_1$ and $\Gamma_2$ the gap closes, signalling the aforementioned transition.
+While for $\Gamma_3$ the picture is quite different.
+The electric Hamiltonian is degenerate, as it is expected from the fact that $\Gamma_3$ does not generate the whole $D_4$.
+This degeneracy is slightly lifted for $\lambda > 0$ but the scale of the gap remains much smaller than in the other two cases.
+At this lattice size we are not able to exclude finite size effects for this lifted degeneracy.
 
 \subsubsection*{Electric and magnetic expectation values}
 
