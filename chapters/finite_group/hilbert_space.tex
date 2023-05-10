@@ -1,7 +1,3 @@
-\newcommand{\InvSpace}[4]{\mathrm{Inv}\bqty{ V_{j_{#1}}^{\ast} \otimes V_{j_{#2}}^{\ast} \otimes V_{j_{#3}} \otimes V_{j_{#4}}}}
-\newcommand{\jm}[1]{\ket{j_{#1} m_{#1}}}
-\newcommand{\jn}[1]{\ket{j_{#1} n_{#1}}}
-\newcommand{\jmn}[1]{\ket{j_{#1} m_{#1} n_{#1}}}
 
 \section{The physical Hilbert space}\label{sec:physical Hilbert space}
 
@@ -14,6 +10,21 @@ We mention that this difficulty does not arise for Abelian finite groups such as
 As will be discussed in Sec.~\ref{sec:spin networks pure gauge}, the gauge-invariant Hilbert space for pure gauge theories may be described in terms of \emph{spin network states}. This basis turns out to be particularly suitable for finite gauge groups and in Sec.~\ref{sub:dimension_physical_hilbert_space} we give a simple formula to compute the dimension of the physical Hilbert space for any finite gauge group.
 
 \subsection{Spin network states}\label{sec:spin networks pure gauge}
+
+\begin{figure}[t]
+    \centering
+    \input{assets/figures/lattice_decomp.tex}
+    \smallskip
+    \caption[Decomposition of the total Hilbert space $\HilbertTot$]{%
+        Decomposition of the total Hilbert space $\HilbertTot$.
+        Each link space can be decomposed into two factors $V_{j_\link}^{\ast}$ and $V_{j_\link}$.
+        The factors around the same site $x \in \Lattice$ can be then grouped together.
+        These terms, represented as green regions in the picture, corresponds to the terms in square brackets in \eqref{eq:hilbert_space_site}.
+        Therefore, for each irrep configuration $\{j\}$ the space $\HilbertTot$ is site-wise decomposed, making it possible to solve Gauss's law at each site.
+    }
+    \label{fig:lattice_decomp}
+\end{figure}
+
 
 The physical Hilbert space of pure gauge theories with either Lie or finite gauge group can be explicitly described in terms of \emph{spin network states} \cite{baez1996spinnetworks, burgio2000physical}.
 Spin network states can be defined indifferently when the $d$-dimensional space is discretized as an arbitrary graph, and are thus valid in arbitrary dimension with arbitrary lattices and boundary conditions.
@@ -35,24 +46,56 @@ Moreover, due to \eqref{eq:translations peter weyl} the gauge transformation ass
 One can then split the two vector spaces $V_j$ and $V_j^*$ associated with each link and reorder the $V$'s in the tensor product over links so that $V_j$'s are now grouped together according to the \emph{sites} $x \in \Lattice$ and not the links,
 \begin{equation}
     \HilbertTot =
-    \bigoplus_{\{j\} \in \{\Sigma\}} \bigotimes_{x \in \Lattice} \pqty{\bigotimes_{\link_{-}=x} V_{j_{\link}}^*} \otimes \pqty{\bigotimes_{\link_{+}=x} V_{j_{\link}} }\ ,
+    \bigoplus_{\{j\} \in \{\Sigma\}} \bigotimes_{x \in \Lattice}
+    \bqty{
+        \pqty{\bigotimes_{\link_{-}=x} V_{j_{\link}}^*} \bigotimes
+        \pqty{\bigotimes_{\link_{+}=x} V_{j_{\link}} }
+    },
+    \label{eq:hilbert_space_site}
 \end{equation}
 where by $\link_{+}$ and $\link_{-}$ we denote respectively the target and source vertex of link $\link$ (see Fig.~\ref{fig:periodic plaquette}).
 
 \medskip
 
+
+\begin{figure}[t]
+    \centering
+    \SideFigure[label=fig:gauss_op, desc={Gauss operator in the representation basis}]{
+        \input{assets/figures/gauss_op.tex}
+    }{%
+        Gauss operator in the representation basis.
+        Notice that it acts on a single block (green region) of the total Hilbert space decomposition \eqref{eq:hilbert_space_site}.
+    }
+\end{figure}
+
+
 We can repeat the same set of operations for the gauge transformation operator \eqref{eq:gauss law operator}, which is therefore given by
 \begin{equation}
     \mathcal{G}(\{g_x\}) =
-    \bigoplus_{\{j\} \in \{\Sigma\}} \bigotimes_{x \in \Lattice} \pqty{\bigotimes_{\link_{-}=x} \rho_{j_{\link}}^*(g_x)} \otimes \pqty{\bigotimes_{\link_{+}=x} \rho_{j_{\link}}(g_x) }.
+    \bigoplus_{\{j\} \in \{\Sigma\}} \bigotimes_{x \in \Lattice}
+    \bqty{
+        \pqty{\bigotimes_{\link_{-}=x} \rho_{j_{\link}}^*(g_x)} \bigotimes
+        \pqty{\bigotimes_{\link_{+}=x} \rho_{j_{\link}}(g_x) }.
+    }
 \end{equation}
 In the above decomposition, the gauge transformations now act independently for each $x$ and the Gauss' law constraint \eqref{eq:lattice gauss law} gives the physical Hilbert space
 \begin{equation}
     \label{eq:spin network Hilbert space}
-    \HilbertPhys = \bigoplus_{\{j\} \in \{\Sigma\}} \bigotimes_{x \in \Lattice} \mathrm{Inv}\bqty{\pqty{\bigotimes_{\link_{-}=x} V_{j_{\link}}^*} \otimes \pqty{\bigotimes_{\link_{+}=x} V_{j_{\link}} }}.
+    \HilbertPhys =
+    \bigoplus_{\{j\} \in \{\Sigma\}} \bigotimes_{x \in \Lattice} \;
+    \mathrm{Inv} \bqty{
+        \pqty{\bigotimes_{\link_{-}=x} V_{j_{\link}}^*} \bigotimes
+        \pqty{\bigotimes_{\link_{+}=x} V_{j_{\link}} }
+    }.
 \end{equation}
 Given a representation $\rho$ (not necessarily irreducible) with representation space $V_\rho$, the \emph{set of invariant vectors} $\mathrm{Inv}(V_\rho)$ is the set of vectors $v \in V_\rho$ such that $\rho(g) v = v$ for all $g\in G$.
 Note that this is a \emph{separate notion} from that of an ``invariant subspace''.
+
+In order to make the reasoning so far more clear, we stress that we were able di re-arrange the terms that enter $\HilbertTot$ in the representation basis in \eqref{eq:hilbert space permuted}.
+The obtained result \eqref{eq:hilbert_space_site} shows a sum over the \ac{irrep} configurations $\{j\}$ and for each configuration we have a product of representation spaces \emph{over the sites}.
+Then, in each of these new representation spaces we can solve Gauss' law.
+In fact, the set of invariant vectors is just the set of solutions to the Gauss' law on a given site and \ac{irrep} configuration around it.
+
 The characterization of the Hilbert space \eqref{eq:spin network Hilbert space} implies that any physical, gauge-invariant state $\ket{\Psi}$ (i.e.
 a state which satisfies the Gauss' law \eqref{eq:lattice gauss law}) may be expanded in a basis of \emph{spin network states},
 \begin{equation}
@@ -75,7 +118,9 @@ On the other hand, since the number of links connected to each site is finite an
 
 This can be achieved in practice by explicitly writing out the matrices of the tensor product representation
 \begin{equation*}
-    \rho(g) \equiv \pqty{\bigotimes_{\link_{-}=x} \rho_{j_{\link}}^*} \otimes \pqty{\bigotimes_{\link_{+}=x} \rho_{j_{\link}} }
+    \rho(g) \equiv
+    \pqty{\bigotimes_{\link_{-}=x} \rho_{j_{\link}}^*} \bigotimes
+    \pqty{\bigotimes_{\link_{+}=x} \rho_{j_{\link}} }
 \end{equation*}
 and solving the simultaneous equations $\rho(g) v = v$ for a set of generators of $G$.
 In a $d$-dimensional periodic hypercubic lattice, the number of terms in the tensor product equals $2d$ and the maximum dimension of the tensor product representation is bounded by $\pqty{\dim{j}}^{2d} \leq \abs{G}^d$, owing to $\sum_j \pqty{\dim{j}}^2 = \abs{G}$, independently from the lattice volume.
@@ -93,50 +138,66 @@ In a $d$-dimensional periodic hypercubic lattice, the number of terms in the ten
 As an example, we work out explicitly the case of a $2\times 2$ square lattice with periodic boundary conditions.
 As shown in Fig.~\ref{fig:periodic plaquette}, this system has four vertices and eight links.
 Expanding explicitly \eqref{eq:spin network Hilbert space} we see that in this case
-\begin{equation}
-    \begin{split}
-        \HilbertPhys = \bigoplus_{j_1, \ldots j_8} \Bigg(
-            & \InvSpace{1}{4}{5}{8} \otimes
-              \InvSpace{5}{2}{1}{7} \otimes \\
-            & \InvSpace{6}{7}{3}{2} \otimes
-              \InvSpace{3}{8}{6}{4}
-         \Bigg)
-    \end{split}
-\end{equation}
-Now consider a single invariant subspace $\mathrm{Inv}\bqty{V_{j_1}^* \otimes V_{j_2}^* \otimes V_{j_3} \otimes V_{j_4}}$ with arbitrary assignment of irreps.
-This vector space admits an orthonormal basis $\{\ket{j_1 j_2 j_3 j_4 ; a}\}$ where $1 \leq a \leq \dim\mathrm{Inv}\bqty{V_{j_1}^* \otimes V_{j_2}^* \otimes V_{j_3} \otimes V_{j_4}}$ indexes the basis vector.
+\begin{multline}
+    \HilbertPhys = \bigoplus_{j_1, \ldots j_8} \Bigg(
+            \InvSpace{1}{4}{5}{8} \otimes
+            \InvSpace{5}{2}{1}{7} \otimes \\ \otimes
+            \InvSpace{6}{7}{3}{2} \otimes
+            \InvSpace{3}{8}{6}{4}
+        \Bigg),
+\end{multline}
+where tensor product symbol inside the invariant space brackets has been omitted in order to lighten the notation.
+Now consider a single invariant space $\InvSpace{1}{2}{3}{4}$ with arbitrary assignment of irreps.
+This vector space admits an orthonormal basis $\{\InvKet{1}{2}{3}{4}{5}\}$ where $1 \leq a \leq \dim \InvSpace{1}{2}{3}{4}$ indexes the basis vector.
 We can expand the basis vectors explicitly in terms of the bases of the $V_j$ as (see also the discussion around \eqref{eq:change_of_basis})
 \begin{multline}
-    \label{eq:invariant states at a site}
-    \ket{j_1 j_2 j_3 j_4 ; a} = \sum_{m_1, m_2, n_3, n_4} \psi\pqty{j_1 m_1 j_2 m_2 j_3 n_3 j_4 n_4 ; a} \times \\
+    \InvKet{1}{2}{3}{4}{5}
+    = \sum_{m_1, m_2, n_3, n_4} \InvVector{1}{2}{3}{4}{} \times \\
         \times \jm{1} \jm{2} \jn{3} \jn{4}.
+    \label{eq:invariant states at a site}
 \end{multline}
 The basis vectors can be chosen to be orthonormal.
-By virtue of spanning the space $\mathrm{Inv}\bqty{V_{j_1}^* \otimes V_{j_2}^* \otimes V_{j_3} \otimes V_{j_4}}$, they are invariant vectors of the tensor product representation $\rho \equiv \rho_{j_1}^* \otimes \rho_{j_2}^* \otimes \rho_{j_3} \otimes \rho_{j_4}$; as such, they satisfy $\rho(g) \ket{j_1 j_2 j_3 j_4 ; a} = \ket{j_1 j_2 j_3 j_4 ; a}$ for all $g \in G$.
-The coefficients of the expansion $\psi\pqty{j_1 m_1 j_2 m_2 j_3 n_3 j_4 n_4 ; a}$ may be easily computed, for example by writing the tensor product representation matrices $\rho(g)$ explicitly and then solving the simultaneous equations $\rho(g) v = v$.
+By virtue of spanning the space $\mathrm{Inv}\bqty{V_{j_1}^* \otimes V_{j_2}^* \otimes V_{j_3} \otimes V_{j_4}}$, they are invariant vectors of the tensor product representation $\rho \equiv \rho_{j_1}^* \otimes \rho_{j_2}^* \otimes \rho_{j_3} \otimes \rho_{j_4}$; as such, they satisfy $\rho(g) \InvKet{1}{2}{3}{4}{} = \InvKet{1}{2}{3}{4}{}$ for all $g \in G$.
+The coefficients of the expansion $\InvVector{1}{2}{3}{4}{}$ may be easily computed, for example by writing the tensor product representation matrices $\rho(g)$ explicitly and then solving the simultaneous equations $\rho(g) v = v$.
 The dimension of the space of invariant vectors depends on the four representations assigned to the relevant site.
-Now let $A = \pqty{a_1, a_2, a_3, a_4}$, which implicitly depends on $\{j\}$ (because the range of each $a_x$ depends on the irreps assigned around the site $x$).
-Given any assignment of irreps $\{j\}$, $A$ is a choice of a basis vector of invariant states at the four sites.
+
+Now let $A = \pqty{a_1, a_2, a_3, a_4}$, which implicitly depends on $\{j\}$ (because the range of each $a_x$ depends on the \acp{irrep} assigned around the site $x$).
+Given any assignment of \acp{irrep} $\{j\}$, $A$ is a choice of a basis vector of invariant states at the four sites.
 Therefore an orthonormal basis for the gauge invariant Hilbert space is given by
 \begin{equation}
-    \ket{ \{j\};A} = \ket{j_1 j_4 j_5 j_8 ; a_1} \otimes \ket{j_5 j_2 j_1 j_7 ; a_2} \otimes \ket{j_6 j_7 j_3 j_2 ; a_3} \otimes \ket{j_3 j_8 j_6 j_4 ; a_4}.
+    \ket{ \{j\};A} =
+        \InvKet{1}{4}{5}{8}{1} \otimes
+        \InvKet{5}{2}{1}{7}{2} \otimes
+        \InvKet{6}{7}{3}{2}{3} \otimes
+        \InvKet{3}{8}{6}{4}{4}.
 \end{equation}
 for any possible assignment $\{j\}$ of irreps to links, and then all possible choices $A$ of an invariant vector at each of the four sites. The spin-network states $\ket{ \{j\};A}$ then form a basis of the gauge-invariant Hilbert space $\HilbertPhys$.
 Expanding the tensor product, we find an explicit expression for these states in terms of the representation basis,
 \begin{align}
+    \begin{split}
+        \ket{ \{j\};A}
+        % = \sum_{n_1, \ldots n_8} \sum_{m_1, \ldots m_8}
+        = \sum_{ \{m,n\} }
+               & \; \InvVector{1}{4}{5}{8}{1} \InvVector{5}{2}{1}{7}{2} \times \\
+        \times & \; \InvVector{6}{7}{3}{2}{3} \InvVector{3}{8}{6}{4}{4} \times \\
+        \times & \; \jmn{1} \jmn{2} \cdots \jmn{8}.
+    \end{split}
     \label{eq:spin network states 2x2}
-    \ket{ \{j\};A} &= \sum_{n_1, \ldots n_8} \sum_{m_1, \ldots m_8} \psi\pqty{j_1 m_1 j_4 m_4 j_5 n_5 j_8 n_8 | a_1} \psi\pqty{j_5 m_5 j_2 m_2 j_1 n_1 j_7 n_7 | a_2} \times \nonumber \\
-    &\quad \quad \times \psi\pqty{j_6 m_6 j_7 m_7 j_3 n_3 j_2 n_2 | a_3} \psi\pqty{j_3 m_3 j_8 m_8 j_6 n_6 j_4 n_4 | a_4} \times \\
-    &\quad \quad \times \jmn{1} \jmn{2} \cdots \jmn{8} \nonumber.
 \end{align}
-where we have restored the ordering of the vector spaces $V_j$s and used again the shorthand $\ket{jmn}=\ket{jm}\otimes \ket{jn}$. We note in particular that despite having introduced a splitting of the variables at each link, in the final answer this splitting disappears and the spin-network states can be  entirely expressed in terms of the representation basis $\ket{jmn}$.
+where the sum is over all the indices $m_{\link}$ and $n_{\link}$ ($\link = 1, \dots, 8$), the ordering of the vector spaces $V_j$'s was restored, and shorthand $\ket{jmn}=\ket{jm}\otimes \ket{jn}$ was used.
+We note in particular that despite having introduced a splitting of the variables at each link, in the final answer this splitting disappears and the spin-network states can be  entirely expressed in terms of the representation basis $\ket{jmn}$.
 
 \subsection{The dimension of the physical Hilbert space}
 \label{sub:dimension_physical_hilbert_space}
 
 As we have seen in the previous section, spin network states give an explicit description of the physical Hilbert space $\HilbertPhys$ as
 \begin{equation}
-    \HilbertPhys =\bigoplus_{\{\rho\} \in \{\Sigma\}} \bigotimes_{v \in \Lattice} \mathrm{Inv}\bqty{\pqty{\bigotimes_{\link_{-} = v}  V_{\rho_l}^*} \otimes \pqty{\bigotimes_{\link_{+} = v}  V_{\rho_l}}}.
+    \HilbertPhys =
+    \bigoplus_{\{\rho\} \in \{\Sigma\}} \bigotimes_{v \in \Lattice}
+    \mathrm{Inv}\bqty{
+        \pqty{\bigotimes_{\link_{-} = v}  V_{\rho_l}^*} \bigotimes
+        \pqty{\bigotimes_{\link_{+} = v}  V_{\rho_l}}
+    }.
 \end{equation}
 where $\mathrm{Inv}(\rho)$ is the space of invariant vectors of the representation $\rho$, $\{\rho\}$ is an assignment of irreps to links and $\{\Sigma\}$ is the set of such possible assignments. For a finite group,
 \begin{equation}
@@ -153,10 +214,19 @@ Since for a connected graph $L-V \geq -1$, the $\dim{\HilbertPhys}$ in \eqref{eq
 This is clear for $L-V \geq 0$; when $L-V=-1$ the graph is a tree and since $\sum_C \abs{C}=\abs{G}$, we find $\dim{\HilbertPhys}=1$; this is to be expected because on a tree the gauge degrees of freedom can be used to rotate away the physical ones.
 
 Using \eqref{eq:invariant vectors counting}, together with the fact that the character of a tensor product is given by the product of the characters, we may readily prove \eqref{eq:physical hilbert space dimension}. From the general formula for the gauge-invariant Hilbert space, we have
-\begin{align}
-    \dim{\HilbertPhys} &=\sum_{j_1 j_2 \cdots j_L} \prod_{x \in \Lattice} \dim\mathrm{Inv}\bqty{\pqty{\bigotimes_{\link_{-} = x}  V_{\rho_l}^*} \otimes \pqty{\bigotimes_{\link_{+} = x}  V_{\rho_l}}} = \nonumber \\
-    &=\frac{1}{\abs{G}^V}\sum_{j_1 j_2 \cdots j_L} \sum_{g_1 g_2 \cdots g_V} \prod_{x \in \Lattice} \pqty{\prod_{\link_{-} = x}  \chi_{j_{\link}}^*(g_x)}  \pqty{\prod_{\link_{+} = x} \chi_{j_{\link}}(g_x)} \nonumber.
-\end{align}
+\begin{equation*}
+    \begin{split}
+        \dim{\HilbertPhys}
+        & = \sum_{j_1 \cdots j_L} \prod_{x \in \Lattice}
+            \dim \mathrm{Inv}\bqty{
+                \pqty{\bigotimes_{\link_{-} = x}  V_{\rho_l}^*} \otimes
+                \pqty{\bigotimes_{\link_{+} = x}  V_{\rho_l}}
+            } \\
+        & = \frac{1}{\abs{G}^V} \sum_{j_1 \cdots j_L} \sum_{g_1 \cdots g_V} \prod_{x \in \Lattice}
+            \pqty{\prod_{\link_{-} = x}  \chi_{j_{\link}}^*(g_x)}
+            \pqty{\prod_{\link_{+} = x} \chi_{j_{\link}}(g_x)}.
+    \end{split}
+\end{equation*}
 Within the product over all sites, there are exactly $2L$ factors of characters $\chi$, as each link contributes two representation spaces $V$ and each representation space gives rise to a character. Thus grouping characters by link, we obtain
 \begin{equation}
     \dim{\HilbertPhys} =\frac{1}{\abs{G}^V} \sum_{g_1 g_2 \cdots g_V} \prod_{\link = \expval{xx'} \in \Lattice} \expval{g_x, g_{x'}}.
@@ -190,25 +260,28 @@ Finally, we remark that since matter fields are site-based, the spin-network sta
 
 
 \begin{table}[t]
-    \centering
-    \begin{tabular}{clrrcr}
-        \toprule
-        Size~~~ & BCs & $L$ & $V$ & $L-V$ &$\dim{\HilbertPhys}$\\
-        \midrule
-        \multirow{2}{3em}{$2 \times 2$}
-            & open & $4$ & $4$ & $0$ & $5$\\
-            & periodic & $8$ & $4$ & $4$ & $8960$ \\[5pt]
-        \multirow{2}{3em}{$2 \times 3$}
-            & open & $7$ & $6$ & $1$ & $28$ \\
-            & periodic & $12$ & $6$ & $6$ & $536576$ \\[5pt]
-        \multirow{2}{3em}{$3 \times 3$}
-            & open & $12$ & $9$ & $3$ & $1216$ \\
-            & periodic & $18$ & $9$ & $9$ & $269221888$ \\
-        \bottomrule
+    \begin{center}
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{clrrcrr}
+    \toprule
+    Size~~~ & BCs & $L$ & $V$ & $L-V$ & $\dim \mathcal{H}_{\text{phys}} $ & $\dim \mathcal{H}$\\
+    \midrule
+    \multirow{2}{3em}{$2 \times 2$}
+            & open & $4$ & $4$ & $0$ & $5$ & 4096~~ \\
+            & periodic & $8$ & $4$ & $4$ & $8960$ & \NumS{1.6}{7}~ \\[5pt]
+    \multirow{2}{3em}{$2 \times 3$}
+            & open & $7$ & $6$ & $1$ & $28$ & \NumS{2.1}{6}~ \\
+            & periodic & $12$ & $6$ & $6$ & $536576$ & \NumS{6.9}{10}\\[5pt]
+    \multirow{2}{3em}{$3 \times 3$}
+            & open & $12$ & $9$ & $3$ & $1216$ & \NumS{6.9}{10}\\
+            & periodic & $18$ & $9$ & $9$ & \NumS{2.7}{8} & \NumS{1.8}{16}\\
+    \bottomrule
     \end{tabular}
-    \caption{Dimension of the physical subspace of $D_4$ gauge theory on some small lattices in $2+1$ dimensions. $L$ is the number of links and $V$ is the number of vertices.}
+    \end{center}
+
+    \caption{Dimension of the physical subspace of $D_4$ gauge theory on some small lattices in $2+1$ dimensions, compared to the dimension of the total Hilbert space.
+    $L$ is the number of links and $V$ is the number of vertices.
+    Numbers above $10^7$ are approximated values.}
     \label{tab:numstates}
 \end{table}
-
-
 

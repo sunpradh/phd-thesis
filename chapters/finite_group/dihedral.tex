@@ -1,20 +1,6 @@
 \section{A case study: \texorpdfstring{$D_4$}{D4}}
 \label{sec:a_case_study__d4}
 
-\newcommand{\InvVector}[5]{\psi (
-    j_{#1} m_{#1}
-    j_{#2} m_{#2}
-    j_{#3} n_{#3}
-    j_{#4} n_{#4}
-    | a_{#5}
-)}
-\newcommand{\InvVectorPrime}[5]{\psi (
-    j_{#1}^\prime m_{#1}^\prime
-    j_{#2}^\prime m_{#2}^\prime
-    j_{#3}^\prime n_{#3}^\prime
-    j_{#4}^\prime n_{#4}^\prime
-    | a_{#5}^\prime
-)}
 
 
 In this section we consider pure gauge theory with gauge group $G=D_4$, the dihedral group with eight elements, on a small $2 \times 2 $ periodic lattice (see Fig.~\ref{fig:periodic plaquette}).
@@ -67,8 +53,19 @@ These are:
         \Gamma_3 & = \{r, r^2, r^3\}.
     \end{split}
 \end{equation*}
+Their Cayley graphs is shown in Fig.~\ref{fig:d4_graphs}.
 We recall that the electric Hamiltonian is two-fold degenerate on each link with $\Gamma_3$ but is not degenerate for $\Gamma_1, \Gamma_2$.
 The choice of $\Gamma_2$, unlike the other two, gives rise to a Lorentz-invariant theory.
+
+\begin{figure}[t]
+    \centering
+    \input{assets/figures/d4_graphs.tex}
+    \caption[Cayley graphs of the group $D_4$]{
+        The different Cayley graphs of the group $D_4$.
+        Notice that only the third choice is disconnected, leading to a two-fold degeneracy in the electric Hamiltonian on each link.
+    }
+    \label{fig:d4_graphs}
+\end{figure}
 
 Working in the spin state basis, computing the matrix elements of $H_E = \sum_{\link} h_E$ is rather easy, because is diagonal in the \ac{irrep} basis:
 \begin{equation}
@@ -203,7 +200,7 @@ However, they point to the possibility that theories with electric degeneracy ma
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=8cm]{assets/graphs/gs_energy_comparison_1_2_3.pdf}
+    \input{assets/graphs/gs_energy_comparison_D4.tex}
     \caption[Ground state energy for $D_4$]{Ground state energy of the $D_4$ gauge theory, for the three different generating $\Gamma_1$, $\Gamma_2$ and $\Gamma_3$.
         For $\lambda=1$, the Hamiltonian is equivalent for all the three cases, because is just $H_B$.
         While, for $\lambda=0$ the ground state energy is zero because in all thee cases $H_E$ has always zero eigenvalues.
@@ -216,9 +213,7 @@ However, they point to the possibility that theories with electric degeneracy ma
 
 \begin{figure}[h]
     \centering
-    \includegraphics[height=5cm]{assets/graphs/energy_gap_D4_1_2.pdf}
-    \hfill%
-    \includegraphics[height=5cm]{assets/graphs/energy_gap_D4_3.pdf}%
+    \input{assets/graphs/energy_gap_D4.tex}
     \caption[Ground state gap for $D_4$]{
         \emph{Left:} Energy gap $E_1 - E_0$ for $\Gamma_1$ and $\Gamma_2$.
         \emph{Right:} Energy gap $E_1 - E_0$ for only $\Gamma_3$.
@@ -236,12 +231,10 @@ However, they point to the possibility that theories with electric degeneracy ma
 
 \begin{figure}[h]
     \centering
-    \includegraphics[height=5cm]{assets/graphs/gs_elec_comparison_1_2_3.pdf}%
-    \hfill%
-    \includegraphics[height=5cm]{assets/graphs/gs_magn_comparison_1_2_3.pdf}
+    \input{assets/graphs/elec_magn_comparison_D4.tex}
     \caption[Electric and magnetic energies for $D_4$]{%
         Expectation values $\ev*{H_E}$ (\emph{left}) and $\ev*{H_B}$ (\emph{right}).
-        They confirm the picture suggested from Fig.~\ref{fig:ground_state_energy_D4}, where there is a transition region for $ 0.6 \lesssim \lambda 0.8 \lesssim 0.8$.
+        They confirm the picture suggested from Fig.~\ref{fig:ground_state_energy_D4}, where there is a transition region for $ 0.6 \lesssim \lambda \lesssim 0.8$.
     }
     \label{fig:HE_HB_expt_val_D4}
 \end{figure}
@@ -250,9 +243,7 @@ However, they point to the possibility that theories with electric degeneracy ma
 
 \begin{figure}[h]
     \centering
-    \includegraphics[height=5cm]{assets/graphs/elec_variations_D4.pdf}%
-    \hfill%
-    \includegraphics[height=5cm]{assets/graphs/magn_variations_D4.pdf}
+    \input{assets/graphs/elec_magn_variations_D4.tex}
     \caption[Electric and magnetic energy variations for $D_4$]{%
         Variations of the expectation values $\ev*{H_E}$ (\emph{left}) and $\ev*{H_B}$ (\emph{right}).
         The location of the peaks can be used identifying the transition points.
@@ -268,7 +259,7 @@ However, they point to the possibility that theories with electric degeneracy ma
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=8cm]{assets/graphs/fidelity_susc.pdf}
+    \input{assets/graphs/fidelity_susc_D4.tex}
     \caption[Fidelity susceptibility for $D_4$]{%
         Fidelity susceptibility $\chi(\lambda)$ for $D_4$ for all the three sets $\Gamma_1$, $\Gamma_2$ and $\Gamma_3$.
         The peaks of $\chi(\lambda)$ identifies the transition points for each case.
@@ -277,4 +268,6 @@ However, they point to the possibility that theories with electric degeneracy ma
     }
     \label{fig:fidelity_D4}
 \end{figure}
+
+\newpage
 

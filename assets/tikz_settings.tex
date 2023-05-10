@@ -49,9 +49,16 @@
     control/.style = {draw=black, fill=black, minimum size=3pt, inner sep=0pt, circle},
     cline/.style = {thick},
     % Misc
-    axis/.style={-stealth, thick},
-    freccia/.style={-stealth, very thick, shorten >=5pt, shorten <=5pt},
-    box/.style={dotted, rounded corners, thick}
+    axis/.style = {-stealth, thick},
+    freccia/.style = {-stealth, very thick, shorten >=5pt, shorten <=5pt},
+    box/.style = {dotted, rounded corners, thick},
+    notes/.style = {gray!20!black, font=\scriptsize},
+    vertex space/.style = {dotted, draw opacity=0.6, Green, fill=Green, fill opacity=0.2},
+    link/.style={thick, black, ->-=0.55},
+    % D4 generating sets
+    set NR/.style = {very thick, Red},
+    set R/.style = {very thick, Blue80, densely dotted},
+    set D/.style = {very thick, Green, densely dashed}
 }
 
 % macro for drawing spins
@@ -71,3 +78,14 @@
 \usetikzlibrary{external}
 \tikzset{external/system call={lualatex -shell-escape -halt-on-error -interaction=batchmode -enable-write18 -jobname "\image" "\texsource"}}
 \tikzexternalize[prefix=assets/cache/] % folder for cache
+
+
+% Plots
+%----------------------------------------
+\usepackage{pgfplots}
+\pgfplotsset{
+    compat=1.16, % fixes some pgfplots cross-platform issue
+    table/col sep=comma
+}
+\usepgfplotslibrary{groupplots}
+

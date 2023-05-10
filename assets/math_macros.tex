@@ -1,26 +1,33 @@
 % Math macros
 %----------------------------------------
+
 \newcommand{\R}{\mathbb{R}} % Real field
 \newcommand{\Z}{\mathbb{Z}} % integers
 \newcommand{\C}{\mathbb{C}} % Complex field
 \newcommand{\onehalf}{$\frac{1}{2}$} % 1/2
 \newcommand{\identity}{\mathbbm{1}} % identity operator
+\newcommand{\hc}{\text{h.c.}} % hermitian conjugate text
+
 % labels for symbols
 \newcommand{\phys}{\text{phys}} % 'physical' label
 \newcommand{\gi}{\text{gi}} % gauge-invariant label
 \newcommand{\ising}{\text{Ising}}
-%
-\newcommand{\hc}{\text{h.c.}} % hermitian conjugate text
+
+% Lattice field theory
+\newcommand{\DD}{\mathcal{D}} % Path-integral measure
 \newcommand{\WilsonPlaq}{W_{\mu \nu}} % single plaquette Wilson loop
 \newcommand{\Action}{\mathcal{S}} % action
 \newcommand{\Lagrangian}{\mathcal{L}} % lagrangian
 \newcommand{\LagrangYM}{\Lagrangian_{\text{YM}}} % YM lagrangian
 \newcommand{\PartFunc}{\mathcal{Z}} % partition function
+
+% Hilbert spaces
 \newcommand{\HilbertSpace}{\mathcal{H}} % Hilbert space
 \newcommand{\Hphys}{\HilbertSpace_{\phys}} % physical Hilbert space
 \newcommand{\HilbertPhys}{\HilbertSpace_{\phys}} % physical Hilbert space
 \newcommand{\HilbertG}{\HilbertSpace^{G}} % Hilbert space of a group G
 \newcommand{\HilbertTot}{\HilbertSpace_{\text{tot}}} % Hilbert space of a group G
+
 % Groups and algebra
 \newcommand{\U}{\mathrm{U}} % unitary group
 \newcommand{\SU}{\text{SU}} % special unitary group
@@ -29,6 +36,7 @@
 \newcommand{\algebra}{\mathcal{A}} % operator algebra
 \newcommand{\generator}{\hat{\ell}}
 \newcommand{\transport}{\hat{u}}
+
 % Hamiltonians
 \newcommand{\HamilKS}{H_{\text{KS}}} % Kogut-Susskind Hamiltonian
 \newcommand{\HamilIsing}{H^{\ising}} % Ising Hamiltonian
@@ -37,19 +45,23 @@
 \newcommand{\HamilClock}[1][N]{H^{#1\text{-clock}}} % Clock Hamiltonian
 \newcommand{\HamilDual}[1][N]{H^{#1\text{-dual}}} % Dual clock Hamiltonian
 \newcommand{\HamilLadder}{H^{N\text{-lad}}} % Ladder Hamiltonian
+
 % shorthand for the lattice and its objects
 \newcommand{\Lattice}{\mathbb{L}} % lattice
 \newcommand{\DualLattice}{\mathbb{L}^{\ast}} % lattice
 \newcommand{\link}{\ell} % link
 \newcommand{\plaquette}{\square}
+
 % Some operators on the lattice
 \newcommand{\PlaqOp}{U_{\plaquette}}
 \newcommand{\Wilson}{\overline{W}}
 \newcommand{\tHooft}{\overline{S}}
+
 % Ladder links
 \newcommand{\toplink}{\link^\uparrow}
 \newcommand{\botlink}{\link^\downarrow}
 \newcommand{\runglink}{\link^0}
+
 % Operators on the ladder
 \newcommand{\Uup}{U^{\uparrow}}
 \newcommand{\Udown}{U^{\downarrow}}
@@ -57,15 +69,41 @@
 \newcommand{\Vup}{V^{\uparrow}}
 \newcommand{\Vdown}{V^{\downarrow}}
 \newcommand{\Vrung}{V^0}
+
 % Gauss operators
 \newcommand{\GaussUp}{G^{\uparrow}}
 \newcommand{\GaussDown}{G^{\downarrow}}
+
 % shorthand for the coefficients of the ladder duality map
 \newcommand{\coeffup}{c^{\uparrow}}
 \newcommand{\coeffdown}{c^{\downarrow}}
-% Path-integral measure
-\newcommand{\DD}{\mathcal{D}}
 
-\newcommand{\Or}{\mathrm{O}}
-
+% Laplacian
 \renewcommand{\laplacian}{\Delta}
+
+% Numbers in scientific notation
+\newcommand{\NumS}[2]{$#1 \! \times \! 10^{#2}$}
+
+% Generating sets labels
+\newcommand{\GenSetOne}{$\Gamma_1 = \{r, r^3, s, r^2s\}$}
+\newcommand{\GenSetTwo}{$\Gamma_2 = \{r, r^3, s, rs, r^2 s, r^3 s\}$}
+\newcommand{\GenSetThree}{$\Gamma_3 = \{r, r^2, r^3\}$}
+
+% Invariant space and vectors
+\newcommand{\InvVector}[5]{%
+    \psi^{%
+        j_{#1} j_{#2} j_{#3} j_{#4}
+    }( %
+        m_{#1} m_{#2} n_{#3} n_{#4} | a_{#5} %
+    )}
+\newcommand{\InvVectorPrime}[5]{%
+    \psi^{%
+        j_{#1}^\prime j_{#2}^\prime j_{#3}^\prime j_{#4}^\prime %
+    }( %
+        m_{#1}^\prime m_{#2}^\prime n_{#3}^\prime n_{#4}^\prime | a_{#5}^\prime %
+    )}
+\newcommand{\InvKet}[5]{\ket{j_{#1} j_{#2} j_{#3} j_{#4}; a_{#5}}}
+\newcommand{\InvSpace}[4]{\mathrm{Inv}\bqty{ V_{j_{#1}}^{\ast}  V_{j_{#2}}^{\ast}  V_{j_{#3}}  V_{j_{#4}}}}
+\newcommand{\jm}[1]{\ket{j_{#1} m_{#1}}}
+\newcommand{\jn}[1]{\ket{j_{#1} n_{#1}}}
+\newcommand{\jmn}[1]{\ket{j_{#1} m_{#1} n_{#1}}}
