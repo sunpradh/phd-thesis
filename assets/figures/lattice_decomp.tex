@@ -1,0 +1,46 @@
+\begin{tikzpicture}[
+    font=\footnotesize,
+    ]
+    \begin{scope}
+        \clip (-0.9, -0.9) rectangle (3.2, 3.2);
+        % Lattice
+        \foreach \x in {0, 2} {
+            \draw[link] (\x, 0) -- ++(0, 2);
+            \draw[link] (\x, -2) -- ++(0, 2);
+            \draw[link] (\x, 2) -- ++(0, 2);
+        }
+        \foreach \y in {0, 2} {
+            \draw[link] (0, \y) -- ++(2, 0);
+            \draw[link] (2, \y) -- ++(2, 0);
+            \draw[link] (-2, \y) -- ++(2, 0);
+        }
+
+        % Draw dashed lines
+        \foreach \x in {0, 2} {
+            \foreach \y in {0, 2} {
+                \draw[vertex space] (\x, \y) ++ (0.75, 0) -- ++(-0.75, 0.75) -- ++(-0.75, -0.75) -- ++(0.75, -0.75) -- cycle;
+            }
+        }
+
+        % Vector spaces labels
+        \node[above] at (0.6, 2) {$V_{j_{1}}^{\ast}$};
+        \node[left] at (0, 2.6) {$V_{j_{2}}^{\ast}$};
+        \node[below] at (-0.6, 2) {$V_{j_{3}}$};
+        \node[right] at (0, 1.4) {$V_{j_{4}}$};
+        \node[above] at (1.4, 2) {$V_{j_{1}}$};
+        \node[right] at (0, 0.6) {$V_{j_{4}}^{\ast}$};
+    \end{scope}
+
+
+    \begin{scope}[xshift=6cm, yshift=1cm]
+        \draw[link] (0, 0) -- (2, 0) node [midway, black, above=5pt] {$\link$};
+        \node[site, label=above:{$\link_-$}] at (0, 0) {};
+        \node[site, label=above:{$\link_+$}] at (2, 0) {};
+
+        \node[below] at (0.5, 0) {$V_{j_{\link}}^{\ast}$};
+        \node[below] at (1.5, 0) {$V_{j_{\link}}$};
+        \node[font=\small] at (1, -1) {$ \ket{jmn}_{\link} = \ket{jm}_{\link} \otimes \ket{jn}_{\link} $};
+    \end{scope}
+
+    \DrawSites{0,2}{0,2}
+\end{tikzpicture}

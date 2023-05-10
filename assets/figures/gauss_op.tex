@@ -1,0 +1,17 @@
+\begin{tikzpicture}[font=\small]
+    \begin{scope}
+        \clip (-1.5, -1.5) rectangle (1.5, 1.5);
+        \foreach \y in {-2, 0} \draw[link] (0, \y) -- ++(0, 2);
+        \foreach \x in {-2, 0} \draw[link] (\x, 0) -- ++(2, 0);
+
+        \node[above] at (0.65, 0)  {$\rho_{j_1}^{\ast}$};
+        \node[left] at (0, 0.65)  {$\rho_{j_2}^{\ast}$};
+        \node[below] at (-0.65, 0) {$\rho_{j_3}$};
+        \node[right] at (0, -0.65) {$\rho_{j_4}$};
+        \draw[vertex space] (0, 0) ++ (0.75, 0) -- ++(-0.75, 0.75) -- ++(-0.75, -0.75) -- ++(0.75, -0.75) -- cycle;
+    \end{scope}
+
+    \node[site, label=below right:{$x$}] at (0, 0) {};
+    \node[left, font=\normalsize] at (-1.5, 0) {$G(\{j\}_x) = $};
+
+\end{tikzpicture}
