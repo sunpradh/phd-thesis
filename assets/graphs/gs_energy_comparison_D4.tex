@@ -1,0 +1,25 @@
+\begin{tikzpicture}[font=\footnotesize]
+    \begin{axis}[
+        width=8cm,
+        table/x=couplings,
+        no marks,
+        title = {Ground state energy, $D_4$},
+        xlabel = {$\lambda$},
+        ylabel = {$E_0$},
+        legend style={font=\footnotesize, draw=gray!40},
+        legend image post style={scale=0.5},
+        ]
+        \addplot[set NR] table [y=E0] {assets/graphs/data/expt_vals_NR.csv};
+        \addplot[set R] table [y=E0] {assets/graphs/data/expt_vals_R.csv};
+        \addplot[set D] table [y=E0] {assets/graphs/data/expt_vals_D.csv};
+        \legend{
+            {$\Gamma_1$},
+            {$\Gamma_2$},
+            {$\Gamma_3$}
+        }
+        \node[notes, anchor=west] at (axis cs:-0.05, -10) {\GenSetOne};
+        \node[notes, anchor=west] at (axis cs:-0.05, -12.5) {\GenSetTwo};
+        \node[notes, anchor=west] at (axis cs:-0.05, -15) {\GenSetThree};
+    \end{axis}
+\end{tikzpicture}
+

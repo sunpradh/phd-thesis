@@ -1,0 +1,53 @@
+\begin{tikzpicture}[font=\footnotesize]
+    \begin{axis}[
+        width=6.25cm,
+        table/x=couplings,
+        no marks,
+        title = {Electric energy variations, $D_4$},
+        xlabel = {$\lambda$},
+        ylabel = {$\partial\ev*{H_E}/\partial \lambda$},
+        legend style = {
+            font = \footnotesize,
+            draw = gray!40,
+            legend pos = north west
+        },
+        legend image post style={scale=0.5},
+        ]
+        \addplot[set NR] table [y=var_elec] {assets/graphs/data/expt_vals_var_NR.csv};
+        \addplot[set R]  table [y=var_elec] {assets/graphs/data/expt_vals_var_R.csv};
+        \addplot[set D]  table [y=var_elec] {assets/graphs/data/expt_vals_var_D.csv};
+        \legend{
+            {$\Gamma_1$},
+            {$\Gamma_2$},
+            {$\Gamma_3$}
+        }
+    \end{axis}
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}[font=\footnotesize]
+    \begin{axis}[
+        width=6.25cm,
+        % height=5cm,
+        table/col sep=comma,
+        table/x=couplings,
+        no marks,
+        title = {Magnetic energy variations, $D_4$},
+        xlabel = {$\lambda$},
+        ylabel = {$\partial\ev*{H_B}/\partial \lambda$},
+        legend style = {
+            font = \footnotesize,
+            draw = gray!40,
+            legend pos = south west
+        },
+        legend image post style={scale=0.5},
+        ]
+        \addplot[set NR] table [y=var_magn] {assets/graphs/data/expt_vals_var_NR.csv};
+        \addplot[set R]  table [y=var_magn] {assets/graphs/data/expt_vals_var_R.csv};
+        \addplot[set D]  table [y=var_magn] {assets/graphs/data/expt_vals_var_D.csv};
+        \legend{
+            {$\Gamma_1$},
+            {$\Gamma_2$},
+            {$\Gamma_3$}
+        }
+    \end{axis}
+\end{tikzpicture}

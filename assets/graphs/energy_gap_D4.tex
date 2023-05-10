@@ -1,0 +1,49 @@
+\begin{tikzpicture}[font=\footnotesize]
+    \begin{axis}[
+        width=6.25cm,
+        % height=5cm,
+        table/x=couplings,
+        no marks,
+        title = {Energy gap, $D_4$, sets $\Gamma_1$ and $\Gamma_2$},
+        xlabel = {$\lambda$},
+        ylabel = {$E_1 - E_0$},
+        legend style = {
+            font = \footnotesize,
+            draw = gray!40,
+            legend pos = north east
+        },
+        legend image post style={scale=0.5},
+        ]
+        \addplot[set NR] table [y=gapE0] {assets/graphs/data/expt_vals_NR.csv};
+        \addplot[set R] table [y=gapE0] {assets/graphs/data/expt_vals_R.csv};
+        \legend{
+            {$\Gamma_1$},
+            {$\Gamma_2$},
+        }
+    \end{axis}
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}[font=\footnotesize]
+    \begin{axis}[
+        width=6.25cm,
+        % height=5cm,
+        table/col sep=comma,
+        table/x=couplings,
+        no marks,
+        title = {Energy gap, $D_4$, set $\Gamma_1$},
+        xlabel = {$\lambda$},
+        ylabel = {$E_1 - E_0$},
+        legend style = {
+            font = \footnotesize,
+            draw = gray!40,
+            legend pos = north west
+        },
+        legend image post style={scale=0.5},
+        ]
+        \addplot[set D] table [y=gapE0] {assets/graphs/data/expt_vals_D.csv};
+        \legend{
+            {$\Gamma_3$}
+        }
+    \end{axis}
+\end{tikzpicture}
+

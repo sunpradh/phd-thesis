@@ -1,0 +1,29 @@
+\begin{tikzpicture}[font=\footnotesize]
+    \begin{axis}[
+        width=8cm,
+        % height=5cm,
+        table/col sep=comma,
+        table/x=couplings,
+        no marks,
+        title = {Fidelity susceptibility, $D_4$},
+        xlabel = {$\lambda$},
+        ylabel = {$\partial\ev*{H_B}/\partial \lambda$},
+        legend style = {
+            font = \footnotesize,
+            draw = gray!40,
+            legend pos = north west
+        },
+        legend image post style={scale=0.5},
+        restrict x to domain=0.01:0.495
+        ]
+        \addplot[set NR] table [y=fidel_suscep] {assets/graphs/data/expt_vals_var_NR.csv};
+        \addplot[set R]  table [y=fidel_suscep] {assets/graphs/data/expt_vals_var_R.csv};
+        \addplot[set D]  table [y=fidel_suscep] {assets/graphs/data/expt_vals_var_D.csv};
+        \legend{
+            {$\Gamma_1$},
+            {$\Gamma_2$},
+            {$\Gamma_3$}
+        }
+    \end{axis}
+\end{tikzpicture}
+
